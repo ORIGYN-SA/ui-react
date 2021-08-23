@@ -2,7 +2,7 @@ import React from "react"
 import styled from 'styled-components';
 
 export type ButtonProps = {
-  size: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   primary?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;

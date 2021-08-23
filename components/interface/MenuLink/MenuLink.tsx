@@ -2,7 +2,6 @@ import React from "react"
 import styled from 'styled-components';
 
 export type MenuLinkProps = {
-
 }
 
 const StyledMenuLink = styled.a<MenuLinkProps>`${({ theme }) => `

@@ -13,4 +13,4 @@ const Template: Story<HeaderProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {  };
+Default.args = { isLoggedIn: false };

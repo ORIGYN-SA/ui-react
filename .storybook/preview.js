@@ -43,6 +43,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
+    margin: 0;
   }
   h3 {
     font-weight: 500;

@@ -7,15 +7,17 @@ export type FlexProps = {
   flexFlow?: "column" | "row" | "column-reverse" | "row-reverse";
   fullWidth?: boolean;
   gap?: number;
+  relative?: boolean;
 }
 
-const StyledFlex = styled.div<FlexProps>`${({justify, align, fullWidth, flexFlow, gap = 0}) => `
+const StyledFlex = styled.div<FlexProps>`${({justify, align, fullWidth, flexFlow, relative, gap = 0}) => `
   display: flex;
   align-items: ${align};
   justify-content: ${justify};
   flex-flow: ${flexFlow};
   width: ${fullWidth ? '100%' : 'auto'};
   gap: ${gap}px;
+  position: ${relative ? 'relative' : 'static' }
 `}`;
 
 export default StyledFlex;

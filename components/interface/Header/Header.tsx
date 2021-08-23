@@ -1,20 +1,34 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from 'styled-components';
 import Flex from '../../layout/Flex';
 import MenuLink from "../MenuLink";
+import ProfileIcon from "../../icons/Profile";
+import ArrowDownIcon from "../../icons/ArrowDown";
+import Card from "../Card/Card";
+import CheckboxInput from "../CheckboxInput/CheckboxInput";
 
 export type HeaderProps = {
-
+  isLoggedIn: boolean;
 }
 
-const StyledHeader = styled(Flex)<HeaderProps>`${({ theme }) => `
+const StyledHeader = styled(Flex)`${({ theme }) => `
   background: #FFFFFF;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 88px;
   padding: 0 30px;
 `}`;
 
-const Header = () => {
+
+const StyledProfileDropdown = styled(Card)`
+  position: absolute;
+  right: 0;
+  top: 56px;
+  width: 250px;
+  padding: 17px 25px;
+`;
+
+const Header = ({isLoggedIn}: HeaderProps) => {
+  const [isProfileOpened, setIsProfileOpened] = useState(false);
   return (
     <StyledHeader align="center" justify="space-between">
       <Flex gap={50}>
@@ -26,14 +40,33 @@ const Header = () => {
           <MenuLink>About</MenuLink>
         </Flex>
       </Flex>
-      <Flex align="center" gap={15}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 3C11.66 3 13 4.34 13 6C13 7.66 11.66 9 10 9C8.34 9 7 7.66 7 6C7 4.34 8.34 3 10 3ZM10 17.2C7.5 17.2 5.29 15.92 4 13.98C4.03 11.99 8 10.9 10 10.9C11.99 10.9 15.97 11.99 16 13.98C14.71 15.92 12.5 17.2 10 17.2Z" fill="black"/>
-        </svg>
-        <p>ArtLover</p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
-          <path d="M0 0L5 5L10 0H0Z" fill="black"/>
-        </svg>
+      <Flex align="center" gap={15} relative onClick={() => setIsProfileOpened(!isProfileOpened)}>
+        {
+          isLoggedIn ? (
+            <>
+            <ProfileIcon />
+            <p>ArtLover</p>
+            <ArrowDownIcon />
+              {
+                isProfileOpened && (
+                  <StyledProfileDropdown>
+                    <Flex flexFlow="column" gap={30}>
+                      <Flex flexFlow="column" gap={10}>
+                        <p>My Account</p>
+                        <p>Dashboard</p>
+                      </Flex>
+                      <div>
+                        <p style={{opacity: "0.5"}}>Sign Out</p>
+                      </div>
+                    </Flex>
+                  </StyledProfileDropdown>
+                )
+              }
+            </>
+          ) : (
+            <p>Log In / Sign Up</p>
+          )
+        }
       </Flex>
     </StyledHeader>
   )
