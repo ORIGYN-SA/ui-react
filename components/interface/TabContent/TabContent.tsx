@@ -12,7 +12,7 @@ const StyledTabContent = styled(Flex)`${({ theme }) => `
   background: #000000;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 50px;
-  padding: 0 30px;
+  padding: 0 30px 0 240px;
   color: #ffffff;
 `}`;
 

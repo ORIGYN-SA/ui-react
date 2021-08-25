@@ -6,10 +6,10 @@ export type ButtonProps = {
   primary?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
-  outlined?: boolean;
+  bordered?: boolean;
 }
 
-const StyledFlex = styled.div<ButtonProps>`${({ size, disabled, fullWidth, outlined, primary, theme }) => `
+const StyledFlex = styled.div<ButtonProps>`${({ size, disabled, fullWidth, bordered, primary, theme }) => `
   display: flex;
   width: 320px;
   height: 50px;
@@ -21,8 +21,10 @@ const StyledFlex = styled.div<ButtonProps>`${({ size, disabled, fullWidth, outli
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   background-color: ${ primary ? theme.colors.WHITE : theme.colors.BLACK };
   color: ${ primary ? theme.colors.BLACK : theme.colors.WHITE };
+  border: ${bordered ? `2px solid ${primary ? theme.colors.BLACK : theme.colors.WHITE}` : 'none'};
 `}`;
 
 export default StyledFlex;

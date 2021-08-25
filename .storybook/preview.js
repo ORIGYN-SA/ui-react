@@ -40,10 +40,14 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   p {
-    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     margin: 0;
+  }
+  h1 {
+    font-weight: normal;
+    font-size: 52px;
+    line-height: 66px;
   }
   h3 {
     font-weight: 500;

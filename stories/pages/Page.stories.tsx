@@ -1,14 +1,14 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Header from "../interface/Header";
-import BreadCrumbs from '../interface/BreadCrumbs';
-import TabContent from '../interface/TabContent';
-import Filters from '../interface/Filters'
-import ProductCard from '../interface/ProductCard'
-import Container from '../layout/Container';
-import Flex from '../layout/Flex';
-import Grid from '../layout/Grid';
+import Header from "../../components/interface/Header";
+import BreadCrumbs from '../../components/interface/BreadCrumbs';
+import TabContent from '../../components/interface/TabContent';
+import Filters from '../../components/interface/Filters'
+import ProductCard from '../../components/interface/ProductCard'
+import Container from '../../components/layout/Container';
+import Flex from '../../components/layout/Flex';
+import Grid from '../../components/layout/Grid';
 
 export default {
   title: "Pages/Profile Page",

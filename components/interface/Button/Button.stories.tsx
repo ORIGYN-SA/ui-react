@@ -13,4 +13,4 @@ const Template: Story<ButtonProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { size: 'sm', fullWidth: false, disabled: false, outlined: false, primary: false };
+Default.args = { size: 'sm', fullWidth: false, disabled: false, bordered: false, primary: false };
