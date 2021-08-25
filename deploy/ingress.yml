@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: art-ui
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: art-ui.development.origyn.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: art-ui
+                port:
+                  number: 80
+
