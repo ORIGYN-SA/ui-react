@@ -48,6 +48,13 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-size: 52px;
     line-height: 66px;
+    margin: 0;
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0;
   }
   h3 {
     font-weight: 500;
@@ -59,6 +66,9 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
+  }
+  .noShrink {
+    flex-shrink: 0;
   }
 `
 export const decorators = [

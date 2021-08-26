@@ -15,6 +15,7 @@ export default {
   title: "Pages/Landing Page",
 } as Meta;
 
+// TODO: move to components
 const StyledBanner = styled(Flex)`${({theme}) => `
   background-color: ${theme.colors.BLACK};
   color: ${theme.colors.WHITE};

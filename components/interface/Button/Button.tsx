@@ -11,7 +11,7 @@ export type ButtonProps = {
 
 const StyledFlex = styled.div<ButtonProps>`${({ size, disabled, fullWidth, bordered, primary, theme }) => `
   display: flex;
-  width: 320px;
+  width: ${fullWidth ? '100%' : '320px'};
   height: 50px;
   font-weight: bold;
   font-size: 13px;
