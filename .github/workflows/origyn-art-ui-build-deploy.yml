@@ -67,7 +67,6 @@ jobs:
         shell: bash
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_BASTION_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
           SSH_KEY_PATH: ${{ github.workspace }}/../private.key
           BASTION_USER: ${{ secrets.BASTION_USER }}
           BASTION_HOST: ${{ secrets.BASTION_HOST }}
@@ -82,7 +81,13 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-
+      - run: ssh -fNT -i $SSH_KEY_PATH -L 7443:$K8S_HOST:443 $BASTION_USER@$BASTION_HOST
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_BASTION_PRIVATE_KEY }}
+          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
+          BASTION_USER: ${{ secrets.BASTION_USER }}
+          BASTION_HOST: ${{ secrets.BASTION_HOST }}
       - name: deploy to cluster
         uses: kodermax/kubectl-aws-eks@master
         env:
