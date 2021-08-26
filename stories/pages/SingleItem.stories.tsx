@@ -11,12 +11,12 @@ import HR from '../../components/interface/HR';
 import Button from '../../components/interface/Button';
 
 import FBIcon from '../../components/icons/FB';
+import InstagramIcon from '../../components/icons/Instagram';
+import TwitterIcon from '../../components/icons/Twitter';
 import SafeIcon from'../../components/icons/Safe';
 import ArrowRightIcon from '../../components/icons/ArrowRight';
 import BreadCrumbs from "../../components/interface/BreadCrumbs/BreadCrumbs";
 import TabContent from "../../components/interface/TabContent/TabContent";
-import Filters from "../../components/interface/Filters";
-import ProductCard from "../../components/interface/ProductCard";
 
 export default {
   title: "Pages/Single item",
@@ -60,6 +60,16 @@ const StyledCustomMoreLink = styled.a`${({theme}) => `
   gap: 10px;
 `}`;
 
+const StyledCircle = styled.span`${({theme}) => `
+  display: inline-block;
+  vertical-align: middle;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: ${theme.colors.ACCENT_COLOR};
+  margin: 0 10px;
+`}`;
+
 const Template: Story = (args) => (
   <div>
     <Header isLoggedIn={false}/>
@@ -70,6 +80,7 @@ const Template: Story = (args) => (
           <h2>The Newlyweds with Rooster, 1975</h2>
           <h3>Marc Chagall</h3>
           <p>Oil, tempera, ink and India ink on canvas laid down on panel</p>
+          <p><b>12 3/5 × 25 1/5 in</b><StyledCircle /><b>32.1 × 64 cm</b></p>
           <HR accent />
           <Flex gap={21} align="center">
             <SafeIcon className="noShrink" />
@@ -106,6 +117,13 @@ const Template: Story = (args) => (
           </Grid>
           <HR marginTop={18} marginBottom={18} />
           <Button fullWidth>SELL SHARES</Button>
+          <br/>
+          <Flex gap={15} align="center">
+            <p style={{fontWeight: 500}}>Share</p>
+            <FBIcon />
+            <InstagramIcon />
+            <TwitterIcon />
+          </Flex>
         </Flex>
       </StyledCustomGrid>
     </Container>
