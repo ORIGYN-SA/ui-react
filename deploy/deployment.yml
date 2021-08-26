@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: art-ui
+  labels:
+    app: art-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: art-ui
+  template:
+    metadata:
+      labels:
+        app: art-ui
+    spec:
+      containers:
+      - name: art-ui
+        image: 957998967403.dkr.ecr.us-east-1.amazonaws.com/art-ui:latest
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            containerPort: 6006
