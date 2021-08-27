@@ -63,7 +63,8 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ../private.key
           sudo chmod 600 ../private.key
-#          ssh-keyscan -H $BASTION_HOST >> ~/.ssh/known_hosts
+          touch  ~/.ssh/known_hosts
+          ssh-keyscan -H $BASTION_HOST >> ~/.ssh/known_hosts
         shell: bash
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_BASTION_PRIVATE_KEY }}
