@@ -12,7 +12,7 @@ export type DatePickerProps = {
   showMonthYearPicker?: boolean;
   hideHeader?: boolean;
   showYearPicker?: boolean;
-  selected: string;
+  selected: string | null;
   onChange: () => void;
 };
 
