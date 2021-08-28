@@ -11,6 +11,7 @@ import HR from '../../components/interface/HR';
 import Button from '../../components/interface/Button';
 
 import FBIcon from '../../components/icons/FB';
+import PDFIcon from '../../components/icons/PDF';
 import InstagramIcon from '../../components/icons/Instagram';
 import TwitterIcon from '../../components/icons/Twitter';
 import SafeIcon from'../../components/icons/Safe';
@@ -49,7 +50,7 @@ const StyledArtistGrid = styled(Grid)`${({theme}) => `
 `}`;
 
 // TODO: move to components
-const StyledCustomMoreLink = styled.a`${({theme}) => `
+export const StyledCustomMoreLink = styled.a`${({theme}) => `
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;
@@ -68,6 +69,20 @@ const StyledCircle = styled.span`${({theme}) => `
   border-radius: 50%;
   background-color: ${theme.colors.ACCENT_COLOR};
   margin: 0 10px;
+`}`;
+
+const StyledGalleryGrid = styled(Grid)`${({theme}) => `
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  
+  &>img {
+    width: 100%;
+    
+    &:first-child {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
 `}`;
 
 const Template: Story = (args) => (
@@ -128,7 +143,7 @@ const Template: Story = (args) => (
       </StyledCustomGrid>
     </Container>
     <TabContent
-      tabs={[{title: 'Artist'}, {title: 'Media'}, {title: 'Market Appreciation'}, {title: 'Order Book'}, {title: 'Documents'}]}
+      tabs={[{title: 'Artist'}, {title: 'Media'}, {title: 'Documents'}]}
       content={[
         <Container padding="31px 33px">
           <StyledArtistGrid>
@@ -181,10 +196,57 @@ const Template: Story = (args) => (
             </Card>
           </StyledArtistGrid>
         </Container>,
-        <div>Content 2</div>,
-        <div>In Development</div>,
-        <div>In Development</div>,
-        <div>Content 4</div>
+        <Container padding="31px 33px">
+          <Card padding="43px 75px 30px 43px" flexFlow="column" gap={20}>
+            <h3>Images</h3>
+            <StyledGalleryGrid>
+              <img src="http://placehold.jp/850x400.png" alt=""/>
+              <img src="http://placehold.jp/377x445.png" alt=""/>
+              <img src="http://placehold.jp/410x240.png" alt=""/>
+              <img src="http://placehold.jp/410x240.png" alt=""/>
+            </StyledGalleryGrid>
+            <br/>
+            <h3>Video</h3>
+            <Grid columns={2}>
+              <Flex flexFlow="column" gap={10}>
+                <img src="http://placehold.jp/554x324.png" alt=""/>
+                <h4>Watch the creation of the Digital Twin</h4>
+              </Flex>
+            </Grid>
+          </Card>
+        </Container>,
+        <Container padding="31px 33px">
+          <Card padding="43px 75px 30px 43px" flexFlow="column" gap={20}>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Originator Trust Certificate</h4>
+            </Flex>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Authentication Source</h4>
+            </Flex>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Sales Agreement</h4>
+            </Flex>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Possession / Jurisdiction / Fractions Agreement</h4>
+            </Flex>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Ownership Agreement</h4>
+            </Flex>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Purchase Agreement</h4>
+            </Flex>
+            <Flex align="center" gap={18}>
+              <PDFIcon />
+              <h4>Lifetime Earning Agreement</h4>
+            </Flex>
+          </Card>
+        </Container>,
       ]}
     />
   </div>

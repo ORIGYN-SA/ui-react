@@ -10,17 +10,16 @@ import Card from '../../components/interface/Card';
 import Button from '../../components/interface/Button';
 
 import LandingBanner from '../../assets/LandingBanner.jpg';
+import ArrowRightIcon from "../../components/icons/ArrowRight";
+import Footer from "../../components/interface/Footer";
+import StyledBanner from "../../components/interface/Banner";
+import {StyledCustomMoreLink} from "./SingleItem.stories";
+import ProductCard from "../../components/interface/ProductCard";
+import HR from "../../components/interface/HR";
 
 export default {
   title: "Pages/Landing Page",
 } as Meta;
-
-// TODO: move to components
-const StyledBanner = styled(Flex)`${({theme}) => `
-  background-color: ${theme.colors.BLACK};
-  color: ${theme.colors.WHITE};
-  padding: 39px 0 52px 0;
-`}`;
 
 const StyledLink = styled.a`${({theme}) => `
   color: ${theme.colors.ACCENT_COLOR};
@@ -98,17 +97,45 @@ const Template: Story = (args) => (
       </Grid>
     </Container>
     <Container size="lg">
-      <Grid columns={1}>
-        <Card flexFlow="column" padding="25px 30px">
-          <Flex>
-            <Flex>
-              <img src="http://placehold.jp/203x132.png" alt=""/>
-              <h4></h4>
-            </Flex>
-          </Flex>
-        </Card>
+      <Flex align="center" justify="space-between">
+        <h2>Latest Artworks for Sale</h2>
+        <StyledCustomMoreLink href="#">See all Artworks for sale <ArrowRightIcon fill="#EE9907" /></StyledCustomMoreLink>
+      </Flex>
+      <br/>
+      <Grid columns={3} gap={33}>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </Grid>
     </Container>
+    <Container size="lg">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h2>What is ORIGYN Art?</h2>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <HR />
+    </Container>
+    <Container size="lg">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h2>How it works</h2>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <HR style={{borderColor: '#ffffff'}} />
+      <br/>
+      <br/>
+      <br/>
+    </Container>
+    <Footer />
   </div>
 );
 
