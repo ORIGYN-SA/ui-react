@@ -50,7 +50,7 @@ const StyledArtistGrid = styled(Grid)`${({theme}) => `
 `}`;
 
 // TODO: move to components
-const StyledCustomMoreLink = styled.a`${({theme}) => `
+export const StyledCustomMoreLink = styled.a`${({theme}) => `
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;
