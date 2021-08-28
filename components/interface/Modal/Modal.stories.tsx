@@ -22,7 +22,7 @@ const Template: Story<ModalProps> = (args) => {
     <div>
       <Button onClick={openModal}>Open modal</Button>
       <Modal
-        title="Buy Shares"
+        title={args.title}
         isOpened={isOpened}
         closeModal={closeModal}
       />
@@ -31,4 +31,4 @@ const Template: Story<ModalProps> = (args) => {
 }
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = { title: 'Buy Shares'};
