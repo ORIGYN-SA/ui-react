@@ -58,6 +58,7 @@ const Stepper = ({tabs, content}: StepperProps) => {
   )
 }
 
+// TODO: consider refactoring
 export const useStepper = (steps: Array<{label: string, content: any}>) => {
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -70,6 +71,8 @@ export const useStepper = (steps: Array<{label: string, content: any}>) => {
       }
     </StyledTabContent>,
     steps[currentTab].content,
+    currentTab,
+    setCurrentTab,
   ];
 }
 

@@ -16,6 +16,8 @@ const theme = {
     BLACK: '#000000',
     WHITE: '#FFFFFF',
     ACCENT_COLOR: '#F5A506',
+    LIGHT_GRAY: '#DFDFDF',
+    LIGHTER_GRAY: '#F5F5F5',
     BG_GRAY: '#E5E5E5'
   },
   typography: {
