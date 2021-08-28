@@ -9,11 +9,12 @@ import CloseIcon from "../../icons/Close";
 export type ModalProps = {
   isOpened: boolean;
   closeModal: () => void;
-  title: string | React.ReactNode;
+  title?: string | React.ReactNode;
 }
 
 const customStyles = {
   content: {
+    padding: '0px',
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -25,18 +26,26 @@ const customStyles = {
   },
 };
 
-const ProductCard = ({isOpened, title, closeModal}: ModalProps) => {
+const StyledCloseBtn = styled(CloseIcon)`
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  cursor: pointer;
+`
+
+const ProductCard: React.FC<ModalProps> = ({isOpened, title, children, closeModal}) => {
   return (
     <Modal
       isOpen={isOpened}
       style={customStyles}
       onRequestClose={closeModal}
     >
-      <Container size="md" padding="45px 40px">
-        <Flex justify="space-between">
+      <Container relative size="md" padding="45px 40px">
+        {title && (
           <h2>{title}</h2>
-          <CloseIcon onClick={closeModal} />
-        </Flex>
+        )}
+        {children}
+        <StyledCloseBtn onClick={closeModal}/>
       </Container>
     </Modal>
   )
