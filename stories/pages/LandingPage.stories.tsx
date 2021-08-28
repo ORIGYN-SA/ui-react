@@ -11,6 +11,7 @@ import Button from '../../components/interface/Button';
 
 import LandingBanner from '../../assets/LandingBanner.jpg';
 import ArrowRightIcon from "../../components/icons/ArrowRight";
+import Footer from "../../components/interface/Footer";
 import StyledBanner from "../../components/interface/Banner";
 import {StyledCustomMoreLink} from "./SingleItem.stories";
 import ProductCard from "../../components/interface/ProductCard";
@@ -129,11 +130,12 @@ const Template: Story = (args) => (
       <br/>
       <br/>
       <br/>
-      <HR />
+      <HR style={{borderColor: '#ffffff'}} />
       <br/>
       <br/>
       <br/>
     </Container>
+    <Footer />
   </div>
 );
 
