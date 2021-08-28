@@ -39,8 +39,6 @@ const StyledTabLink = styled(MenuLink)`${({ theme }) => `
   }
 `}`;
 
-
-
 const Stepper = ({tabs, content}: StepperProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -58,6 +56,21 @@ const Stepper = ({tabs, content}: StepperProps) => {
       }
     </Flex>
   )
+}
+
+export const useStepper = (steps: Array<{label: string, content: any}>) => {
+  const [currentTab, setCurrentTab] = useState(0);
+
+  return [
+    <StyledTabContent gap={0}>
+      {
+        steps.map(({ label}, index) => (
+          <StyledTabLink className={index <= currentTab ? 'active' : ''} onClick={() => setCurrentTab(index)}>{label}</StyledTabLink>
+        ))
+      }
+    </StyledTabContent>,
+    steps[currentTab].content,
+  ];
 }
 
 export default Stepper;
