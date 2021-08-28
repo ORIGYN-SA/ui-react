@@ -11,13 +11,22 @@ const StyledTable = styled.table<TableProps>`${({ theme }) => `
 
 export const Table = styled.table<TableProps>`${({ theme }) => `
 
-  thead {
-    td {
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 160%;
-    }
+`}`;
+
+export const TableHead = styled.thead`${({ theme }) => `
+  td {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 160%;
   }
+`}`;
+
+export const TableRow = styled.tr`${({ theme }) => `
+
+`}`;
+
+export const TableCell = styled.td`${({ theme }) => `
+
 `}`;
 
 export default StyledTable;
