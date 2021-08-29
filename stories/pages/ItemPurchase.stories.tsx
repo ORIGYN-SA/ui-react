@@ -11,6 +11,8 @@ import Flex from "../../components/layout/Flex";
 import HR from "../../components/interface/HR/HR";
 import TextInput from "../../components/interface/TextInput";
 import DifinityLogoIcon from "../../components/icons/DifinityLogo";
+import CheckIcon from "../../components/icons/Check";
+import TransactionIcon from "../../components/icons/Transaction";
 
 export default {
   title: "Pages/Purchase Item",
@@ -69,6 +71,7 @@ const StyledBalanceBlock = styled(Flex)`${({theme}) => `
 const Template: Story = (args) => {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedRow, setSelectedRow] = useState();
+  const [isItemPurchased, setIsItemPurchased] = useState(false);
   const stepsConfig = [
     {
       label: 'SELECT SHARE',
@@ -186,7 +189,7 @@ const Template: Story = (args) => {
           </thead>
           <tbody>
           <tr className="bordered active">
-            <td><Checkbox name="row1" isChecked={selectedRow === 1} onChange={() => setSelectedRow(1)} /></td>
+            <td></td>
             <td><b>20%</b></td>
             <td>200,000</td>
             <td><b>ICP 3,451.82</b></td>
@@ -212,9 +215,15 @@ const Template: Story = (args) => {
 
   const closeModal = () => {
     setIsOpened(false);
+    setIsItemPurchased(false);
+    setStep(0);
   }
   const openModal = () => {
     setIsOpened(true);
+  }
+
+  const buyItem = () => {
+    setIsItemPurchased(true);
   }
 
   return (
@@ -224,59 +233,86 @@ const Template: Story = (args) => {
         isOpened={isOpened}
         closeModal={closeModal}
       >
-        <>
-          <Flex justify="space-between">
-            <h2>Buy Shares</h2>
-            <Flex>{StepperHeader}</Flex>
-            <div></div>
-          </Flex>
-          <br/>
-          <h4>{stepsConfig[step].description}</h4>
-          {
-            step === 2 && (
-              <>
-
-                <br/>
-                <TextInput
-                  label="RECEIPIENT (WALLET ADDRESS)"
-                />
-                <br/>
-              </>
-            )
-          }
-          <br/>
-          <Grid columns={2} gap={80}>
-            <Flex flexFlow="column" gap={15}>
-              <img src="http://placehold.jp/526x325.png" alt=""/>
-              <h3>Nude Woman leaning on pillows</h3>
-              <h4>Pablo Picasso</h4>
-              <HR marginBottom={16} marginTop={16} />
-              <Flex justify="space-between">
-                <Flex flexFlow="column">
-                  <p>Total value</p>
-                  <p><b>ICP 1,000,000.00</b></p>
-                </Flex>
-                <Flex flexFlow="column">
-                  <p>Total shares</p>
-                  <p><b>10,000</b></p>
-                </Flex>
-                <div></div>
+        {
+          isItemPurchased ? (
+            <Flex flexFlow="column">
+              <Flex gap={20} align="center"><CheckIcon fill="#50AA3E" /><h2>ICP Sent</h2></Flex>
+              <br/>
+              <p>Payment has been send to the seller’s wallet. The transaction can take up to 2 days.</p>
+              <br/>
+              <p>Once the payment has been received, the NFT will be transferred to your Portfolio.</p>
+              <br/>
+              <p><b>Check your portfolio for status updates.</b></p>
+              <br/>
+              <br/>
+              <br/>
+              <Flex flexFlow="column" align="center" gap={18}>
+                <TransactionIcon />
+                <p><b>IN PROGRESS</b></p>
+              </Flex>
+              <HR marginBottom={32} marginTop={92} />
+              <Flex align="center" justify="flex-end" gap={50} fullWidth>
+                <Button onClick={closeModal}>CONTINUE TO MY PORTFOLIO</Button>
               </Flex>
             </Flex>
-            {StepperContent}
-          </Grid>
-          <HR marginBottom={32} marginTop={32} />
-          <Flex align="center" justify="flex-end" gap={50} fullWidth>
-            <b onClick={closeModal}>Cancel</b>
-            {
-              step < stepsConfig.length - 1 ? (
-                <Button disabled={!selectedRow} onClick={() => setStep(step+1)}>NEXT: {stepsConfig[step + 1].label}</Button>
-              ) : (
-                <Button>BUY NOW</Button>
-              )
-            }
-          </Flex>
-        </>
+          ) : (
+            <>
+              <Flex justify="space-between">
+                <h2>Buy Shares</h2>
+                <Flex>{StepperHeader}</Flex>
+                <div></div>
+              </Flex>
+              <br/>
+              <h4>{stepsConfig[step].description}</h4>
+              {
+                step === 2 && (
+                  <>
+
+                    <br/>
+                    <TextInput
+                      name="recipient"
+                      placeholder="Enter wallet ID"
+                      label="RECIPIENT (WALLET ADDRESS)"
+                    />
+                    <br/>
+                  </>
+                )
+              }
+              <br/>
+              <Grid columns={2} gap={80}>
+                <Flex flexFlow="column" gap={15}>
+                  <img src="http://placehold.jp/526x325.png" alt=""/>
+                  <h3>Nude Woman leaning on pillows</h3>
+                  <h4>Pablo Picasso</h4>
+                  <HR marginBottom={16} marginTop={16} />
+                  <Flex justify="space-between">
+                    <Flex flexFlow="column">
+                      <p>Total value</p>
+                      <p><b>ICP 1,000,000.00</b></p>
+                    </Flex>
+                    <Flex flexFlow="column">
+                      <p>Total shares</p>
+                      <p><b>10,000</b></p>
+                    </Flex>
+                    <div></div>
+                  </Flex>
+                </Flex>
+                {StepperContent}
+              </Grid>
+              <HR marginBottom={32} marginTop={32} />
+              <Flex align="center" justify="flex-end" gap={50} fullWidth>
+                <b onClick={closeModal}>Cancel</b>
+                {
+                  step < stepsConfig.length - 1 ? (
+                    <Button disabled={!selectedRow} onClick={() => setStep(step+1)}>NEXT: {stepsConfig[step + 1].label}</Button>
+                  ) : (
+                    <Button onClick={buyItem}>BUY NOW</Button>
+                  )
+                }
+              </Flex>
+            </>
+          )
+        }
       </Modal>
     </div>
   );
