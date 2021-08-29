@@ -5,6 +5,7 @@ import Flex from '../../layout/Flex';
 export type TextInputProps = {
   label: string;
   name: string;
+  placeholder?: string;
 }
 
 const StyledTextInput = styled.input`${({theme}) => `
@@ -27,11 +28,11 @@ const StyledLabel = styled.label`${({theme}) => `
   line-height: 24px;
 `}`
 
-const TextInput = ({label, name}: TextInputProps) => {
+const TextInput = ({label, name, placeholder}: TextInputProps) => {
 
   return <Flex flexFlow="column">
     <StyledLabel htmlFor={name}>{label}</StyledLabel>
-    <StyledTextInput type="text" id={name} name={name}/>
+    <StyledTextInput placeholder={placeholder} type="text" id={name} name={name}/>
   </Flex>
 }
 
