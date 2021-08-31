@@ -7,6 +7,7 @@ import BreadCrumbs from "../../components/interface/BreadCrumbs";
 import TextInput from "../../components/interface/TextInput";
 import DatePicker from "../../components/interface/DatePicker";
 import Button from "../../components/interface/Button";
+import ContactCard from "../../components/interface/ContactCard";
 
 import { TabContentVertical } from "../../components/interface/TabContent";
 import Container from "../../components/layout/Container";
@@ -53,7 +54,9 @@ const Template: Story = (args) => (
           <div>Content 3</div>,
           <div>Content 4</div>,
           <div>Content 5</div>,
-          <div>Content 6</div>,
+          <div>
+            <ContactCard />
+          </div>,
         ]}
       />
     </Container>
