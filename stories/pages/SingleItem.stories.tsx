@@ -26,6 +26,9 @@ export default {
 const StyledCustomCard = styled(Card)`${({theme}) => `
   justify-content: center;
   padding: 68px 75px 85px 75px;
+  img {
+    max-width: 100%;
+  }
 `}`;
 
 const StyledCustomText = styled.div`${({theme}) => `

@@ -14,6 +14,12 @@ const StyledTabContent = styled(Flex)`${({ theme }) => `
   height: 50px;
   padding: 0 30px 0 240px;
   color: #ffffff;
+  
+  ${theme.media.sm} {
+    padding: 0 5px;
+    overflow: auto;
+    width: 100%;
+  }
 `}`;
 
 const StyledTabLink = styled(MenuLink)`${({ theme }) => `
