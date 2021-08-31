@@ -24,6 +24,10 @@ const StyledCustomCard = styled(Card)`${({theme}) => `
   align-items: flex-start;
   gap: 30px;
   padding: 50px 117px;
+  
+  ${theme.media.sm} {
+    padding: 20px;
+  }
 `}`;
 
 const StyledCustomButton = styled(Button)`${({theme}) => `
@@ -33,12 +37,14 @@ const StyledCustomButton = styled(Button)`${({theme}) => `
   text-transform: none;
   justify-content: flex-start;
   padding: 0 20px;
+  box-sizing: border-box;
   gap: 20px;
   
   svg {
     width: 50px;
     height: 29px;
   }
+ 
 `}`;
 
 const StyledFBButton = styled(StyledCustomButton)`${({theme}) => `
@@ -70,10 +76,10 @@ const StyledCustomMoreLink = styled.a`${({theme}) => `
 const Template: Story = (args) => (
   <div>
     <Header isLoggedIn={false}/>
-    <Container size="sm" padding="60px 0">
+    <Container size="sm" padding="60px 0" smPadding="0">
       <StyledCustomCard>
         <h3>Log in</h3>
-        <Flex flexFlow="column" gap={10}>
+        <Flex flexFlow="column" gap={10} fullWidth>
           <StyledCustomButton><DifinityLogoIcon /><span><b>Log in</b> with your Internet Identity</span></StyledCustomButton>
           <StyledFBButton><FBIcon fill="#ffffff" /><span> <b>Log in</b> with Facebook</span></StyledFBButton>
         </Flex>
