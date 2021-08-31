@@ -23,7 +23,8 @@ const Template: Story = (args) => (
         <Container padding="0 30px" size="lg">
           <BreadCrumbs data={[{title: "My portfolio", link: "#"}, {title: "Digital twins", link: "#"}]} />
           <Flex flexFlow="column" gap={14}>
-            <Filters title="Digital twins" />
+            <h1>All Artworks</h1>
+            <Filters />
             <Grid columns={3} gap={40}>
               <ProductCard />
               <ProductCard />
