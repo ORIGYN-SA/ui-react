@@ -26,6 +26,9 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     border: 'none',
     boxShadow: '0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05)',
+    '@media (max-width: 600)': {
+      
+    },
   },
 };
 

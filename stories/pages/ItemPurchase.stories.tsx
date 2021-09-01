@@ -267,12 +267,8 @@ const Template: Story = (args) => {
               {
                 step === 2 && (
                   <>
-
                     <br/>
                     <TextInput
-                      name="recipient"
-                      placeholder="Enter wallet ID"
-                      label="RECIPIENT (WALLET ADDRESS)"
                     />
                     <br/>
                   </>
