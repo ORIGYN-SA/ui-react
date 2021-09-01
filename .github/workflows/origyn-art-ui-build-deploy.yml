@@ -118,12 +118,11 @@ jobs:
         if: always()
         run: sudo killall openvpn
 
-
       - name: Send Slack Notification
         if: always()
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         uses: rtCamp/action-slack-notify@v2
         with:
-          SLACK_COLOR: "${{ job.status }}"
-          SLACK_MESSAGE: "${{github.GITHUB_REPOSITORY}}: Build has ${{ job.status }}"
+          SLACK_COLOR: '${{ job.status }}'
+          SLACK_MESSAGE: '${{github.GITHUB_REPOSITORY}}: Build has ${{ job.status }}'
