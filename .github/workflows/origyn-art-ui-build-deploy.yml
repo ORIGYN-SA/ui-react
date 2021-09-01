@@ -54,14 +54,14 @@ jobs:
           sudo apt update
           sudo apt upgrade
           sudo apt install openvpn
-          echo "${{secrets.OPENVPN_CONF}}" > scripts/config.ovpn
+          echo "${{secrets.OPENVPN_CONF}}" > deploy/config.ovpn
 
       - name: Connect VPN
         uses: golfzaptw/action-connect-ovpn@master
         id: connect_vpn
         with:
           PING_URL: 10.0.1.238
-          FILE_OVPN: 'scripts/config.ovpn'
+          FILE_OVPN: 'deploy/config.ovpn'
         env:
           CA_CRT: ${{ secrets.OPENVPN_CA_CERT }}
           USER_CRT: ${{ secrets.OPENVPN_USER_CERT }}
