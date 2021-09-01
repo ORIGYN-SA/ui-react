@@ -123,6 +123,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: '${{ job.status }}'
-          SLACK_MESSAGE: '${{github.GITHUB_REPOSITORY}}: Build has ${{ job.status }}'
+          SLACK_MESSAGE: '${{github.repository}}: Build has ${{ job.status }}'
         uses: rtCamp/action-slack-notify@v2
 
