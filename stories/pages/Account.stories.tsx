@@ -30,13 +30,15 @@ const InputWrapper = styled(Flex)`
 `;
 
 const ResponsiveGrid = styled.div`
+  ${({ theme }) => `
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-bottom: 50px;
-  @media screen and (max-width: 768px) {
+  ${theme.media.md}{
     grid-template-columns: repeat(1, 1fr);
   }
+`}
 `;
 
 const Template: Story = (args) => (

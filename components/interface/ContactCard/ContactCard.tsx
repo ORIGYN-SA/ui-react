@@ -10,16 +10,15 @@ const StyledContactCard = styled(Flex)`
   max-width: 900px;
 `;
 
-const StyledContactCardContent = styled(Grid)`
-  width: 100%;
-  padding-left: 25px;
-`;
 const StyledCardTitle = styled.h4`
+  ${({ theme }) => `
   padding-bottom: 25px;
-  @media screen and (max-width: 768px) {
+  ${theme.media.md}{
     text-align: center;
   }
+`}
 `;
+
 const AccountName = styled.p`
   font-size: 30px;
   line-height: 44px;
@@ -41,39 +40,33 @@ const ContactAddress = styled.p`
   font-weight: 400;
 `;
 
-const ResponsiveFlex = styled(Flex)`
-  flex-flow: row;
-  width: 100%;
-  @media screen and (max-width: 1024px) {
-    flex-flow: column;
-  }
-`;
-const CardContent = styled(Flex)`
-  @media screen and (max-width: 768px) {
-    flex-flow: column;
-  }
-`;
 const ContactWrapper = styled(Flex)`
+  ${({ theme }) => `
   flex-flow: column;
   width: 50%;
   padding-left: 25px;
-  @media screen and (max-width: 768px) {
+  ${theme.media.md}{
     padding-left: 0;
     align-items: center;
     width: 100%;
   }
+`}
 `;
+
 const AvatarWrapper = styled(Flex)`
-  @media screen and (max-width: 768px) {
+  ${({ theme }) => `
+  ${theme.media.md}{
     justify-content: center;
   }
+`}
 `;
+
 const ContactCard = () => {
   return (
     <StyledContactCard>
       <Flex flexFlow="column" fullWidth>
         <StyledCardTitle>YOUR ORIGYN ART CONTACT</StyledCardTitle>
-        <CardContent>
+        <Flex adapt>
           <AvatarWrapper>
             <img
               src="http://placehold.jp/150x150.png"
@@ -82,7 +75,7 @@ const ContactCard = () => {
               height="150"
             />
           </AvatarWrapper>
-          <ResponsiveFlex>
+          <Flex fullWidth adapt>
             <ContactWrapper>
               <AccountName>Rosalie Pernot</AccountName>
               <InfoTitle>Account Manager</InfoTitle>
@@ -98,8 +91,8 @@ const ContactCard = () => {
               <ContactAddress>Switzerland</ContactAddress>
               <ContactAddress>www.origyn.ch/art</ContactAddress>
             </ContactWrapper>
-          </ResponsiveFlex>
-        </CardContent>
+          </Flex>
+        </Flex>
       </Flex>
     </StyledContactCard>
   );
