@@ -37,6 +37,7 @@ const StyledCustomButton = styled(Button)`
   text-transform: none;
   justify-content: flex-start;
   padding: 0 20px;
+  box-sizing: border-box;
   gap: 20px;
   
   svg {
@@ -67,10 +68,10 @@ const StyledCustomText = styled.div`
 const Template: Story = (args) => (
   <div>
     <Header isLoggedIn={false} />
-    <Container size="sm" padding="60px 0">
+    <Container size="sm" padding="60px 0" smPadding="0">
       <StyledCustomCard>
         <h3>Log in</h3>
-        <Flex flexFlow="column" gap={10}>
+        <Flex flexFlow="column" gap={10} fullWidth>
           <StyledCustomButton>
             <DifinityLogoIcon />
             <span>
