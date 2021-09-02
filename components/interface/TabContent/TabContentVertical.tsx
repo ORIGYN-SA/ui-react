@@ -8,6 +8,13 @@ export type TabContentVerticalProps = {
   content: Array<any>;
 };
 
+const StyledTabContentwrapper = styled(Flex)`
+  flex-flow: row;
+  @media screen and (max-width: 768px) {
+    flex-flow: column;
+  }
+`;
+
 const StyledTabContent = styled(Flex)`
   ${({ theme }) => `
   color: #ffffff;
@@ -15,6 +22,13 @@ const StyledTabContent = styled(Flex)`
   flex-direction: column;
   max-width: 200px;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: scroll;
+    margin-bottom: 25px;
+  }
 `}
 `;
 
@@ -33,13 +47,16 @@ const StyledTabLink = styled(MenuLink)`
 const StyledContent = styled.div`
   flex-grow: 1;
   padding-left: 35px;
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+  }
 `;
 
 const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
-    <Flex flexFlow="row">
+    <StyledTabContentwrapper flexFlow="row">
       <StyledTabContent gap={10}>
         {tabs.map(({ title }, index) => (
           <StyledTabLink
@@ -51,7 +68,7 @@ const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
         ))}
       </StyledTabContent>
       <StyledContent>{content[currentTab]}</StyledContent>
-    </Flex>
+    </StyledTabContentwrapper>
   );
 };
 
