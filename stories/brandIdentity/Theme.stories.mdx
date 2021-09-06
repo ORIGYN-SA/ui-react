@@ -1,12 +1,49 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
 
 <Meta title="Brand Identity/Theme" />
 
 <style>{`
-
+   .table {
+    width: 100%;
+   }
+   .colorBlock {
+     height: 24px;
+   }
 `}</style>
 
-<h1 className="subheading">Components theme</h1>
-<p>Current project uses <a href="https://styled-components.com/docs/advanced#theming">Styled Components theming</a></p>
-<h2>Theme object</h2>
-<p>Theme for storybook located inside .storybook/preview.js it needs to be added inside styled component ThemeProvider of a project</p>
+## Theme
+Theme is defined as an object for Colors, Fonts, Spacing and other customization
+Any changes to layout should be consider only with Theme parameters, not by component customization!
+###Theme object
+Theme object used in this Storybook project:
+```
+const theme = {
+  colors: {
+    BLACK: '#000000',
+    WHITE: '#FFFFFF',
+    ACCENT_COLOR: '#F5A506',
+    LIGHT_GRAY: '#DFDFDF',
+    LIGHTER_GRAY: '#F5F5F5',
+    BG_GRAY: '#E5E5E5'
+  },
+  typography: {
+
+  },
+  spacing: {
+
+  },
+  media: {
+    sm: '@media (max-width: 600px)',
+    md: '@media (max-width: 960px)',
+    lg: '@media (max-width: 1280px)',
+    xl: '@media (max-width: 1920px)',
+  },
+  containers: {
+    sm: 905,
+    md: 1150,
+    lg: 1400,
+  }
+};
+```
+### Usage
+To
