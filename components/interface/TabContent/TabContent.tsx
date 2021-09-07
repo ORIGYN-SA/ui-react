@@ -12,13 +12,17 @@ const StyledTabContent = styled(Flex)`${({ theme }) => `
   background: #000000;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 50px;
+  gap: 40px;
   padding: 0 30px 0 240px;
+  box-sizing: border-box;
   color: #ffffff;
   
   ${theme.media.sm} {
     padding: 0 5px;
     overflow: auto;
     width: 100%;
+    gap: 10px;
+    justify-content: space-evenly;
   }
 `}`;
 
@@ -40,7 +44,7 @@ const Header = ({tabs, content}: TabContentProps) => {
 
   return (
     <Flex flexFlow="column">
-      <StyledTabContent gap={40}>
+      <StyledTabContent>
         {
           tabs.map(({title}, index) => (
             <StyledTabLink className={index === currentTab ? 'active' : ''} onClick={() => setCurrentTab(index)}>{title}</StyledTabLink>
