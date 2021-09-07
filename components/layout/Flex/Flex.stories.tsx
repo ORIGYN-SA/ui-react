@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import Flex, { FlexProps } from "./Flex";
 
 export default {
-  title: "Components/Layout/Flex",
+  title: "Components/Layout/Flex/All stories",
   component: Flex,
 } as Meta;
 

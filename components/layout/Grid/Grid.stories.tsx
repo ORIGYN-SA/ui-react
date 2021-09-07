@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import Grid, { GridProps } from "./Grid";
 
 export default {
-    title: "Components/Layout/Grid",
+    title: "Components/Layout/Grid/All stories",
     component: Grid,
 } as Meta;
 
