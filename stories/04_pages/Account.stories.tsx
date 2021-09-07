@@ -29,6 +29,18 @@ const InputWrapper = styled(Flex)`
   width: 100%;
 `;
 
+const ResponsiveGrid = styled.div`
+  ${({ theme }) => `
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+  ${theme.media.md}{
+    grid-template-columns: repeat(1, 1fr);
+  }
+`}
+`;
+
 const Template: Story = (args) => (
   <div>
     <Header isLoggedIn />
@@ -69,14 +81,14 @@ const Template: Story = (args) => (
 const AccountProfile = () => {
   return (
     <Container size="full">
-      <Grid columns={2} gap={20}>
+      <ResponsiveGrid>
         <StyledTitle>Profile</StyledTitle>
         <br />
         <InputWrapper flexFlow="column" fullHeight gap={10}>
           <TextInput label="Display Name" name="name" placeholder="Name" />
         </InputWrapper>
-      </Grid>
-      <Grid columns={2} gap={20}>
+      </ResponsiveGrid>
+      <ResponsiveGrid>
         <StyledTitle>Personal Information</StyledTitle>
         <br />
         <InputWrapper flexFlow="row" fullHeight gap={10}>
@@ -96,61 +108,8 @@ const AccountProfile = () => {
         <InputWrapper flexFlow="row" fullHeight gap={10}>
           <TextInput label="Email Address" name="email" placeholder="Email" />
         </InputWrapper>
-        <InputWrapper flexFlow="row" fullHeight gap={10}>
-          <TextInput label="Phone Number" name="phone" placeholder="Phone" />
-        </InputWrapper>
-        <InputWrapper align="flex-end">
-          <DatePicker
-            placeholderText="DD"
-            showMonthsPicker={true}
-            dateFormat="dd"
-            selected={null}
-            onChange={() => undefined}
-            label="Date of birth"
-          />
-          <DatePicker
-            placeholderText="MM"
-            showMonthsPicker={true}
-            dateFormat="MM"
-            showMonthYearPicker={true}
-            hideHeader={true}
-            selected={null}
-            onChange={() => undefined}
-          />
-          <DatePicker
-            dateFormat="yyyy"
-            showYearPicker={true}
-            placeholderText="YYYY"
-            selected={null}
-            onChange={() => undefined}
-          />
-        </InputWrapper>
-      </Grid>
+      </ResponsiveGrid>
 
-      <Grid columns={2} gap={20}>
-        <StyledTitle>Address</StyledTitle>
-        <br />
-        <Flex flexFlow="column" gap={20}>
-          <InputWrapper flexFlow="column" fullHeight gap={10}>
-            <TextInput label="Country" name="country" placeholder="Country" />
-          </InputWrapper>
-          <InputWrapper gap={20}>
-            <Flex flexFlow="column" fullHeight gap={10}>
-              <TextInput label="Town or City" name="city" placeholder="City" />
-            </Flex>
-            <Flex flexFlow="column" fullHeight gap={10}>
-              <TextInput label="ZIP code" name="code" placeholder="ZIP" />
-            </Flex>
-          </InputWrapper>
-          <InputWrapper flexFlow="column" fullHeight gap={10}>
-            <TextInput
-              label="Street address"
-              name="address"
-              placeholder="Street"
-            />
-          </InputWrapper>
-        </Flex>
-      </Grid>
       <HR marginTop={75} marginBottom={32} />
 
       <Button primary={false}>Save</Button>
