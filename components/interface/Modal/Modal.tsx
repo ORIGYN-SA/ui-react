@@ -1,8 +1,7 @@
-import React, {useState} from "react"
+import React from "react"
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import Container from '../../layout/Container';
-import Flex from "../../layout/Flex";
 
 import CloseIcon from "../../icons/Close";
 

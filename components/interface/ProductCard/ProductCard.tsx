@@ -9,7 +9,7 @@ export type ProductCardProps = {
 
 }
 
-const StyledProductCardContent = styled.div`${({ theme }) => `
+const StyledProductCardContent = styled.div`${() => `
   padding: 15px;
 `}`;
 

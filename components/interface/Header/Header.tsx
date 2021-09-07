@@ -5,13 +5,12 @@ import MenuLink from "../MenuLink";
 import ProfileIcon from "../../icons/Profile";
 import ArrowDownIcon from "../../icons/ArrowDown";
 import Card from "../Card/Card";
-import CheckboxInput from "../CheckboxInput/CheckboxInput";
 
 export type HeaderProps = {
   isLoggedIn: boolean;
 }
 
-const StyledHeader = styled(Flex)`${({ theme }) => `
+const StyledHeader = styled(Flex)`${() => `
   background: #FFFFFF;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 88px;

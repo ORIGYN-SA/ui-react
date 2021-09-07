@@ -4,14 +4,13 @@ import Flex from '../../layout/Flex';
 import Card from '../Card';
 import FilterIcon from '../../icons/Filter';
 import ArrowDownIcon from "../../icons/ArrowDown";
-import SearchInput from "../SearchInput";
 import CheckboxInput from '../CheckboxInput';
 import HR from '../HR';
 
 export type FiltersProps = {
 }
 
-const StyledFilter = styled(Flex)`${({ theme }) => `
+const StyledFilter = styled(Flex)`${() => `
   background: #FFFFFF;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 64px;

@@ -9,7 +9,7 @@ export type TextInputProps = {
 };
 
 const StyledTextInput = styled.input`
-  ${({ theme }) => `
+  ${() => `
   padding: 13px 13px 13px 20px;
   font-weight: normal;
   font-size: 16px;
@@ -25,7 +25,7 @@ const StyledTextInput = styled.input`
 `;
 
 const StyledLabel = styled.label`
-  ${({ theme }) => `
+  ${() => `
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;

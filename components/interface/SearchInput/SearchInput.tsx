@@ -9,7 +9,7 @@ export type SearchInputProps = {
   onSearch: Function;
 }
 
-const StyledSearchInput = styled.input`${({theme}) => `
+const StyledSearchInput = styled.input`${() => `
   padding: 3px 0;
   font-weight: 500;
   font-size: 16px;
@@ -23,7 +23,7 @@ const StyledSearchInput = styled.input`${({theme}) => `
   }
 `}`;
 
-const StyledSearchInputWrap = styled(Flex)`${({theme}) => `
+const StyledSearchInputWrap = styled(Flex)`${() => `
   border-bottom: 1px solid #000000;
   padding: 0 10px;
 `}`;

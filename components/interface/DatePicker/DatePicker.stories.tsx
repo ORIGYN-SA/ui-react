@@ -9,13 +9,13 @@ export default {
 } as Meta;
 
 const Template: Story<DatePickerProps> = (args) => {
-  const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState<Date & (Date | string) | null>(null);
 
   return (
     <DatePicker
+      {...args}
       selected={startDate}
       onChange={(date) => setStartDate(date)}
-      {...args}
     />
   );
 };

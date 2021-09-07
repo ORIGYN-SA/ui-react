@@ -9,7 +9,7 @@ export type TabContentVerticalProps = {
 };
 
 const StyledTabContent = styled(Flex)`
-  ${({ theme }) => `
+  ${() => `
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ const StyledTabContent = styled(Flex)`
 `;
 
 const StyledTabLink = styled(MenuLink)`
-  ${({ theme }) => `
+  ${() => `
   color: #000;
   padding: 17px 0;
     

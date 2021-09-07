@@ -6,7 +6,6 @@ import HR from "../../interface/HR";
 import StyledBanner from "../Banner";
 import Container from "../../layout/Container/Container";
 
-import LogoWhite from '../../../assets/ORIGYN_logo_white.png';
 import FBIcon from "../../icons/FB";
 import InstagramIcon from "../../icons/Instagram";
 import TwitterIcon from "../../icons/Twitter";
@@ -15,13 +14,13 @@ export type FooterProps = {
   bg: string;
 }
 
-const StyledFooter = styled(StyledBanner)`${({theme}) => `
+const StyledFooter = styled(StyledBanner)`${() => `
   h4 {
     font-weight: 400;
   }
 `}`;
 
-const StyledHR = styled(HR)`${({theme}) => `
+const StyledHR = styled(HR)`${() => `
   opacity: 1;
   border-color: #AEAEAE;
 `}`;
@@ -63,9 +62,6 @@ const Footer = () => {
           </Flex>
         </Grid>
         <br/>
-        <div>
-          <img src={LogoWhite} alt=""/>
-        </div>
         <br/>
         <br/>
         <StyledHR/>

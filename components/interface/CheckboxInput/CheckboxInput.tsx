@@ -11,7 +11,7 @@ export type CheckboxInputProps = {
   radio?: boolean;
 }
 
-const StyledCheckboxInput = styled.input`${({theme}) => `
+const StyledCheckboxInput = styled.input`${() => `
   display: none;
 `}`;
 
@@ -42,7 +42,7 @@ const StyledCheckboxIcon = styled.div`${({theme}) => `
   }
 `}`;
 
-const StyledLabel = styled.label`${({theme}) => `
+const StyledLabel = styled.label`${() => `
   display: flex;
   align-items: center;
   gap: 10px;

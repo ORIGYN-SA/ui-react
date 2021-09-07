@@ -1,4 +1,3 @@
-import React from "react"
 import styled from 'styled-components';
 
 export type ButtonProps = {
@@ -9,7 +8,7 @@ export type ButtonProps = {
   bordered?: boolean;
 }
 
-const StyledFlex = styled.div<ButtonProps>`${({ size, disabled, fullWidth, bordered, primary, theme }) => `
+const StyledFlex = styled.div<ButtonProps>`${({ fullWidth, bordered, primary, theme }) => `
   display: flex;
   width: ${fullWidth ? '100%' : '320px'};
   height: 50px;
