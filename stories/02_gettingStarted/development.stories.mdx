@@ -1,0 +1,58 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="Getting started/Development" />
+
+<style>{`
+
+`}</style>
+
+# Getting Started Guide for Developers
+
+The ORIGYN Art UI contains a collection of React components that can be used to build accessible and performant React applications consistent with ORIGYN brand guidelines.
+This getting started guide provides the basic instructions to install the ORIGYN components as a dependency in your application and using those components.
+The documentation for each individual component provides more detailed information including:
+
+- An overview with contextual usage guidance and best practices
+- Examples of common variations of the component such as sizes and states
+- Guidance for using the components with accessiblity in mind
+- A detailed description of available React props along with an interactive playground environment
+
+### Configuring project
+
+ORIGYN Art UI uses [Styled Components](https://styled-components.com/docs/basics) to and handles theme thru styled-component ThemeProvider:
+
+```javascript
+const theme = {
+  colors: {
+    BLACK: '#000000',
+    WHITE: '#FFFFFF',
+    ACCENT_COLOR: '#F5A506',
+    LIGHT_GRAY: '#DFDFDF',
+    LIGHTER_GRAY: '#F5F5F5',
+    BG_GRAY: '#E5E5E5'
+  },
+  typography: {
+
+  },
+  spacing: {
+
+  },
+  media: {
+    sm: '@media (max-width: 600px)',
+    md: '@media (max-width: 960px)',
+    lg: '@media (max-width: 1280px)',
+    xl: '@media (max-width: 1920px)',
+  },
+  containers: {
+    sm: 905,
+    md: 1150,
+    lg: 1400,
+  }
+};
+
+...
+
+<ThemeProvider theme={theme}>
+    ...
+</ThemeProvider>
+```

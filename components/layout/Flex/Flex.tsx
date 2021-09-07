@@ -11,7 +11,7 @@ export type FlexProps = {
   relative?: boolean;
 }
 
-const StyledFlex = styled.div<FlexProps>`${({justify, align, fullWidth, fullHeight, flexFlow, relative, gap = 0}) => `
+const StyledFlex = styled.div<FlexProps>`${({justify, align, fullWidth, fullHeight, theme, flexFlow, relative, gap = 0}) => `
   display: flex;
   align-items: ${align};
   justify-content: ${justify};
@@ -20,6 +20,10 @@ const StyledFlex = styled.div<FlexProps>`${({justify, align, fullWidth, fullHeig
   height: ${fullHeight ? '100%' : 'auto'};
   gap: ${gap}px;
   position: ${relative ? 'relative' : 'static' }
+  
+  ${theme.media.sm} {
+    
+  }
 `}`;
 
 export default StyledFlex;

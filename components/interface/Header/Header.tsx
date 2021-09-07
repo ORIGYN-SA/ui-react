@@ -51,7 +51,7 @@ const MenuButton = styled.button`${({ theme }) => `
   cursor: pointer;
   outline: none;
   position: relative;
-  display: block;
+  display: none;
   width: 30px;
   height: 26px;
   
@@ -90,6 +90,10 @@ const MenuButton = styled.button`${({ theme }) => `
     &:after {
       transform: translate(-50%, -50%) rotate(-45deg);
     }
+  }
+  
+  ${theme.media.sm} {
+    display: block;
   }
 `}`;
 
