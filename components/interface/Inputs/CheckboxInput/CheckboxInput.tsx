@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import styled from 'styled-components';
-import CheckboxUncheckedIcon from "../../icons/CheckboxUnchecked";
-import CheckboxCheckedIcon from "../../icons/CheckboxChecked";
+import CheckboxUncheckedIcon from "../../../icons/CheckboxUnchecked";
+import CheckboxCheckedIcon from "../../../icons/CheckboxChecked";
 
 export type CheckboxInputProps = {
   label?: string;

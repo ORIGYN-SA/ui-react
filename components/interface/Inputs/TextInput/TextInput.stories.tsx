@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Grid from "../../layout/Grid";
+import Grid from "../../../layout/Grid";
 import TextInput, { TextInputProps } from "./TextInput";
 
 export default {

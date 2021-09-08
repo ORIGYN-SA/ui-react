@@ -1,7 +1,7 @@
 import React from "react"
 import styled from 'styled-components';
-import Flex from '../../layout/Flex';
-import SearchIcon from "../../icons/Search";
+import Flex from '../../../layout/Flex';
+import SearchIcon from "../../../icons/Search";
 
 export type SearchInputProps = {
   label: string;
