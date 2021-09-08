@@ -43,7 +43,7 @@ const Table = ({ cells, rows }: TableProps) => {
       <StyledTbody>
         {rows.map((row, i) => (
           <tr key={i}>
-            {cells.map((key, i) => (
+            {cells.map((key) => (
               <StyledTd key={key.id}>{row[key.id]}</StyledTd>
             ))}
           </tr>

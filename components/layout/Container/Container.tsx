@@ -1,25 +1,26 @@
-import React from "react"
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export interface ContainerProps {
-  size?: 'lg' | 'sm' | 'md' | 'full',
+  size?: "lg" | "sm" | "md" | "full";
   padding?: string;
   smPadding?: string;
   relative?: boolean;
 }
 
-const StyledFlex = styled.div<ContainerProps>`${({size = 'full', relative, padding, smPadding, theme}) => `
+const StyledFlex = styled.div<ContainerProps>`
+  ${({ size = "full", relative, padding, smPadding, theme }) => `
   display: block;
-  padding: ${padding ? padding : '0'};
-  width: ${size === 'full' ? '100%' : `${theme.containers[size]}px`};
+  padding: ${padding ? padding : "0"};
+  width: ${size === "full" ? "100%" : `${theme.containers[size]}px`};
   max-width: 100%;
   box-sizing: border-box;
-  position: ${relative ? 'relative' : 'static'};
+  position: ${relative ? "relative" : "static"};
   margin: 0 auto;
   
   ${theme.media.sm} {
-  padding: ${smPadding ? smPadding : padding || '0'};
+  padding: ${smPadding ? smPadding : padding || "0"};
   }
-`}`;
+`}
+`;
 
 export default StyledFlex;

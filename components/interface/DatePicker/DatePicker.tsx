@@ -12,8 +12,8 @@ export type DatePickerProps = {
   showMonthYearPicker?: boolean;
   hideHeader?: boolean;
   showYearPicker?: boolean;
-  selected: string | null;
-  onChange: () => void;
+  selected: (Date & (Date | string)) | null;
+  onChange: (d: (Date & (Date | string)) | null) => void;
 };
 
 const StyledDatePicker = styled(DatePicker)<DatePickerProps>`
@@ -29,7 +29,7 @@ const StyledDatePicker = styled(DatePicker)<DatePickerProps>`
 `}
 `;
 const StyledLabel = styled.label`
-  ${({ theme }) => `
+  ${() => `
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
