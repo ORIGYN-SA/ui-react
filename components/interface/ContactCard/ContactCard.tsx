@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex";
-import Grid from "../../layout/Grid";
 export type ContactCardProps = {};
 
 const StyledContactCard = styled(Flex)`
