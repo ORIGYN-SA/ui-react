@@ -6,7 +6,7 @@ export type HRProps = {
   accent?: boolean;
 };
 
-const StyledCard = styled.hr<HRProps>`
+const HR = styled.hr<HRProps>`
   ${({ accent, marginTop = 0, marginBottom = 0, theme }) => `
   opacity: ${accent ? "1" : "0.2"};
   border: none;
@@ -17,4 +17,4 @@ const StyledCard = styled.hr<HRProps>`
 `}
 `;
 
-export default StyledCard;
+export default HR;
