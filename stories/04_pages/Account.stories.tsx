@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import styled from "styled-components";
 import Header from "../../components/interface/Header";
 import BreadCrumbs from "../../components/interface/BreadCrumbs";
-import TextInput from "../../components/interface/TextInput";
+import TextInput from "../../components/interface/Inputs/TextInput";
 import DatePicker from "../../components/interface/DatePicker";
 import Button from "../../components/interface/Button";
 import BalanceCard from "../../components/interface/BalanceCard";

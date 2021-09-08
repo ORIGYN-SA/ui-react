@@ -4,7 +4,7 @@ import Flex from "../../layout/Flex";
 import Card from "../Card";
 import FilterIcon from "../../icons/Filter";
 import ArrowDownIcon from "../../icons/ArrowDown";
-import CheckboxInput from "../CheckboxInput";
+import CheckboxInput from "../Inputs/CheckboxInput";
 import HR from "../HR";
 
 export type FiltersProps = {};
