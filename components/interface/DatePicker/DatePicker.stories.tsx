@@ -9,7 +9,9 @@ export default {
 } as Meta;
 
 const Template: Story<DatePickerProps> = (args) => {
-  const [startDate, setStartDate] = useState<Date & (Date | string) | null>(null);
+  const [startDate, setStartDate] = useState<(Date & (Date | string)) | null>(
+    null
+  );
 
   return (
     <DatePicker
@@ -33,7 +35,7 @@ MonthPicker.args = {
   showMonthsPicker: true,
   dateFormat: "MM",
   showMonthYearPicker: true,
-  hideHeader: true
+  hideHeader: true,
 };
 export const DayPicker = Template.bind({});
 DayPicker.args = {

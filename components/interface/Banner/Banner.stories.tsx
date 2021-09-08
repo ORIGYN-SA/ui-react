@@ -8,9 +8,7 @@ export default {
   component: Banner,
 } as Meta;
 
-const Template: Story<BannerProps> = (args) => (
-  <Banner {...args}>Text</Banner>
-);
+const Template: Story<BannerProps> = (args) => <Banner {...args}>Text</Banner>;
 
 export const Default = Template.bind({});
-Default.args = {  };
+Default.args = {};

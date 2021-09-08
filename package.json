@@ -35,7 +35,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prity": "npx prettier --write ./src/fracticomponents"
+    "prity": "npx prettier --write ./components"
   },
   "lint-staged": {
     "components/*": "prettier --write --ignore-unknown"

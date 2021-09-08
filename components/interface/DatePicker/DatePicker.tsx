@@ -12,8 +12,8 @@ export type DatePickerProps = {
   showMonthYearPicker?: boolean;
   hideHeader?: boolean;
   showYearPicker?: boolean;
-  selected: Date & (Date | string) | null;
-  onChange: (d:Date & (Date | string) | null) => void;
+  selected: (Date & (Date | string)) | null;
+  onChange: (d: (Date & (Date | string)) | null) => void;
 };
 
 const StyledDatePicker = styled(DatePicker)<DatePickerProps>`

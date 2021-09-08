@@ -1,6 +1,6 @@
-import React, {useState} from "react"
-import styled from 'styled-components';
-import Flex from '../../layout/Flex';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 import ProfileIcon from "../../icons/Profile";
 import ArrowDownIcon from "../../icons/ArrowDown";
@@ -8,15 +8,16 @@ import Card from "../Card/Card";
 
 export type HeaderProps = {
   isLoggedIn: boolean;
-}
+};
 
-const StyledHeader = styled(Flex)`${() => `
+const StyledHeader = styled(Flex)`
+  ${() => `
   background: #FFFFFF;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 88px;
   padding: 0 30px;
-`}`;
-
+`}
+`;
 
 const StyledProfileDropdown = styled(Card)`
   position: absolute;
@@ -26,7 +27,8 @@ const StyledProfileDropdown = styled(Card)`
   padding: 17px 25px;
 `;
 
-const StyledNavigation = styled(Flex)`${({ theme }) => `
+const StyledNavigation = styled(Flex)`
+  ${({ theme }) => `
   gap: 40px;
   
   ${theme.media.sm} {
@@ -43,9 +45,11 @@ const StyledNavigation = styled(Flex)`${({ theme }) => `
       display: flex;
     }
   }
-`}`;
+`}
+`;
 
-const MenuButton = styled.button`${({ theme }) => `
+const MenuButton = styled.button`
+  ${({ theme }) => `
   border: none;
   cursor: pointer;
   outline: none;
@@ -94,53 +98,58 @@ const MenuButton = styled.button`${({ theme }) => `
   ${theme.media.sm} {
     display: block;
   }
-`}`;
+`}
+`;
 
-const Header = ({isLoggedIn}: HeaderProps) => {
+const Header = ({ isLoggedIn }: HeaderProps) => {
   const [isProfileOpened, setIsProfileOpened] = useState(false);
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   return (
     <StyledHeader align="center" justify="space-between">
       <Flex gap={50}>
-        <img src="http://placehold.jp/161x37.png" alt="logo"/>
-        <StyledNavigation className={isMobileMenuOpened ? 'active' : ''}>
+        <img src="http://placehold.jp/161x37.png" alt="logo" />
+        <StyledNavigation className={isMobileMenuOpened ? "active" : ""}>
           <MenuLink className="active">Browse</MenuLink>
           <MenuLink>Trading</MenuLink>
           <MenuLink>My Portfolio</MenuLink>
           <MenuLink>About</MenuLink>
         </StyledNavigation>
       </Flex>
-      <Flex align="center" gap={15} relative onClick={() => setIsProfileOpened(!isProfileOpened)}>
-        {
-          isLoggedIn ? (
-            <>
+      <Flex
+        align="center"
+        gap={15}
+        relative
+        onClick={() => setIsProfileOpened(!isProfileOpened)}
+      >
+        {isLoggedIn ? (
+          <>
             <ProfileIcon />
             <p>ArtLover</p>
             <ArrowDownIcon />
-              {
-                isProfileOpened && (
-                  <StyledProfileDropdown>
-                    <Flex flexFlow="column" gap={30}>
-                      <Flex flexFlow="column" gap={10}>
-                        <p>My Account</p>
-                        <p>Dashboard</p>
-                      </Flex>
-                      <div>
-                        <p style={{opacity: "0.5"}}>Sign Out</p>
-                      </div>
-                    </Flex>
-                  </StyledProfileDropdown>
-                )
-              }
-            </>
-          ) : (
-            <p>Log In / Sign Up</p>
-          )
-        }
+            {isProfileOpened && (
+              <StyledProfileDropdown>
+                <Flex flexFlow="column" gap={30}>
+                  <Flex flexFlow="column" gap={10}>
+                    <p>My Account</p>
+                    <p>Dashboard</p>
+                  </Flex>
+                  <div>
+                    <p style={{ opacity: "0.5" }}>Sign Out</p>
+                  </div>
+                </Flex>
+              </StyledProfileDropdown>
+            )}
+          </>
+        ) : (
+          <p>Log In / Sign Up</p>
+        )}
       </Flex>
-      <MenuButton className={isMobileMenuOpened ? 'active' : ''} onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)} />
+      <MenuButton
+        className={isMobileMenuOpened ? "active" : ""}
+        onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)}
+      />
     </StyledHeader>
-  )
-}
+  );
+};
 
 export default Header;
