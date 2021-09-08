@@ -1,21 +1,22 @@
-import React, {useState} from "react"
-import styled from 'styled-components';
-import Flex from '../../layout/Flex';
-import Card from '../Card';
-import FilterIcon from '../../icons/Filter';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Flex from "../../layout/Flex";
+import Card from "../Card";
+import FilterIcon from "../../icons/Filter";
 import ArrowDownIcon from "../../icons/ArrowDown";
-import CheckboxInput from '../CheckboxInput';
-import HR from '../HR';
+import CheckboxInput from "../CheckboxInput";
+import HR from "../HR";
 
-export type FiltersProps = {
-}
+export type FiltersProps = {};
 
-const StyledFilter = styled(Flex)`${() => `
+const StyledFilter = styled(Flex)`
+  ${() => `
   background: #FFFFFF;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   height: 64px;
   padding: 0 32px;
-`}`;
+`}
+`;
 
 const StyledFilterDropdown = styled(Card)`
   position: absolute;
@@ -31,9 +32,17 @@ const Filters = ({}: FiltersProps) => {
   return (
     <StyledFilter align="center" justify="space-between">
       <Flex gap={50} align="center">
-        <Flex gap={10} align="center">Newest <ArrowDownIcon /></Flex>
+        <Flex gap={10} align="center">
+          Newest <ArrowDownIcon />
+        </Flex>
         <Flex relative>
-          <Flex  gap={10} align="center" onClick={() => setIsFilterShown(!isFilterShown)}><FilterIcon /> Filter</Flex>
+          <Flex
+            gap={10}
+            align="center"
+            onClick={() => setIsFilterShown(!isFilterShown)}
+          >
+            <FilterIcon /> Filter
+          </Flex>
           {isFilterShown && (
             <StyledFilterDropdown flexFlow="column" gap={10}>
               <Flex align="center" gap={50}>
@@ -44,10 +53,11 @@ const Filters = ({}: FiltersProps) => {
               </Flex>
               <HR marginTop={10} marginBottom={10} />
             </StyledFilterDropdown>
-          )}</Flex>
+          )}
+        </Flex>
       </Flex>
     </StyledFilter>
-  )
-}
+  );
+};
 
 export default Filters;

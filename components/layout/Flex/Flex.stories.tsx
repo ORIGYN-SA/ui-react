@@ -10,11 +10,16 @@ export default {
 
 const Template: Story<FlexProps> = (args) => (
   <Flex {...args}>
-    <div style={{backgroundColor: "#aaa"}}>Content</div>
-    <div style={{backgroundColor: "#aaa"}}>Content</div>
-    <div style={{backgroundColor: "#aaa"}}>Content</div>
+    <div style={{ backgroundColor: "#aaa" }}>Content</div>
+    <div style={{ backgroundColor: "#aaa" }}>Content</div>
+    <div style={{ backgroundColor: "#aaa" }}>Content</div>
   </Flex>
 );
 
 export const Default = Template.bind({});
-Default.args = { align: "flex-start", justify: "center", fullWidth: true, gap: 10 };
+Default.args = {
+  align: "flex-start",
+  justify: "center",
+  fullWidth: true,
+  gap: 10,
+};

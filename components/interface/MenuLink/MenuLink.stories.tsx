@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import MenuLink, {MenuLinkProps} from "./MenuLink";
+import MenuLink, { MenuLinkProps } from "./MenuLink";
 
 export default {
   title: "Components/Interface/MenuLink",
@@ -9,7 +9,10 @@ export default {
 } as Meta;
 
 const Template: Story<MenuLinkProps> = (args) => (
- <div><MenuLink {...args} /><MenuLink className="active" {...args} /></div>
+  <div>
+    <MenuLink {...args} />
+    <MenuLink className="active" {...args} />
+  </div>
 );
 
 export const Default = Template.bind({});

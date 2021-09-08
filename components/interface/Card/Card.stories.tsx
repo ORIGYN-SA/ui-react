@@ -8,9 +8,7 @@ export default {
   component: Card,
 } as Meta;
 
-const Template: Story<CardProps> = (args) => (
-  <Card {...args}>Text</Card>
-);
+const Template: Story<CardProps> = (args) => <Card {...args}>Text</Card>;
 
 export const Default = Template.bind({});
-Default.args = {  };
+Default.args = {};
