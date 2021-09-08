@@ -9,7 +9,7 @@ export type TabContentVerticalProps = {
 };
 
 const StyledTabContent = styled(Flex)`
-  ${() => `
+  ${({theme}) => `
   color: #ffffff;
   display: flex;
   flex-direction: column;
