@@ -41,7 +41,7 @@ const StyledTabLink = styled(MenuLink)`
 `}
 `;
 
-const Header = ({ tabs, content }: TabContentProps) => {
+const TabContent = ({ tabs, content }: TabContentProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
@@ -61,4 +61,4 @@ const Header = ({ tabs, content }: TabContentProps) => {
   );
 };
 
-export default Header;
+export default TabContent;

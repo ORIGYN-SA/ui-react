@@ -58,7 +58,7 @@ const StyledLabel = styled.label`
 `;
 
 // TODO: refactoring
-const TextInput = ({
+const CheckboxInput = ({
   label,
   name,
   isChecked,
@@ -95,4 +95,4 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+export default CheckboxInput;

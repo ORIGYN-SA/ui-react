@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Modal from "react-modal";
+import ReactModal from "react-modal";
 import Container from "../../layout/Container";
 
 import CloseIcon from "../../icons/Close";
@@ -37,21 +37,21 @@ const StyledCloseBtn = styled(CloseIcon)`
   cursor: pointer;
 `;
 
-const ProductCard: React.FC<ModalProps> = ({
+const Modal: React.FC<ModalProps> = ({
   isOpened,
   title,
   children,
   closeModal,
 }) => {
   return (
-    <Modal isOpen={isOpened} style={customStyles} onRequestClose={closeModal}>
+    <ReactModal isOpen={isOpened} style={customStyles} onRequestClose={closeModal}>
       <Container relative size="md" padding="45px 40px">
         {title && <h2>{title}</h2>}
         {children}
         <StyledCloseBtn onClick={closeModal} />
       </Container>
-    </Modal>
+    </ReactModal>
   );
 };
 
-export default ProductCard;
+export default Modal;
