@@ -10,13 +10,10 @@ export default {
 } as Meta;
 
 const Template: Story<TextInputProps> = (args) => (
-  <Grid
-    gap={20}
-    columns={5}
-  >
+  <Grid gap={20} columns={5}>
     <TextInput {...args} />
   </Grid>
 );
 
 export const Default = Template.bind({});
-Default.args = { name: 'input', label: 'Checkbox Label' };
+Default.args = { name: "input", label: "Checkbox Label" };

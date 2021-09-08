@@ -10,13 +10,10 @@ export default {
 } as Meta;
 
 const Template: Story<ProductCardProps> = (args) => (
-  <Grid
-    gap={20}
-    columns={5}
-  >
+  <Grid gap={20} columns={5}>
     <ProductCard {...args} />
   </Grid>
 );
 
 export const Default = Template.bind({});
-Default.args = {  };
+Default.args = {};

@@ -27,4 +27,3 @@ Default.args = {
     <div>Step 5</div>,
   ],
 };
-

@@ -10,9 +10,9 @@ export default {
 
 const Template: Story<ContainerProps> = (args) => (
   <Container {...args}>
-    <div style={{backgroundColor: "#aaa"}}>Content</div>
-    <div style={{backgroundColor: "#aaa"}}>Content</div>
-    <div style={{backgroundColor: "#aaa"}}>Content</div>
+    <div style={{ backgroundColor: "#aaa" }}>Content</div>
+    <div style={{ backgroundColor: "#aaa" }}>Content</div>
+    <div style={{ backgroundColor: "#aaa" }}>Content</div>
   </Container>
 );
 

@@ -1,14 +1,18 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Card, { CardProps } from "./Card";
+import MoreLink from "./MoreLink";
 
 export default {
-  title: "Components/Interface/Card",
-  component: Card,
+  title: "Components/Interface/MoreLink",
+  component: MoreLink,
 } as Meta;
 
-const Template: Story<CardProps> = (args) => <Card {...args}>Text</Card>;
+const Template: Story = (args) => (
+  <MoreLink {...args} href="#">
+    Read more
+  </MoreLink>
+);
 
 export const Default = Template.bind({});
 Default.args = {};

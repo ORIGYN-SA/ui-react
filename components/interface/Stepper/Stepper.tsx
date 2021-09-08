@@ -1,21 +1,24 @@
-import React, {useState} from "react"
-import styled from 'styled-components';
-import Flex from '../../layout/Flex';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 
 export type StepperProps = {
-  tabs: Array<{title: string}>;
+  tabs: Array<{ title: string }>;
   content: Array<any>;
-}
+};
 
-const StyledTabContent = styled(Flex)`${({ theme }) => `
+const StyledTabContent = styled(Flex)`
+  ${({ theme }) => `
   background: ${theme.colors.WHITE};
   height: 50px;
   padding: 0;
   color: #ffffff;
-`}`;
+`}
+`;
 
-const StyledTabLink = styled(MenuLink)`${({ theme }) => `
+const StyledTabLink = styled(MenuLink)`
+  ${({ theme }) => `
   color: ${theme.colors.BLACK};
   font-size: 12px;
   letter-spacing: 0.05em;
@@ -37,43 +40,48 @@ const StyledTabLink = styled(MenuLink)`${({ theme }) => `
     opacity: 1;
     border-bottom: 3px solid ${theme.colors.BLACK};
   }
-`}`;
+`}
+`;
 
-const Stepper = ({tabs, content}: StepperProps) => {
+const Stepper = ({ tabs, content }: StepperProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
     <Flex flexFlow="column">
       <StyledTabContent gap={0}>
-        {
-          tabs.map(({title}, index) => (
-            <StyledTabLink className={index <= currentTab ? 'active' : ''} onClick={() => setCurrentTab(index)}>{title}</StyledTabLink>
-          ))
-        }
+        {tabs.map(({ title }, index) => (
+          <StyledTabLink
+            className={index <= currentTab ? "active" : ""}
+            onClick={() => setCurrentTab(index)}
+          >
+            {title}
+          </StyledTabLink>
+        ))}
       </StyledTabContent>
-      {
-        content[currentTab]
-      }
+      {content[currentTab]}
     </Flex>
-  )
-}
+  );
+};
 
 // TODO: consider refactoring
-export const useStepper = (steps: Array<{label: string, content: any}>) => {
+export const useStepper = (steps: Array<{ label: string; content: any }>) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return [
     <StyledTabContent gap={0}>
-      {
-        steps.map(({ label}, index) => (
-          <StyledTabLink className={index <= currentTab ? 'active' : ''} onClick={() => setCurrentTab(index)}>{label}</StyledTabLink>
-        ))
-      }
+      {steps.map(({ label }, index) => (
+        <StyledTabLink
+          className={index <= currentTab ? "active" : ""}
+          onClick={() => setCurrentTab(index)}
+        >
+          {label}
+        </StyledTabLink>
+      ))}
     </StyledTabContent>,
     steps[currentTab].content,
     currentTab,
     setCurrentTab,
   ];
-}
+};
 
 export default Stepper;
