@@ -9,6 +9,7 @@ export type BalanceCardProps = {};
 const StyledBalanceCard = styled.div`
   max-width: 234px;
   width: 100%;
+  box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
 `;
 const StyledBalanceCardHeader = styled(Flex)`
   ${({ theme }) => `
