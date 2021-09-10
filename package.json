@@ -1,9 +1,16 @@
 {
-  "name": "origyn-art-ui",
+  "name": "@origyn-sa/origyn-art-ui",
   "version": "1.0.0",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ORIGYN-SA/ORIGYN_ART_UI"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/ORIGYN-SA"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
