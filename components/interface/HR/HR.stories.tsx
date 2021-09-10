@@ -8,9 +8,7 @@ export default {
   component: HR,
 } as Meta;
 
-const Template: Story<HRProps> = (args) => (
-  <HR {...args} />
-);
+const Template: Story<HRProps> = (args) => <HR {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {  };
+Default.args = {};

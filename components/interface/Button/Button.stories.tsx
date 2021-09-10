@@ -8,9 +8,13 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => (
-  <Button {...args}>Text</Button>
-);
+const Template: Story<ButtonProps> = (args) => <Button {...args}>Text</Button>;
 
 export const Default = Template.bind({});
-Default.args = { size: 'sm', fullWidth: false, disabled: false, bordered: false, primary: false };
+Default.args = {
+  size: "sm",
+  fullWidth: false,
+  disabled: false,
+  bordered: false,
+  primary: false,
+};

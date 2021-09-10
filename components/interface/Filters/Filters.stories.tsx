@@ -8,9 +8,7 @@ export default {
   component: Filters,
 } as Meta;
 
-const Template: Story<FiltersProps> = (args) => (
-  <Filters {...args} />
-);
+const Template: Story<FiltersProps> = (args) => <Filters {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { title: 'All Artworks' };
+Default.args = { title: "All Artworks" };

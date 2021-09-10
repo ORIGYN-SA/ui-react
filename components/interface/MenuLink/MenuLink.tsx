@@ -1,10 +1,9 @@
-import React from "react"
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export type MenuLinkProps = {
-}
+export type MenuLinkProps = {};
 
-const StyledMenuLink = styled.a<MenuLinkProps>`${({ theme }) => `
+const StyledMenuLink = styled.a<MenuLinkProps>`
+  ${({ theme }) => `
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
@@ -23,6 +22,7 @@ const StyledMenuLink = styled.a<MenuLinkProps>`${({ theme }) => `
     opacity: 1;
     border-bottom: 3px solid ${theme.colors.BLACK};
   }
-`}`;
+`}
+`;
 
 export default StyledMenuLink;

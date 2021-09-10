@@ -1,0 +1,79 @@
+import { Meta, Typeset } from '@storybook/addon-docs';
+
+<Meta title="Brand Identity/Typography" />
+
+<style>{`
+  * {
+    font-family: 'Montserrat', sans-serif!important;
+  }
+`}</style>
+
+## Typography
+Only font used in current project is **Montserrat**. You can find it on
+[Google fonts](https://fonts.google.com/specimen/Montserrat#standard-styles)
+
+If you need a detailed font descriptions check out our storybook guidelines:
+[Storybook style guides](https://www.figma.com/file/22ewljg1RGLMm50GA0J1KJ/Origyn-Open-Marketplace?node-id=630%3A2791)
+
+Currently fonts are added as preview head inside storybook project. It needs to be set up as static import inside React project as well.
+
+<Typeset fontSizes={['30px']} fontWeight="500" sampleText="H2" />
+<Typeset fontSizes={['24px']} fontWeight="500" sampleText="H3" />
+<Typeset fontSizes={['16px']} fontWeight="500" sampleText="H4" />
+<Typeset fontSizes={['13px']} fontWeight="400" sampleText="Global Nav" />
+<Typeset fontSizes={['16px']} fontWeight="500" sampleText="Bodytext Medium" />
+<Typeset fontSizes={['12px']} fontWeight="700" sampleText="Button Label" />
+<Typeset fontSizes={['14px']} fontWeight="600" sampleText="Bodytext Semibold Small" />
+<Typeset fontSizes={['16px']} fontWeight="400" sampleText="Bodytext Regular" />
+<Typeset fontSizes={['14px']} fontWeight="400" sampleText="Bodytext Regular Small" />
+
+## Development
+
+Import fonts for you project in HTML ```<head>``` section
+
+```HTML
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+```
+
+Global style for all typography looks like this:
+```css
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }
+  body {
+    background-color: #E5E5E5;
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+  }
+  h1 {
+    font-weight: normal;
+    font-size: 52px;
+    line-height: 66px;
+    margin: 0;
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0;
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    margin: 0;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+  }
+```

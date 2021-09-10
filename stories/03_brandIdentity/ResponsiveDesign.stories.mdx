@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Brand Identity/Responsive Design" />
+
+<style>{`
+
+`}</style>
+
+# Responsive Design
+
+We use simplistic approach to make our layouts adaptive for most devices.
+
+We use 3 types of layouts to display any type of components: Grid, Flex, Container (Flex with wrapper).import
+
+More details bout layout components can be found in Components -> Layouts section
+
+## Grid
+
+Grid has a simplified responsive pattern. All grid layouts are displayed in 1 column on mobile devices.
+It handles responsiveness pretty well in most cases... You can customize specific grid by overriding Grid StyledComponent.
+
+## Flex
+
+Flex components may need to change their flexFlow, depending on device. For that purpose we have ```adaptive``` prop.
+We may add more specific customisation for Tablets in the future if needed.
+
+## Containers
+
+Containers have a max-width of 100% so they effect mostly desktop devices.
+
+## Overview
+
+We use very simple but elegant way to make adaptive layouts work with no customisation and parametrisation if possible.
+In future we may consider some more complex components or new parameters if needed.

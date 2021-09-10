@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DatePicker from "react-datepicker";
+import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Flex from "../../layout/Flex";
 export type DatePickerProps = {
@@ -12,11 +12,11 @@ export type DatePickerProps = {
   showMonthYearPicker?: boolean;
   hideHeader?: boolean;
   showYearPicker?: boolean;
-  selected: string | null;
-  onChange: () => void;
+  selected: (Date & (Date | string)) | null;
+  onChange: (d: (Date & (Date | string)) | null) => void;
 };
 
-const StyledDatePicker = styled(DatePicker)<DatePickerProps>`
+const StyledDatePicker = styled(ReactDatePicker)<DatePickerProps>`
   ${({ showYearPicker }) => `
     height: 50px;
     width: ${showYearPicker ? "100px" : "90px"};
@@ -29,14 +29,14 @@ const StyledDatePicker = styled(DatePicker)<DatePickerProps>`
 `}
 `;
 const StyledLabel = styled.label`
-  ${({ theme }) => `
+  ${() => `
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
 `}
 `;
 
-const Date = ({ name, label, ...args }: DatePickerProps) => {
+const DatePicker = ({ name, label, ...args }: DatePickerProps) => {
   return (
     <Flex flexFlow="column">
       {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
@@ -45,4 +45,4 @@ const Date = ({ name, label, ...args }: DatePickerProps) => {
   );
 };
 
-export default Date;
+export default DatePicker;

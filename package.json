@@ -1,30 +1,66 @@
 {
+  "name": "@origyn-sa/origyn-art-ui",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ORIGYN-SA/ORIGYN_ART_UI"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/ORIGYN-SA"
+  },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@storybook/addon-actions": "^6.3.7",
-    "@storybook/addon-essentials": "^6.3.7",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@mdx-js/loader": "^1.6.22",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-docs": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "6.3.7",
-    "@storybook/react": "^6.3.7",
-    "@types/react": "^17.0.19",
-    "@types/react-datepicker": "^4.1.4",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^6.3.8",
+    "@types/react": "^17.0.20",
+    "@types/react-datepicker": "^4.1.6",
     "@types/react-modal": "^3.12.1",
-    "@types/styled-components": "^5.1.12",
+    "@types/styled-components": "^5.1.14",
     "babel-loader": "^8.2.2",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "postcss": "^8.3.6",
+    "prettier": "2.3.2",
     "react": "^17.0.2",
+    "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.3.5"
+    "rollup": "^2.56.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.4.2",
+    "styled-components": "^5.3.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
   },
   "dependencies": {
     "react-datepicker": "^4.2.1",
-    "react-modal": "^3.14.3",
-    "styled-components": "^5.3.0"
+    "react-modal": "^3.14.3"
   },
   "scripts": {
+    "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  }
+    "build-storybook": "build-storybook",
+    "prity": "npx prettier --write ./components"
+  },
+  "lint-staged": {
+    "components/*": "prettier --write --ignore-unknown"
+  },
+  "files": [
+    "/lib"
+  ]
 }
