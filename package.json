@@ -1,9 +1,16 @@
 {
-  "name": "origyn-art-ui",
+  "name": "@origyn-sa/origyn-art-ui",
   "version": "1.0.0",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ORIGYN-SA/ORIGYN_ART_UI"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/ORIGYN-SA"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
@@ -32,17 +39,17 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
-    "ts-loader": "^9.2.5",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "styled-components": "^5.3.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
   },
   "dependencies": {
     "react-datepicker": "^4.2.1",
-    "react-modal": "^3.14.3",
-    "styled-components": "^5.3.0"
+    "react-modal": "^3.14.3"
   },
   "scripts": {
     "build": "rollup -c",
