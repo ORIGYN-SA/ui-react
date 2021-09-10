@@ -102,7 +102,8 @@ const Template: Story = (args) => {
                   <Checkbox
                     name="row1"
                     isChecked={selectedRow === 1}
-                    onChange={() => setSelectedRow(1)}
+                    changeValue={() => setSelectedRow(1)}
+                    radio
                   />
                 </td>
                 <td>
@@ -118,7 +119,8 @@ const Template: Story = (args) => {
                   <Checkbox
                     name="row2"
                     isChecked={selectedRow === 2}
-                    onChange={() => setSelectedRow(2)}
+                    changeValue={() => setSelectedRow(2)}
+                    radio
                   />
                 </td>
                 <td>
@@ -134,7 +136,8 @@ const Template: Story = (args) => {
                   <Checkbox
                     name="row3"
                     isChecked={selectedRow === 3}
-                    onChange={() => setSelectedRow(3)}
+                    changeValue={() => setSelectedRow(3)}
+                    radio
                   />
                 </td>
                 <td>
@@ -150,7 +153,8 @@ const Template: Story = (args) => {
                   <Checkbox
                     name="row4"
                     isChecked={selectedRow === 4}
-                    onChange={() => setSelectedRow(4)}
+                    changeValue={() => setSelectedRow(4)}
+                    radio
                   />
                 </td>
                 <td>
@@ -166,7 +170,8 @@ const Template: Story = (args) => {
                   <Checkbox
                     name="row5"
                     isChecked={selectedRow === 5}
-                    onChange={() => setSelectedRow(5)}
+                    changeValue={() => setSelectedRow(5)}
+                    radio
                   />
                 </td>
                 <td>

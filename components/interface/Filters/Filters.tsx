@@ -47,9 +47,9 @@ const Filters = ({}: FiltersProps) => {
             <StyledFilterDropdown flexFlow="column" gap={10}>
               <Flex align="center" gap={50}>
                 <h3>Status</h3>
-                <CheckboxInput radio label="Active Sales" name="onSale" />
-                <CheckboxInput radio label="Sold" name="onSale" />
-                <CheckboxInput radio label="Not for Sale" name="onSale" />
+                <CheckboxInput label="Active Sales" name="activeSale" />
+                <CheckboxInput label="Sold" name="sold" />
+                <CheckboxInput label="Not for Sale" name="notForSale" />
               </Flex>
               <HR marginTop={10} marginBottom={10} />
             </StyledFilterDropdown>

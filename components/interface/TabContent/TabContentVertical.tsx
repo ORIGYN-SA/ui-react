@@ -9,7 +9,7 @@ export type TabContentVerticalProps = {
 };
 
 const StyledTabContent = styled(Flex)`
-  ${({theme}) => `
+  ${({ theme }) => `
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@ const StyledTabContent = styled(Flex)`
     white-space: nowrap;
     overflow: scroll;
     margin-bottom: 25px;
+    justify-content: space-evenly;
   }
 `}
 `;

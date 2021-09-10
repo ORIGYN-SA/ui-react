@@ -16,4 +16,4 @@ const Template: Story<CheckboxInputProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { name: "input", label: "Input Label", radio: true };
+Default.args = { name: "input", label: "Input Label" };
