@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Flex from "../../layout/Flex/Flex";
 import HR from "../HR";
 import MenuLink from "../MenuLink";
-
-export type BalanceCardProps = {};
+import { numberWithCommas } from "../../../utils/index";
+export type BalanceCardProps = {
+  balance?: number;
+};
 
 const StyledBalanceCard = styled.div`
   max-width: 234px;
@@ -31,7 +33,7 @@ const StyledMenuLink = styled(MenuLink)`
   padding: 14px 0;
 `;
 
-const BalanceCard = () => {
+const BalanceCard = ({ balance = 0 }: BalanceCardProps) => {
   return (
     <StyledBalanceCard>
       <StyledBalanceCardHeader
@@ -43,7 +45,7 @@ const BalanceCard = () => {
           <img src="http://placehold.jp/34x16.png" alt="logo" />
           <p>ICP</p>
         </Flex>
-        <h2>10,000</h2>
+        <h2>{numberWithCommas(balance)}</h2>
       </StyledBalanceCardHeader>
       <StyledBalanceCardContent flexFlow="column" justify="center">
         <HR accent={false} />

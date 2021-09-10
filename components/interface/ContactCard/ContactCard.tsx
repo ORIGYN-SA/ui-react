@@ -1,7 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex";
-export type ContactCardProps = {};
+export type ContactCardProps = {
+  personalInfo: PersonalInfo;
+};
+type PersonalInfo = {
+  name?: string;
+  role?: string;
+  email?: string;
+  phone?: string;
+  company?: string;
+  address?: string;
+  zip?: string;
+  country?: string;
+  website?: string;
+  avatar?: string;
+};
 
 const StyledContactCard = styled(Flex)`
   background: #ffffff;
@@ -60,35 +74,40 @@ const AvatarWrapper = styled(Flex)`
 `}
 `;
 
-const ContactCard = () => {
+const ContactCard = ({ personalInfo }: ContactCardProps) => {
+  const {
+    name,
+    role,
+    email,
+    phone,
+    company,
+    address,
+    zip,
+    country,
+    website,
+    avatar,
+  } = personalInfo;
   return (
     <StyledContactCard>
       <Flex flexFlow="column" fullWidth>
         <StyledCardTitle>YOUR ORIGYN ART CONTACT</StyledCardTitle>
         <Flex adapt>
           <AvatarWrapper>
-            <img
-              src="http://placehold.jp/150x150.png"
-              alt="logo"
-              width="150"
-              height="150"
-            />
+            <img src={avatar} alt="logo" width="150" height="150" />
           </AvatarWrapper>
           <Flex fullWidth adapt>
             <ContactWrapper>
-              <AccountName>Rosalie Pernot</AccountName>
-              <InfoTitle>Account Manager</InfoTitle>
-              <ContactInfo>rosalie@origyn.ch </ContactInfo>
-              <ContactInfo>
-                T +41 78 204 65 25 / T +33 6 17 86 79 83
-              </ContactInfo>
+              <AccountName>{name}</AccountName>
+              <InfoTitle>{role}</InfoTitle>
+              <ContactInfo>{email}</ContactInfo>
+              <ContactInfo>{phone}</ContactInfo>
             </ContactWrapper>
             <ContactWrapper>
-              <InfoTitle>ORIGYN Foundation</InfoTitle>
-              <ContactAddress>Rue des Usines 44</ContactAddress>
-              <ContactAddress>2000 Neuchâtel</ContactAddress>
-              <ContactAddress>Switzerland</ContactAddress>
-              <ContactAddress>www.origyn.ch/art</ContactAddress>
+              <InfoTitle>{company}</InfoTitle>
+              <ContactAddress>{address}</ContactAddress>
+              <ContactAddress>{zip}</ContactAddress>
+              <ContactAddress>{country}</ContactAddress>
+              <ContactAddress>{website}</ContactAddress>
             </ContactWrapper>
           </Flex>
         </Flex>
