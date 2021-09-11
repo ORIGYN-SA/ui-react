@@ -6,7 +6,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 ## Default BalanceCard
 
-```javascript
+```typescript
 interface BalanceCardProps extends BannerProps {
   balance: number;
   name: string;
@@ -41,7 +41,7 @@ For some cases we can not only display current walet balance, but also give the 
 
 As BalanceCard extends BannerProps we can customize our card to use any colors we need to better represent a specific wallet.
 
-```javascript
+```typescript
 type BannerProps = {
   bgImage?: string;
   bgColor?: string;

@@ -9,8 +9,12 @@ export type BannerProps = {
 };
 
 const StyledBanner = styled(Flex)<BannerProps>`
-  ${({ theme, padding = "39px 0 52px 0", bgColor, textColor}) => `
+  ${({ theme, padding = "39px 0 52px 0", bgColor, bgImage, textColor}) => `
   background-color: ${bgColor ? bgColor : theme.colors.BLACK};
+  background-image: url(${bgImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: ${textColor ? textColor : theme.colors.WHITE};
   padding: ${padding};
 `}
