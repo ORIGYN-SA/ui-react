@@ -10,11 +10,29 @@ export default {
 
 const Template: Story<ButtonProps> = (args) => <Button {...args}>Text</Button>;
 
-export const Default = Template.bind({});
-Default.args = {
+export const DefaultButton = Template.bind({});
+DefaultButton.args = {
   size: "sm",
   fullWidth: false,
   disabled: false,
   bordered: false,
   primary: false,
+};
+
+export const FullButton = Template.bind({});
+FullButton.args = {
+  size: "sm",
+  fullWidth: true,
+  disabled: false,
+  bordered: false,
+  primary: false,
+};
+
+export const PrimaryButton = Template.bind({});
+PrimaryButton.args = {
+  size: "sm",
+  fullWidth: false,
+  disabled: false,
+  bordered: false,
+  primary: true,
 };

@@ -11,4 +11,6 @@ export default {
 const Template: Story<BalanceCardProps> = (args) => <Balance {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  balance: 10000,
+};

@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import styled from "styled-components";
 import Header from "../../components/interface/Header";
 import BreadCrumbs from "../../components/interface/BreadCrumbs";
-import TextInput from "../../components/interface/TextInput";
+import TextInput from "../../components/interface/Inputs/TextInput";
 import DatePicker from "../../components/interface/DatePicker";
 import Button from "../../components/interface/Button";
 import BalanceCard from "../../components/interface/BalanceCard";
@@ -20,7 +20,18 @@ import Grid from "../../components/layout/Grid";
 export default {
   title: "Pages/Account Page",
 } as Meta;
-
+const personalInfo = {
+  name: "Rosalie Pernot",
+  role: "Account Manager",
+  email: "rosalie@origyn.ch",
+  phone: "T +41 78 204 65 25 / T +33 6 17 86 79 83",
+  company: "ORIGYN Foundation",
+  address: "Rue des Usines 44",
+  zip: "2000 Neuchâtel",
+  country: "Switzerland",
+  website: "www.origyn.ch/art",
+  avatar: "http://placehold.jp/150x150.png",
+};
 const StyledTitle = styled.h4`
   margin-bottom: 21px;
 `;
@@ -70,7 +81,7 @@ const Template: Story = (args) => (
           <div>Content 4</div>,
           <div>Content 5</div>,
           <div>
-            <ContactCard />
+            <ContactCard personalInfo={personalInfo} />
           </div>,
         ]}
       />

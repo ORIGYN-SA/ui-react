@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Grid from "../../layout/Grid";
+import Grid from "../../../layout/Grid";
 import CheckboxInput, { CheckboxInputProps } from "./CheckboxInput";
 
 export default {
@@ -16,4 +16,4 @@ const Template: Story<CheckboxInputProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { name: "input", label: "Input Label", radio: true };
+Default.args = { name: "input", label: "Input Label" };
