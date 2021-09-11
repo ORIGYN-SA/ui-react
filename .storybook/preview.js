@@ -88,11 +88,11 @@ const GlobalStyle = createGlobalStyle`
 `
 export const decorators = [
   (Story) => (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Story />
-      </ThemeProvider>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Router>
+          <Story />
+      </Router>
+    </ThemeProvider>
   ),
 ];

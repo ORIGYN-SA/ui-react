@@ -2,10 +2,55 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 <Meta title="Components/Interface/BalanceCard/Variations" />
 
-<style>{`
+# BalanceCard component variations
 
-`}</style>
+## Default BalanceCard
 
-## Default Balance Card
+```javascript
+interface BalanceCardProps extends BannerProps {
+  balance: number;
+  name: string;
+  icon?: ReactNode;
+  actions?: any;
+}
+```
 
-<Story id="components-interface-balancecard--default" />
+BalanceCard has 2 required properties ```balance``` that descibes wallet balance, and ```name``` for wallet label.
+
+<Canvas>
+    <Story id="components-interface-balancecard-all-stories--no-icon" />
+</Canvas>
+
+## With icon
+
+Optionally we can assign wallet icon for more visual representation of a specific wallet.
+
+<Canvas>
+    <Story id="components-interface-balancecard-all-stories--with-icon" />
+</Canvas>
+
+## Actions variation
+
+For some cases we can not only display current walet balance, but also give the ability to deposit or withdraw.
+
+<Canvas>
+    <Story id="components-interface-balancecard-all-stories--with-actions" />
+</Canvas>
+
+## Color customisation
+
+As BalanceCard extends BannerProps we can customize our card to use any colors we need to better represent a specific wallet.
+
+```javascript
+type BannerProps = {
+  bgImage?: string;
+  bgColor?: string;
+  textColor?: string;
+  padding?: string;
+}
+```
+
+<Canvas>
+    <Story id="components-interface-balancecard-all-stories--white-background" />
+    <Story id="components-interface-balancecard-all-stories--custom-background" />
+</Canvas>

@@ -13,7 +13,7 @@ const StyledGrid = styled.div<GridProps>`
   grid-template-rows: ${rows};
   gap: ${gap}px;
   
-  ${theme.media.sm} {
+  ${theme?.media?.sm} {
     grid-template-columns: repeat(1, minmax(0, 1fr))!important;
   }
 `}
