@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { BrowserRouter as Router } from "react-router-dom";
 
 export const parameters = {
   layout: 'fullscreen',
@@ -80,12 +81,18 @@ const GlobalStyle = createGlobalStyle`
   .noShrink {
     flex-shrink: 0;
   }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 `
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Story />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Story />
+      </ThemeProvider>
+    </Router>
   ),
 ];

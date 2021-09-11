@@ -28,7 +28,7 @@ const StyledTabContent = styled(Flex)`
 `}
 `;
 
-const StyledTabLink = styled(MenuLink)`
+const StyledTab = styled(MenuLink)`
   ${({ theme }) => `
   color: ${theme.colors.WHITE};
   padding: 17px 0;
@@ -48,12 +48,13 @@ const TabContent = ({ tabs, content }: TabContentProps) => {
     <Flex flexFlow="column">
       <StyledTabContent>
         {tabs.map(({ title }, index) => (
-          <StyledTabLink
+          <StyledTab
+            as="div"
             className={index === currentTab ? "active" : ""}
             onClick={() => setCurrentTab(index)}
           >
             {title}
-          </StyledTabLink>
+          </StyledTab>
         ))}
       </StyledTabContent>
       {content[currentTab]}

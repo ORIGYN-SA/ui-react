@@ -9,6 +9,7 @@ import Container from "../../layout/Container/Container";
 import FBIcon from "../../icons/FB";
 import InstagramIcon from "../../icons/Instagram";
 import TwitterIcon from "../../icons/Twitter";
+import {Link} from "react-router-dom";
 
 export type FooterProps = {
   bg: string;
@@ -35,17 +36,17 @@ const Footer = () => {
       <Container size="lg" padding="64px 0">
         <Grid columns={3}>
           <Flex flexFlow="column" gap={20}>
-            <h4>Artworks</h4>
-            <h4>My Portfolio</h4>
-            <h4>Order Book</h4>
-            <h4>Governance</h4>
-            <h4>About</h4>
+            <h4><Link to="/artworks">Artworks</Link></h4>
+            <h4><Link to="/portfolio">My Portfolio</Link></h4>
+            <h4><Link to="/order-book">Order Book</Link></h4>
+            <h4><Link to="/governance">Governance</Link></h4>
+            <h4><Link to="/about">About</Link></h4>
           </Flex>
           <Flex flexFlow="column" gap={20}>
-            <h4>Terms and Conditions</h4>
-            <h4>Privacy Policy</h4>
-            <h4>Disclaimer</h4>
-            <h4>Get in touch</h4>
+            <h4><Link to="/terms">Terms and Conditions</Link></h4>
+            <h4><Link to="/privacy">Privacy Policy</Link></h4>
+            <h4><Link to="/disclaimers">Disclaimer</Link></h4>
+            <h4><Link to="/in-touch">Get in touch</Link></h4>
           </Flex>
           <Flex flexFlow="column" gap={20}>
             <h4>ORIGYN Art</h4>
