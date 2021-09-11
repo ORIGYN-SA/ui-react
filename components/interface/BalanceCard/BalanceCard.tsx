@@ -49,9 +49,9 @@ const BalanceCard = ({ balance = 0 }: BalanceCardProps) => {
       </StyledBalanceCardHeader>
       <StyledBalanceCardContent flexFlow="column" justify="center">
         <HR accent={false} />
-        <StyledMenuLink>DEPOSIT</StyledMenuLink>
+        <StyledMenuLink to="/deposit">DEPOSIT</StyledMenuLink>
         <HR accent={false} />
-        <StyledMenuLink>WITHDRAW</StyledMenuLink>
+        <StyledMenuLink to="/withdraw">WITHDRAW</StyledMenuLink>
         <HR accent={false} />
       </StyledBalanceCardContent>
     </StyledBalanceCard>

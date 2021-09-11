@@ -17,7 +17,7 @@ const StyledTabContent = styled(Flex)`
 `}
 `;
 
-const StyledTabLink = styled(MenuLink)`
+const StyledTab = styled(MenuLink)`
   ${({ theme }) => `
   color: ${theme.colors.BLACK};
   font-size: 12px;
@@ -50,12 +50,13 @@ const Stepper = ({ tabs, content }: StepperProps) => {
     <Flex flexFlow="column">
       <StyledTabContent gap={0}>
         {tabs.map(({ title }, index) => (
-          <StyledTabLink
+          <StyledTab
+            as="div"
             className={index <= currentTab ? "active" : ""}
             onClick={() => setCurrentTab(index)}
           >
             {title}
-          </StyledTabLink>
+          </StyledTab>
         ))}
       </StyledTabContent>
       {content[currentTab]}
@@ -70,12 +71,12 @@ export const useStepper = (steps: Array<{ label: string; content: any }>) => {
   return [
     <StyledTabContent gap={0}>
       {steps.map(({ label }, index) => (
-        <StyledTabLink
+        <StyledTab
           className={index <= currentTab ? "active" : ""}
           onClick={() => setCurrentTab(index)}
         >
           {label}
-        </StyledTabLink>
+        </StyledTab>
       ))}
     </StyledTabContent>,
     steps[currentTab].content,

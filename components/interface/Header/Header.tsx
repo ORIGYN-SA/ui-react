@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 import ProfileIcon from "../../icons/Profile";
@@ -8,6 +9,7 @@ import Card from "../Card/Card";
 
 export type HeaderProps = {
   isLoggedIn: boolean;
+  logoSrc: string;
 };
 
 const StyledHeader = styled(Flex)`
@@ -101,18 +103,24 @@ const MenuButton = styled.button`
 `}
 `;
 
-const Header = ({ isLoggedIn }: HeaderProps) => {
+const Header = ({ isLoggedIn, logoSrc }: HeaderProps) => {
   const [isProfileOpened, setIsProfileOpened] = useState(false);
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   return (
     <StyledHeader align="center" justify="space-between">
       <Flex gap={50}>
-        <img src="http://placehold.jp/161x37.png" alt="logo" />
+        <img src={logoSrc} alt="logo" />
         <StyledNavigation className={isMobileMenuOpened ? "active" : ""}>
-          <MenuLink className="active">Browse</MenuLink>
-          <MenuLink>Trading</MenuLink>
-          <MenuLink>My Portfolio</MenuLink>
-          <MenuLink>About</MenuLink>
+          <MenuLink to="/browse">Browse</MenuLink>
+          {
+            isLoggedIn && (
+              <>
+                <MenuLink to="/trading">Trading</MenuLink>
+                <MenuLink to="/portfolio">My Portfolio</MenuLink>
+              </>
+            )
+          }
+          <MenuLink to="/about">About</MenuLink>
         </StyledNavigation>
       </Flex>
       <Flex
@@ -141,7 +149,7 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
             )}
           </>
         ) : (
-          <p>Log In / Sign Up</p>
+          <Link to="/login">Log In / Sign Up</Link>
         )}
       </Flex>
       <MenuButton
