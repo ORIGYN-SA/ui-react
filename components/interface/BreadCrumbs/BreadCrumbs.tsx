@@ -19,7 +19,7 @@ const StyledBreadCrumbsLink = styled(Link)`
 `}
 `;
 
-const TextInput = ({ data }: BreadCrumbsProps) => {
+const BreadCrumbs = ({ data }: BreadCrumbsProps) => {
   return (
     <Flex gap={15} align="center">
       {data.map((item, index) => (
@@ -32,4 +32,4 @@ const TextInput = ({ data }: BreadCrumbsProps) => {
   );
 };
 
-export default TextInput;
+export default BreadCrumbs;
