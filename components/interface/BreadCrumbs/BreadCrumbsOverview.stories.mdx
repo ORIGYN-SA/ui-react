@@ -8,6 +8,15 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 # BreadCrumbs component
 
-BreadCrumbs components provide user to see all path of routes an allow users to make selections from a range of values.
+BreadCrumbs allow quick usage of breadcrumbs with default separator.
+It uses array with simple objects to populate breadcrumb links:
 
-<Story id="components-interface-breadcrumbs--default" />
+```
+type BreadCrumbsProps = {
+  data: Array<{ title: string; link: string }>;
+}
+```
+
+## Example
+
+<Story id="components-interface-breadcrumbs-all-stories--default" />
