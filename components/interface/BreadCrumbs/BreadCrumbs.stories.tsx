@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import BreadCrumbs, { BreadCrumbsProps } from "./BreadCrumbs";
 
 export default {
-  title: "Components/Interface/BreadCrumbs",
+  title: "Components/Interface/BreadCrumbs/All stories",
   component: BreadCrumbs,
 } as Meta;
 
