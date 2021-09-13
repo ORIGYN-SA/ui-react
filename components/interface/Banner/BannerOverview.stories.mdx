@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Components/Interface/Banner/Overview" />
+
+<style>{`
+
+`}</style>
+
+# Banner Component
+
+Banner component is used to display any content on custom background. Usually you can find it on banners,
+but it can be used for any content with custom background and text color.
+
+It is very simple but useful styled wrapper with next props:
+
+```typescript
+type BannerProps = {
+  bgImage?: string;
+  bgColor?: string;
+  textColor?: string;
+  padding?: string;
+};
+```
+
+Banner has default values or style fallback for all properties except bgImage.
+
+```
+padding = "39px 0 52px 0"
+...
+background-color: ${bgColor ? bgColor : theme.colors.BLACK};
+color: ${textColor ? textColor : theme.colors.WHITE};
+```
+
+### Banner preview with default params
+
+<Story id="components-interface-banner-all-stories--default" />

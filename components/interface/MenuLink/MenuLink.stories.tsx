@@ -10,8 +10,8 @@ export default {
 
 const Template: Story<MenuLinkProps> = (args) => (
   <div>
-    <MenuLink {...args} />
-    <MenuLink className="active" {...args} />
+    <MenuLink to="link" {...args} />
+    <MenuLink to="link" className="active" {...args} />
   </div>
 );
 

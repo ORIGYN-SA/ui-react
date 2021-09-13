@@ -19,7 +19,7 @@ export type DatePickerProps = {
 const StyledDatePicker = styled(ReactDatePicker)<DatePickerProps>`
   ${({ showYearPicker }) => `
     height: 50px;
-    width: ${showYearPicker ? "100px" : "90px"};
+    width: 140px;
     padding: 14px 33px 12px 16px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.2);

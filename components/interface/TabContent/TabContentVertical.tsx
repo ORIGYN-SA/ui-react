@@ -9,7 +9,7 @@ export type TabContentVerticalProps = {
 };
 
 const StyledTabContent = styled(Flex)`
-  ${({theme}) => `
+  ${({ theme }) => `
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -21,11 +21,12 @@ const StyledTabContent = styled(Flex)`
     white-space: nowrap;
     overflow: scroll;
     margin-bottom: 25px;
+    justify-content: space-evenly;
   }
 `}
 `;
 
-const StyledTabLink = styled(MenuLink)`
+const StyledTab = styled(MenuLink)`
   ${() => `
   color: #000;
   padding: 17px 0;
@@ -55,12 +56,13 @@ const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
     <Flex adapt>
       <StyledTabContent gap={10}>
         {tabs.map(({ title }, index) => (
-          <StyledTabLink
+          <StyledTab
+            as="div"
             className={index === currentTab ? "active" : ""}
             onClick={() => setCurrentTab(index)}
           >
             {title}
-          </StyledTabLink>
+          </StyledTab>
         ))}
       </StyledTabContent>
       <StyledContent>{content[currentTab]}</StyledContent>

@@ -37,9 +37,15 @@ MonthPicker.args = {
   showMonthYearPicker: true,
   hideHeader: true,
 };
+
 export const DayPicker = Template.bind({});
 DayPicker.args = {
   placeholderText: "DD",
   showMonthsPicker: true,
   dateFormat: "dd",
+};
+
+export const SimpleDatePicker = Template.bind({});
+SimpleDatePicker.args = {
+  placeholderText: "MM/DD/YYYY",
 };

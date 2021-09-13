@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas, Source } from "@storybook/addon-docs";
+import Grid from "../../../components/layout/Grid";
+
+
+<Meta title="Components/Interface/BalanceCard/Overview" />
+
+<style>{`
+
+`}</style>
+
+# BalanceCard component
+
+Balance Card is used to display balances of connected wallets. Displays wallet icon, name and current balance.
+Also can provide buttons to **Deposit** or **Withdraw** from a particular wallet.
+
+## Examples
+
+### Show or hide wallet actions
+
+You can display wallet balance as a card or give it more complex functionality.
+
+<Canvas>
+    <Story id="components-interface-balancecard-all-stories--with-icon" />
+    <Story id="components-interface-balancecard-all-stories--with-actions" />
+</Canvas>
+
+### Style customisation
+
+You can change BalanceCard background and text color to match wallet theme,
+or to be more visible on matching backgrounds.
+
+BalanceCard uses Banner and extends its types, so you can customize it just as a Banner itself.
+
+<Canvas>
+    <Story id="components-interface-balancecard-all-stories--white-background" />
+    <Story id="components-interface-balancecard-all-stories--custom-background" />
+</Canvas>

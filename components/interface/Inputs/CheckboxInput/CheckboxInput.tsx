@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
-import CheckboxUncheckedIcon from "../../icons/CheckboxUnchecked";
-import CheckboxCheckedIcon from "../../icons/CheckboxChecked";
+import CheckboxUncheckedIcon from "../../../icons/CheckboxUnchecked";
+import CheckboxCheckedIcon from "../../../icons/CheckboxChecked";
 
 export type CheckboxInputProps = {
   label?: string;
   isChecked?: boolean;
+  value?: any;
   onChange?: (c: boolean) => void;
   name: string;
   radio?: boolean;
+  disabled?: boolean;
 };
 
 const StyledCheckboxInput = styled.input`
@@ -64,28 +66,27 @@ const CheckboxInput = ({
   isChecked,
   onChange,
   radio,
+  disabled,
 }: CheckboxInputProps) => {
-  const [isCheckedS, setIsCheckedS] = useState(false);
 
   return (
     <>
       <StyledLabel htmlFor={name}>
-        {radio ? (
+        {!radio ? (
           isChecked ? (
-            <CheckboxUncheckedIcon />
-          ) : (
             <CheckboxCheckedIcon />
+          ) : (
+            <CheckboxUncheckedIcon />
           )
         ) : (
-          <StyledCheckboxIcon
-            className={isChecked || isCheckedS ? "active" : ""}
-          />
+          <StyledCheckboxIcon className={isChecked ? "active" : ""} />
         )}
         <StyledCheckboxInput
-          onChange={() =>
-            onChange ? onChange(!isChecked) : setIsCheckedS(!isCheckedS)
+          onClick={() =>
+            changeValue ? changeValue(!isChecked) : setIsCheckedS(!isChecked)
           }
-          type="radio"
+          type="checkbox"
+          disabled={disabled}
           id={name}
           name={name}
         />

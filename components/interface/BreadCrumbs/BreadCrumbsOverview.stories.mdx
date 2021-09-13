@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Components/Interface/BreadCrumbs/Overview" />
+
+<style>{`
+
+`}</style>
+
+# BreadCrumbs component
+
+BreadCrumbs allow quick usage of breadcrumbs with default separator.
+It uses array with simple objects to populate breadcrumb links:
+
+```
+type BreadCrumbsProps = {
+  data: Array<{ title: string; link: string }>;
+}
+```
+
+## Example
+
+<Canvas>
+    <Story id="components-interface-breadcrumbs-all-stories--default" />
+</Canvas>

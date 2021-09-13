@@ -36,7 +36,7 @@ const StyledFlex = styled.div<FlexProps>`
   height: ${fullHeight ? "100%" : "auto"};
   gap: ${gap}px;
   position: ${relative ? "relative" : "static"};
-  ${theme.media.md}{
+  ${theme?.media?.md}{
     flex-flow: ${adapt ? "column" : flexFlow};
   }
 `}
