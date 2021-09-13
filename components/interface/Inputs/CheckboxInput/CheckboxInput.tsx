@@ -83,7 +83,7 @@ const CheckboxInput = ({
         )}
         <StyledCheckboxInput
           onClick={() =>
-            changeValue ? changeValue(!isChecked) : setIsCheckedS(!isChecked)
+            onChange && onChange(!isChecked)
           }
           type="checkbox"
           disabled={disabled}

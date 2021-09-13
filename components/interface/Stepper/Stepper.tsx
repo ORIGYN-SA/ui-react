@@ -72,6 +72,7 @@ export const useStepper = (steps: Array<{ label: string; content: any }>) => {
     <StyledTabContent gap={0}>
       {steps.map(({ label }, index) => (
         <StyledTab
+          as="div"
           className={index <= currentTab ? "active" : ""}
           onClick={() => setCurrentTab(index)}
         >
