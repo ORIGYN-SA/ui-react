@@ -2,12 +2,40 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 <Meta title="Components/Interface/Card/Overview" />
 
-<style>{`
-
-`}</style>
-
 # Card component
 
-Component similar to banner with white background.
+Card is default wrapper for content display. Page body has gray background to make card stand out more and separate
+content chunks into different portions. Consider it as a basic content wrapper.
 
-<Story id="components-interface-card--default" />
+## Properties
+
+Card has a consistent layout with padding and shadow parameters:
+
+```typescript
+type CardProps = {
+  padding?: string;
+  shadow?: "sm" | "md" | "lg";
+};
+```
+
+It also built on Flex component, so you can configure its layout with Flex component properties:
+
+```typescript
+type FlexProps = {
+  justify?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around";
+  align?: "flex-start" | "flex-end" | "center";
+  flexFlow?: "column" | "row" | "column-reverse" | "row-reverse";
+  fullWidth?: boolean;
+  fullHeight?: boolean;
+  gap?: number;
+  relative?: boolean;
+  adapt?: boolean;
+};
+```
+
+

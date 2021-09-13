@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Components/Interface/Inputs/TextInput/Overview" />
+
+# TextInput component
+
+Basic input for text. Can use ```value``` and ```onChange``` to control the input or be uncontrolled.
+
+Available props:
+
+```typescript
+type TextInputProps = {
+  label: string;
+  name: string;
+  error?: string;
+  placeholder?: string;
+  value?: string;
+  onChange?: ChangeEventHandler;
+}
+```
+
+```name``` is required as its used to provide id for input and connect it with label.
+
+### Input States Preview
+
+<Canvas>
+    <Story id="components-interface-inputs-textinput-all-stories--default" />
+    <Story id="components-interface-inputs-textinput-all-stories--filled" />
+    <Story id="components-interface-inputs-textinput-all-stories--error" />
+</Canvas>
