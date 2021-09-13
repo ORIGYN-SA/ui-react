@@ -3,13 +3,14 @@ import Flex from "../../layout/Flex";
 
 export type CardProps = {
   padding?: string;
+  shadow?: "sm" | "md" | "lg";
 };
 
 const StyledCard = styled(Flex)<CardProps>`
-  ${({ padding = "0" }) => `
-  background: #FFFFFF;
+  ${({ theme, padding = "0", shadow = "md" }) => `
+  background: ${theme.colors.WHITE};
   padding: ${padding};
-  box-shadow: 0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05);
+  box-shadow: ${theme?.shadows[shadow]};
 `}
 `;
 
