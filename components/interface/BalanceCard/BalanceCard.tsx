@@ -1,25 +1,20 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex/Flex";
 import HR from "../HR";
 import MenuLink from "../MenuLink";
-import { numberWithCommas } from "../../../utils/index";
-export type BalanceCardProps = {
-  balance?: number;
-};
+import StyledBanner from "../Banner";
+import { BannerProps } from "../Banner/Banner";
+import Card from "../Card";
 
-const StyledBalanceCard = styled.div`
-  max-width: 234px;
-  width: 100%;
-  box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
-`;
-const StyledBalanceCardHeader = styled(Flex)`
-  ${({ theme }) => `
-    background-color: ${theme.colors.BLACK};
-    color: ${theme.colors.WHITE};
-    padding: 24px;
-  `}
-`;
+import { numberWithCommas } from "../../../utils";
+
+export interface BalanceCardProps extends BannerProps {
+  balance: number;
+  name: string;
+  icon?: ReactNode;
+  actions?: any;
+}
 
 const StyledBalanceCardContent = styled(Flex)`
   ${({ theme }) => `
@@ -33,28 +28,43 @@ const StyledMenuLink = styled(MenuLink)`
   padding: 14px 0;
 `;
 
-const BalanceCard = ({ balance = 0 }: BalanceCardProps) => {
+const StyledBalance = styled.h2`
+ word-break: break-all;
+ text-align: center;
+`
+
+const BalanceCard = ({ balance, icon, name, actions, bgColor, textColor, padding  }: BalanceCardProps) => {
   return (
-    <StyledBalanceCard>
-      <StyledBalanceCardHeader
+    <Card
+      flexFlow="column"
+    >
+      <StyledBanner
         flexFlow="column"
         justify="center"
         align="center"
+        padding={padding || "24px"}
+        bgColor={bgColor}
+        textColor={textColor}
+        gap={10}
       >
-        <Flex>
-          <img src="http://placehold.jp/34x16.png" alt="logo" />
-          <p>ICP</p>
+        <Flex gap={5} align="center">
+          {icon}
+          <b style={{fontSize: 13}}>{name}</b>
         </Flex>
-        <h2>{numberWithCommas(balance)}</h2>
-      </StyledBalanceCardHeader>
-      <StyledBalanceCardContent flexFlow="column" justify="center">
-        <HR accent={false} />
-        <StyledMenuLink to="/deposit">DEPOSIT</StyledMenuLink>
-        <HR accent={false} />
-        <StyledMenuLink to="/withdraw">WITHDRAW</StyledMenuLink>
-        <HR accent={false} />
-      </StyledBalanceCardContent>
-    </StyledBalanceCard>
+        <StyledBalance>{numberWithCommas(balance)}</StyledBalance>
+      </StyledBanner>
+      {
+        (actions) ? (
+          <StyledBalanceCardContent flexFlow="column" justify="center">
+            <HR accent={false} />
+            <StyledMenuLink to="/deposit">DEPOSIT</StyledMenuLink>
+            <HR accent={false} />
+            <StyledMenuLink to="/withdraw">WITHDRAW</StyledMenuLink>
+            <HR accent={false} />
+          </StyledBalanceCardContent>
+        ) : null
+      }
+    </Card>
   );
 };
 

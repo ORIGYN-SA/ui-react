@@ -1,15 +1,50 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export type ButtonProps = {
   size?: "sm" | "md" | "lg";
-  primary?: boolean;
+  type?: "primary" | "secondary" | "ternary";
   disabled?: boolean;
   fullWidth?: boolean;
-  bordered?: boolean;
 };
 
+const primaryStyle = css`${({theme}) => `
+  background-color: ${theme.colors.BLACK};
+  color: ${theme.colors.WHITE};
+  
+  :hover {
+    background-color: ${theme.colors.ACCENT_COLOR};
+    color: ${theme.colors.BLACK};
+  }
+  
+`}`;
+
+const secondaryStyle = css`${({theme}) => `
+  border: 2px solid ${theme.colors.BLACK};
+  background-color: transparent;
+  
+  :hover {
+    background-color: ${theme.colors.ACCENT_COLOR};
+    border-color: ${theme.colors.ACCENT_COLOR};
+  }
+`}`;
+
+const ternaryStyle = css`${({theme}) => `
+  background-color: transparent;
+  
+  :hover {
+    color: ${theme.colors.ACCENT_COLOR};
+  }
+`}`;
+
+const buttonType = {
+  primary: primaryStyle,
+  secondary: secondaryStyle,
+  ternary: ternaryStyle,
+}
+
 const StyledFlex = styled.div<ButtonProps>`
-  ${({ fullWidth, bordered, primary, theme }) => `
+  ${({type = "primary"}) => buttonType[type]}
+  ${({ theme, fullWidth, type, disabled }) => `
   display: flex;
   width: ${fullWidth ? "100%" : "320px"};
   height: 50px;
@@ -22,18 +57,18 @@ const StyledFlex = styled.div<ButtonProps>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: ${primary ? theme.colors.WHITE : theme.colors.BLACK};
-  color: ${primary ? theme.colors.BLACK : theme.colors.WHITE};
-  border: ${
-    bordered
-      ? `2px solid ${primary ? theme.colors.BLACK : theme.colors.WHITE}`
-      : "none"
-  };
   
-  &:hover {
-    background-color: ${theme.colors.ACCENT_COLOR};
-    color: ${theme.colors.WHITE};
-  }
+  ${disabled ? `
+    background-color: ${type === "ternary" ? "transparent" : theme.colors.MID_GRAY};
+    border-color: ${theme.colors.MID_GRAY};
+    color: ${type === "ternary" ? theme.colors.MID_GRAY : theme.colors.WHITE};
+    cursor: not-allowed;
+    :hover {
+      background-color: ${type === "ternary" ? "transparent" : theme.colors.MID_GRAY};
+      border-color: ${theme.colors.MID_GRAY};
+      color: ${type === "ternary" ? theme.colors.MID_GRAY : theme.colors.WHITE};
+    }
+  ` : ""}
 `}
 `;
 

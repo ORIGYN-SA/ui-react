@@ -8,4 +8,32 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 # Button component
 
-<Story id="components-interface-button--default" />
+Basic button component, for 3 button types:
+
+ - primary (Default)
+ - secondary (Bordered)
+ - ternary (Text like)
+
+You can look at visual appearance of the buttons in
+[storybook style guides](https://www.figma.com/file/22ewljg1RGLMm50GA0J1KJ/Origyn-Open-Marketplace?node-id=696%3A2945)
+
+## Properties
+
+```typescript
+type ButtonProps = {
+  size?: "sm" | "md" | "lg";
+  type?: "primary" | "secondary" | "ternary";
+  disabled?: boolean;
+  fullWidth?: boolean;
+}
+```
+
+** IMPORTANT: Size prop is still in development **
+
+## Examples
+
+<Canvas>
+    <Story id="components-interface-button-all-stories--primary" />
+    <Story id="components-interface-button-all-stories--secondary" />
+    <Story id="components-interface-button-all-stories--ternary" />
+</Canvas>

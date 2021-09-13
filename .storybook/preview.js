@@ -18,9 +18,16 @@ const theme = {
     BLACK: '#000000',
     WHITE: '#FFFFFF',
     ACCENT_COLOR: '#F5A506',
-    LIGHT_GRAY: '#DFDFDF',
+    MID_GRAY: '#AEAEAE',
+    LIGHT_GRAY: '#D8D8D8',
     LIGHTER_GRAY: '#F5F5F5',
-    BG_GRAY: '#E5E5E5'
+    BG_GRAY: '#E5E5E5',
+    ERROR: '#E42932',
+  },
+  shadows: {
+    sm: "0px 5px 5px -5px rgba(0, 0, 0, 0.1)",
+    md: "0px 5px 10px -5px rgba(26, 32, 44, 0.1)",
+    lg: "0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05)",
   },
   typography: {
 
@@ -88,11 +95,11 @@ const GlobalStyle = createGlobalStyle`
 `
 export const decorators = [
   (Story) => (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Story />
-      </ThemeProvider>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Router>
+          <Story />
+      </Router>
+    </ThemeProvider>
   ),
 ];
