@@ -33,8 +33,8 @@ const StyledHR = styled(HR)`
 const Footer = () => {
   return (
     <StyledFooter>
-      <Container size="lg" padding="64px 0">
-        <Grid columns={3}>
+      <Container size="lg" padding="64px 32px">
+        <Grid columns={3} gap={20}>
           <Flex flexFlow="column" gap={20}>
             <h4><Link to="/artworks">Artworks</Link></h4>
             <h4><Link to="/portfolio">My Portfolio</Link></h4>

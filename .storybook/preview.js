@@ -19,9 +19,10 @@ const theme = {
     WHITE: '#FFFFFF',
     ACCENT_COLOR: '#F5A506',
     MID_GRAY: '#AEAEAE',
-    LIGHT_GRAY: '#DFDFDF',
+    LIGHT_GRAY: '#D8D8D8',
     LIGHTER_GRAY: '#F5F5F5',
-    BG_GRAY: '#E5E5E5'
+    BG_GRAY: '#E5E5E5',
+    ERROR: '#E42932',
   },
   shadows: {
     sm: "0px 5px 5px -5px rgba(0, 0, 0, 0.1)",

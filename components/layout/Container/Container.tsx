@@ -18,7 +18,7 @@ const StyledFlex = styled.div<ContainerProps>`
   margin: 0 auto;
   
   ${theme.media.sm} {
-  padding: ${smPadding ? smPadding : padding || "0"};
+    padding: ${smPadding ? smPadding : padding || "0"};
   }
 `}
 `;
