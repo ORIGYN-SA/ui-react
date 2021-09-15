@@ -157,7 +157,7 @@ const AccountPayment = () => {
   return (
     <Container size="full">
       <StyledTitle>BALANCES</StyledTitle>
-      <BalanceCard />
+      <BalanceCard balance={10000} name={"ICP"} />
       <HR marginTop={75} marginBottom={32} />
       <StyledTitle>BALANCE HISTORY</StyledTitle>
       <Table rows={rows} cells={cells} />
