@@ -56,6 +56,7 @@ const StyledTh = styled.th`
 const StyledTd = styled.td`
   font-size: 14px;
   padding: 12px 24px;
+  white-space: normal;
 `;
 const StyledCol = styled.col`
   width: ${(props) => props.width}%;
