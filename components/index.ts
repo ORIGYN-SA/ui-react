@@ -18,11 +18,14 @@ import Modal from "./interface/Modal";
 import MoreLink from "./interface/MoreLink"
 import ProductCard from "./interface/ProductCard";
 import SearchInput from "./interface/Inputs/SearchInput";
+import Slider from "./interface/Slider";
 import Stepper from "./interface/Stepper";
+import { useStepper } from "./interface/Stepper/Stepper";
 import TabContent from "./interface/TabContent";
-import TabContentVertical from "./interface/TabContent";
+import TabContentVertical from "./interface/TabContent/TabContentVertical";
 import Table from "./interface/Table";
 import TextInput from "./interface/Inputs/TextInput";
+import * as Icons from "./icons";
 
 export {
   Grid,
@@ -45,9 +48,12 @@ export {
   MoreLink,
   ProductCard,
   SearchInput,
+  Slider,
   Stepper,
   TabContent,
   TabContentVertical,
   Table,
-  TextInput
+  TextInput,
+  useStepper,
+  Icons
 };

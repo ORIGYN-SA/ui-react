@@ -1,6 +1,6 @@
 {
   "name": "@origyn-sa/origyn-art-ui",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -52,7 +52,8 @@
   },
   "dependencies": {
     "react-datepicker": "^4.2.1",
-    "react-modal": "^3.14.3"
+    "react-modal": "^3.14.3",
+    "react-responsive-carousel": "^3.2.21"
   },
   "scripts": {
     "build": "rollup -c",
