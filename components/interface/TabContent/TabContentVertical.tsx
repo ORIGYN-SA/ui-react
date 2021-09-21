@@ -21,7 +21,6 @@ const StyledTabContent = styled(Flex)`
     white-space: nowrap;
     overflow: scroll;
     margin-bottom: 25px;
-    justify-content: space-evenly;
   }
 `}
 `;
