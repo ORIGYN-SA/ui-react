@@ -16,7 +16,7 @@ Default.args = {
   name: "input",
   label: "Label text",
   placeholder: "Placeholder text",
-  resize: "none",
+  resize: false,
 };
 
 export const filled = Template.bind({});

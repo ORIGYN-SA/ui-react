@@ -16,7 +16,7 @@ const Template: Story<CheckboxInputProps> = (args) => (
 );
 
 export const noLabel = Template.bind({});
-noLabel.args = { name: "input" };
+noLabel.args = { name: "input", id: "noLabelInput" };
 
 export const withLabel = Template.bind({});
 withLabel.args = { name: "input", label: "Checkbox Label" };

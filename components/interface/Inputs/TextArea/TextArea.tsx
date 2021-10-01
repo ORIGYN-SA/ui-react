@@ -1,18 +1,14 @@
-import React, { ChangeEventHandler } from "react";
+import React from "react";
 import styled from "styled-components";
 import Flex from "../../../layout/Flex";
 
-export type TextAreaProps = {
-  label: string;
+export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement>{
+  label?: string;
   name: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: ChangeEventHandler;
-  rows?: number;
-  resize?: string;
-};
+  resize?: boolean;
+}
 
-const StyledTextInput = styled.textarea<{ resize: string }>`
+const StyledTextArea = styled.textarea<{ resize?: boolean }>`
   ${({ theme, value, resize }) => `
   padding: 13px 13px 13px 20px;
   font-weight: normal;
@@ -21,7 +17,7 @@ const StyledTextInput = styled.textarea<{ resize: string }>`
   border: 1px solid ${value ? theme.colors.BLACK : theme.colors.LIGHT_GRAY};
   box-sizing: border-box;
   border-radius: 2px;
-  resize: ${resize};
+  resize: ${resize && 'none'};
   ::placeholder {
     color: ${theme.colors.LIGHT_GRAY};
   }
@@ -50,29 +46,21 @@ const ErrorMessage = styled.div`
 `}
 `;
 
-const TextInput = ({
+const TextArea = ({
   label,
   name,
-  placeholder,
-  value,
-  onChange,
-  rows,
   resize,
+  ...props
 }: TextAreaProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
       <StyledLabel htmlFor={name}>{label}</StyledLabel>
-      <StyledTextInput
-        rows={rows}
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
+      <StyledTextArea
+        {...props}
         resize={resize}
       />
     </Flex>
   );
 };
 
-export default TextInput;
+export default TextArea;
