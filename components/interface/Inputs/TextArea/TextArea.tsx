@@ -48,13 +48,12 @@ const ErrorMessage = styled.div`
 
 const TextArea = ({
   label,
-  name,
   resize,
   ...props
 }: TextAreaProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
-      <StyledLabel htmlFor={name}>{label}</StyledLabel>
+      <StyledLabel htmlFor={props.id}>{label}</StyledLabel>
       <StyledTextArea
         {...props}
         resize={resize}

@@ -45,10 +45,10 @@ const ErrorMessage = styled.div`
 `}
 `;
 
-const TextInput = ({ label, name, error, ...props }: TextInputProps) => {
+const TextInput = ({ label, error, ...props }: TextInputProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
-      <StyledLabel htmlFor={name}>{label}</StyledLabel>
+      <StyledLabel htmlFor={props.id}>{label}</StyledLabel>
       <StyledTextInput
         error={!!error}
         {...props}
