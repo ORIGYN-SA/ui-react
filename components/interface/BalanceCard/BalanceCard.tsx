@@ -62,7 +62,7 @@ const BalanceCard = ({
       {actions ? (
         <StyledBalanceCardContent flexFlow="column" justify="center">
           <HR accent={false} />
-          <StyledMenuLink to="/deposit">TOP UP</StyledMenuLink>
+          <StyledMenuLink as="div" onClick={actions.topUp}>TOP UP</StyledMenuLink>
           <HR accent={false} marginBottom={80} />
         </StyledBalanceCardContent>
       ) : null}
