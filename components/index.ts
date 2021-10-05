@@ -25,6 +25,8 @@ import TabContent from "./interface/TabContent";
 import TabContentVertical from "./interface/TabContent/TabContentVertical";
 import Table from "./interface/Table";
 import TextInput from "./interface/Inputs/TextInput";
+import Select from "./interface/Inputs/Select";
+
 import * as Icons from "./icons";
 
 export {
@@ -55,5 +57,6 @@ export {
   Table,
   TextInput,
   useStepper,
-  Icons
+  Icons,
+  Select
 };
