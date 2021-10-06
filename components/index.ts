@@ -1,4 +1,4 @@
-import Grid from './layout/Grid';
+import Grid from "./layout/Grid";
 import Flex from "./layout/Flex";
 import Container from "./layout/Container";
 import BalanceCard from "./interface/BalanceCard";
@@ -15,7 +15,7 @@ import Header from "./interface/Header";
 import HR from "./interface/HR";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
-import MoreLink from "./interface/MoreLink"
+import MoreLink from "./interface/MoreLink";
 import ProductCard from "./interface/ProductCard";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
@@ -24,7 +24,11 @@ import { useStepper } from "./interface/Stepper/Stepper";
 import TabContent from "./interface/TabContent";
 import TabContentVertical from "./interface/TabContent/TabContentVertical";
 import Table from "./interface/Table";
+import Lots from "./interface/Lots";
+
 import TextInput from "./interface/Inputs/TextInput";
+import Select from "./interface/Inputs/Select";
+
 import * as Icons from "./icons";
 
 export {
@@ -55,5 +59,7 @@ export {
   Table,
   TextInput,
   useStepper,
-  Icons
+  Icons,
+  Select,
+  Lots,
 };

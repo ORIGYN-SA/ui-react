@@ -26,8 +26,10 @@ const StyledModal = styled(ReactModal)`
     border: none;
     box-shadow: 0px 10px 15px -3px rgba(26, 32, 44, 0.1),
       0px 4px 6px -2px rgba(26, 32, 44, 0.05);
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 95vh;
+    max-width: 1150px;
+    width: 100%;
   }
   ${(props) => props?.theme?.media?.md} {
     &.ReactModal__Content {
