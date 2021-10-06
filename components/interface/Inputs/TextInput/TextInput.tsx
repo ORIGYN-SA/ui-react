@@ -1,14 +1,11 @@
-import React, {ChangeEventHandler} from "react";
+import React from "react";
 import styled from "styled-components";
 import Flex from "../../../layout/Flex";
 
-export type TextInputProps = {
+export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
   error?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: ChangeEventHandler;
 };
 
 const StyledTextInput = styled.input<{error: boolean}>`
@@ -48,18 +45,13 @@ const ErrorMessage = styled.div`
 `}
 `;
 
-const TextInput = ({ label, name, error, placeholder, value, onChange }: TextInputProps) => {
+const TextInput = ({ label, error, ...props }: TextInputProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
-      <StyledLabel htmlFor={name}>{label}</StyledLabel>
+      <StyledLabel htmlFor={props.id}>{label}</StyledLabel>
       <StyledTextInput
-        type="text"
-        id={name}
-        name={name}
-        value={value}
         error={!!error}
-        onChange={onChange}
-        placeholder={placeholder}
+        {...props}
       />
       <ErrorMessage>
         {error}

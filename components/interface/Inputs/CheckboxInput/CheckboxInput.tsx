@@ -3,19 +3,33 @@ import styled from "styled-components";
 import CheckboxUncheckedIcon from "../../../icons/CheckboxUnchecked";
 import CheckboxCheckedIcon from "../../../icons/CheckboxChecked";
 
-export type CheckboxInputProps = {
+export interface CheckboxInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   isChecked?: boolean;
-  value?: any;
-  onChange?: (c: boolean) => void;
   name: string;
   radio?: boolean;
-  disabled?: boolean;
-};
+}
 
 const StyledCheckboxInput = styled.input`
   ${() => `
   display: none;
+  
+  &:checked + div {
+    opacity: 1;
+    &:after {
+      opacity: 1;
+    }
+  }
+  & + svg {
+    display: none;
+  }
+  
+  &:checked + svg {
+    display: block;
+  }
+  &:checked + svg + svg {
+    display: none;
+  }
 `}
 `;
 
@@ -30,12 +44,6 @@ const StyledCheckboxIcon = styled.div`
   height: 20px;
   opacity: 0.5;
   
-  &.active {
-    opacity: 1;
-    &:after {
-      opacity: 1;
-    }
-  }
   &:after {
     content: "";
     display: block;
@@ -59,38 +67,33 @@ const StyledLabel = styled.label`
 `}
 `;
 
-// TODO: refactoring
 const CheckboxInput = ({
   label,
   name,
   isChecked,
-  onChange,
   radio,
-  disabled,
+  id,
+  ...props
 }: CheckboxInputProps) => {
 
   return (
     <>
-      <StyledLabel htmlFor={name}>
-        {!radio ? (
-          isChecked ? (
-            <CheckboxCheckedIcon />
-          ) : (
-            <CheckboxUncheckedIcon />
-          )
-        ) : (
-          <StyledCheckboxIcon className={isChecked ? "active" : ""} />
-        )}
+      <StyledLabel htmlFor={id}>
         <StyledCheckboxInput
-          onClick={() =>
-            onChange && onChange(!isChecked)
-          }
           type="checkbox"
-          disabled={disabled}
-          id={name}
-          name={name}
+          id={id}
+          {...props}
         />
-        {label}
+
+        {!radio ? (
+          <>
+            <CheckboxCheckedIcon />
+            <CheckboxUncheckedIcon />
+          </>
+        ) : (
+          <StyledCheckboxIcon />
+        )}
+        <span>{label}</span>
       </StyledLabel>
     </>
   );
