@@ -4,6 +4,24 @@ import Flex from "../../layout/Flex";
 import Select from "../Inputs/Select";
 import { numberWithCommas } from "../../../utils/index";
 
+export interface LotsProps {
+  error?: any;
+  lots: any;
+  handleAddLot: Function;
+  handleDeleteLot: Function;
+  quantityOptions: any;
+  fractionPriceOptions: any;
+  lotPriceOptions: any;
+  handleChangeLotValue: Function;
+}
+
+interface LotRowProps extends LotsProps {
+  index: number;
+  quantity: any;
+  fractionPrice: any;
+  lotPrice: any;
+}
+
 const Col = styled.div`
   ${({ maxWidth, padding }: any) => `
     max-width: ${maxWidth ? maxWidth : "100%"};
@@ -73,14 +91,13 @@ const AddLot = styled.button`
 const Lots = ({
   error,
   lots,
-  setLots,
   handleAddLot,
   handleDeleteLot,
   quantityOptions,
   fractionPriceOptions,
   lotPriceOptions,
   handleChangeLotValue,
-}) => {
+}: LotsProps) => {
   return (
     <>
       <Flex fullWidth style={{ padding: "15px 5px", textAlign: "center" }}>
@@ -129,7 +146,7 @@ const LotRow = ({
   fractionPrice,
   lotPrice,
   handleChangeLotValue,
-}) => {
+}: LotRowProps) => {
   return (
     <StyledLotRow>
       <Square align="center" justify="center">
