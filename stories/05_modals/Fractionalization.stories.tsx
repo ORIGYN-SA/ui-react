@@ -99,8 +99,8 @@ const Template: Story = (args) => {
       description: <></>,
       content: (
         <CreateLots
+          error=""
           lots={lots}
-          setLots={setLots}
           handleDeleteLot={handleDeleteLot}
           handleAddLot={handleAddLot}
           handleChangeLotValue={handleChangeLotValue}
@@ -313,7 +313,6 @@ const FullyDilutedValue = ({ value = 0 }) => {
 
 const CreateLots = ({
   lots,
-  setLots,
   error,
   handleAddLot,
   handleDeleteLot,
@@ -324,7 +323,6 @@ const CreateLots = ({
       <SellInfo />
       <Lots
         lots={lots}
-        setLots={setLots}
         error={error}
         quantityOptions={options}
         fractionPriceOptions={options}
@@ -354,7 +352,7 @@ const FractionsPrice = () => {
   return (
     <Flex fullWidth flexFlow="column">
       <InputWrapper>
-        <Select label="Total Fractions" />
+        <Select name="totalFractions" label="Total Fractions" />
       </InputWrapper>
       <p style={{ marginTop: 24 }}>
         Configure the number of fractions you want to sell and set your
@@ -364,13 +362,13 @@ const FractionsPrice = () => {
 
       <FractionsPriceSelectWrapper>
         <InputWrapper>
-          <Select label="Fractions for Sale" />
+          <Select name="fractions" label="Fractions for Sale" />
         </InputWrapper>
         <InputWrapper>
-          <Select label="Price per Fraction" />
+          <Select name="pricePerFraction" label="Price per Fraction" />
         </InputWrapper>
         <InputWrapper>
-          <Select label="Ask Price" />
+          <Select name="askPrice" label="Ask Price" />
         </InputWrapper>
       </FractionsPriceSelectWrapper>
     </Flex>
