@@ -412,11 +412,7 @@ const ScheduleSale = () => {
 };
 
 const Col = styled.div`
-  ${({ theme, maxWidth, padding }: any) => `
-    max-width: ${maxWidth ? maxWidth : "100%"};
-    width: 100%;
-    padding: ${padding ? padding : "0 10px"};
-  `}
+  width: 100%;
 `;
 const SellInfo = () => {
   return (
@@ -429,26 +425,26 @@ const SellInfo = () => {
           color: "white",
         }}
       >
-        <Col padding="0" maxWidth="40px"></Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: 0, maxWidth: 40 }}></Col>
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <Flex flexFlow="column" align="center">
             Fractions for Sale
             <b>40000</b>
           </Flex>
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <Flex flexFlow="column" align="center">
             Price per Fraction
             <b>25.00</b>
           </Flex>
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <Flex flexFlow="column" align="center">
             Ask Price
             <b>1,000,000.00</b>
           </Flex>
         </Col>
-        <Col maxWidth="20px"></Col>
+        <Col style={{ padding: "0 10px", maxWidth: 20 }}></Col>
       </Flex>
     </>
   );
