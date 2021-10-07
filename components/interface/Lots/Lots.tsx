@@ -15,7 +15,7 @@ export interface LotsProps {
   handleChangeLotValue: Function;
 }
 
-interface LotRowProps extends LotsProps {
+interface LotRowProps extends Omit<LotsProps, "lots" | "handleAddLot"> {
   index: number;
   quantity: any;
   fractionPrice: any;
@@ -23,11 +23,7 @@ interface LotRowProps extends LotsProps {
 }
 
 const Col = styled.div`
-  ${({ maxWidth, padding }: any) => `
-    max-width: ${maxWidth ? maxWidth : "100%"};
-    width: 100%;
-    padding: ${padding ? padding : "0 10px"};
-  `}
+  width: 100%;
 `;
 const Square = styled(Flex)`
   min-width: 40px;
@@ -101,21 +97,21 @@ const Lots = ({
   return (
     <>
       <Flex fullWidth style={{ padding: "15px 5px", textAlign: "center" }}>
-        <Col padding="0" maxWidth="40px">
+        <Col style={{ padding: 0, maxWidth: 40 }}>
           <span>Lot</span>
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <span>Quantity</span>
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <span>Price per Fraction</span>
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <span>Lot Price</span>
         </Col>
-        <Col maxWidth="20px"></Col>
+        <Col style={{ padding: "0 10px", maxWidth: 40 }}></Col>
       </Flex>
-      {lots.map((lot, i) => (
+      {lots.map((lot: any, i: number) => (
         <LotRow
           key={i}
           index={i}
@@ -131,7 +127,7 @@ const Lots = ({
       ))}
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
-      <AddLot onClick={handleAddLot}>+ ADD LOT</AddLot>
+      <AddLot onClick={() => handleAddLot()}>+ ADD LOT</AddLot>
     </>
   );
 };
@@ -157,7 +153,7 @@ const LotRow = ({
           display: "contents",
         }}
       >
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <Select
             height="40px"
             options={quantityOptions}
@@ -167,7 +163,7 @@ const LotRow = ({
             }
           />
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <Select
             height="40px"
             options={fractionPriceOptions}
@@ -177,7 +173,7 @@ const LotRow = ({
             }
           />
         </Col>
-        <Col maxWidth="200px">
+        <Col style={{ padding: "0 10px", maxWidth: 200 }}>
           <Select
             height="40px"
             options={lotPriceOptions}
@@ -189,7 +185,7 @@ const LotRow = ({
         </Col>
       </div>
 
-      <Col maxWidth="40px">
+      <Col style={{ padding: "0 10px", maxWidth: 40 }}>
         <CloseIcon onClick={() => handleDeleteLot(index)} />
       </Col>
     </StyledLotRow>
