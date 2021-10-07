@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Select from "./Select";
+import Select, { CustomSelectProps } from "./Select";
 
 export default {
   title: "Components/Interface/Inputs/Select/All stories",
@@ -16,7 +16,7 @@ const options = [
   { value: "60000", label: "60000" },
 ];
 
-const Template: Story = (args) => {
+const Template: Story<CustomSelectProps> = (args) => {
   const [value, setValue] = useState();
   return <Select {...args} selectedOption={value} handleChange={setValue} />;
 };

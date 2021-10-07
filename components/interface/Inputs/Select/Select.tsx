@@ -4,8 +4,8 @@ import styled from "styled-components";
 import Flex from "../../../layout/Flex";
 
 export type CustomSelectProps = {
-  label: string;
-  name: string;
+  label?: string;
+  name?: string;
   selectedOption?: string;
   placeholder?: string;
   handleChange?: (value: any) => void;
@@ -14,7 +14,7 @@ export type CustomSelectProps = {
   options?: {
     value?: any;
     label?: any;
-  };
+  }[];
 };
 
 const StyledSelect = styled(Select)`

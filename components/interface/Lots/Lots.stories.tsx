@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import Button from "../../interface/Button";
-import Lots from "./Lots";
+import Lots, { LotsProps } from "./Lots";
 
 export default {
   title: "Components/Interface/Lots",
@@ -16,7 +16,7 @@ const options = [
   { value: "60000", label: "60000" },
 ];
 
-const Template: Story = (args) => {
+const Template: Story<LotsProps> = (args) => {
   const [lots, setLots] = useState([
     {
       quantity: 0,
@@ -44,6 +44,7 @@ const Template: Story = (args) => {
     ];
     setLots(newLots);
   };
+
   return (
     <div>
       <Lots
@@ -53,10 +54,11 @@ const Template: Story = (args) => {
         lots={lots}
         handleDeleteLot={handleDeleteLot}
         handleAddLot={handleAddLot}
+        handleChangeLotValue={() => {}}
       />
     </div>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = { title: "Buy Shares" };
+Default.args = {};
