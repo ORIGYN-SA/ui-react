@@ -12,6 +12,7 @@ const StyledTextInput = styled.input<{error: boolean}>`
   ${({theme, value, error}) => `
   padding: 13px 13px 13px 20px;
   font-weight: normal;
+  width: 100%;
   font-size: 16px;
   line-height: 24px;
   border: 1px solid ${ error ? theme.colors.ERROR : (value ? theme.colors.BLACK : theme.colors.LIGHT_GRAY)};
