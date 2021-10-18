@@ -5,8 +5,9 @@ export type MenuLinkProps = {};
 
 const StyledMenuLink = styled(NavLink)<MenuLinkProps>`
   ${({ theme }) => `
+  position: relative;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 16px;
   letter-spacing: 0.1em;
   text-decoration: none;
@@ -14,15 +15,28 @@ const StyledMenuLink = styled(NavLink)<MenuLinkProps>`
   color: ${theme.colors.BLACK};
   opacity: 0.5;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
+  // border-bottom: 3px solid transparent;
+  
+  &::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+  }
   
   &.active {
     opacity: 1;
-    border-bottom: 3px solid ${theme.colors.ACCENT_COLOR};
+    &::after {
+      background-color: ${theme.colors.ACCENT_COLOR};
+    }
   }
   &:hover {
     opacity: 1;
-    border-bottom: 3px solid ${theme.colors.BLACK};
+    &::after {
+      background-color: ${theme.colors.BLACK};
+    }
   }
 `}
 `;

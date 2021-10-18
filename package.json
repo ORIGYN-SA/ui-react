@@ -54,7 +54,7 @@
     "react-datepicker": "^4.2.1",
     "react-modal": "^3.14.3",
     "react-responsive-carousel": "^3.2.21",
-    "react-select": "^5.0.0"
+    "react-select": "^5.1.0"
   },
   "scripts": {
     "build": "rollup -c",
