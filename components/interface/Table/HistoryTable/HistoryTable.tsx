@@ -130,7 +130,7 @@ const TableHead = styled.div`
     }
   `}
 `;
-const HeadColumn = styled.div`
+const HeadColumn = styled.div<{ canSort: boolean | undefined }>`
   ${({ theme, canSort }) => `
     display: flex;
     flex-grow: 1;

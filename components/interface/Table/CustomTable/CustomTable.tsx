@@ -45,7 +45,7 @@ const StyledTable = styled.table`
 const StyledTbody = styled.tbody`
   background-color: #fff;
 `;
-const StyledTh = styled.th`
+const StyledTh = styled.th<{ canSort: boolean | undefined }>`
   ${({ theme }) => `
     font-size: 14px;
     font-weight: 600;
@@ -127,23 +127,23 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
         })}
       </colgroup>
 
-    <thead>
-      <tr>
-        {cells.map((cell) => (
-          <StyledTh
-            onClick={cell.canSort ? () => handleSortRows(cell) : undefined}
-            key={cell.id}
-            canSort={cell.canSort}
-            className={cell.id === "details" ? "details" : ""}
-          >
-            <Flex align="center" gap={5}>
-              {cell.label}
-              {cell.canSort && <SortedArrows />}
-            </Flex>
-          </StyledTh>
-        ))}
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          {cells.map((cell) => (
+            <StyledTh
+              onClick={cell.canSort ? () => handleSortRows(cell) : undefined}
+              key={cell.id}
+              canSort={cell.canSort}
+              className={cell.id === "details" ? "details" : ""}
+            >
+              <Flex align="center" gap={5}>
+                {cell.label}
+                {cell.canSort && <SortedArrows />}
+              </Flex>
+            </StyledTh>
+          ))}
+        </tr>
+      </thead>
       <StyledTbody>
         {sortedRows.map((row, i) => (
           <tr key={i}>
@@ -161,6 +161,5 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
     </StyledTable>
   );
 };
-
 
 export default CustomTable;
