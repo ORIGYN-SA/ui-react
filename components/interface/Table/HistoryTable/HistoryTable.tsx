@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Flex from "../../layout/Flex";
+import Flex from "../../../layout/Flex";
 
 export type RowType = {
   [key: string]: any;
@@ -35,35 +35,6 @@ const ArrowBottom = styled.div`
   border-top: 5px solid black;
 `;
 
-const StyledTable = styled.table`
-  width: 100%;
-  color: #000;
-  border-spacing: 0;
-  white-space: nowrap;
-  border-collapse: separate;
-  border-spacing: 0 9px;
-`;
-const StyledTbody = styled.tbody`
-  background-color: #fff;
-`;
-const StyledTh = styled.th`
-  font-size: 14px;
-  font-weight: 600;
-  text-align: left;
-  text-transform: capitalize;
-  padding: 12px 24px;
-  cursor: ${({ canSort }: { canSort: boolean | undefined }) =>
-    canSort ? "pointer" : "default"};
-`;
-const StyledTd = styled.td`
-  font-size: 14px;
-  padding: 12px 24px;
-  white-space: normal;
-`;
-const StyledCol = styled.col`
-  width: ${(props) => props.width}%;
-`;
-
 const SortedArrows = () => (
   <Flex gap={2} flexFlow="column">
     <ArrowTop />
@@ -71,7 +42,7 @@ const SortedArrows = () => (
   </Flex>
 );
 
-const Table = ({ cells, rows, cols = [] }: TableProps) => {
+const HistoryTable = ({ cells, rows, cols = [] }: TableProps) => {
   const [sortValue, setSortValue] = useState<SortValue>({
     value: "",
     default: true,
@@ -107,39 +78,119 @@ const Table = ({ cells, rows, cols = [] }: TableProps) => {
   };
 
   return (
-    <StyledTable>
-      <colgroup>
-        {cols.map((col) => {
-          return <StyledCol width={col} />;
-        })}
-      </colgroup>
-      <thead>
-        <tr>
+    <TableWrapper>
+      <div>
+        <TableHead>
           {cells.map((cell) => (
-            <StyledTh
+            <HeadColumn
               onClick={cell.canSort ? () => handleSortRows(cell) : undefined}
               key={cell.id}
               canSort={cell.canSort}
+              className={cell.id === "details" ? "details" : ""}
             >
               <Flex align="center" gap={5}>
                 {cell.label}
                 {cell.canSort && <SortedArrows />}
               </Flex>
-            </StyledTh>
+            </HeadColumn>
           ))}
-        </tr>
-      </thead>
-      <StyledTbody>
+        </TableHead>
+      </div>
+      <div>
         {sortedRows.map((row, i) => (
-          <tr key={i}>
+          <BodyWrapper key={i}>
             {cells.map((key) => (
-              <StyledTd key={key.id}>{row[key.id]}</StyledTd>
+              <BodyColumn
+                key={key.id}
+                className={key.id === "details" ? "details" : ""}
+              >
+                {row[key.id]}
+              </BodyColumn>
             ))}
-          </tr>
+          </BodyWrapper>
         ))}
-      </StyledTbody>
-    </StyledTable>
+      </div>
+    </TableWrapper>
   );
 };
 
-export default Table;
+const TableWrapper = styled.div`
+  width: 100%;
+  color: #000;
+  white-space: nowrap;
+`;
+const TableHead = styled.div`
+  ${({ theme }) => `
+    display: flex;
+    padding: 10px;
+    ${theme.media.md} {
+      &.details {
+        display: none;
+      }
+    }
+  `}
+`;
+const HeadColumn = styled.div`
+  ${({ theme, canSort }) => `
+    display: flex;
+    flex-grow: 1;
+    width: 20%;
+    cursor: ${canSort ? "pointer" : "default"};
+    font-size: 14px;
+    font-weight: 600;
+    ${theme.media.md} {
+      width: 25%;
+      &.details {
+        display: none;
+      }
+    }
+    ${theme.media.sm} {
+      &:nth-child(2){
+        display: none;
+      }
+      &:nth-child(4){
+        display: none;
+      }
+    }
+  `}
+`;
+const BodyWrapper = styled.div`
+  ${({ theme }) => `
+    display: flex;
+    background-color: white;
+    padding: 10px;
+    margin: 5px 0;
+    ${theme.media.md} {
+      &.details {
+        display: none;
+      }
+    }
+    ${theme.media.sm} {
+      flex-wrap: wrap;
+    }
+  `}
+`;
+const BodyColumn = styled.div`
+  ${({ theme }) => `
+    display: flex;
+    flex-grow: 1;
+    width: 20%;
+    white-space: normal;
+    ${theme.media.md} {
+      width: 25%;
+      &.details {
+        display: none;
+      }
+    }
+    ${theme.media.sm} {
+      width: 50%;
+      margin: 7px 0;
+      
+      &:nth-child(2n){
+        order: 2;
+      }
+    }
+  `}
+`;
+
+export default HistoryTable;
