@@ -27,7 +27,10 @@ import Table from "./interface/Table";
 import Lots from "./interface/Lots";
 
 import TextInput from "./interface/Inputs/TextInput";
+import TextArea from "./interface/Inputs/TextArea";
 import Select from "./interface/Inputs/Select";
+import Toggle from "./interface/Inputs/Toggle";
+
 
 import * as Icons from "./icons";
 
@@ -62,4 +65,6 @@ export {
   Icons,
   Select,
   Lots,
+  TextArea,
+  Toggle
 };
