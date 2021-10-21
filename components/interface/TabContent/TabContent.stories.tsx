@@ -5,6 +5,7 @@ import TabContent, { TabContentProps } from "./TabContent";
 import TabContentVertical, {
   TabContentVerticalProps,
 } from "./TabContentVertical";
+import styled from "styled-components";
 
 export default {
   title: "Components/Interface/TabContent",
@@ -29,8 +30,14 @@ Default.args = {
   ],
 };
 
+const LeftTopMargin = styled.div`
+  margin: 20px 50px 0 50px;
+`;
+
 const VerticalTemplate: Story<TabContentVerticalProps> = (args) => (
-  <TabContentVertical {...args} />
+  <LeftTopMargin>
+    <TabContentVertical {...args} />
+  </LeftTopMargin>
 );
 
 export const VerticalTabs = VerticalTemplate.bind({});

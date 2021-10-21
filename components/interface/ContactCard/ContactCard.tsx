@@ -17,30 +17,48 @@ type PersonalInfo = {
   avatar?: string;
 };
 
-const StyledContactCard = styled(Flex)`
-  background: #ffffff;
-  padding: 32px;
-  max-width: 900px;
+const StyledContactCard = styled.div`
+  ${({ theme }) => `
+    box-sizing: border-box;
+    background: #ffffff;
+    padding: 32px 90px 32px 24px;
+    max-width: 900px;
+    box-shadow: 0 5px 10px rgba(26, 32, 44, 0.1);
+    ${theme.media.md} {
+      padding-right: 46px;
+    }
+  `}
 `;
 
 const StyledCardTitle = styled.h4`
   ${({ theme }) => `
-  padding-bottom: 25px;
-  ${theme.media.md}{
-    text-align: center;
-  }
-`}
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-bottom: 25px;
+  `}
 `;
 
 const AccountName = styled.p`
-  font-size: 30px;
-  line-height: 44px;
-  font-weight: 500;
+  ${({ theme }) => `
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 500;
+    ${theme.media.sm} {
+      font-size: 20px;
+      line-height: 20px;
+    }
+  `}
 `;
 const InfoTitle = styled.p`
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
+  ${({ theme }) => `
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    margin: 6px 0 4px;
+    ${theme.media.sm} {
+      margin: 8px 0 0;
+    }
+  `}
 `;
 const ContactInfo = styled.p`
   font-size: 16px;
@@ -52,37 +70,50 @@ const ContactEmail = styled.a`
   line-height: 24px;
   font-weight: 400;
 `;
-const ContactAddress = styled.address`
+
+const ContactCardInfo = styled(Flex)`
   ${({ theme }) => `
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  font-style: initial;
-  ${theme.media.md}{
-    text-align: center;
-  }
-`}
+    justify-content: space-between;
+    ${theme.media.sm} {
+      flex-direction: column;
+    }
+  `}
+`;
+
+const PersonaInfoWrapper = styled(Flex)`
+  ${({ theme }) => `
+    ${theme.media.sm} {
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+  `}
 `;
 
 const ContactWrapper = styled(Flex)`
   ${({ theme }) => `
   flex-flow: column;
-  width: 50%;
   padding-left: 25px;
-  ${theme.media.md}{
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  font-style: initial;
+  ${theme.media.sm} {
     padding-left: 0;
-    align-items: center;
-    width: 100%;
   }
 `}
 `;
 
 const AvatarWrapper = styled(Flex)`
   ${({ theme }) => `
-  ${theme.media.md}{
-    justify-content: center;
-  }
-`}
+    width: 116px;
+    height: 116px;
+    ${theme.media.md}{
+    }
+    ${theme.media.sm}{
+      width: 104px;
+      height: 104px;
+    }
+  `}
 `;
 
 const ContactCard = ({ personalInfo }: ContactCardProps) => {
@@ -100,31 +131,27 @@ const ContactCard = ({ personalInfo }: ContactCardProps) => {
   } = personalInfo;
   return (
     <StyledContactCard>
-      <Flex flexFlow="column" fullWidth>
-        <StyledCardTitle>YOUR ORIGYN ART CONTACT</StyledCardTitle>
-        <Flex adapt>
+      <StyledCardTitle>your origyn art contact</StyledCardTitle>
+      <ContactCardInfo>
+        <PersonaInfoWrapper>
           <AvatarWrapper>
-            <img src={avatar} alt="logo" width="150" height="150" />
+            <img src={avatar} alt="logo" />
           </AvatarWrapper>
-          <Flex fullWidth adapt>
-            <ContactWrapper>
-              <AccountName>{name}</AccountName>
-              <InfoTitle>{role}</InfoTitle>
-              <ContactEmail href={`mailto:${email}`}>{email}</ContactEmail>
-              <ContactInfo>{phone}</ContactInfo>
-            </ContactWrapper>
-            <ContactWrapper>
-              <InfoTitle>{company}</InfoTitle>
-              <ContactAddress>
-                {address} <br />
-                {zip} <br />
-                {country} <br />
-                {website} <br />
-              </ContactAddress>
-            </ContactWrapper>
-          </Flex>
-        </Flex>
-      </Flex>
+          <ContactWrapper>
+            <AccountName>{name}</AccountName>
+            <InfoTitle>{role}</InfoTitle>
+            <ContactEmail href={`mailto:${email}`}>{email}</ContactEmail>
+            <ContactInfo>{phone}</ContactInfo>
+          </ContactWrapper>
+        </PersonaInfoWrapper>
+        <ContactWrapper>
+          {company} <br />
+          {address} <br />
+          {zip} <br />
+          {country} <br />
+          {website} <br />
+        </ContactWrapper>
+      </ContactCardInfo>
     </StyledContactCard>
   );
 };

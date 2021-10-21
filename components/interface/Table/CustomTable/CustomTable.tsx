@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Flex from "../../layout/Flex";
+import Flex from "../../../layout/Flex";
 
 export type RowType = {
   [key: string]: any;
@@ -38,7 +38,6 @@ const ArrowBottom = styled.div`
 const StyledTable = styled.table`
   width: 100%;
   color: #000;
-  border-spacing: 0;
   white-space: nowrap;
   border-collapse: separate;
   border-spacing: 0 9px;
@@ -46,19 +45,33 @@ const StyledTable = styled.table`
 const StyledTbody = styled.tbody`
   background-color: #fff;
 `;
-const StyledTh = styled.th`
-  font-size: 14px;
-  font-weight: 600;
-  text-align: left;
-  text-transform: capitalize;
-  padding: 12px 24px;
-  cursor: ${({ canSort }: { canSort: boolean | undefined }) =>
-    canSort ? "pointer" : "default"};
+const StyledTh = styled.th<{ canSort: boolean | undefined }>`
+  ${({ theme }) => `
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    text-transform: capitalize;
+    padding: 12px 24px;
+    cursor: ${({ canSort }: { canSort: boolean | undefined }) =>
+      canSort ? "pointer" : "default"};
+    ${theme.media.md} {
+      &.details {
+        display: none;
+      }
+    }
+  `}
 `;
 const StyledTd = styled.td`
-  font-size: 14px;
-  padding: 12px 24px;
-  white-space: normal;
+  ${({ theme }) => `
+    font-size: 14px;
+    padding: 12px 24px;
+    white-space: normal;
+    ${theme.media.md} {
+      &.details {
+        display: none;
+      }
+    }
+  `}
 `;
 const StyledCol = styled.col`
   width: ${(props) => props.width}%;
@@ -71,7 +84,7 @@ const SortedArrows = () => (
   </Flex>
 );
 
-const Table = ({ cells, rows, cols = [] }: TableProps) => {
+const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
   const [sortValue, setSortValue] = useState<SortValue>({
     value: "",
     default: true,
@@ -113,6 +126,7 @@ const Table = ({ cells, rows, cols = [] }: TableProps) => {
           return <StyledCol width={col} />;
         })}
       </colgroup>
+
       <thead>
         <tr>
           {cells.map((cell) => (
@@ -120,6 +134,7 @@ const Table = ({ cells, rows, cols = [] }: TableProps) => {
               onClick={cell.canSort ? () => handleSortRows(cell) : undefined}
               key={cell.id}
               canSort={cell.canSort}
+              className={cell.id === "details" ? "details" : ""}
             >
               <Flex align="center" gap={5}>
                 {cell.label}
@@ -133,7 +148,12 @@ const Table = ({ cells, rows, cols = [] }: TableProps) => {
         {sortedRows.map((row, i) => (
           <tr key={i}>
             {cells.map((key) => (
-              <StyledTd key={key.id}>{row[key.id]}</StyledTd>
+              <StyledTd
+                key={key.id}
+                className={key.id === "details" ? "details" : ""}
+              >
+                {row[key.id]}
+              </StyledTd>
             ))}
           </tr>
         ))}
@@ -142,4 +162,4 @@ const Table = ({ cells, rows, cols = [] }: TableProps) => {
   );
 };
 
-export default Table;
+export default CustomTable;

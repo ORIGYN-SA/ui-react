@@ -1,11 +1,11 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 
-import DefaultTable, { TableProps } from "./Table";
+import HistoryTable, { TableProps } from "./HistoryTable";
 
 export default {
-  title: "Components/Interface/Table",
-  component: DefaultTable,
+  title: "Components/Interface/Table/HistoryTable",
+  component: HistoryTable,
 } as Meta;
 
 const rows = [
@@ -36,12 +36,12 @@ const cells = [
   { id: "date", label: "Date", canSort: true },
   { id: "activity", label: "Activity" },
   { id: "details", label: "Details" },
-  { id: "amount", label: "Amount", canSort: true },
-  { id: "status", label: "Status" },
+  { id: "amount", label: "Amount" },
+  { id: "status", label: "Status", canSort: true },
 ];
 
 const TableStory: Story<TableProps> = ({ cells, rows, ...args }) => (
-  <DefaultTable cells={cells} rows={rows} {...args} />
+  <HistoryTable cells={cells} rows={rows} {...args} />
 );
 
 export const Table = TableStory.bind({});

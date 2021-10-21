@@ -8,7 +8,7 @@ import TextInput from "../../components/interface/Inputs/TextInput";
 import DatePicker from "../../components/interface/DatePicker";
 import Button from "../../components/interface/Button";
 import BalanceCard from "../../components/interface/BalanceCard";
-import Table from "../../components/interface/Table";
+import Table from "../../components/interface/Table/CustomTable";
 import HR from "../../components/interface/HR";
 import ContactCard from "../../components/interface/ContactCard";
 

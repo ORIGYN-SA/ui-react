@@ -2,40 +2,88 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
+import Select, { StylesConfig } from "react-select";
+import { ArrowDownIcon } from "../../icons";
 
 export type TabContentVerticalProps = {
   tabs: Array<{ title: string }>;
   content: Array<any>;
 };
 
+type Option = { value: number; label: string };
+
+const StyledSelect = styled(Select)`
+  ${({ theme }) => `
+    display: none;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 3px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: ${theme.colors.ACCENT_COLOR};
+    }
+    ${theme.media.md} {
+      display: block;
+    }
+  `}
+`;
+
+const customReactSelectStyles: StylesConfig<Option | unknown, false> = {
+  control: (provided) => ({
+    ...provided,
+    borderRadius: 0,
+    flexDirection: "row-reverse",
+    border: "none",
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    fontSize: "17px",
+    lineHeight: "24px",
+    letterSpacing: "0.1em",
+  }),
+  option: (provided, state) => ({
+    opacity: state.isSelected ? 1 : 0.5,
+    lineHeight: "40px",
+    fontWeight: "bold",
+    fontSize: "15px",
+    letterSpacing: "0.1em",
+    paddingLeft: "40px",
+  }),
+  indicatorSeparator: () => ({ display: "none" }),
+  menu: (provided) => ({
+    ...provided,
+    borderRadius: 0,
+    margin: 0,
+  }),
+};
+
 const StyledTabContent = styled(Flex)`
   ${({ theme }) => `
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  max-width: 200px;
-  width: 100%;
-  ${theme.media.md}{
-    flex-direction: row;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: scroll;
-    margin-bottom: 25px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 200px;
+    width: 100%;
+    ${theme.media.md} {
+    display: none;
+    }
+  `}
+`;
+
+const StyledArrowDownIcon = styled(ArrowDownIcon)`
+  padding-left: 7px;
+  padding-right: 12px;
+  &.up {
+    padding-right: 7px;
+    padding-left: 12px;
+    transform: rotateZ(180deg);
   }
-`}
 `;
 
 const StyledTab = styled(MenuLink)`
-  ${() => `
-  color: #000;
-  padding: 17px 0;
-    
-  &.active {
-    opacity: 1;
-    color: #000;
-    border-bottom: 3px solid #EE9907;
-  }
-`}
+  padding: 14px 0;
 `;
 
 const StyledContent = styled.div`
@@ -49,23 +97,45 @@ const StyledContent = styled.div`
 `;
 
 const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState<number>(0);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const options: Array<Option> = tabs.map(({ title }, index) => ({
+    value: index,
+    label: title,
+  }));
 
   return (
-    <Flex adapt>
-      <StyledTabContent gap={10}>
-        {tabs.map(({ title }, index) => (
-          <StyledTab
-            as="div"
-            className={index === currentTab ? "active" : ""}
-            onClick={() => setCurrentTab(index)}
-          >
-            {title}
-          </StyledTab>
-        ))}
-      </StyledTabContent>
-      <StyledContent>{content[currentTab]}</StyledContent>
-    </Flex>
+    <>
+      <StyledSelect
+        onChange={(option: any) => setCurrentTab(option?.value)}
+        styles={customReactSelectStyles}
+        components={{
+          DropdownIndicator: () => (
+            <StyledArrowDownIcon className={isMenuOpen ? "up" : ""} />
+          ),
+        }}
+        onMenuOpen={() => setIsMenuOpen(true)}
+        onMenuClose={() => setIsMenuOpen(false)}
+        options={options}
+        value={options.filter((el) => el.value === currentTab)[0]}
+      />
+      <Flex adapt>
+        <StyledTabContent gap={10}>
+          {tabs.map(({ title }, index) => (
+            <StyledTab
+              as="div"
+              key={title + index}
+              className={index === currentTab ? "active" : ""}
+              onClick={() => setCurrentTab(index)}
+            >
+              {title}
+            </StyledTab>
+          ))}
+        </StyledTabContent>
+        <StyledContent>{content[currentTab]}</StyledContent>
+      </Flex>
+    </>
   );
 };
 
