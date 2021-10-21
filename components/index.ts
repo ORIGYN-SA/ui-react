@@ -23,11 +23,15 @@ import Stepper from "./interface/Stepper";
 import { useStepper } from "./interface/Stepper/Stepper";
 import TabContent from "./interface/TabContent";
 import TabContentVertical from "./interface/TabContent/TabContentVertical";
-import Table from "./interface/Table";
+import CustomTable from "./interface/Table/CustomTable";
+import HistoryTable from "./interface/Table/HistoryTable";
+
 import Lots from "./interface/Lots";
 
 import TextInput from "./interface/Inputs/TextInput";
+import TextArea from "./interface/Inputs/TextArea";
 import Select from "./interface/Inputs/Select";
+import Toggle from "./interface/Inputs/Toggle";
 
 import * as Icons from "./icons";
 
@@ -56,10 +60,13 @@ export {
   Stepper,
   TabContent,
   TabContentVertical,
-  Table,
+  CustomTable,
+  HistoryTable,
   TextInput,
   useStepper,
   Icons,
   Select,
   Lots,
+  TextArea,
+  Toggle,
 };
