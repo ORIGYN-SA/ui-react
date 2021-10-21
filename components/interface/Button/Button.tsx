@@ -49,7 +49,7 @@ const sizes = {
 
 const StyledFlex = styled.div<ButtonProps>`
   ${({type = "primary"}) => buttonType[type]}
-  ${({ theme, fullWidth, type, disabled, size }) => `
+  ${({ theme, fullWidth, type, disabled, size = "md" }) => `
   display: flex;
   width: ${fullWidth ? "100%" : sizes[size]};
   height: 50px;
