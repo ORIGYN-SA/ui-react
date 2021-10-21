@@ -15,7 +15,6 @@ const primaryStyle = css`${({theme}) => `
     background-color: ${theme.colors.ACCENT_COLOR};
     color: ${theme.colors.BLACK};
   }
-  
 `}`;
 
 const secondaryStyle = css`${({theme}) => `
@@ -42,11 +41,17 @@ const buttonType = {
   ternary: ternaryStyle,
 }
 
+const sizes = {
+  sm: "auto",
+  md: "320px",
+  lg: "460px",
+}
+
 const StyledFlex = styled.div<ButtonProps>`
   ${({type = "primary"}) => buttonType[type]}
-  ${({ theme, fullWidth, type, disabled }) => `
+  ${({ theme, fullWidth, type, disabled, size }) => `
   display: flex;
-  width: ${fullWidth ? "100%" : "320px"};
+  width: ${fullWidth ? "100%" : sizes[size]};
   height: 50px;
   font-weight: bold;
   font-size: 13px;
