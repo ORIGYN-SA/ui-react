@@ -28,7 +28,9 @@ const StyledTab = styled(MenuLink)`
   text-align: center;
   text-transform: uppercase;
   min-width: 123px;
-  
+  &::after {
+    content: none;
+  }
   &:first-child {
     text-align: left;
   }
