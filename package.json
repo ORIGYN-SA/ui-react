@@ -1,6 +1,6 @@
 {
   "name": "@origyn-sa/origyn-art-ui",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
