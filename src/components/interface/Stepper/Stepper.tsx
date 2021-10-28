@@ -22,15 +22,14 @@ const StyledTabContent = styled(Flex)`
 `}
 `;
 
-const StyledTab = styled(MenuLink)<{width?: string}>`
-  ${({ theme, width = "123px" }) => `
+const StyledTab = styled(MenuLink)`
+  ${({ theme }) => `
   color: ${theme.colors.MID_GREY};
-  background: ${theme.colors.WHITE};
+  background: #ffffff;
   flex-grow: 1;
   border-bottom: 3px solid ${theme.colors.MID_GREY};
   padding: 17px 0;
   text-align: center;
-  min-width: ${width};
     
   &.active {
     color: ${theme.colors.BLACK};
