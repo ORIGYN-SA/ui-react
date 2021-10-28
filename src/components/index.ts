@@ -70,4 +70,5 @@ export {
   Lots,
   TextArea,
   Toggle,
+  Status
 };
