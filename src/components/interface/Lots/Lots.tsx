@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex";
 import Select from "../Inputs/Select";
-import { numberWithCommas } from "../../../utils/index";
+import { numberWithCommas } from "../../../utils";
 
 export interface LotsProps {
   error?: any;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Button from "../../interface/Button";
+import Button from "../Button";
 import Lots, { LotsProps } from "./Lots";
 
 export default {
