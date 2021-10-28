@@ -4,7 +4,7 @@ import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 
 export type StepperProps = {
-  tabs: Array<{ title: string }>;
+  tabs: Array<{ title: React.ReactNode  }>;
   content: Array<any>;
 };
 
@@ -22,14 +22,15 @@ const StyledTabContent = styled(Flex)`
 `}
 `;
 
-const StyledTab = styled(MenuLink)`
-  ${({ theme }) => `
+const StyledTab = styled(MenuLink)<{width?: string}>`
+  ${({ theme, width = "123px" }) => `
   color: ${theme.colors.MID_GREY};
+  background: ${theme.colors.WHITE};
   flex-grow: 1;
   border-bottom: 3px solid ${theme.colors.MID_GREY};
   padding: 17px 0;
   text-align: center;
-  min-width: 123px;
+  min-width: ${width};
     
   &.active {
     color: ${theme.colors.BLACK};

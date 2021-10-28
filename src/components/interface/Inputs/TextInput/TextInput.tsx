@@ -3,8 +3,7 @@ import styled from "styled-components";
 import Flex from "../../../layout/Flex";
 
 export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  name: string;
+  label?: string;
   error?: string;
 };
 
@@ -46,7 +45,7 @@ const ErrorMessage = styled.div`
 `}
 `;
 
-const TextInput = ({ label, error, ...props }: TextInputProps) => {
+const TextInput = ({ label = "", error, ...props }: TextInputProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
       <StyledLabel htmlFor={props.id}>{label}</StyledLabel>
