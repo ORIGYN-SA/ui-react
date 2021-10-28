@@ -56,12 +56,13 @@ const theme = {
 };
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
   body {
     background-color: #E5E5E5;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 15px;
     line-height: 22px;
   }

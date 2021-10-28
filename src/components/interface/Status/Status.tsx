@@ -1,30 +1,31 @@
 import React from "react";
 import styles from "styled-components";
+import {theme} from "../../../utils";
+
+type TStatus = keyof typeof theme.colors;
 
 export interface StatusProps {
+  status?: TStatus;
   label: string;
-  status: string;
-  maxWidth?: number;
+  width?: string;
 }
 
-const StyledStatus = styles.div`
-    ${({ status, maxWidth }) => `
-        background-color: ${status === "pending" ? "#F2BD00" : "#50AA3E"};
+export const SStatus = styles.b<{ status?: TStatus, width?: string }>`
+    ${({theme, status, width}) => `
+        display: inline-block;
+        width: ${width ? width : 'auto'};
+        background-color: ${theme.colors[status]};
         color: white;
-        font-size: 14px;
-        font-weight: 600;
         padding: 5px;
         text-align: center;
-        width: 100%;
-        max-width: ${maxWidth ? `${maxWidth}px` : `100%`};
     `}
 `;
 
-const Status = ({ label, status, maxWidth }: StatusProps) => {
+const Status: React.FC<StatusProps> = ({label, children, ...props}) => {
   return (
-    <StyledStatus status={status} maxWidth={maxWidth}>
-      {label}
-    </StyledStatus>
+    <SStatus {...props}>
+      {label || children}
+    </SStatus>
   );
 };
 

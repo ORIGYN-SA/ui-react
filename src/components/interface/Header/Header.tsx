@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 import ProfileIcon from "../../icons/Profile";
 import ArrowDownIcon from "../../icons/ArrowDown";
 import Card from "../Card/Card";
+import LogoMain from "../../icons/LogoMain";
 
 export type HeaderProps = {
   isLoggedIn: boolean;
@@ -108,13 +109,13 @@ const MenuButton = styled.button`
 `}
 `;
 
-const Header = ({ isLoggedIn, logoSrc }: HeaderProps) => {
+const Header = ({ isLoggedIn }: HeaderProps) => {
   const [isProfileOpened, setIsProfileOpened] = useState(false);
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   return (
     <StyledHeader align="center" justify="space-between">
       <Flex gap={50}>
-        <img src={logoSrc} alt="logo" />
+        <NavLink to="/"><LogoMain /></NavLink>
         <StyledNavigation className={isMobileMenuOpened ? "active" : ""}>
           <MenuLink to="/browse">Browse</MenuLink>
           {

@@ -14,6 +14,8 @@ import SafeIcon from "./Safe";
 import SearchIcon from "./Search";
 import TransactionIcon from "./Transaction";
 import TwitterIcon from "./Twitter";
+import LogoMainIcon from "./LogoMain"
+import LogoMainHorizontal from "./LogoMainHorizontal"
 
 export {
   ArrowDownIcon,
@@ -31,5 +33,7 @@ export {
   SafeIcon,
   SearchIcon,
   TransactionIcon,
-  TwitterIcon
+  TwitterIcon,
+  LogoMainIcon,
+  LogoMainHorizontal
 };

@@ -83,7 +83,9 @@ const StyledArrowDownIcon = styled(ArrowDownIcon)`
 `;
 
 const StyledTab = styled(MenuLink)`
-  padding: 14px 0;
+  padding: 15px 0 6px 0;
+  font-size: 16px;
+  line-height: 1;
 `;
 
 const StyledContent = styled.div`
@@ -121,10 +123,10 @@ const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
         value={options.filter((el) => el.value === currentTab)[0]}
       />
       <Flex adapt>
-        <StyledTabContent gap={10}>
+        <StyledTabContent>
           {tabs.map(({ title }, index) => (
             <StyledTab
-              as="div"
+              as="b"
               key={title + index}
               className={index === currentTab ? "active" : ""}
               onClick={() => setCurrentTab(index)}

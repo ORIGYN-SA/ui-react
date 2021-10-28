@@ -8,27 +8,41 @@ export type BreadCrumbsProps = {
   data: Array<{ title: string; link: string }>;
 };
 
-const StyledBreadCrumbsLink = styled(Link)`
+const SBreadCrumbs = styled.div`
   ${({theme}) => `
+  display: flex;
+  gap: 15px;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 13px;
+  line-height: 18px;
   margin: 12px 0;
-  text-decoration: none;
   color: ${theme.colors.BLACK};
+  
+  svg {
+    fill: ${theme.colors.MID_GREY};
+  }
+  
+  a {
+    text-decoration: none;
+    color: ${theme.colors.DARK_GREY};
+  }
 `}
 `;
 
 const BreadCrumbs = ({ data }: BreadCrumbsProps) => {
   return (
-    <Flex gap={15} align="center">
-      {data.map((item, index) => (
-        <>
+    <SBreadCrumbs>
+      {data.map(({link, title}, index) => (
+        <Flex gap={15} align="center" key={title}>
           {index > 0 && <ArrowRightIcon />}
-          <StyledBreadCrumbsLink to={item.link}>{item.title}</StyledBreadCrumbsLink>
-        </>
+          {index + 1 === data.length ? (
+            <span>{title}</span>
+          ) : (
+            <Link to={link}>{title}</Link>
+          )}
+        </Flex>
       ))}
-    </Flex>
+    </SBreadCrumbs>
   );
 };
 

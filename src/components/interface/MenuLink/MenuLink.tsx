@@ -16,6 +16,7 @@ const StyledMenuLink = styled(NavLink)<MenuLinkProps>`
     border-color: ${theme.colors.BLACK};
   }
   &.active {
+    color: ${theme.colors.BLACK};
     border-color: ${theme.colors.ACCENT_COLOR};
   }
 `}
