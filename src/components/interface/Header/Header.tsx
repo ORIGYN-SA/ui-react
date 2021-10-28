@@ -31,6 +31,11 @@ const StyledProfileDropdown = styled(Card)`
 
 const StyledNavigation = styled(Flex)`
   ${({ theme }) => `
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   gap: 40px;
   
   ${theme.media.sm} {

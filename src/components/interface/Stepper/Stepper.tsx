@@ -10,6 +10,11 @@ export type StepperProps = {
 
 const StyledTabContent = styled(Flex)`
   ${({ theme }) => `
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   background: ${theme.colors.WHITE};
   height: 50px;
   padding: 0;
@@ -19,27 +24,15 @@ const StyledTabContent = styled(Flex)`
 
 const StyledTab = styled(MenuLink)`
   ${({ theme }) => `
-  color: ${theme.colors.BLACK};
-  font-size: 12px;
-  letter-spacing: 0.05em;
+  color: ${theme.colors.MID_GREY};
   flex-grow: 1;
-  border-bottom: 3px solid ${theme.colors.BLACK};
+  border-bottom: 3px solid ${theme.colors.MID_GREY};
   padding: 17px 0;
   text-align: center;
-  text-transform: uppercase;
   min-width: 123px;
-  &::after {
-    content: none;
-  }
-  &:first-child {
-    text-align: left;
-  }
-  &:last-child {
-    text-align: right;
-  }
     
   &.active {
-    opacity: 1;
+    color: ${theme.colors.BLACK};
     border-bottom: 3px solid ${theme.colors.BLACK};
   }
 `}

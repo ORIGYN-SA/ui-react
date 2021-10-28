@@ -1,9 +1,20 @@
 {
   "name": "@origyn-sa/origyn-art-ui",
   "version": "1.0.17",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
+  "main": "build/index.js",
+  "module": "build/index.esm.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm version patch && npm run build",
+    "build": "rollup -c",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "prity": "npx prettier --write src/components"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/origyn-sa/origyn_art_ui"
@@ -56,16 +67,7 @@
     "react-responsive-carousel": "^3.2.21",
     "react-select": "^5.1.0"
   },
-  "scripts": {
-    "build": "rollup -c",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "prity": "npx prettier --write ./components"
-  },
   "lint-staged": {
     "components/*": "prettier --write --ignore-unknown"
-  },
-  "files": [
-    "/lib"
-  ]
+  }
 }

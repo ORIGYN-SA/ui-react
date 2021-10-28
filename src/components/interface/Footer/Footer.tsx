@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex/Flex";
 import Grid from "../../layout/Grid";
-import HR from "../../interface/HR";
+import HR from "../HR";
 import StyledBanner from "../Banner";
 import Container from "../../layout/Container/Container";
 
