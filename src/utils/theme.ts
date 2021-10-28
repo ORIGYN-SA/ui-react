@@ -1,19 +1,6 @@
-import React from 'react';
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { BrowserRouter as Router } from "react-router-dom";
+import {createGlobalStyle} from "styled-components";
 
-export const parameters = {
-  layout: 'fullscreen',
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-}
-
-const theme = {
+export const theme = {
   colors: {
     BLACK: '#151515',
     VERY_DARK_GREY: '#4a4a4a',
@@ -54,15 +41,14 @@ const theme = {
     lg: 1400,
   }
 };
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
   }
   body {
     background-color: #E5E5E5;
-    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 15px;
     line-height: 22px;
   }
@@ -155,14 +141,4 @@ const GlobalStyle = createGlobalStyle`
       line-height: 36px;
     }
   }
-`
-export const decorators = [
-  (Story) => (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Router>
-          <Story />
-      </Router>
-    </ThemeProvider>
-  ),
-];
+`;

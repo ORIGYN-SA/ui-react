@@ -1,13 +1,13 @@
 {
   "name": "@origyn-sa/origyn-art-ui",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
     "build"
   ],
   "scripts": {
-    "prepublishOnly": "npm version patch && npm run build",
+    "prepublishOnly": "npm run build && npm version patch",
     "build": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",

@@ -19,7 +19,7 @@ import MoreLink from "./interface/MoreLink";
 import ProductCard from "./interface/ProductCard";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
-import Status from "./interface/Status";
+import Status, {SStatus} from "./interface/Status";
 import Stepper from "./interface/Stepper";
 import { useStepper } from "./interface/Stepper/Stepper";
 import TabContent from "./interface/TabContent";
@@ -70,4 +70,6 @@ export {
   Lots,
   TextArea,
   Toggle,
+  Status,
+  SStatus
 };
