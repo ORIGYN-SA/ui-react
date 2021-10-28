@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 
-export type StepperProps = {
+export interface StepperProps {
   tabs: Array<{ title: React.ReactNode  }>;
   content: Array<any>;
 };
@@ -60,7 +60,7 @@ const Stepper = ({ tabs, content }: StepperProps) => {
 };
 
 // TODO: consider refactoring
-export const useStepper = (steps: Array<{ label: string; content: any }>) => {
+export const useStepper = (steps: Array<{ label: React.ReactNode; content: any }>) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return [
