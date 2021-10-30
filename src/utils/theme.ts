@@ -38,7 +38,7 @@ export const theme = {
   containers: {
     sm: 905,
     md: 1150,
-    lg: 1400,
+    lg: 1440,
   }
 };
 export const GlobalStyle = createGlobalStyle`
@@ -56,7 +56,9 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: inherit;
   }
-  
+  img {
+    max-width: 100%;
+  }
   .noShrink {
     flex-shrink: 0;
   }
@@ -64,6 +66,10 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     font-size: 24px;
     line-height: 32px;
+  }
+  h1 > strong {
+    font-size: 32px;
+    line-height: 42px;
   }
   h2 {
     font-weight: 500;
@@ -81,6 +87,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 22px;
   }
   button, .buttonLabel {
+    font-weight: bold;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.05em;
@@ -102,6 +109,10 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 28px;
       line-height: 38px;
     }
+    h1 > strong {
+      font-size: 40px;
+      line-height: 52px;
+    }
     h2 {
       font-size: 24px;
       line-height: 36px;
@@ -121,6 +132,10 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 32px;
       line-height: 44px;
     }
+    h1 > strong {
+      font-size: 44px;
+      line-height: 58px;
+    }
     h2 {
       font-size: 26px;
       line-height: 38px;
@@ -131,6 +146,10 @@ export const GlobalStyle = createGlobalStyle`
     h1 {
       font-size: 36px;
       line-height: 48px;
+    }
+    h1 > strong {
+      font-size: 52px;
+      line-height: 66px;
     }
     h2 {
       font-size: 30px;
