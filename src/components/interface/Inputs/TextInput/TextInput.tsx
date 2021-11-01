@@ -28,14 +28,6 @@ const StyledTextInput = styled.input<{error: boolean}>`
   }
 `}`;
 
-const StyledLabel = styled.label`
-  ${() => `
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-`}
-`;
-
 const ErrorMessage = styled.div`
   ${({theme}) => `
   font-size: 14px;
@@ -48,7 +40,7 @@ const ErrorMessage = styled.div`
 const TextInput = ({ label, error, ...props }: TextInputProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
-      {label ? <StyledLabel htmlFor={props.id}>{label}</StyledLabel> : null }
+      {label ? <label htmlFor={props.id}><b>{label}</b></label> : null }
       <StyledTextInput
         error={!!error}
         {...props}

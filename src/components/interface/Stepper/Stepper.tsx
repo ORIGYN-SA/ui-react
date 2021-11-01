@@ -23,13 +23,15 @@ const StyledTabContent = styled(Flex)`
 `;
 
 const StyledTab = styled(MenuLink)`
-  ${({ theme }) => `
+  ${({ theme, width }) => `
   color: ${theme.colors.MID_GREY};
   background: #ffffff;
-  flex-grow: 1;
+  flex-grow: ${width ? 'auto' : 1};
+  width: ${width ? width : 'width'};
   border-bottom: 3px solid ${theme.colors.MID_GREY};
   padding: 17px 0;
   text-align: center;
+  
     
   &.active {
     color: ${theme.colors.BLACK};
@@ -42,8 +44,8 @@ const Stepper = ({ tabs, content }: StepperProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
-    <Flex flexFlow="column">
-      <StyledTabContent gap={0}>
+    <Flex flexFlow="column" fullWidth>
+      <StyledTabContent fullWidth gap={0}>
         {tabs.map(({ title }, index) => (
           <StyledTab
             as="div"

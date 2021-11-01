@@ -7,7 +7,7 @@ export const theme = {
     DARK_GREY: '#6F6F6F',
     MID_GREY: '#AEAEAE',
     LIGHT_GREY: '#D8D8D8',
-    VERY_LIGHT_GRAY: '#F2F2F2',
+    VERY_LIGHT_GREY: '#F2F2F2',
     WHITE: '#F2F2F2',
 
     ERROR: '#E42932',

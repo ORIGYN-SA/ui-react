@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export type MenuLinkProps = {};
+export type MenuLinkProps = {
+  width?: string;
+};
 
 const StyledMenuLink = styled(NavLink)<MenuLinkProps>`
   ${({ theme }) => `
