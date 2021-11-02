@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export type TFlexFlow = "column" | "row" | "column-reverse" | "row-reverse";
+
 export type FlexProps = {
   justify?:
     | "flex-start"
@@ -8,7 +10,15 @@ export type FlexProps = {
     | "space-between"
     | "space-around";
   align?: "flex-start" | "flex-end" | "center";
-  flexFlow?: "column" | "row" | "column-reverse" | "row-reverse";
+  flexFlow?: TFlexFlow;
+  smFlexFlow?: TFlexFlow;
+  mdFlexFlow?: TFlexFlow;
+  lgFlexFlow?: TFlexFlow;
+  xlFlexFlow?: TFlexFlow;
+  smGap?: number;
+  mdGap?: number;
+  lgGap?: number;
+  xlGap?: number;
   fullWidth?: boolean;
   fullHeight?: boolean;
   gap?: number;
@@ -23,9 +33,16 @@ const StyledFlex = styled.div<FlexProps>`
     fullWidth,
     fullHeight,
     flexFlow,
+    smFlexFlow,
+    mdFlexFlow,
+    lgFlexFlow,
+    xlFlexFlow,
     relative,
     gap = 0,
-    adapt,
+    smGap,
+    mdGap,
+    lgGap,
+    xlGap,
     theme,
   }) => `
   display: flex;
@@ -36,8 +53,25 @@ const StyledFlex = styled.div<FlexProps>`
   height: ${fullHeight ? "100%" : "auto"};
   gap: ${gap}px;
   position: ${relative ? "relative" : "static"};
+  
+  ${theme?.media?.sm}{
+    flex-flow: ${smFlexFlow ? smFlexFlow : flexFlow};
+    gap: ${smGap || gap}px;
+  }
+  
   ${theme?.media?.md}{
-    flex-flow: ${adapt ? "column" : flexFlow};
+    flex-flow: ${mdFlexFlow ? mdFlexFlow : flexFlow};
+    gap: ${mdGap || gap}px;
+  }
+  
+  ${theme?.media?.lg}{
+    flex-flow: ${lgFlexFlow ? lgFlexFlow : flexFlow};
+    gap: ${lgGap || gap}px;
+  }
+  
+  ${theme?.media?.xl}{
+    flex-flow: ${xlFlexFlow ? xlFlexFlow : flexFlow};
+    gap: ${xlGap || gap}px;
   }
 `}
 `;
