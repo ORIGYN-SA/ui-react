@@ -7,7 +7,7 @@
     "build"
   ],
   "scripts": {
-    "prepublishOnly": "npm run build && npm version patch",
+    "prepublishOnly": "npm version patch && npm run build",
     "build": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
