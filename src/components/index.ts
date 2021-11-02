@@ -23,7 +23,7 @@ import Status, {SStatus} from "./interface/Status";
 import Stepper from "./interface/Stepper";
 import { useStepper } from "./interface/Stepper/Stepper";
 import TabContent from "./interface/TabContent";
-import TabContentVertical from "./interface/TabContent/TabContentVertical";
+import TabContentVertical, {useTabContentVertical} from "./interface/TabContent/TabContentVertical";
 import CustomTable from "./interface/Table/CustomTable";
 import HistoryTable from "./interface/Table/HistoryTable";
 
@@ -61,6 +61,7 @@ export {
   Stepper,
   TabContent,
   TabContentVertical,
+  useTabContentVertical,
   CustomTable,
   HistoryTable,
   TextInput,
