@@ -40,5 +40,5 @@ ternaryDisabled.args = {
 
 export const fullWidth = Template.bind({});
 fullWidth.args = {
-  fullWidth: true,
+  size: "fullWidth",
 };

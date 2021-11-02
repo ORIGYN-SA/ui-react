@@ -1,10 +1,12 @@
 import styled, {css} from "styled-components";
 
 export type ButtonProps = {
-  size?: "sm" | "md" | "lg";
+  size?: (keyof typeof sizes) | string;
+  smSize?: (keyof typeof sizes) | string;
+  mdSize?: (keyof typeof sizes) | string;
+  lgSize?: (keyof typeof sizes) | string;
   btnType?: "primary" | "secondary" | "ternary";
   disabled?: boolean;
-  fullWidth?: boolean;
 };
 
 const primaryStyle = css`${({theme}) => `
@@ -47,13 +49,14 @@ const sizes = {
   sm: "auto",
   md: "320px",
   lg: "460px",
+  fullWidth: "100%"
 }
 
 const StyledFlex = styled.button<ButtonProps>`
   ${({btnType = "primary"}) => buttonType[btnType] || buttonType.primary}
-  ${({ theme, fullWidth, btnType, disabled, size = "md" }) => `
+  ${({ theme, btnType, disabled, size = "md", mdSize, smSize, lgSize }) => `
   display: flex;
-  width: ${fullWidth ? "100%" : sizes[size]};
+  width: ${sizes[size] || size};
   height: 50px;
   border-radius: 1px;
   font-weight: bold;
@@ -77,6 +80,16 @@ const StyledFlex = styled.button<ButtonProps>`
       color: ${btnType === "ternary" ? theme.colors.MID_GREY : theme.colors.WHITE};
     }
   ` : ""}
+  
+  ${theme.media.lg} {
+    width: ${sizes[lgSize] || lgSize};
+  }
+  ${theme.media.md} {
+    width: ${sizes[mdSize] || mdSize};
+  }
+  ${theme.media.sm} {
+    width: ${sizes[smSize] || smSize};
+  }
 `}
 `;
 
