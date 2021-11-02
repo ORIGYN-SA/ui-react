@@ -54,22 +54,22 @@ const StyledFlex = styled.div<FlexProps>`
   position: ${relative ? "relative" : "static"};
   
   ${theme?.media?.xl}{
-    flex-flow: ${xlFlexFlow ? xlFlexFlow : flexFlow};
-    gap: ${xlGap || gap}px;
+    flex-flow: ${xlFlexFlow};
+    gap: ${xlGap}px;
   }
   
   ${theme?.media?.lg}{
-    flex-flow: ${lgFlexFlow ? lgFlexFlow : flexFlow};
-    gap: ${lgGap || gap}px;
+    flex-flow: ${lgFlexFlow};
+    gap: ${lgGap}px;
   }
   
   ${theme?.media?.md}{
-    flex-flow: ${mdFlexFlow ? mdFlexFlow : flexFlow};
-    gap: ${mdGap || gap}px;
+    flex-flow: ${mdFlexFlow};
+    gap: ${mdGap}px;
   }
   
   ${theme?.media?.sm}{
-    flex-flow: ${smFlexFlow ? smFlexFlow : "column"};
+    flex-flow: ${smFlexFlow || flexFlow};
     gap: ${smGap || gap}px;
   }
 `}

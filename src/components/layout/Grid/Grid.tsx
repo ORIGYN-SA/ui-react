@@ -22,12 +22,12 @@ const StyledGrid = styled.div<GridProps>`
   gap: ${gap}px;
   
   ${theme?.media?.xl} {
-    grid-template-columns: repeat(${xlColumns ? xlColumns : columns}, minmax(0, 1fr))!important;
+    grid-template-columns: repeat(${xlColumns}, minmax(0, 1fr))!important;
     gap: ${xlGap}px;
   }
   
   ${theme?.media?.lg} {
-    grid-template-columns: repeat(${lgColumns ? lgColumns : columns}, minmax(0, 1fr))!important;
+    grid-template-columns: repeat(${lgColumns}, minmax(0, 1fr))!important;
     gap: ${lgGap}px;
   }
   

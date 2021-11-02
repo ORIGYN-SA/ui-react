@@ -33,7 +33,7 @@ const BreadCrumbs = ({ data }: BreadCrumbsProps) => {
   return (
     <SBreadCrumbs>
       {data.map(({link, title}, index) => (
-        <Flex gap={15} align="center" key={title}>
+        <Flex gap={15} smFlexFlow="row" align="center" key={title}>
           {index > 0 && <ArrowRightIcon />}
           {index + 1 === data.length ? (
             <span>{title}</span>

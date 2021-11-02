@@ -10,11 +10,13 @@ export interface ContainerProps {
   xlSize?: TContainerSize;
   padding?: string;
   smPadding?: string;
+  mdPadding?: string;
+  lgPadding?: string;
   relative?: boolean;
 }
 
 const StyledFlex = styled.div<ContainerProps>`
-  ${({ size = "full", smSize, mdSize, lgSize, xlSize, relative, padding = 0, smPadding, theme }) => `
+  ${({ size = "full", smSize, mdSize, lgSize, xlSize, relative, padding = 0, smPadding, mdPadding, lgPadding, theme }) => `
   display: block;
   padding: ${padding};
   max-width: ${size === "full" ? "100%" : `${theme.containers[size]}px`};
@@ -29,15 +31,17 @@ const StyledFlex = styled.div<ContainerProps>`
   
   ${theme.media.lg} {
     max-width: ${lgSize === "full" ? "100%" : `${theme.containers[lgSize || size]}px`};
+    padding: ${lgPadding};
   }
   
   ${theme.media.md} {
     max-width: ${mdSize === "full" ? "100%" : `${theme.containers[mdSize || size]}px`};
+    padding: ${mdPadding};
   }
   
   ${theme.media.sm} {
     max-width: ${smSize === "full" ? "100%" : `${theme.containers[smSize || size]}px`};
-    padding: ${smPadding ?? padding};
+    padding: ${smPadding};
   }
 `}
 `;

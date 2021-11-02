@@ -27,10 +27,6 @@ const StyledSelect = styled(Select)`
     ${theme.media.md} {
       display: block;
     }
-    ${theme.media.sm} {
-      display: block;
-      background-color: #ffffff;
-    }
   `}
 `;
 
