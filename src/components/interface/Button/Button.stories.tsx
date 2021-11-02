@@ -18,23 +18,23 @@ primaryDisabled.args = { disabled: true };
 
 export const secondary = Template.bind({});
 secondary.args = {
-  type: "secondary",
+  btnType: "secondary",
 };
 
 export const secondaryDisabled = Template.bind({});
 secondaryDisabled.args = {
-  type: "secondary",
+  btnType: "secondary",
   disabled: true,
 };
 
 export const ternary = Template.bind({});
 ternary.args = {
-  type: "ternary",
+  btnType: "ternary",
 };
 
 export const ternaryDisabled = Template.bind({});
 ternaryDisabled.args = {
-  type: "ternary",
+  btnType: "ternary",
   disabled: true,
 };
 
