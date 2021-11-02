@@ -21,14 +21,9 @@ const StyledGrid = styled.div<GridProps>`
   grid-template-rows: ${rows};
   gap: ${gap}px;
   
-  ${theme?.media?.sm} {
-    grid-template-columns: repeat(${smColumns ? smColumns : 1}, minmax(0, 1fr))!important;
-    gap: ${smGap}px;
-  }
-  
-  ${theme?.media?.md} {
-    grid-template-columns: repeat(${mdColumns ? mdColumns : 1}, minmax(0, 1fr))!important;
-    gap: ${mdGap}px;
+  ${theme?.media?.xl} {
+    grid-template-columns: repeat(${xlColumns ? xlColumns : columns}, minmax(0, 1fr))!important;
+    gap: ${xlGap}px;
   }
   
   ${theme?.media?.lg} {
@@ -36,9 +31,14 @@ const StyledGrid = styled.div<GridProps>`
     gap: ${lgGap}px;
   }
   
-  ${theme?.media?.xl} {
-    grid-template-columns: repeat(${xlColumns ? xlColumns : columns}, minmax(0, 1fr))!important;
-    gap: ${xlGap}px;
+  ${theme?.media?.md} {
+    grid-template-columns: repeat(${mdColumns ? mdColumns : 1}, minmax(0, 1fr))!important;
+    gap: ${mdGap}px;
+  }
+  
+  ${theme?.media?.sm} {
+    grid-template-columns: repeat(${smColumns ? smColumns : 1}, minmax(0, 1fr))!important;
+    gap: ${smGap}px;
   }
 `}
 `;

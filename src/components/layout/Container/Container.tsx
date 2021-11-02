@@ -23,21 +23,21 @@ const StyledFlex = styled.div<ContainerProps>`
   position: ${relative ? "relative" : "static"};
   margin: 0 auto;
   
-  ${theme.media.sm} {
-    max-width: ${smSize === "full" ? "100%" : `${theme.containers[smSize || size]}px`};
-    padding: ${smPadding ?? padding};
-  }
-  
-  ${theme.media.md} {
-    max-width: ${mdSize === "full" ? "100%" : `${theme.containers[mdSize || size]}px`};
+  ${theme.media.xl} {
+    max-width: ${xlSize === "full" ? "100%" : `${theme.containers[xlSize || size]}px`};
   }
   
   ${theme.media.lg} {
     max-width: ${lgSize === "full" ? "100%" : `${theme.containers[lgSize || size]}px`};
   }
   
-  ${theme.media.xl} {
-    max-width: ${xlSize === "full" ? "100%" : `${theme.containers[xlSize || size]}px`};
+  ${theme.media.md} {
+    max-width: ${mdSize === "full" ? "100%" : `${theme.containers[mdSize || size]}px`};
+  }
+  
+  ${theme.media.sm} {
+    max-width: ${smSize === "full" ? "100%" : `${theme.containers[smSize || size]}px`};
+    padding: ${smPadding ?? padding};
   }
 `}
 `;

@@ -54,14 +54,9 @@ const StyledFlex = styled.div<FlexProps>`
   gap: ${gap}px;
   position: ${relative ? "relative" : "static"};
   
-  ${theme?.media?.sm}{
-    flex-flow: ${smFlexFlow ? smFlexFlow : flexFlow};
-    gap: ${smGap || gap}px;
-  }
-  
-  ${theme?.media?.md}{
-    flex-flow: ${mdFlexFlow ? mdFlexFlow : flexFlow};
-    gap: ${mdGap || gap}px;
+  ${theme?.media?.xl}{
+    flex-flow: ${xlFlexFlow ? xlFlexFlow : flexFlow};
+    gap: ${xlGap || gap}px;
   }
   
   ${theme?.media?.lg}{
@@ -69,9 +64,14 @@ const StyledFlex = styled.div<FlexProps>`
     gap: ${lgGap || gap}px;
   }
   
-  ${theme?.media?.xl}{
-    flex-flow: ${xlFlexFlow ? xlFlexFlow : flexFlow};
-    gap: ${xlGap || gap}px;
+  ${theme?.media?.md}{
+    flex-flow: ${mdFlexFlow ? mdFlexFlow : flexFlow};
+    gap: ${mdGap || gap}px;
+  }
+  
+  ${theme?.media?.sm}{
+    flex-flow: ${smFlexFlow ? smFlexFlow : flexFlow};
+    gap: ${smGap || gap}px;
   }
 `}
 `;
