@@ -100,7 +100,7 @@ const Template: Story = (args) => {
             label={`By sending this form, I agree that my personal data will be \n saved and processed according to data protection regulations and will be used only for commercial and marketing purposes.`}
           />
           <HR marginTop={60} marginBottom={30} />
-          <Flex adapt align="flex-start" justify="flex-end" gap={40} fullWidth>
+          <Flex align="flex-start" justify="flex-end" gap={40} fullWidth>
             <Flex flexFlow="column">
               <p>
                 Origyn is committed to protecting and respecting your privacy,

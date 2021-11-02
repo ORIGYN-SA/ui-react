@@ -1,18 +1,18 @@
 import styled from "styled-components";
+import {theme} from "../../../utils";
+
+type TStatus = keyof typeof theme.colors;
 
 export type HRProps = {
   marginTop?: number;
   marginBottom?: number;
-  accent?: boolean;
+  color?: TStatus;
 };
 
 const HR = styled.hr<HRProps>`
-  ${({ accent, marginTop = 0, marginBottom = 0, theme }) => `
-  opacity: ${accent ? "1" : "0.2"};
+  ${({ color="BLACK", marginTop = 0, marginBottom = 0, theme }) => `
   border: none;
-  border-bottom: 1px solid ${
-    accent ? theme.colors.ACCENT_COLOR : theme.colors.BLACK
-  };
+  border-bottom: 1px solid ${theme.colors[color]};
   margin: ${marginTop}px 0 ${marginBottom}px 0;
 `}
 `;

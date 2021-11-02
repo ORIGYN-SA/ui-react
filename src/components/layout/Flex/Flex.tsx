@@ -23,7 +23,6 @@ export type FlexProps = {
   fullHeight?: boolean;
   gap?: number;
   relative?: boolean;
-  adapt?: boolean;
 };
 
 const StyledFlex = styled.div<FlexProps>`
@@ -70,7 +69,7 @@ const StyledFlex = styled.div<FlexProps>`
   }
   
   ${theme?.media?.sm}{
-    flex-flow: ${smFlexFlow ? smFlexFlow : flexFlow};
+    flex-flow: ${smFlexFlow ? smFlexFlow : "column"};
     gap: ${smGap || gap}px;
   }
 `}

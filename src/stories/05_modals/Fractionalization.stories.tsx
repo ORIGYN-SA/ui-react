@@ -143,7 +143,7 @@ const Template: Story = (args) => {
         return (
           <>
             <HR marginBottom={32} marginTop={32} />
-            <Flex adapt align="center" justify="flex-end" gap={50} fullWidth>
+            <Flex align="center" justify="flex-end" gap={50} fullWidth>
               <b onClick={closeModal}>Cancel</b>
               <Button onClick={() => setStep(step + 1)}>
                 NEXT: {stepsConfig[step + 1].label}
@@ -210,12 +210,12 @@ const Template: Story = (args) => {
     <div>
       <Button onClick={openModal}>Fractionalization</Button>
       <Modal title={args.title} isOpened={isOpened} closeModal={closeModal}>
-        <Flex adapt justify="center" style={{ marginBottom: 32 }}>
+        <Flex justify="center" style={{ marginBottom: 32 }}>
           {step !== 3 && StepperHeader}
         </Flex>
         <Flex flexFlow="column">{renderHeader()}</Flex>
         <div>
-          <Flex adapt flexFlow="row" justify="space-between" gap={50}>
+          <Flex flexFlow="row" justify="space-between" gap={50}>
             {StepperContent}
             {step !== 3 && <ItemCard />}
           </Flex>
@@ -387,7 +387,7 @@ const ScheduleSale = () => {
         name="permission"
         label="Allow Buyers to submit an Offer for your consideration."
       />
-      <ScheduleSaleInputsWrapper adapt gap={18}>
+      <ScheduleSaleInputsWrapper gap={18}>
         <InputWrapper>
           <Select label="Duration of Sale" name="duration" />
         </InputWrapper>
@@ -395,7 +395,7 @@ const ScheduleSale = () => {
           <Select label="Start Date" name="start" />
         </InputWrapper>
       </ScheduleSaleInputsWrapper>
-      <ScheduleSaleInputsWrapper adapt gap={18} align="flex-end">
+      <ScheduleSaleInputsWrapper gap={18} align="flex-end">
         <InputWrapper>
           <Select label="Lock-up Period" name="lockUp" />
         </InputWrapper>

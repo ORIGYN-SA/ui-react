@@ -58,13 +58,13 @@ const customReactSelectStyles: StylesConfig<Option | unknown, false> = {
   }),
 };
 
-const StyledTabContent = styled(Flex)`
-  ${({ theme }) => `
+const StyledTabContent = styled(Flex)<{maxWidth?: string}>`
+  ${({ theme, maxWidth="none" }) => `
     color: #ffffff;
     display: flex;
     flex-direction: column;
     gap: 0;
-    max-width: 200px;
+    max-width: ${maxWidth};
     width: 100%;
     ${theme.media.md} {
     display: none;
@@ -122,12 +122,12 @@ const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
         options={options}
         value={options.filter((el) => el.value === currentTab)[0]}
       />
-      <Flex adapt>
-        <StyledTabContent>
+      <Flex>
+        <StyledTabContent maxWidth="200px">
           {tabs.map(({ title }, index) => (
             <StyledTab
               as="b"
-              key={title + index}
+              key={"contentTab-" + title}
               className={index === currentTab ? "active" : ""}
               onClick={() => setCurrentTab(index)}
             >
@@ -139,6 +139,29 @@ const TabContentVertical = ({ tabs, content }: TabContentVerticalProps) => {
       </Flex>
     </>
   );
+};
+
+
+export const useTabContentVertical = (steps: Array<{ title: string; content: any }>) => {
+  const [currentTab, setCurrentTab] = useState(0);
+
+  return [
+    <StyledTabContent gap={0}>
+      {steps.map(({title}, index) => (
+        <StyledTab
+          as="b"
+          key={"contentTab-" + title}
+          className={index === currentTab ? "active" : ""}
+          onClick={() => setCurrentTab(index)}
+        >
+          {title}
+        </StyledTab>
+      ))}
+    </StyledTabContent>,
+    steps[currentTab].content,
+    currentTab,
+    setCurrentTab,
+  ];
 };
 
 export default TabContentVertical;

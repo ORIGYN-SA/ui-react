@@ -4,6 +4,7 @@ import { Story } from "@storybook/react";
 import TabContent, { TabContentProps } from "./TabContent";
 import TabContentVertical, {
   TabContentVerticalProps,
+  useTabContentVertical
 } from "./TabContentVertical";
 import styled from "styled-components";
 
@@ -57,5 +58,28 @@ VerticalTabs.args = {
     <div>Content 4</div>,
     <div>Content 5</div>,
     <div>Content 6</div>,
+  ],
+};
+
+const UseVerticalTemplate: Story<{steps: Array<{ title: string; content: any }>}> = ({steps}) => {
+  const [nav, content, step, setStep] = useTabContentVertical(steps)
+
+  return (
+    <LeftTopMargin>
+      {nav}
+      {content}
+    </LeftTopMargin>
+  );
+}
+
+export const UseVerticalTabs = UseVerticalTemplate.bind({});
+UseVerticalTabs.args = {
+  steps: [
+    { title: "Digital Twin", content: <div>Content 1</div> },
+    { title: "Selling", content: <div>Content 2</div> },
+    { title: "Buying", content: <div>Content 3</div> },
+    { title: "Transaction", content: <div>Content 4</div> },
+    { title: "Trading", content: <div>Content 5</div> },
+    { title: "About", content: <div>Content 6</div> },
   ],
 };

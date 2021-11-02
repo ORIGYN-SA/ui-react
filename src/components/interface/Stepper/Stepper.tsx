@@ -6,6 +6,7 @@ import MenuLink from "../MenuLink";
 export interface StepperProps {
   tabs: Array<{ title: React.ReactNode  }>;
   content: Array<any>;
+  tabNavigable?: string;
 };
 
 const StyledTabContent = styled(Flex)`
@@ -40,7 +41,7 @@ const StyledTab = styled(MenuLink)`
 `}
 `;
 
-const Stepper = ({ tabs, content }: StepperProps) => {
+const Stepper = ({ tabs, content, tabNavigable="back" }: StepperProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
@@ -50,7 +51,23 @@ const Stepper = ({ tabs, content }: StepperProps) => {
           <StyledTab
             as="div"
             className={index <= currentTab ? "active" : ""}
-            onClick={() => setCurrentTab(index)}
+            onClick={() => {
+              switch (tabNavigable) {
+                case "back":
+                  if (currentTab > index) {
+                    setCurrentTab(index);
+                  }
+                  break;
+                case "forward":
+                  if (currentTab < index) {
+                    setCurrentTab(index);
+                  }
+                  break;
+                case "any":
+                  setCurrentTab(index);
+                  break;
+              }
+            }}
           >
             {title}
           </StyledTab>

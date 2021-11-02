@@ -31,7 +31,7 @@ const StyledModal = styled(ReactModal)`
     max-width: 1150px;
     width: 100%;
   }
-  ${(props) => props?.theme?.media?.md} {
+  ${({theme}) => theme?.media?.md} {
     &.ReactModal__Content {
       inset: auto;
       left: 0;
@@ -70,6 +70,11 @@ const StyledCloseBtn = styled(CloseIcon)`
   right: 50px;
   top: 50px;
   cursor: pointer;
+  
+  ${({theme}) => theme?.media?.sm} {
+    top: 15px;
+    right: 15px;
+  }
 `;
 
 const Modal: React.FC<ModalProps> = ({
@@ -84,7 +89,7 @@ const Modal: React.FC<ModalProps> = ({
       // style={customStyles}
       onRequestClose={closeModal}
     >
-      <Container relative size="md" padding="45px 40px">
+      <Container relative size="md" padding="45px 40px" smPadding="50px 12px">
         {title && <h2>{title}</h2>}
         {children}
         <StyledCloseBtn onClick={closeModal} />
