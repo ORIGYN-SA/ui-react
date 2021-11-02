@@ -14,12 +14,12 @@ const StyledTextInput = styled.input<{error: boolean}>`
   width: 100%;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid ${ error ? theme.colors.ERROR : (value ? theme.colors.BLACK : theme.colors.LIGHT_GRAY)};
+  border: 1px solid ${ error ? theme.colors.ERROR : (value ? theme.colors.BLACK : theme.colors.LIGHT_GREY)};
   box-sizing: border-box;
   border-radius: 2px;
   
   ::placeholder {
-    color: ${theme.colors.LIGHT_GRAY};
+    color: ${theme.colors.LIGHT_GREY};
   }
 
   &:focus{

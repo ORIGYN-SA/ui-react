@@ -14,12 +14,12 @@ const StyledTextArea = styled.textarea<{ resize?: boolean }>`
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid ${value ? theme.colors.BLACK : theme.colors.LIGHT_GRAY};
+  border: 1px solid ${value ? theme.colors.BLACK : theme.colors.LIGHT_GREY};
   box-sizing: border-box;
   border-radius: 2px;
   resize: ${resize && 'none'};
   ::placeholder {
-    color: ${theme.colors.LIGHT_GRAY};
+    color: ${theme.colors.LIGHT_GREY};
   }
 
   &:focus{

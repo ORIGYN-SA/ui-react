@@ -27,6 +27,10 @@ const StyledSelect = styled(Select)`
     ${theme.media.md} {
       display: block;
     }
+    ${theme.media.sm} {
+      display: block;
+      background-color: #ffffff;
+    }
   `}
 `;
 
@@ -146,18 +150,31 @@ export const useTabContentVertical = (steps: Array<{ title: string; content: any
   const [currentTab, setCurrentTab] = useState(0);
 
   return [
-    <StyledTabContent gap={0}>
-      {steps.map(({title}, index) => (
-        <StyledTab
-          as="b"
-          key={"contentTab-" + title}
-          className={index === currentTab ? "active" : ""}
-          onClick={() => setCurrentTab(index)}
-        >
-          {title}
-        </StyledTab>
-      ))}
-    </StyledTabContent>,
+    <>
+      <StyledSelect
+        onChange={(option: any) => setCurrentTab(option?.value)}
+        styles={customReactSelectStyles}
+        components={{
+          DropdownIndicator: ({isFocused}) => (
+            <StyledArrowDownIcon className={isFocused ? "up" : ""} />
+          )
+        }}
+        options={steps.map((s, i) => ({value: i, label: s.title}))}
+        defaultValue={{label: steps[0].title, value: 0}}
+      />
+      <StyledTabContent gap={0}>
+        {steps.map(({title}, index) => (
+            <StyledTab
+              as="b"
+              key={"contentTab-" + title}
+              className={index === currentTab ? "active" : ""}
+              onClick={() => setCurrentTab(index)}
+            >
+              {title}
+            </StyledTab>
+        ))}
+      </StyledTabContent>
+    </>,
     steps[currentTab].content,
     currentTab,
     setCurrentTab,

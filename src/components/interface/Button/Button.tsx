@@ -69,7 +69,7 @@ const StyledFlex = styled.button<ButtonProps>`
   ${disabled ? `
     background-color: ${btnType === "ternary" ? "transparent" : theme.colors.MID_GREY};
     border-color: ${theme.colors.MID_GREY};
-    color: ${btnType === "ternary" ? theme.colors.MID_GRAY : theme.colors.WHITE};
+    color: ${btnType === "ternary" ? theme.colors.MID_GREY : theme.colors.WHITE};
     cursor: not-allowed;
     :hover {
       background-color: ${btnType === "ternary" ? "transparent" : theme.colors.MID_GREY};
