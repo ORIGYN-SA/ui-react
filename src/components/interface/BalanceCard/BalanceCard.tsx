@@ -10,7 +10,7 @@ import Card from "../Card";
 import { numberWithCommas } from "../../../utils";
 
 export interface BalanceCardProps extends BannerProps {
-  balance: number;
+  balance: number | string;
   name: string;
   icon?: ReactNode;
   actions?: any;
@@ -57,7 +57,7 @@ const BalanceCard = ({
           {icon}
           <b style={{ fontSize: 13 }}>{name}</b>
         </Flex>
-        <StyledBalance>{numberWithCommas(balance)}</StyledBalance>
+        <StyledBalance>{typeof balance === "string" ? balance : numberWithCommas(balance)}</StyledBalance>
       </StyledBanner>
       {actions ? (
         <StyledBalanceCardContent flexFlow="column" justify="center">
