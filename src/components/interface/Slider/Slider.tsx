@@ -11,7 +11,7 @@ export interface SliderProps {
 }
 
 const StyledArrow = styled.div`
-  ${() => `
+  ${({theme}) => `
     border: 2px solid #D8D8D8;
     box-sizing: border-box;
     border-radius: 3px;
@@ -34,8 +34,22 @@ const StyledArrow = styled.div`
         transform: rotate(180deg);
       }
     }
+    
+  ${theme?.media?.lg} {
+    right: 3%;
+    
+    &.prev {
+      right: auto;
+      left: 3%;
+    }
+  }
+    
+  ${theme?.media?.md} {
+    display: none;
+  }
 `}
 `;
+
 const StyledIndicator = styled.div`
   display: inline-block;
   border-top: 2px solid #151515;
@@ -50,7 +64,12 @@ const StyledIndicator = styled.div`
     color: #151515;
     border-top: 2px solid #D8D8D8;
   }
+
+  ${({theme}) => theme?.media?.md} {
+    width: 60px;
+  }
 `;
+
 const ProductCard: React.FC<SliderProps> = ({children}) => {
   return (
     <Carousel

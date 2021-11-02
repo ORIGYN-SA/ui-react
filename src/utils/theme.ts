@@ -68,7 +68,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 32px;
   }
   h1 > strong {
-    font-weight: 500;
+    font-weight: normal;
     font-size: 32px;
     line-height: 42px;
   }
