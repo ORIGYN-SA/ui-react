@@ -4,7 +4,7 @@ import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 
 export type TabContentProps = {
-  tabs: Array<{ title: string }>;
+  tabs: Array<{ title: string, id: string }>;
   content: Array<any>;
 };
 
@@ -50,9 +50,10 @@ const TabContent = ({tabs, content}: TabContentProps) => {
   return (
     <Flex flexFlow="column">
       <StyledTabContent>
-        {tabs.map(({title}, index) => (
+        {tabs.map(({id, title}, index) => (
           <StyledTab
             as="h4"
+            key={id}
             className={index === currentTab ? "active" : ""}
             onClick={() => setCurrentTab(index)}
           >

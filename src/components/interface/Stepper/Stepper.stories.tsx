@@ -13,7 +13,7 @@ const Template: Story<StepperProps> = (args) => <Stepper {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   tabs: [
-    { title: "Step 1" },
+    { title: <div>Step 1</div> },
     { title: "Step 2" },
     { title: "Step 3" },
     { title: "Step 4" },

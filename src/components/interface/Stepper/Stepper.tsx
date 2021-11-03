@@ -4,7 +4,7 @@ import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 
 export interface StepperProps {
-  tabs: Array<{ title: React.ReactNode  }>;
+  tabs: Array<{ title: React.ReactNode, id: string  }>;
   content: Array<any>;
   tabNavigable?: string;
 };
@@ -47,9 +47,10 @@ const Stepper = ({ tabs, content, tabNavigable="back" }: StepperProps) => {
   return (
     <Flex flexFlow="column" fullWidth>
       <StyledTabContent fullWidth gap={0}>
-        {tabs.map(({ title }, index) => (
+        {tabs.map(({ id, title }, index) => (
           <StyledTab
             as="div"
+            key={id}
             className={index <= currentTab ? "active" : ""}
             onClick={() => {
               switch (tabNavigable) {
@@ -79,14 +80,15 @@ const Stepper = ({ tabs, content, tabNavigable="back" }: StepperProps) => {
 };
 
 // TODO: consider refactoring
-export const useStepper = (steps: Array<{ label: React.ReactNode; content: any }>) => {
+export const useStepper = (steps: Array<{ label: React.ReactNode; id: string; content: any }>) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return [
     <StyledTabContent gap={0}>
-      {steps.map(({ label }, index) => (
+      {steps.map(({ id, label }, index) => (
         <StyledTab
           as="div"
+          key={id}
           className={index <= currentTab ? "active" : ""}
           onClick={() => setCurrentTab(index)}
         >
