@@ -12,9 +12,10 @@ export type ModalProps = {
 };
 
 const StyledModal = styled(ReactModal)`
+  z-index: 10000;
+  
   &.ReactModal__Content {
     position: absolute;
-    z-index: 10000;
     inset: 50% auto auto 50%;
     background: white;
     padding: 0;
@@ -46,6 +47,7 @@ const StyledModal = styled(ReactModal)`
       margin-right: 0;
       width: 100%;
       height: 100%;
+      max-width: 100%;
       max-height: 100vh;
     }
   }
