@@ -12,8 +12,6 @@ export type ModalProps = {
 };
 
 const StyledModal = styled(ReactModal)`
-  z-index: 10000;
-  
   &.ReactModal__Content {
     position: absolute;
     inset: 50% auto auto 50%;
@@ -96,6 +94,11 @@ const Modal: React.FC<ModalProps> = ({
       isOpen={isOpened}
       // style={customStyles}
       onRequestClose={closeModal}
+      style={{
+        overlay: {
+          zIndex: 10000
+        }
+      }}
     >
       <Container relative size="md" padding="45px 40px" smPadding="50px 12px">
         {title && <h2>{title}</h2>}
