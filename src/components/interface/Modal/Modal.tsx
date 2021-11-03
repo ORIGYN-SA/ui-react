@@ -14,6 +14,7 @@ export type ModalProps = {
 const StyledModal = styled(ReactModal)`
   &.ReactModal__Content {
     position: absolute;
+    z-index: 10000;
     inset: 50% auto auto 50%;
     background: white;
     padding: 0;
@@ -30,8 +31,13 @@ const StyledModal = styled(ReactModal)`
     max-height: 95vh;
     max-width: 1150px;
     width: 100%;
+    
+    ${({theme}) => theme?.media?.lg} {
+      max-width: calc(100% - 48px);
+    }
   }
-  ${({theme}) => theme?.media?.md} {
+
+  ${({theme}) => theme?.media?.sm} {
     &.ReactModal__Content {
       inset: auto;
       left: 0;
