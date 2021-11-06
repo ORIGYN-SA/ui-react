@@ -5,7 +5,6 @@ import CheckboxCheckedIcon from "../../../icons/CheckboxChecked";
 
 export interface CheckboxInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  isChecked?: boolean;
   name: string;
   radio?: boolean;
 }
@@ -69,8 +68,6 @@ const StyledLabel = styled.label`
 
 const CheckboxInput = ({
   label,
-  name,
-  isChecked,
   radio,
   id,
   ...props
