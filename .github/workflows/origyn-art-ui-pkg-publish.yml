@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [16.x]
     steps:
       - name: Checkout commits for ${{ steps.extract_branch.outputs.branch }} branch
         uses: actions/checkout@v2
