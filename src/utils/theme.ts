@@ -48,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   body {
-    background-color: #E5E5E5;
+    background-color: #F5F5F5;
     font-size: 15px;
     line-height: 22px;
   }

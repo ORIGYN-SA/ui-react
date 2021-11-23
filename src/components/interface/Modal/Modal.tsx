@@ -17,12 +17,12 @@ const StyledModal = styled(ReactModal)`
     inset: 50% auto auto 50%;
     background: white;
     padding: 0;
-    top: 50%;
+    top: 50px;
     left: 50%;
     right: auto;
     bottom: auto;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     border: none;
     box-shadow: 0px 10px 15px -3px rgba(26, 32, 44, 0.1),
       0px 4px 6px -2px rgba(26, 32, 44, 0.05);
@@ -58,12 +58,12 @@ const customStyles = {
   content: {
     background: "white",
     padding: "0px",
-    top: "50%",
+    top: "50px",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    transform: "translate(-50%,0)",
     border: "none",
     boxShadow:
       "0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05)",
