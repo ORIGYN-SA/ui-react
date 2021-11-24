@@ -46,6 +46,7 @@ jobs:
       - name: Dev publish patch
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'patch')
         run: |
+          git status
           npm version patch
           npm publish
 
@@ -61,7 +62,6 @@ jobs:
       - name: Stage publish patch
         if: github.ref == 'refs/heads/stage' && contains(github.event.head_commit.message, 'patch')
         run: |
-          git status
           npm version patch
           npm publish
 
