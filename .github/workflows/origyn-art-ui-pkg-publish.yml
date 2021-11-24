@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name runner
           git config user.email runner@github.com
-          git config github.token ${{ secrets.GITHUB_TOKEN }}
+          git config github.token ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: install dependencies and build
         run: |
@@ -47,6 +47,7 @@ jobs:
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'patch')
         run: |
           git status
+          git add . && git commit -m "publish package version"
           npm version patch
           npm publish
 
