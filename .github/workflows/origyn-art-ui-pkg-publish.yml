@@ -53,7 +53,7 @@ jobs:
         if:  github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'patch')
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.NODE_AUTH_TOKEN }}
           branch: ${{ github.ref }}
 
 
