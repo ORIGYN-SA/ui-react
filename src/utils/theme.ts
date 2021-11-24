@@ -8,7 +8,7 @@ export const theme = {
     MID_GREY: '#AEAEAE',
     LIGHT_GREY: '#D8D8D8',
     VERY_LIGHT_GREY: '#F2F2F2',
-    WHITE: '#F2F2F2',
+    WHITE: '#FFFFFF',
 
     ERROR: '#E42932',
     PROGRESS: '#F2BD00',
