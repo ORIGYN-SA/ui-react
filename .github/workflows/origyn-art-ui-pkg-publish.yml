@@ -46,7 +46,7 @@ jobs:
       - name: Dev publish patch
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'patch')
         run: |
-          npm version patch --no-git-tag-version
+          npm version patch
           npm publish
 
       - name: Push changes
