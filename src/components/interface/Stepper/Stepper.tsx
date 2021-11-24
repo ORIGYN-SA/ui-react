@@ -89,7 +89,7 @@ export const useStepper = (steps: Array<{ label: React.ReactNode; id: string; co
         <StyledTab
           as="div"
           key={id}
-          className={index <= currentTab ? "active" : ""}
+          className={index === currentTab ? "active" : ""}
           onClick={() => setCurrentTab(index)}
         >
           {label}
