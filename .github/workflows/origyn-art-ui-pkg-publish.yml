@@ -46,7 +46,6 @@ jobs:
       - name: Dev publish patch
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'patch')
         run: |
-          git add . && git commit -m "publish package version"
           npm version patch
           npm publish
         env:
