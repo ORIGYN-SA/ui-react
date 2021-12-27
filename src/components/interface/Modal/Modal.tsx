@@ -12,6 +12,9 @@ export type ModalProps = {
 };
 
 const StyledModal = styled(ReactModal)`
+  &.ReactModalPortal {
+    background: white;
+  }
   &.ReactModal__Content {
     position: absolute;
     inset: 50% auto auto 50%;
@@ -54,6 +57,7 @@ const StyledModal = styled(ReactModal)`
 const customStyles = {
   overlay: {
     overflow: "auto",
+    background: "white",
   },
   content: {
     background: "white",
@@ -96,7 +100,8 @@ const Modal: React.FC<ModalProps> = ({
       onRequestClose={closeModal}
       style={{
         overlay: {
-          zIndex: 10000
+          zIndex: 10000,
+          background: "#d8d8d8e6",
         }
       }}
     >
