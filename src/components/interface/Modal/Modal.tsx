@@ -38,7 +38,6 @@ const StyledModal = styled(ReactModal)`
       max-width: calc(100% - 48px);
     }
   }
-
   ${({theme}) => theme?.media?.sm} {
     &.ReactModal__Content {
       inset: auto;
