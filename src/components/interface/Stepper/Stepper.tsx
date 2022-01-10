@@ -80,7 +80,7 @@ const Stepper = ({ tabs, content, tabNavigable="back" }: StepperProps) => {
 };
 
 // TODO: consider refactoring
-export const useStepper = (steps: Array<{ label: React.ReactNode; id: string; content: any }>) => {
+export const useStepper = (steps: Array<{ label: React.ReactNode; id: string; content: any }>, tabNavigation = false) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return [
@@ -90,7 +90,7 @@ export const useStepper = (steps: Array<{ label: React.ReactNode; id: string; co
           as="div"
           key={id}
           className={index === currentTab ? "active" : ""}
-          onClick={() => setCurrentTab(index)}
+          onClick={() => tabNavigation ? setCurrentTab(index) : null}
         >
           {label}
         </StyledTab>
