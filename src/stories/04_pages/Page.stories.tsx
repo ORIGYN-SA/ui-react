@@ -16,7 +16,6 @@ export default {
 
 const Template: Story = (args) => (
   <div>
-    <Header isLoggedIn />
     <TabContent
       tabs={[{title: 'Digital Twin'}, {title: 'Selling'}, {title: 'Buying'}, {title: 'Transaction'}]}
       content={[
@@ -24,7 +23,6 @@ const Template: Story = (args) => (
           <BreadCrumbs data={[{title: "My portfolio", link: "#"}, {title: "Digital twins", link: "#"}]} />
           <Flex flexFlow="column" gap={14}>
             <h1>All Artworks</h1>
-            <Filters />
             <Grid columns={3} gap={40}>
               <ProductCard />
               <ProductCard />

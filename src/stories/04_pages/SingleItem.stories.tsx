@@ -91,7 +91,6 @@ const StyledGalleryGrid = styled(Grid)`
 
 const Template: Story = (args) => (
   <div>
-    <Header isLoggedIn={false} />
     <Container padding="0 33px">
       <BreadCrumbs
         data={[

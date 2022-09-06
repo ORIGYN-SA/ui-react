@@ -18,14 +18,14 @@ customPadding.args = {
   padding: "24px",
 };
 
-export const mediumShadow = Template.bind({});
-mediumShadow.args = {
+export const filled = Template.bind({});
+filled.args = {
   padding: "24px",
-  shadow: "md",
+  type: "filled",
 };
 
-export const largeShadow = Template.bind({});
-largeShadow.args = {
+export const elevated = Template.bind({});
+elevated.args = {
   padding: "24px",
-  shadow: "lg",
+  type: "elevated",
 };

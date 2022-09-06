@@ -11,7 +11,6 @@ import Button from "../../components/interface/Button";
 
 import LandingBanner from "../../assets/LandingBanner.jpg";
 import ArrowRightIcon from "../../components/icons/ArrowRight";
-import Footer from "../../components/interface/Footer";
 import StyledBanner from "../../components/interface/Banner";
 import ProductCard from "../../components/interface/ProductCard";
 import HR from "../../components/interface/HR";
@@ -50,7 +49,6 @@ const CustomButton = styled(Button)`
 
 const Template: Story = (args) => (
   <div>
-    <Header isLoggedIn />
     <StyledBanner>
       <Container size="lg">
         <Grid columns={2} gap={200}>

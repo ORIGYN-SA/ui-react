@@ -7,11 +7,7 @@ import BreadCrumbs from "./interface/BreadCrumbs";
 import Button from "./interface/Button";
 import Card from "./interface/Card";
 import CheckboxInput from "./interface/Inputs/CheckboxInput";
-import ContactCard from "./interface/ContactCard";
 import DatePicker from "./interface/DatePicker";
-import Filters from "./interface/Filters";
-import Footer from "./interface/Footer";
-import Header from "./interface/Header";
 import HR from "./interface/HR";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
@@ -46,11 +42,7 @@ export {
   Button,
   Card,
   CheckboxInput,
-  ContactCard,
   DatePicker,
-  Filters,
-  Footer,
-  Header,
   HR,
   MenuLink,
   Modal,

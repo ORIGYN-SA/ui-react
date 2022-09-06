@@ -128,32 +128,6 @@ const Template: Story = (args) => {
     setIsOpened(true);
   };
 
-  const renderFooter = useCallback(() => {
-    switch (step) {
-      case 3:
-        return (
-          <>
-            <HR marginBottom={32} marginTop={32} />
-            <Flex align="center" justify="flex-end" gap={50} fullWidth>
-              <Button onClick={closeModal}>MY PORTFOLIO</Button>
-            </Flex>
-          </>
-        );
-      default:
-        return (
-          <>
-            <HR marginBottom={32} marginTop={32} />
-            <Flex align="center" justify="flex-end" gap={50} fullWidth>
-              <b onClick={closeModal}>Cancel</b>
-              <Button onClick={() => setStep(step + 1)}>
-                NEXT: {stepsConfig[step + 1].label}
-              </Button>
-            </Flex>
-          </>
-        );
-    }
-  }, [step]);
-
   const renderHeader = useCallback(() => {
     switch (step) {
       case 0:
@@ -221,7 +195,6 @@ const Template: Story = (args) => {
           </Flex>
         </div>
         <>{renderFullyDiluted()}</>
-        <>{renderFooter()}</>
       </Modal>
     </div>
   );

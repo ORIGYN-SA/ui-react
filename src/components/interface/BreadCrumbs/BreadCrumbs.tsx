@@ -12,19 +12,25 @@ const SBreadCrumbs = styled.div`
   ${({theme}) => `
   display: flex;
   gap: 15px;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 18px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
   margin: 12px 0;
   color: ${theme.colors.BLACK};
   
   svg {
-    fill: ${theme.colors.MID_GREY};
+    fill: ${theme.colors.SECONDARY_TEXT};
   }
   
   a {
-    text-decoration: none;
+    text-decoration: underline;
+    font-weight: 600;
     color: ${theme.colors.DARK_GREY};
+    
+    &:hover {
+      text-decoration: none;
+    }
   }
 `}
 `;
@@ -34,7 +40,10 @@ const BreadCrumbs = ({ data }: BreadCrumbsProps) => {
     <SBreadCrumbs>
       {data.map(({link, title}, index) => (
         <Flex gap={15} smFlexFlow="row" align="center" key={title}>
-          {index > 0 && <ArrowRightIcon />}
+          {index > 0 && <span className="material-symbols-rounded">
+              chevron_right
+            </span>
+          }
           {index + 1 === data.length ? (
             <span>{title}</span>
           ) : (

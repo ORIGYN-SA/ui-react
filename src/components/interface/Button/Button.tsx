@@ -1,94 +1,124 @@
 import styled, {css} from "styled-components";
 
 export type ButtonProps = {
-  size?: (keyof typeof sizes) | string;
-  smSize?: (keyof typeof sizes) | string;
-  mdSize?: (keyof typeof sizes) | string;
-  lgSize?: (keyof typeof sizes) | string;
-  btnType?: "primary" | "secondary" | "ternary";
+  size?: string;
+  btnType?: "small" | "medium" | "large";
+  iconButton?: boolean;
+  textButton?: boolean;
   disabled?: boolean;
 };
 
-const primaryStyle = css`${({theme}) => `
-  background-color: ${theme.colors.BLACK};
-  color: ${theme.colors.WHITE};
-  border: none;
-  
-  :hover {
-    background-color: ${theme.colors.ACCENT_COLOR};
-    color: ${theme.colors.BLACK};
-  }
+const largeSize = css`${({theme}) => `
+  padding: 17px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  border-radius: 28px;
 `}`;
 
-const secondaryStyle = css`${({theme}) => `
-  border: 2px solid ${theme.colors.BLACK};
-  background-color: transparent;
-  
-  :hover {
-    background-color: ${theme.colors.ACCENT_COLOR};
-    border-color: ${theme.colors.ACCENT_COLOR};
-  }
+const mediumSize = css`${({theme}) => `
+  padding: 9px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  border-radius: 20px;
 `}`;
 
-const ternaryStyle = css`${({theme}) => `
-  background-color: transparent;
-  border: none;
-  
-  :hover {
-    color: ${theme.colors.ACCENT_COLOR};
-  }
+const smallSize = css`${({theme}) => `
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  border-radius: 16px;
+  gap: 10px;
 `}`;
 
 const buttonType = {
-  primary: primaryStyle,
-  secondary: secondaryStyle,
-  ternary: ternaryStyle,
-}
-
-const sizes = {
-  sm: "auto",
-  md: "320px",
-  lg: "460px",
-  fullWidth: "100%"
+  small: smallSize,
+  large: largeSize,
+  medium: mediumSize,
 }
 
 const StyledFlex = styled.button<ButtonProps>`
-  ${({btnType = "primary"}) => buttonType[btnType] || buttonType.primary}
-  ${({ theme, btnType, disabled, size = "md", mdSize, smSize, lgSize }) => `
   display: flex;
-  width: ${sizes[size] || size};
-  height: 50px;
-  border-radius: 1px;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  text-transform: none;
+  gap: 15px;
+  align-items: center;
+  box-sizing: border-box;
+  background: #151515;
+  color: #FEFEFE;
+  border: none;
+  
+  svg {
+    fill: #FEFEFE;
+  }
+  
+  ${({btnType = "small"}) => buttonType[btnType]}
+  
+  ${({ theme, btnType, disabled, size = "auto", iconButton, textButton }) => `
+  :hover, &.hover {
+    background-color: #5F5F5F;
+  }
+  :active, &.active {
+    background-color: #3A3A3A;
+  }
   cursor: pointer;
   
   ${disabled ? `
-    background-color: ${btnType === "ternary" ? "transparent" : theme.colors.MID_GREY};
+    background-color: ${theme.colors.MID_GREY};
     border-color: ${theme.colors.MID_GREY};
-    color: ${btnType === "ternary" ? theme.colors.MID_GREY : theme.colors.WHITE};
+    color: ${theme.colors.WHITE};
     cursor: not-allowed;
     :hover {
-      background-color: ${btnType === "ternary" ? "transparent" : theme.colors.MID_GREY};
+      background-color: ${theme.colors.MID_GREY};
       border-color: ${theme.colors.MID_GREY};
-      color: ${btnType === "ternary" ? theme.colors.MID_GREY : theme.colors.WHITE};
+      color: ${theme.colors.WHITE};
     }
   ` : ""}
+  ${iconButton ? `
+    position: relative;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    ${btnType === "medium" ? `
+      width: 40px;
+      height: 40px;
+    ` : ""}
+    ${btnType === "small" ? `
+      width: 32px;
+      height: 32px;
+    ` : ""}
+  ` : ""}
   
-  ${theme.media.lg} {
-    width: ${sizes[lgSize] || lgSize};
-  }
-  ${theme.media.md} {
-    width: ${sizes[mdSize] || mdSize};
-  }
+  ${textButton ? `
+    background: transparent;
+    color: #151515;
+    
+    > svg {
+      fill: #151515;
+    }
+    
+    :hover, &.hover {
+      background: #FAFAFA;
+    }
+    :active, &.active {
+      background: #F2F2F2;
+    }
+  ${disabled ? `
+    background: transparent;
+    cursor: not-allowed;
+    :hover {
+      background: transparent;
+    }
+  ` : ""}
+  ` : ""}
   ${theme.media.sm} {
-    width: ${sizes[smSize] || smSize};
+  
   }
 `}
 `;

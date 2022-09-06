@@ -4,8 +4,11 @@ export const theme = {
   colors: {
     BLACK: '#151515',
     DARK_BLACK: '#000000',
+    BLACK_DARK: '#242424',
+    SECONDARY_TEXT: '#5F5F5F',
+    INACTIVE_BG: '#E3E3E3',
     VERY_DARK_GREY: '#4a4a4a',
-    DARK_GREY: '#6F6F6F',
+    DARK_GREY: '#5F5F5F',
     MID_GREY: '#AEAEAE',
     LIGHT_GREY: '#D8D8D8',
     VERY_LIGHT_GREY: '#F2F2F2',
@@ -64,29 +67,46 @@ export const GlobalStyle = createGlobalStyle`
     flex-shrink: 0;
   }
   h1 {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 112px;
   }
   h1 > strong {
-    font-weight: normal;
+    font-weight: 600;
     font-size: 32px;
     line-height: 42px;
+    letter-spacing: -3px;
   }
   h2 {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 80px;
+    letter-spacing: -2.5px;
   }
   h3 {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 26px;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 72px;
+    letter-spacing: -2px;
   }
   h4 {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1px;
+  }
+  h5 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 56px;
+    letter-spacing: -1.5px;
+  }
+  h6 {
     font-weight: 600;
-    font-size: 15px;
-    line-height: 22px;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.5px;
   }
   button, .buttonLabel {
     font-weight: bold;
@@ -95,16 +115,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-  .largeText {
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 24px;
-  }
-  .smallText {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 18px;
-  }
+  
   
   @media (min-width: 600px) {
     h1 {

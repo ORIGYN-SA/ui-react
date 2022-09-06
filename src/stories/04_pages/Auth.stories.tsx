@@ -67,7 +67,6 @@ const StyledCustomText = styled.div`
 
 const Template: Story = (args) => (
   <div>
-    <Header isLoggedIn={false} />
     <Container size="sm" padding="60px 0" smPadding="0">
       <StyledCustomCard>
         <h3>Log in</h3>

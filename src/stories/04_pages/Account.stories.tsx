@@ -7,7 +7,6 @@ import BreadCrumbs from "../../components/interface/BreadCrumbs";
 import TextInput from "../../components/interface/Inputs/TextInput";
 import DatePicker from "../../components/interface/DatePicker";
 import Button from "../../components/interface/Button";
-import BalanceCard from "../../components/interface/BalanceCard";
 import Table from "../../components/interface/Table/CustomTable";
 import HR from "../../components/interface/HR";
 import ContactCard from "../../components/interface/ContactCard";
@@ -54,7 +53,6 @@ const ResponsiveGrid = styled.div`
 
 const Template: Story = (args) => (
   <div>
-    <Header isLoggedIn />
     <Container padding="0 33px">
       <BreadCrumbs
         data={[
@@ -81,7 +79,6 @@ const Template: Story = (args) => (
           <div>Content 4</div>,
           <div>Content 5</div>,
           <div>
-            <ContactCard personalInfo={personalInfo} />
           </div>,
         ]}
       />
@@ -157,7 +154,6 @@ const AccountPayment = () => {
   return (
     <Container size="full">
       <StyledTitle>BALANCES</StyledTitle>
-      <BalanceCard balance={10000} name={"ICP"} />
       <HR marginTop={75} marginBottom={32} />
       <StyledTitle>BALANCE HISTORY</StyledTitle>
       <Table rows={rows} cells={cells} />
