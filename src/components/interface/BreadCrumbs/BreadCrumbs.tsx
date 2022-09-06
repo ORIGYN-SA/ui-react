@@ -1,0 +1,58 @@
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Flex from "../../layout/Flex";
+import ArrowRightIcon from "../../icons/ArrowRight";
+
+export type BreadCrumbsProps = {
+  data: Array<{ title: string; link: string }>;
+};
+
+const SBreadCrumbs = styled.div`
+  ${({theme}) => `
+  display: flex;
+  gap: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  margin: 12px 0;
+  color: ${theme.colors.BLACK};
+  
+  svg {
+    fill: ${theme.colors.SECONDARY_TEXT};
+  }
+  
+  a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: ${theme.colors.DARK_GREY};
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+`}
+`;
+
+const BreadCrumbs = ({ data }: BreadCrumbsProps) => {
+  return (
+    <SBreadCrumbs>
+      {data.map(({link, title}, index) => (
+        <Flex gap={15} smFlexFlow="row" align="center" key={title}>
+          {index > 0 && <span className="material-symbols-rounded">
+              chevron_right
+            </span>
+          }
+          {index + 1 === data.length ? (
+            <span>{title}</span>
+          ) : (
+            <Link to={link}>{title}</Link>
+          )}
+        </Flex>
+      ))}
+    </SBreadCrumbs>
+  );
+};
+
+export default BreadCrumbs;

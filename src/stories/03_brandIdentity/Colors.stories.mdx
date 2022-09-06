@@ -1,0 +1,69 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+<Meta title="Brand Identity/Colors" />
+
+<style>{`
+   .table {
+    width: 100%;
+   }
+   .colorBlock {
+     height: 24px;
+   }
+`}</style>
+
+<h1 className="subheading">Color palette</h1>
+<h2>Brand colors:</h2>
+<p>Brand color palette according to design guides: https://www.figma.com/file/22ewljg1RGLMm50GA0J1KJ/Origyn-Open-Marketplace?node-id=79%3A255</p>
+<b>TODO: needs to be updated</b>
+<ColorPalette>
+  <ColorItem
+    title="theme.colors.BLACK"
+    subtitle="background / text"
+    colors={['#151515']}
+  />
+  <ColorItem
+    title="theme.colors.BLACK_DARK"
+    subtitle="border (dark)"
+    colors={['#242424']}
+  />
+  <ColorItem
+    title="theme.colors.SECONDARY_TEXT"
+    subtitle="secondary text"
+    colors={['#5F5F5F']}
+  />
+  <ColorItem
+    title="theme.colors.INACTIVE_BG"
+    subtitle="border / inactive background"
+    colors={['#E3E3E3']}
+  />
+  <ColorItem
+    title="theme.colors.BG"
+    subtitle="background"
+    colors={['#E3E3E3']}
+  />
+  <ColorItem
+    title="theme.colors.BG_TEXT"
+    subtitle="background / text"
+    colors={['#FEFEFE']}
+  />
+  <ColorItem
+    title="theme.colors.ACCENT_COLOR"
+    subtitle="primary accent"
+    colors={['#EE9907']}
+  />
+  <ColorItem
+    title="theme.colors.ERROR"
+    subtitle="Error"
+    colors={['#B5010A']}
+  />
+  <ColorItem
+    title="theme.colors.SUCCESS"
+    subtitle="Success"
+    colors={['#50AA3E']}
+  />
+  <ColorItem
+    title="theme.colors.WARNING"
+    subtitle="Warning"
+    colors={['#EE9907']}
+  />
+</ColorPalette>

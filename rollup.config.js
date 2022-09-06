@@ -7,7 +7,7 @@ import postcss from "rollup-plugin-postcss";
 const packageJson = require("./package.json");
 
 export default {
-  input: "components/index.ts",
+  input: "src/index.ts",
   output: [
     {
       file: packageJson.main,
@@ -25,8 +25,6 @@ export default {
     resolve(),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
-    postcss({
-      extensions: ['.css']
-    })
+    postcss()
   ]
 };
