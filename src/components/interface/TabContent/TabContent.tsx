@@ -10,11 +10,15 @@ export type TabContentProps = {
 
 const StyledTabContent = styled(Flex)`
   ${({theme}) => `
-  background: ${theme.colors.VERY_DARK_GREY};
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
   height: 50px;
   gap: 32px;
   justify-content: center;
-  color: ${theme.colors.WHITE};
+  color: #151515;
+  border-bottom: 1px solid #E3E3E3;
   
   ${theme.media.sm} {
     padding: 0 5px;
@@ -28,18 +32,18 @@ const StyledTabContent = styled(Flex)`
 
 const StyledTab = styled(MenuLink)`
   ${({theme}) => `
-    color: ${theme.colors.MID_GREY};
+    color: #5F5F5F;
     display: flex;
     height: 100%;
     align-items: center;
     padding: 0;
   
   &:hover {
-    color: ${theme.colors.WHITE};
+    color: #151515;
   }
   &.active {
-    color: ${theme.colors.WHITE};
-    border-bottom: 3px solid ${theme.colors.WHITE};
+    color: #151515;
+    border-bottom: 2px solid #151515;
   }
 `}
 `;
@@ -48,7 +52,7 @@ const TabContent = ({tabs, content}: TabContentProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
-    <Flex flexFlow="column">
+    <Flex flexFlow="column" align="flex-start">
       <StyledTabContent>
         {tabs.map(({id, title}, index) => (
           <StyledTab

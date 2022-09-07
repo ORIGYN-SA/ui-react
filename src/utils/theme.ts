@@ -14,7 +14,7 @@ export const theme = {
     VERY_LIGHT_GREY: '#F2F2F2',
     WHITE: '#FFFFFF',
 
-    ERROR: '#E42932',
+    ERROR: '#B5010A',
     PROGRESS: '#F2BD00',
     SUCCESS: '#50AA3E',
 
