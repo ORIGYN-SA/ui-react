@@ -24,6 +24,9 @@ withLabel.args = { name: "input", label: "Checkbox Label" };
 export const disabled = Template.bind({});
 disabled.args = { name: "input", label: "Checkbox Label", disabled: true };
 
+export const disabledChecked = Template.bind({});
+disabledChecked.args = { name: "input", label: "Checkbox Label", disabled: true };
+
 export const radio = Template.bind({});
 radio.args = { name: "input", radio: true };
 
