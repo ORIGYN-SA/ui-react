@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Components/Interface/RangeSlider/Overview" />
+
+<style>{`
+
+`}</style>
+
+# RangeSlider component
+
+Basic range component with 3 status:
+
+ - Normal
+ - Hover
+ - Disabled
+
+You can look at visual appearance of the buttons in
+[storybook style guides](https://www.figma.com/file/22ewljg1RGLMm50GA0J1KJ/Origyn-Open-Marketplace?node-id=696%3A2945)
+
+## Properties
+
+```typescript
+type RangeSliderProps = {
+  disabled?: boolean;
+}
+```
+
+## Normal
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--normal" />
+</Canvas>
+
+## Hovered
+
+<Canvas>
+   <Story id="components-interface-rangeslider-all-stories--normal" />
+</Canvas>
+
+## Active
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--normal" />
+</Canvas>
+
+## Disabled
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--disabled" />
+</Canvas>
