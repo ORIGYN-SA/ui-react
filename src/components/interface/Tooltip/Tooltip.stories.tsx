@@ -16,13 +16,14 @@ export default {
   component: Tooltip,
 } as Meta;
 
-const Template: Story = (args) => (
+const Template: Story = (args: any) => (
   <>
     <Flex gap={16}>
-      <Tooltip text="I am a tooltip" position="left" background="00adb5">
-        <TooltipTarget>Left</TooltipTarget>
+      <Tooltip text="I am a tooltip" {...args}>
+        <TooltipTarget>Tooltip</TooltipTarget>
       </Tooltip>
     </Flex>
+
     <br />
   </>
 );
@@ -33,38 +34,20 @@ left.args = {
   background: "00adb5",
 };
 
-export const primaryDisabled = Template.bind({});
-primaryDisabled.args = { disabled: true };
-
-export const small = Template.bind({});
-small.args = {
-  btnType: "small",
+export const right = Template.bind({});
+right.args = {
+  position: "right",
+  background: "00adb5",
 };
 
-export const medium = Template.bind({});
-medium.args = {
-  btnType: "medium",
+export const up = Template.bind({});
+up.args = {
+  position: "up",
+  background: "00adb5",
 };
 
-export const large = Template.bind({});
-large.args = {
-  btnType: "large",
-};
-
-export const smallTextButton = Template.bind({});
-smallTextButton.args = {
-  btnType: "small",
-  textButton: true,
-};
-
-export const mediumTextButton = Template.bind({});
-mediumTextButton.args = {
-  btnType: "medium",
-  textButton: true,
-};
-
-export const largeTextButton = Template.bind({});
-largeTextButton.args = {
-  btnType: "large",
-  textButton: true,
+export const bottom = Template.bind({});
+bottom.args = {
+  position: "bottom",
+  background: "00adb5",
 };
