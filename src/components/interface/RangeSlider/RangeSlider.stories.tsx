@@ -2,7 +2,6 @@ import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import RangeSlider, { RangeSliderProps } from "./RangeSlider";
-import Grid from "../../layout/Grid";
 import Flex from "../../layout/Flex";
 
 export default {
@@ -17,15 +16,20 @@ const Template: Story<RangeSliderProps> = (args) =>(
   
 );
 
-export const primary = Template.bind({});
-primary.args = {};
-
 export const normal = Template.bind({});
 normal.args = {
   disabled: false,
+  min: 10,
+  max: 400,
+  step: 10,
+  initialValue: 200,
 };
 
 export const disabled = Template.bind({});
 disabled.args = {
   disabled: true,
+  min: 0,
+  max: 1000,
+  step: 50,
+  initialValue: 800,
 };

@@ -15,30 +15,23 @@ Basic range component with 4 status:
  - Active
  - Disabled
 
-You can look at visual appearance of the buttons in
-[storybook style guides](https://www.figma.com/file/22ewljg1RGLMm50GA0J1KJ/Origyn-Open-Marketplace?node-id=696%3A2945)
+The component has 4 properties for multiple use cases.
+** If not provided, the default value for each property is automatically setted to 0 or False. **
 
 ## Properties
 
 ```typescript
 type RangeSliderProps = {
-  disabled?: boolean;
+    initialValue?: number;
+    disabled?: boolean;
+    min?: number;
+    max?: number;
+    step: number;
+ };
 }
 ```
 
-## Normal
-
-<Canvas>
-    <Story id="components-interface-rangeslider-all-stories--normal" />
-</Canvas>
-
-## Hovered
-
-<Canvas>
-   <Story id="components-interface-rangeslider-all-stories--normal" />
-</Canvas>
-
-## Active
+## Normal - Enabled
 
 <Canvas>
     <Story id="components-interface-rangeslider-all-stories--normal" />
