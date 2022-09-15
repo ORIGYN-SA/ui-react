@@ -1,40 +1,37 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Button, { ButtonProps } from "./Tooltip";
+import Tooltip from "./Tooltip";
 import ArrowRight from "../../icons/ArrowRight";
 import Flex from "../../layout/Flex";
+import {
+  TooltipWrapper,
+  TooltipTarget,
+  CenterContainer,
+  TooltipBox,
+} from "./styled";
 
 export default {
   title: "Components/Interface/Tooltip/All stories",
-  component: Button,
+  component: Tooltip,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <>
-  <Flex gap={16}>
-    <Button {...args}>Enabled</Button>
-    <Button {...args} className="hover">Hovered</Button>
-    <Button {...args} className="active">Pressed</Button>
-    <Button {...args} disabled>Disabled</Button>
-  </Flex>
-  <br/>
-  <Flex gap={16}>
-    <Button {...args}>Enabled <ArrowRight width={4} height={8} /></Button>
-    <Button {...args} className="hover">Hovered <ArrowRight width={4} height={8} /></Button>
-    <Button {...args} className="active">Pressed <ArrowRight width={4} height={8} /></Button>
-    <Button {...args} disabled>Disabled <ArrowRight width={4} height={8} /></Button>
-  </Flex>
-  <br/>
-  <Flex gap={16}>
-    <Button {...args} iconButton><ArrowRight width={4} height={8} /></Button>
-    <Button {...args} iconButton className="hover"><ArrowRight width={4} height={8} /></Button>
-    <Button {...args} iconButton className="active"><ArrowRight width={4} height={8} /></Button>
-    <Button {...args} iconButton disabled><ArrowRight width={4} height={8} /></Button>
-  </Flex>
-</>;
+const Template: Story = (args) => (
+  <>
+    <Flex gap={16}>
+      <Tooltip text="I am a tooltip" position="left" background="00adb5">
+        <TooltipTarget>Left</TooltipTarget>
+      </Tooltip>
+    </Flex>
+    <br />
+  </>
+);
 
-export const primary = Template.bind({});
-primary.args = {};
+export const left = Template.bind({});
+left.args = {
+  position: "left",
+  background: "00adb5",
+};
 
 export const primaryDisabled = Template.bind({});
 primaryDisabled.args = { disabled: true };
@@ -57,17 +54,17 @@ large.args = {
 export const smallTextButton = Template.bind({});
 smallTextButton.args = {
   btnType: "small",
-  textButton: true
+  textButton: true,
 };
 
 export const mediumTextButton = Template.bind({});
 mediumTextButton.args = {
   btnType: "medium",
-  textButton: true
+  textButton: true,
 };
 
 export const largeTextButton = Template.bind({});
 largeTextButton.args = {
   btnType: "large",
-  textButton: true
+  textButton: true,
 };

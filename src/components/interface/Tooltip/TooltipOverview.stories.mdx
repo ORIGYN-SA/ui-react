@@ -1,29 +1,27 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
+
 <Meta title="Components/Interface/Tooltip/Overview" />
 
 <style>{`
 
 `}</style>
 
-# Button component
+# Tooltip component
 
-Basic button component, for 3 button types:
+Basic Tooltip component, with 4 directions:
 
- - primary (Default)
- - secondary (Bordered)
- - ternary (Text like)
-
-You can look at visual appearance of the buttons in
-[storybook style guides](https://www.figma.com/file/22ewljg1RGLMm50GA0J1KJ/Origyn-Open-Marketplace?node-id=696%3A2945)
+ - Right 
+ - Left 
+ - Up 
+ - Down
 
 ## Properties
 
 ```typescript
-type ButtonProps = {
-  size?: string;
-  btnType?: "small" | "medium" | "large";
-  disabled?: boolean;
+type TooltipProps = {
+  position?: "left" | "right" | "bottom";
+  hovered?: boolean;
 }
 ```
 
@@ -32,7 +30,7 @@ type ButtonProps = {
 ## Large
 
 <Canvas>
-    <Story id="components-interface-button-all-stories--large" />
+    <Story id="components-interface-tooltip-all-stories--left" />
 </Canvas>
 
 ## Medium
