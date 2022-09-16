@@ -26,11 +26,9 @@ const Template: Story = (args: any) => (
         justifyContent: "center",
       }}
     >
-      <Flex gap={16}>
-        <Tooltip text="I am a tooltip" {...args}>
-          <TooltipTarget>Tooltip</TooltipTarget>
-        </Tooltip>
-      </Flex>
+      <Tooltip text="I am a tooltip" {...args}>
+        <TooltipTarget>Tooltip</TooltipTarget>
+      </Tooltip>
     </div>
     <br />
   </>
