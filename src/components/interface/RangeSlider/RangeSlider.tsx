@@ -120,7 +120,9 @@ const Styles = styled.div`
 `;
 
 const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProps) => {
-  const [value, setValue] = useState(initialValue ? initialValue : min);
+  const minimunRange = min || 0;
+  const maximumRange = max || 100;
+  const [value, setValue] = useState(initialValue ? initialValue : minimunRange);
   const indicatorElement = useRef(null);
   const rangeElement = useRef(null);
   function MouseOver() {
@@ -135,7 +137,7 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
   }
   function setBubbleAndBackground(rangeinput, rangeMin, rangeMax, bubble, value) {
     if (value === 0) {
-      value = min;
+      value = minimunRange;
     } else {
       value = value;
     }
@@ -148,11 +150,9 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
     rangeinput.style.backgroundSize = `calc(${newVal}% + (${newVal * 0.01}px))`;
   }
   useEffect(() => {
-    const rangeInput = rangeElement.current;
-    const indicator = indicatorElement.current;
-    const min = rangeInput ? rangeInput.getAttribute("min") : 0;
-    const max = rangeInput ? rangeInput.getAttribute("max") : 100;
-    setBubbleAndBackground(rangeInput, min, max, indicator, value);
+    const min = rangeElement.current ? rangeElement.current.getAttribute("min") : 0;
+    const max = rangeElement.current ? rangeElement.current.getAttribute("max") : 100;
+    setBubbleAndBackground(rangeElement.current, min, max, indicatorElement.current, value);
   }, [value]);
   return (
     <Styles>
@@ -160,8 +160,8 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
         <output className="value-thumb" ref={indicatorElement}>{value}</output>
         <input
           type="range"
-          min={min}
-          max={max}
+          min={minimunRange}
+          max={maximumRange}
           step={step}
           value={value}
           ref={rangeElement}

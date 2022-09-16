@@ -17,12 +17,14 @@ const Template: Story<RangeSliderProps> = (args) =>(
 );
 
 export const normal = Template.bind({});
-normal.args = {
+
+export const setted = Template.bind({});
+setted.args = {
   disabled: false,
-  min: 10,
-  max: 400,
-  step: 10,
-  initialValue: 200,
+  min: 50,
+  max: 2000,
+  step:50,
+  initialValue: 1000,
 };
 
 export const disabled = Template.bind({});
