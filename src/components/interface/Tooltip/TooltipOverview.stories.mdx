@@ -13,24 +13,28 @@ Basic Tooltip component, with 4 directions:
 
  - Right 
  - Left 
- - Up 
+ - Top 
  - Down
+
+Customizable Tooltip box color (background) and also the Text color (TextColor).
+It's hover activated and also on Click, the Tooltip remains active.
 
 ## Properties
 
 ```typescript
 type TooltipProps = {
-  position?: "left" | "right" | "bottom";
-  hovered?: boolean;
+  position?: "left" | "right" | "bottom" | "top";
+  background?: string
+  textColor?: string
 }
 ```
 
-** IMPORTANT: Size prop is still in development **
+** IMPORTANT: You can set the position and background color and hover. As default they're position: "top" (default), background-color: "000000" (black) and textColor: "ffffff" **
 
-## Up
+## Top
 
 <Canvas>
-    <Story id="components-interface-tooltip-all-stories--up" />
+    <Story id="components-interface-tooltip-all-stories--top" />
 </Canvas>
 
 ## Right

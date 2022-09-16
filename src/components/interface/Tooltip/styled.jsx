@@ -66,10 +66,14 @@ export const CenterContainer = styled.div`
           left: calc(100% + 5px);
           width: max-content;
         `;
-      default:
+      case "top":
         return css`
           bottom: calc(100% + 5px);
         `;
+      default :
+        return css`
+        bottom: calc(100% + 5px);
+        `
     }
   }}
 `;
@@ -86,24 +90,15 @@ const fadeIn = keyframes`
 
 export const TooltipBox = styled.span`
   position: relative;
-  background-color: #${(props) => props.background};  
-  color: #fff;
+  background-color: #${(props) => props.background}; 
+  color: #${(props) => props.textColor};
   text-align: center;
   border-radius: 5px;
   padding: 10px 8px;
   font-size: 1.25rem;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  ${({ position }) => {
-    switch (position) {
-      case "right":
-        return css`
-          color: #000;
-        `;
-      default:
-        return css``;
-    }
-  }}
+
   /* animation: ${fadeIn} 1s linear; */
   &:after {
     content: "";

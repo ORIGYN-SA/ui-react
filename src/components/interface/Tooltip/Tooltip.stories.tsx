@@ -18,12 +18,20 @@ export default {
 
 const Template: Story = (args: any) => (
   <>
-    <Flex gap={16}>
-      <Tooltip text="I am a tooltip" {...args}>
-        <TooltipTarget>Tooltip</TooltipTarget>
-      </Tooltip>
-    </Flex>
-
+    <br />
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Flex gap={16}>
+        <Tooltip text="I am a tooltip" {...args}>
+          <TooltipTarget>Tooltip</TooltipTarget>
+        </Tooltip>
+      </Flex>
+    </div>
     <br />
   </>
 );
@@ -31,23 +39,27 @@ const Template: Story = (args: any) => (
 export const left = Template.bind({});
 left.args = {
   position: "left",
-  background: "00adb5",
+  background: "000000",
+  textColor: "ffffff",
 };
 
 export const right = Template.bind({});
 right.args = {
   position: "right",
-  background: "00adb5",
+  background: "000000",
+  textColor: "ffffff",
 };
 
-export const up = Template.bind({});
-up.args = {
-  position: "up",
-  background: "00adb5",
+export const top = Template.bind({});
+top.args = {
+  position: "top",
+  background: "000000",
+  textColor: "ffffff",
 };
 
 export const bottom = Template.bind({});
 bottom.args = {
   position: "bottom",
-  background: "00adb5",
+  background: "000000",
+  textColor: "ffffff",
 };

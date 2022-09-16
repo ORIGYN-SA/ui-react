@@ -7,11 +7,18 @@ import {
   TooltipBox,
 } from "./styled";
 
-const Tooltip = ({ position, text, children, background, styleMe = true }) => {
+const Tooltip = ({
+  position,
+  text,
+  children,
+  background,
+  textColor,
+  styleMe = true,
+}: any) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const targetRef = useRef(null);
-  const showTooltip = true; //isHovered || isFocused;
+  const showTooltip = isHovered || isFocused;
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -36,7 +43,11 @@ const Tooltip = ({ position, text, children, background, styleMe = true }) => {
       </TooltipTarget>
       {showTooltip && (
         <CenterContainer position={position}>
-          <TooltipBox background={background} position={position}>
+          <TooltipBox
+            background={background}
+            textColor={textColor}
+            position={position}
+          >
             {text}
           </TooltipBox>
         </CenterContainer>
