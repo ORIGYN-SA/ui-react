@@ -1,52 +1,155 @@
-import React,{useState} from "react";
+import styled from "@emotion/styled";
+import React, { useState } from "react";
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNumbers = [];
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  // const [postsPerPage] = useState(10);
-
-  const Posts = ({ posts, loading }) => {
-    if (loading) {
-      return <h2>Loading...</h2>;
+const PaginationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .pageCard {
+    height: 36px;
+    padding: 0 15px;
+    background: transparent;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 0 6px;
+    color: #000000;
+    cursor: pointer;
+    &:not([disabled]):hover {
+      border: 1px solid #000000;
+      color: #000000;
     }
+  }
+  .pageCard.active {
+    background: #000000;
+    border: 1px solid #000000;
+    color: #fff;
+  }
+`;
 
-    return (
-      <ul className="list-group mb-4">
-        {posts.map((post) => (
-          <li key={post.id} className="list-group-item">
-            {post.title}
-          </li>
-        ))}
-      </ul>
-    );
+const MorePaginationIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 36px;
+  width: 36px;
+`;
+
+const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+  padding: 0 0.5rem;
+`;
+
+interface PaginationProps {
+  currentPage: number;
+  pageCount: number;
+  setCurrentPage: (prevPage: number) => void;
+}
+
+const Pagination = ({ pageCount }: any) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const getPageRange = (currentPage: number, pageCount: number) => {
+    if (pageCount < 4) {
+      return [];
+    }
+    let pageRange = [1, 2, 3];
+    if (currentPage > 1 && currentPage !== pageCount) {
+      pageRange.length = 0;
+      pageRange.push(currentPage - 1);
+      pageRange.push(currentPage);
+      pageRange.push(currentPage + 1);
+    } else if (currentPage === pageCount) {
+      pageRange.length = 0;
+      pageRange.push(currentPage - 2);
+      pageRange.push(currentPage - 1);
+      pageRange.push(currentPage);
+    }
+    return pageRange;
   };
 
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  // Change page
-  // const paginate = pageNumber => setCurrentPage(pageNumber);
-
+  const renderPageButtons = () => {
+    let result = [];
+    for (let i = 1; i < pageCount + 1; i++) {
+      result.push(
+        <button
+          key={i}
+          className={currentPage === i ? `pageCard active` : `pageCard`}
+          onClick={() => setCurrentPage(i)}
+        >
+          {i}
+        </button>
+      );
+    }
+    return result;
+  };
 
   return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="!#" className="page-link">
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <PaginationContainer>
+      <button
+        className="pageCard"
+        onClick={() => {
+          if (currentPage > 1) setCurrentPage(currentPage - 1);
+        }}
+        disabled={currentPage <= 1}
+      >{`<`}</button>
+      {pageCount < 4 && renderPageButtons()}
+      {currentPage >= pageCount - 2 && pageCount > 3 && (
+        <>
+          <button
+            className={currentPage === 1 ? `pageCard active` : `pageCard`}
+            onClick={() => setCurrentPage(1)}
+          >
+            1
+          </button>
+          <MorePaginationIconContainer
+            style={{
+              height: "36px",
+              width: "36px",
+            }}
+          >
+            <p style={{ width: "20px", height: "auto" }}>...</p>
+          </MorePaginationIconContainer>
+        </>
+      )}
+      {getPageRange(currentPage, pageCount).map((page: number) => (
+        <button
+          key={page}
+          className={page === currentPage ? `pageCard active` : `pageCard`}
+          onClick={() => setCurrentPage(page)}
+        >
+          {page}
+        </button>
+      ))}
+      {currentPage < pageCount - 2 && pageCount > 3 && (
+        <>
+          <MorePaginationIconContainer
+            style={{
+              height: "36px",
+              width: "36px",
+            }}
+          >
+            <p style={{ width: "20px", height: "auto" }}>...</p>
+          </MorePaginationIconContainer>
+          <button
+            className={
+              pageCount === currentPage ? `pageCard active` : `pageCard`
+            }
+            onClick={() => setCurrentPage(pageCount)}
+          >
+            {pageCount}
+          </button>
+        </>
+      )}
+      <button
+        className="pageCard"
+        onClick={() => {
+          if (currentPage < pageCount) setCurrentPage(currentPage + 1);
+        }}
+        disabled={currentPage === pageCount}
+      >{`>`}</button>
+    </PaginationContainer>
   );
 };
 
