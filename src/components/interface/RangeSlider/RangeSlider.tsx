@@ -141,9 +141,9 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
     } else {
       value = value;
     }
-    const _min = rangeMin ? rangeMin : 0;
-    const _max = rangeMax ? rangeMax : 100;
-    var newVal = Number(((value - _min) * 100) / (_max - _min));
+    rangeMin = rangeMin || 0;
+    rangeMax = rangeMax || 100;
+    var newVal = Number(((value - rangeMin) * 100) / (rangeMax - rangeMin));
     bubble.innerHTML = value;
     bubble.style.left = `calc(${newVal}% + (${-10 - newVal * 0.12}px))`;
     rangeinput.style.backgroundSize = `calc(${newVal}% + (${newVal * 0.01}px))`;
