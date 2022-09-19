@@ -7,6 +7,7 @@ export type RangeSliderProps = {
   min?: number;
   max?: number;
   step: number;
+  onchange?: Function;
 };
 
 const sliderThumbStyles = () => (`
@@ -28,7 +29,9 @@ const Styles = styled.div`
      flex-direction: row;
      justify-content: center;
      align-items: center;
-     width: 32px;
+     padding: 0px 4px 0px 4px;
+     min-width: 32px;
+     width: fit-content;
      height: 22px;
      background: #151515;
      border-radius: 999px;
@@ -102,7 +105,8 @@ const Styles = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 32px;
+    min-width: 32px;
+    width:fit-content;
     height: 22px;
     background: #151515;
     border-radius: 999px;
@@ -119,12 +123,18 @@ const Styles = styled.div`
 
 `;
 
-const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProps) => {
+const RangeSlider = ({ initialValue, disabled, min, max, step, onchange }: RangeSliderProps) => {
   min = min || 0;
   max = max || 100;
   const [value, setValue] = useState(initialValue ? initialValue : min);
   const indicatorElement = useRef(null);
   const rangeElement = useRef(null);
+  const onChangeAction = (e: any) => {
+    setValue(e.target.value);
+    if (onchange) {
+      onchange(e.target.value);
+    }
+  };
   function MouseOver() {
     if (disabled == true) {
       indicatorElement.current.style.display = "none";
@@ -156,7 +166,7 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
   return (
     <Styles>
       <div className="slider-parent">
-        <output className="value-thumb" ref={indicatorElement}>{value}</output>
+        <output className="value-thumb" ref={indicatorElement}><p>{value}</p></output>
         <input
           type="range"
           min={min}
@@ -165,7 +175,7 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
           value={value}
           ref={rangeElement}
           className="range-input"
-          onChange={(e) => setValue(Number(e.target.value))}
+          onChange={onChangeAction}
           onMouseOver={MouseOver}
           onMouseOut={MouseOut}
           disabled={disabled}
