@@ -9,14 +9,14 @@ const PaginationContainer = styled.div`
     height: 36px;
     padding: 0 15px;
     background: transparent;
-    border: 1px solid #fff;
+    border: 1px ;
     box-sizing: border-box;
     border-radius: 4px #fff;
     margin: 0 6px;
     color: #000000;
     cursor: pointer;
     &:not([disabled]):hover {
-      border: 1px solid #fff;
+      border: 1px ;
       color: #000000;
     }
   }
