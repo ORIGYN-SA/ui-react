@@ -21,7 +21,7 @@ const Template: Story<ModalProps> = (args) => {
   return (
     <div>
       <Button onClick={openModal}>Open modal</Button>
-      <Modal title={args.title} isOpened={isOpened} closeModal={closeModal} />
+      <Modal title={args.title} isOpened={isOpened} closeModal={closeModal} mode={'light'} type={'transferOgy1'} />
     </div>
   );
 };
