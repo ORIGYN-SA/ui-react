@@ -120,9 +120,9 @@ const Styles = styled.div`
 `;
 
 const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProps) => {
-  const minimunRange = min || 0;
-  const maximumRange = max || 100;
-  const [value, setValue] = useState(initialValue ? initialValue : minimunRange);
+  min = min || 0;
+  max = max || 100;
+  const [value, setValue] = useState(initialValue ? initialValue : min);
   const indicatorElement = useRef(null);
   const rangeElement = useRef(null);
   function MouseOver() {
@@ -137,15 +137,14 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
   }
   function setBubbleAndBackground(rangeinput, rangeMin, rangeMax, bubble, value) {
     if (value === 0) {
-      value = minimunRange;
+      value = min;
     } else {
       value = value;
     }
-    const val = value;
     const _min = rangeMin ? rangeMin : 0;
     const _max = rangeMax ? rangeMax : 100;
-    var newVal = Number(((val - _min) * 100) / (_max - _min));
-    bubble.innerHTML = val;
+    var newVal = Number(((value - _min) * 100) / (_max - _min));
+    bubble.innerHTML = value;
     bubble.style.left = `calc(${newVal}% + (${-10 - newVal * 0.12}px))`;
     rangeinput.style.backgroundSize = `calc(${newVal}% + (${newVal * 0.01}px))`;
   }
@@ -160,8 +159,8 @@ const RangeSlider = ({ initialValue, disabled, min, max, step }: RangeSliderProp
         <output className="value-thumb" ref={indicatorElement}>{value}</output>
         <input
           type="range"
-          min={minimunRange}
-          max={maximumRange}
+          min={min}
+          max={max}
           step={step}
           value={value}
           ref={rangeElement}
