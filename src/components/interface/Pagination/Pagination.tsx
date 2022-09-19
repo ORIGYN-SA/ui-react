@@ -9,21 +9,21 @@ const PaginationContainer = styled.div`
     height: 36px;
     padding: 0 15px;
     background: transparent;
-    border: 1px solid #000000;
+    border: 1px solid #fff;
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 4px #fff;
     margin: 0 6px;
     color: #000000;
     cursor: pointer;
     &:not([disabled]):hover {
-      border: 1px solid #000000;
+      border: 1px solid #fff;
       color: #000000;
     }
   }
   .pageCard.active {
-    background: #000000;
-    border: 1px solid #000000;
-    color: #fff;
+    background: #f2f2f2;
+    border-radius: 999px;
+    color: #000000;
   }
 `;
 
@@ -86,70 +86,77 @@ const Pagination = ({ pageCount }: any) => {
   };
 
   return (
-    <PaginationContainer>
-      <button
-        className="pageCard"
-        onClick={() => {
-          if (currentPage > 1) setCurrentPage(currentPage - 1);
-        }}
-        disabled={currentPage <= 1}
-      >{`<`}</button>
-      {pageCount < 4 && renderPageButtons()}
-      {currentPage >= pageCount - 2 && pageCount > 3 && (
-        <>
-          <button
-            className={currentPage === 1 ? `pageCard active` : `pageCard`}
-            onClick={() => setCurrentPage(1)}
-          >
-            1
-          </button>
-          <MorePaginationIconContainer
-            style={{
-              height: "36px",
-              width: "36px",
-            }}
-          >
-            <p style={{ width: "20px", height: "auto" }}>...</p>
-          </MorePaginationIconContainer>
-        </>
-      )}
-      {getPageRange(currentPage, pageCount).map((page: number) => (
+    <div style={{  display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'}}>
+      <p>
+        Page {currentPage} of {pageCount}
+      </p>
+      <PaginationContainer>
         <button
-          key={page}
-          className={page === currentPage ? `pageCard active` : `pageCard`}
-          onClick={() => setCurrentPage(page)}
-        >
-          {page}
-        </button>
-      ))}
-      {currentPage < pageCount - 2 && pageCount > 3 && (
-        <>
-          <MorePaginationIconContainer
-            style={{
-              height: "36px",
-              width: "36px",
-            }}
-          >
-            <p style={{ width: "20px", height: "auto" }}>...</p>
-          </MorePaginationIconContainer>
+          className="pageCard"
+          onClick={() => {
+            if (currentPage > 1) setCurrentPage(currentPage - 1);
+          }}
+          disabled={currentPage <= 1}
+        >{`<`}</button>
+        {pageCount < 4 && renderPageButtons()}
+        {currentPage >= pageCount - 2 && pageCount > 3 && (
+          <>
+            <button
+              className={currentPage === 1 ? `pageCard active` : `pageCard`}
+              onClick={() => setCurrentPage(1)}
+            >
+              1
+            </button>
+            <MorePaginationIconContainer
+              style={{
+                height: "36px",
+                width: "36px",
+              }}
+            >
+              <p style={{ width: "20px", height: "auto" }}>...</p>
+            </MorePaginationIconContainer>
+          </>
+        )}
+        {getPageRange(currentPage, pageCount).map((page: number) => (
           <button
-            className={
-              pageCount === currentPage ? `pageCard active` : `pageCard`
-            }
-            onClick={() => setCurrentPage(pageCount)}
+            key={page}
+            className={page === currentPage ? `pageCard active` : `pageCard`}
+            onClick={() => setCurrentPage(page)}
           >
-            {pageCount}
+            {page}
           </button>
-        </>
-      )}
-      <button
-        className="pageCard"
-        onClick={() => {
-          if (currentPage < pageCount) setCurrentPage(currentPage + 1);
-        }}
-        disabled={currentPage === pageCount}
-      >{`>`}</button>
-    </PaginationContainer>
+        ))}
+        {currentPage < pageCount - 2 && pageCount > 3 && (
+          <>
+            <MorePaginationIconContainer
+              style={{
+                height: "36px",
+                width: "36px",
+              }}
+            >
+              <p style={{ width: "20px", height: "auto" }}>...</p>
+            </MorePaginationIconContainer>
+            <button
+              className={
+                pageCount === currentPage ? `pageCard active` : `pageCard`
+              }
+              onClick={() => setCurrentPage(pageCount)}
+            >
+              {pageCount}
+            </button>
+          </>
+        )}
+        <button
+          className="pageCard"
+          onClick={() => {
+            if (currentPage < pageCount) setCurrentPage(currentPage + 1);
+          }}
+          disabled={currentPage === pageCount}
+        >{`>`}</button>
+      </PaginationContainer>
+    </div>
   );
 };
 
