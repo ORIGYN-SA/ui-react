@@ -31,4 +31,20 @@ export const Component2 = () => {
   return <button onClick={handleClick}>display icon snack</button>;
 };
 
+export const Component3 = () => {
+  const {addSnackBar}=useSnackBarContext();   
+
+  const handleClick = () => {
+   addSnackBar({
+      message: "This is a snackbar with action",
+      layout: "oneLineButton",
+      position: "bottom",
+      action: () => alert("You clicked me"),
+      actionText: "Click me",
+    });
+  };
+
+  return <button onClick={handleClick}>display action snack</button>;
+}
+
 
