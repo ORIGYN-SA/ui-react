@@ -1,11 +1,26 @@
 import React from "react";
 import "./styles.css";
+import Button from "../Button";
+import ThemeIcon from "../../../components/icons/theme";
 
 const Navbar = ({ children }) => {
   return (
-    <nav className="nav">
-      <ul>{children}</ul>
-    </nav>
+    <div className="navbar">
+
+    <div className="component">
+
+        <nav className="nav">
+          <ul>{children}</ul>
+        </nav>
+
+        <div className="bottom-items">
+          <Button btnType="small">Connect</Button>
+        <ThemeIcon />
+        </div>
+
+        </div>
+
+    </div>
   );
 };
 
