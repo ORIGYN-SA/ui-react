@@ -22,6 +22,7 @@ import TabContent from "./interface/TabContent";
 import TabContentVertical, {useTabContentVertical} from "./interface/TabContent/TabContentVertical";
 import CustomTable from "./interface/Table/CustomTable";
 import HistoryTable from "./interface/Table/HistoryTable";
+import Snackbar from "./interface/Snackbar";
 
 import Lots from "./interface/Lots";
 
@@ -64,5 +65,6 @@ export {
   TextArea,
   Toggle,
   Status,
-  SStatus
+  SStatus,
+  Snackbar
 };
