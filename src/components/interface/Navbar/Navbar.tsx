@@ -10,7 +10,7 @@ const Navbar = ({ children }) => {
     <div className="component">
 
         <nav className="nav">
-          <ul>{children}</ul>
+          {children}
         </nav>
 
         <div className="bottom-items">
