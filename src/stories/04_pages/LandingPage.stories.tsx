@@ -162,7 +162,6 @@ const Template: Story = (args) => (
       <br />
       <br />
     </Container>
-    <Footer />
   </div>
 );
 
