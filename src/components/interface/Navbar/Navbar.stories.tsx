@@ -7,7 +7,6 @@ import Governance from "./MockSlides/Governance";
 import Wallet from "./MockSlides/Wallet";
 import { CustomLink } from "./Navbar";
 import HomeIcon from "../../../components/icons/home";
-import OrigynIcon from "../../../components/icons/origyn";
 import GovernanceIcon from "../../../components/icons/governance";
 import ThemeIcon from "../../../components/icons/theme";
 import WalletIcon from "../../../components/icons/wallet";
@@ -35,7 +34,7 @@ const Template: Story = (args: any) => {
     <>
       <Navbar>
 
-          <OrigynIcon />
+         
 
         <CustomLink href="/home">
           <HomeIcon />

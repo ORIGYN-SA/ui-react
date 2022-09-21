@@ -2,6 +2,8 @@ import React from "react";
 import "./styles.css";
 import Button from "../Button";
 import ThemeIcon from "../../../components/icons/theme";
+import OrigynIcon from "../../../components/icons/origyn";
+
 
 const Navbar = ({ children }) => {
   return (
@@ -9,13 +11,16 @@ const Navbar = ({ children }) => {
 
     <div className="component">
 
+     <div className="top-items">
+       <OrigynIcon/>
         <nav className="nav">
           {children}
         </nav>
+     </div>
 
         <div className="bottom-items">
           <Button btnType="small">Connect</Button>
-        <ThemeIcon />
+          <ThemeIcon />
         </div>
 
         </div>
