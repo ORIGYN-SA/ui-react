@@ -1,4 +1,4 @@
-import React,{ createContext, useState, useRef } from "react";
+import React,{ createContext, useState, useRef, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { layoutType } from "./Layouts";
 import { Snack } from "./Snack";
@@ -9,7 +9,6 @@ export type SnackBarProps = {
   icon?: JSX.Element;
   actionText?: string;
   action?: Function;
-  durationms?: number;
   position?: string;
 };
 
@@ -17,9 +16,8 @@ export type ContextType = {
   snackBar: SnackBarProps | undefined;
   isOpen?: boolean;
   snackBarArray?: SnackBarProps[];
-  createSnackBar: (snackbar: SnackBarProps) => void;
+  durationms?: number;
   addSnackBar: (snackbar: SnackBarProps) => void;
-  closeSnackBar?: () => void;
 };
 
 export const SnackContext = createContext<ContextType>(
@@ -33,32 +31,28 @@ const SnackProvider = ({ children }: { children: ReactNode }) => {
     const [snackBarArray, setSnackBarArray] = useState<SnackBarProps[]>([]);
 
     const addSnackBar = (snackbar: SnackBarProps) => {
+      setIsOpen(true);
       setSnackBarArray((prev) => [...prev, snackbar]);
     };
 
-    let timeout = useRef(0);
-
-    const createSnackBar = (snackbar: SnackBarProps) => {
-      setSnackBar(snackbar);
-      setIsOpen(true);
-    };
-    const closeSnackBar = () => {
-      setSnackBar(undefined);
-      setIsOpen(false);
-    };
-
+    useEffect(() => {
+      if(snackBarArray.length > 0){
+        const timer = setTimeout(() => {
+          setSnackBarArray((prev) => prev.slice(1));
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    },[snackBarArray])
  
   return (
     <SnackContext.Provider value={{
       isOpen,
       snackBar,
       snackBarArray,
-      createSnackBar,
-      closeSnackBar,
       addSnackBar
     }}>
       {children}
-      <Snack />
+      <Snack/>
     </SnackContext.Provider>
   );
 };

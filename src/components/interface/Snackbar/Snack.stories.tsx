@@ -15,18 +15,11 @@ const Template1: Story = (args) => (
   <SnackProvider>
   <Grid gap={20} columns={2}>
     <Component1/>
-  </Grid>
-  </SnackProvider>
-);
-
-const Template2: Story = (args) => (
-  <SnackProvider>
-  <Grid gap={20} columns={2}>
     <Component2/>
   </Grid>
   </SnackProvider>
 );
 
-export const oneline = Template1.bind({});
-export const onelineicon = Template2.bind({});
+export const example = Template1.bind({});
+
 

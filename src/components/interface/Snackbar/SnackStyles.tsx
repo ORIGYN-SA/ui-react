@@ -1,6 +1,7 @@
 import styled from "styled-components";
 export const Styles = styled.div`
   width: auto;
+  margin:8px;
   .snackbar {
     width:fit-content;
     height: auto;
