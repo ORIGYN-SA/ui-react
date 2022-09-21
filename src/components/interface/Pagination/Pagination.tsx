@@ -4,6 +4,9 @@ import React, { useState } from "react";
 const PaginationContainer = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: row;
+  gap 24px;
+  padding: 0px;
   justify-content: center;
   .pageCard {
     height: 36px;
@@ -88,7 +91,8 @@ const Pagination = ({ pageCount }: any) => {
   return (
     <div style={{  display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'}}>
+      justifyContent: 'center',
+      gap: "24px"}}>
       <p>
         Page {currentPage} of {pageCount}
       </p>
