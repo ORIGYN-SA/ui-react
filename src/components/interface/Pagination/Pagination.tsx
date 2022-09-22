@@ -1,42 +1,102 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 
+const flexContainer = {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  padding: "0px",
+  gap: "24px",
+  position: "absolute",
+  width: "348px",
+  height: "40px",
+  left: "20px",
+  top: "20px",
+};
+
 const PaginationContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
-  gap 24px;
+  gap 4px;
   padding: 0px;
   justify-content: center;
+  width: 260px;
+  height: 40px;
   .pageCard {
-    height: 36px;
-    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    padding: 11px;
+    gap: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500; 
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
     background: transparent;
     border: 1px ;
     box-sizing: border-box;
     border-radius: 4px #fff;
     margin: 0 6px;
-    color: #000000;
+    color: #151515;
     cursor: pointer;
     &:not([disabled]):hover {
       border: 1px ;
-      color: #000000;
+      color: #151515;
     }
   }
   .pageCard.active {
     background: #f2f2f2;
     border-radius: 999px;
-    color: #000000;
+    color: #151515;
   }
 `;
 
-const MorePaginationIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 36px;
-  width: 36px;
-`;
+const textStyle = {
+  fontFamily: "Montserrat",
+  fontStyle: "normal",
+  fontWeight: "600",
+  fontSize: "10px",
+  lineHeight: "16px",
+  color: "#5F5F5F",
+  letterSpacing: "-0,1px",
+  width: "64px",
+  height: "16px",
+};
+
+const MoreIconDiv = {
+  display: 'flex',
+flexDirection: 'column',
+justifyContent: 'center',
+alignItems: 'center',
+padding: '0px',
+gap: '10px',
+width: '40px',
+height: '40px',
+borderRadius: '999px'
+}
+
+const MoreIconText = {
+width: '9px',
+height: '20px',
+fontFamily: 'Montserrat',
+fontStyle: 'normal',
+fontWeight: '500',
+fontSize: '12px',
+lineHeight: '20px',
+textAlign: 'center',
+color: '#151515',
+}
+
+const chevronStyle = {
+  // width: "18px",
+  // height: "18px"
+}
 
 const Icon = styled.img`
   width: 20px;
@@ -89,11 +149,8 @@ const Pagination = ({ pageCount }: any) => {
   };
 
   return (
-    <div style={{  display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: "24px"}}>
-      <p>
+    <div style={flexContainer}>
+      <p style={textStyle}>
         Page {currentPage} of {pageCount}
       </p>
       <PaginationContainer>
@@ -103,6 +160,7 @@ const Pagination = ({ pageCount }: any) => {
             if (currentPage > 1) setCurrentPage(currentPage - 1);
           }}
           disabled={currentPage <= 1}
+          style={chevronStyle}
         >{`<`}</button>
         {pageCount < 4 && renderPageButtons()}
         {currentPage >= pageCount - 2 && pageCount > 3 && (
@@ -113,14 +171,9 @@ const Pagination = ({ pageCount }: any) => {
             >
               1
             </button>
-            <MorePaginationIconContainer
-              style={{
-                height: "36px",
-                width: "36px",
-              }}
-            >
-              <p style={{ width: "20px", height: "auto" }}>...</p>
-            </MorePaginationIconContainer>
+            <div style={MoreIconDiv}>
+              <p style={MoreIconText}>...</p>
+            </div>
           </>
         )}
         {getPageRange(currentPage, pageCount).map((page: number) => (
@@ -134,14 +187,9 @@ const Pagination = ({ pageCount }: any) => {
         ))}
         {currentPage < pageCount - 2 && pageCount > 3 && (
           <>
-            <MorePaginationIconContainer
-              style={{
-                height: "36px",
-                width: "36px",
-              }}
-            >
-              <p style={{ width: "20px", height: "auto" }}>...</p>
-            </MorePaginationIconContainer>
+            <div style={MoreIconDiv}>
+              <p style={MoreIconText}>...</p>
+            </div>
             <button
               className={
                 pageCount === currentPage ? `pageCard active` : `pageCard`
@@ -157,6 +205,7 @@ const Pagination = ({ pageCount }: any) => {
           onClick={() => {
             if (currentPage < pageCount) setCurrentPage(currentPage + 1);
           }}
+          style={chevronStyle}
           disabled={currentPage === pageCount}
         >{`>`}</button>
       </PaginationContainer>
