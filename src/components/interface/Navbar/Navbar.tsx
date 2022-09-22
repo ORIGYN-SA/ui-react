@@ -1,29 +1,32 @@
 import React from "react";
 import "./styles.css";
 import Button from "../Button";
-import ThemeIcon from "../../../components/icons/theme";
-import OrigynIcon from "../../../components/icons/origyn";
-
+import ThemeIcon from "../../icons/theme";
+import OrigynIcon from "../../icons/origyn";
 
 const Navbar = ({ children }) => {
   return (
-    <div className="navbar">
+    <div className="flex-container">
 
-    <div className="component">
-
-     <div className="top-items">
-       <OrigynIcon/>
-        <nav className="nav">
+      {/* container 1 */}
+      <div className="container1">
+        <div className="topItem1">
+          <OrigynIcon />
+        </div>
+        <div className="topItem2">
           {children}
-        </nav>
-     </div>
+        </div>
+      </div>
 
-        <div className="bottom-items">
+      {/* container 2 */}
+      <div className="container2">
+        <div className="bottomItem1">  
           <Button btnType="small">Connect</Button>
+        </div>
+        <div className="bottomItem2">
           <ThemeIcon />
         </div>
-
-        </div>
+      </div>
 
     </div>
   );

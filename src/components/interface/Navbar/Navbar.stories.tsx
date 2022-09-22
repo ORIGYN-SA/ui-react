@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar2";
 import Home from "./MockSlides/Home";
 import Governance from "./MockSlides/Governance";
 import Wallet from "./MockSlides/Wallet";
@@ -31,7 +31,7 @@ const Template: Story = (args: any) => {
   }
 
   return (
-    <>
+    <div style={{display: "flex",justifyContent:"center",alignItems:"center", backgroundColor:'#000000'}}>
       <Navbar>
 
          
@@ -52,7 +52,7 @@ const Template: Story = (args: any) => {
       </Navbar>
 
       <div className="container">{component}</div>
-    </>
+    </div>
   );
 };
 
