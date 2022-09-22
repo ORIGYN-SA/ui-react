@@ -19,11 +19,13 @@
   /* gap between div 1 and div 2 */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
   padding: 0px;
   gap: 20px;
+  width: 56px;
+  height: 284px;
 }
 
 .topItem1 {
@@ -61,10 +63,12 @@
   /* gap between div 1 and div 2 */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 0px;
   gap: 24px;
+  width: 56px;
+  height: 88px;
 }
 
 .bottomItem1 {
@@ -75,7 +79,6 @@
   padding: 6px 8px;
   gap: 8px;
   isolation: isolate;
-
   width: 56px;
   height: 32px;
 }
