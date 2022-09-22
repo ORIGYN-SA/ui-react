@@ -3,13 +3,10 @@ import { useSnackBarContext } from "./useSnackContext";
 import { Styles } from "./SnackStyles";
 import { Layouts } from "./Layouts";
 
-export const Snack = (props) => {
-  
-  const { snackBar, snackBarArray, isOpen } = useSnackBarContext();
+export const Snack = () => {
+  const { snackBarArray, isOpen} = useSnackBarContext();
   const snackRef = useRef(null);
-  console.log(snackBar);
-  console.log(isOpen);
-  console.log(snackBarArray);
+  console.log('snackbar',snackBarArray);
   return isOpen && snackBarArray.length > 0 ? (
     <div>
       {snackBarArray.map((snack) => (

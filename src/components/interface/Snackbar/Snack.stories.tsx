@@ -12,7 +12,8 @@ export default {
 } as Meta;
 
 const Template1: Story = (args) => (
-  <SnackProvider>
+
+  <SnackProvider durationms={4000} maxSnack={5}>
   <Grid gap={20} columns={2}>
     <Component1/>
     <Component2/>
@@ -22,5 +23,6 @@ const Template1: Story = (args) => (
 );
 
 export const example = Template1.bind({});
+
 
 

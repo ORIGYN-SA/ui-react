@@ -8,7 +8,6 @@ export const Component1 = () => {
    addSnackBar({
       message: "This is a snackbar",
       layout: "oneLine",
-      position: "bottom",
     });
   };
 
@@ -23,7 +22,6 @@ export const Component2 = () => {
    addSnackBar({
       message: "This is a snackbar with icon",
       layout: "oneLineIcon",
-      position: "bottom",
       icon: <ErrorIcon />,
     });
   };
@@ -38,7 +36,6 @@ export const Component3 = () => {
    addSnackBar({
       message: "This is a snackbar with action",
       layout: "oneLineButton",
-      position: "bottom",
       action: () => alert("You clicked me"),
       actionText: "Click me",
     });

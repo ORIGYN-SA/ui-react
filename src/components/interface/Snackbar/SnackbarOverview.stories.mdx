@@ -7,6 +7,45 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 `}</style>
 
 
-## Snackbar 
+# Snackbar component
 
+Basic Snackbar component with 5 different layouts for multiple use cases.
+
+Instantiate a ` <SnackProvider></SnackProvider> ` component and  stack snackbars using  ` addSnackbar: (snackbar: SnackBarProps) `
+
+** The default value for the SnackProvider are : ** 
+
+```javascript
+durationms = 4000
+position = "top-right"
+maxSnack = 3 
+```
+
+## Types
+
+```typescript
+type SnackBarProps = {
+  layout: layoutType;
+  message: string;
+  icon?: JSX.Element;
+  actionText?: string;
+  action?: Function;
+};
+
+type ContextType = {
+  isOpen: boolean;
+  snackBarArray?: SnackBarProps[];
+  addSnackBar: (snackbar: SnackBarProps) => void;
+}
+
+type SnackProviderProps = {
+  children: ReactNode;
+  durationms?: number;
+  maxSnack?: number;
+  position?: string;
+};
+```
+
+<Canvas>
 <Story id="components-interface-snackbar--example" />
+</Canvas>
