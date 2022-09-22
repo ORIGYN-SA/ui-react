@@ -24,7 +24,7 @@ const Navbar = ({ children }) => {
           <Button btnType="small">Connect</Button>
         </div>
         <div className="bottomItem2">
-          <ThemeIcon />
+          <p>Theme</p>
         </div>
       </div>
 

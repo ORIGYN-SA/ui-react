@@ -4,16 +4,23 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
   padding: 0px 0px 24px;
   gap: 564px;
   width: 104px;
-  height: 900px;
+  height: 1000px;
   position: relative;
   background-color: #fefefe;
 }
 
-/* .flex-container ii tot component,
- container 1 si 2 is children */
+/* TO DO: 
+- remove border
+- check why Theme is left out if height is set to original 900px as per figma - might be topItem1 is having a too bigger gap top
+- replace p with svg's
+ */
+
+/* .flex-container is whole component,
+ container 1 and 2 are children */
 
 .container1 {
   /* gap between div 1 and div 2 */
@@ -42,7 +49,8 @@
 .topItem2 {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 0px;
   gap: 8px;
   width: 56px;

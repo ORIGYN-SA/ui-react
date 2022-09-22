@@ -35,19 +35,20 @@ const Template: Story = (args: any) => {
       <Navbar>
 
          
+{/* will add icons svg's instead of text */}
 
         <CustomLink href="/home">
-          <HomeIcon />
+          <p>Home</p>
         </CustomLink>
 
 
         <CustomLink href="/governance">
-          <GovernanceIcon />
+        <p>Gov</p>
         </CustomLink>
 
 
         <CustomLink href="/wallet">
-          <WalletIcon />
+        <p>Wallet</p>
         </CustomLink>
       </Navbar>
 
