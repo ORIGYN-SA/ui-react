@@ -16,7 +16,6 @@ export const TooltipTarget = styled.button`
     css`
       padding: 15px;
       margin: 1px;
-      border: 1px solid gray;
       border-radius: 5px;
       font-size: 2rem;
     `};

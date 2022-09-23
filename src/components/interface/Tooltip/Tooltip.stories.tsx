@@ -27,7 +27,7 @@ const Template: Story = (args: any) => (
       }}
     >
       <Tooltip text="I am a tooltip" {...args}>
-        <TooltipTarget>Tooltip</TooltipTarget>
+        <TooltipTarget>This is a Tooltip</TooltipTarget>
       </Tooltip>
     </div>
     <br />
