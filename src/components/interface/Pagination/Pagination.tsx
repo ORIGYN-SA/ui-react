@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 
-const flexContainer = {
+const flexContainer: any = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
@@ -57,7 +57,7 @@ const PaginationContainer = styled.div`
   }
 `;
 
-const textStyle = {
+const textStyle: any = {
   fontFamily: "Montserrat",
   fontStyle: "normal",
   fontWeight: "600",
@@ -69,7 +69,7 @@ const textStyle = {
   height: "16px",
 };
 
-const MoreIconDiv = {
+const MoreIconDiv: any = {
   display: 'flex',
 flexDirection: 'column',
 justifyContent: 'center',
@@ -81,7 +81,7 @@ height: '40px',
 borderRadius: '999px'
 }
 
-const MoreIconText = {
+const MoreIconText: any = {
 width: '9px',
 height: '20px',
 fontFamily: 'Montserrat',
