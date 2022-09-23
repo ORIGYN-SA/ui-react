@@ -32,19 +32,24 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [snackBarArray, setSnackBarArray] = useState<SnackBarProps[]>([]);
-
+  const [queue, setQueue] = useState<SnackBarProps[]>([]);
   const addSnackBar = (snackbar: SnackBarProps) => {
     setIsOpen(true);
-    setSnackBarArray((prev) => [...prev, snackbar]);
     if (snackBarArray.length >= maxSnack) {
-      setSnackBarArray((prev) => prev.slice(snackBarArray.length - maxSnack + 1));
-    };
+      setQueue((prev) => [...prev, snackbar]);
+    } else {
+      setSnackBarArray((prev) => [...prev, snackbar]);
+    }
   };
-
   useEffect(() => {
     if (snackBarArray.length > 0) {
       const timer = setTimeout(() => {
-        setSnackBarArray((prev) => prev.slice(1));
+        if ((queue.length > 0) && (snackBarArray.length < maxSnack)) {
+          setSnackBarArray((prev) => [...prev, queue[0]]);
+          queue.shift();
+        } else {
+          setSnackBarArray((prev) => prev.slice(1));
+        }
       }, durationms);
       return () => clearTimeout(timer);
     }

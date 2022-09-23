@@ -4,6 +4,7 @@ export const Styles = styled.div`
   margin:8px;
   .snackbar {
     width:fit-content;
+    max-width: width: 404px;
     height: auto;
     padding: 12px 16px 12px 16px;
     background-color: #151515;

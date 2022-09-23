@@ -1,17 +1,18 @@
 import React from "react";
 import { useSnackBarContext } from './useSnackContext';
 import ErrorIcon from "../../icons/Error";
+import Button from "../Button";
 export const Component1 = () => {
   const {addSnackBar}=useSnackBarContext();  
 
   const handleClick = () => {
    addSnackBar({
-      message: "This is a snackbar",
+      message: "This is a snackbar1",
       layout: "oneLine",
     });
   };
 
-  return <button onClick={handleClick}>display simple snack</button>;
+  return <Button onClick={handleClick}>Stack one line snack</Button>;
 };
 
 
@@ -20,13 +21,13 @@ export const Component2 = () => {
 
   const handleClick = () => {
    addSnackBar({
-      message: "This is a snackbar with icon",
+      message: "This is a snackbar with icon2",
       layout: "oneLineIcon",
       icon: <ErrorIcon />,
     });
   };
 
-  return <button onClick={handleClick}>display icon snack</button>;
+  return <Button onClick={handleClick}>Stack icon snack</Button>;
 };
 
 export const Component3 = () => {
@@ -34,14 +35,28 @@ export const Component3 = () => {
 
   const handleClick = () => {
    addSnackBar({
-      message: "This is a snackbar with action",
+      message: "This is a snackbar with action3",
       layout: "oneLineButton",
       action: () => alert("You clicked me"),
       actionText: "Click me",
     });
   };
 
-  return <button onClick={handleClick}>display action snack</button>;
+  return <Button onClick={handleClick}>Stack button snack</Button>;
 }
 
+export const Component4 = () => {
+  const {addSnackBar}=useSnackBarContext();   
+
+  const handleClick = () => {
+   addSnackBar({
+      message: "This is a snackbar with action and two lines - This is a snackbar with action and two lines - This is a snackbar with action and two lines - This is a snackbar with action and two lines",
+      layout: "twoLinesButton",
+      action: () => alert("You clicked me"),
+      actionText: "Click me",
+    });
+  };
+
+  return <Button onClick={handleClick}>Stack two lines button snack</Button>;
+}
 

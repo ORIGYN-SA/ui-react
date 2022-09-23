@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import Grid from "../../layout/Grid";
 import SnackProvider from "./SnackProvider";
 import {Snack} from "./Snack";
-import {Component1,Component2,Component3} from "./exampleComponent";
+import {Component1,Component2,Component3,Component4} from "./exampleComponent";
 
 export default {
   title: "Components/Interface/Snackbar",
@@ -13,11 +13,12 @@ export default {
 
 const Template1: Story = (args) => (
 
-  <SnackProvider durationms={4000} maxSnack={5}>
+  <SnackProvider durationms={4000} maxSnack={3}>
   <Grid gap={20} columns={2}>
     <Component1/>
     <Component2/>
     <Component3/>
+    <Component4/>
   </Grid>
   </SnackProvider>
 );
