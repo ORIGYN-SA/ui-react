@@ -10,6 +10,7 @@ import HomeIcon from "../../../components/icons/home";
 import GovernanceIcon from "../../../components/icons/governance";
 import ThemeIcon from "../../../components/icons/theme";
 import WalletIcon from "../../../components/icons/wallet";
+import "./styles.css";
 
 export default {
   title: "Components/Interface/Navbar/All stories",
@@ -31,24 +32,28 @@ const Template: Story = (args: any) => {
   }
 
   return (
-    <div style={{display: "flex",justifyContent:"center",alignItems:"center", backgroundColor:'#d3d3d3'}}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "1200px",
+        backgroundColor: "#d3d3d3",
+      }}
+    >
       <Navbar>
+        {/* will add icons svg's instead of text */}
 
-         
-{/* will add icons svg's instead of text */}
-
-        <CustomLink href="/home">
+        <CustomLink className="item-home" href="/home">
           <p>Home</p>
         </CustomLink>
 
-
-        <CustomLink href="/governance">
-        <p>Gov</p>
+        <CustomLink className="item" href="/governance">
+          <p>Gov</p>
         </CustomLink>
 
-
-        <CustomLink href="/wallet">
-        <p>Wallet</p>
+        <CustomLink className="item" href="/wallet">
+          <p>Wallet</p>
         </CustomLink>
       </Navbar>
 

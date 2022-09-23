@@ -7,27 +7,23 @@ import OrigynIcon from "../../icons/origyn";
 const Navbar = ({ children }) => {
   return (
     <div className="flex-container">
-
       {/* container 1 */}
       <div className="container1">
         <div className="topItem1">
           <OrigynIcon />
         </div>
-        <div className="topItem2">
-          {children}
-        </div>
+        <div className="topItem2">{children}</div>
       </div>
 
       {/* container 2 */}
       <div className="container2">
-        <div className="bottomItem1">  
+        <div className="bottomItem1">
           <Button btnType="small">Connect</Button>
         </div>
         <div className="bottomItem2">
           <p>Theme</p>
         </div>
       </div>
-
     </div>
   );
 };

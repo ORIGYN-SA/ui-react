@@ -4,18 +4,17 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
   padding: 0px 0px 24px;
   gap: 564px;
   width: 104px;
-  height: 1000px;
-  position: relative;
+  height: 950px;
+  position: absolute;
   background-color: #fefefe;
 }
 
-/* TO DO: 
-- remove border
-- check why Theme is left out if height is set to original 900px as per figma - might be topItem1 is having a too bigger gap top
+/* if added container 1 + container 2 + gap (from flex-container) = 936px and flex-container is 900px
+that means that container 2 will be pushed outside flex-container, so i replaced 900px with 950px
+
 - replace p with svg's
  */
 
@@ -50,19 +49,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 0px;
   gap: 8px;
   width: 56px;
   height: 184px;
 }
 
-.topItem2 :hover {
+.item-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 19px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+}
+
+.item-home :hover {
   background: #f4e5f1;
   border-radius: 999px;
 }
 
-.topItem2 :active {
+.item-home :active {
+  background: #f4e5f1;
+  border-radius: 999px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 19px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+}
+
+.item :hover {
+  background: #f4e5f1;
+  border-radius: 999px;
+}
+
+.item :active {
   background: #f4e5f1;
   border-radius: 999px;
 }
@@ -71,11 +102,10 @@
   /* gap between div 1 and div 2 */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 0px;
   gap: 24px;
-  width: 56px;
+  width: 76px;
   height: 88px;
 }
 
@@ -84,11 +114,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 6px 8px;
-  gap: 8px;
-  isolation: isolate;
-  width: 56px;
+  padding: 6px 12px;
+  width: 76px;
   height: 32px;
+  border-radius: 999px;
 }
 
 .bottomItem2 {
@@ -100,6 +129,7 @@
   gap: 10px;
   width: 32px;
   height: 32px;
+  border-radius: 999px;
 }
 
 .bottomItem2 :hover {
