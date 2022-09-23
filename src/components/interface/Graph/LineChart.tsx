@@ -1,7 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { getArrayMin, getArrayMax } from "../../../utils";
+import { generateControlPoints } from "./utils";
 
-const SLabel = styled.div`
+type TooltipProps = {
+  selectedIndex?: number;
+  content?: string;
+  display: "block" | "none";
+  left: number;
+  top: number;
+};
+
+const STooltip = styled.div<TooltipProps>`
   background: #151515;
   border-radius: 0.5rem;
   color: #43b8ca;
@@ -10,51 +20,69 @@ const SLabel = styled.div`
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  height: 1em;
   padding: 1rem;
   position: absolute;
+  ${({ left, top, display }) => `
+    display: ${display};
+    left: ${left + 35}px;
+    top: ${top + 10}px;
+  `}
 `;
-export const LineChart = ({ data, height = 350, width = 700 }) => {
-  const canvasRef = useRef(null);
-  const [label, setLabel] = useState({
+type Point = {
+  x: number;
+  y: number;
+};
+
+type Dot = {
+  position: Point;
+  flat: Point;
+};
+
+type Data = {
+  label: string;
+  value: number;
+};
+
+export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
+  const canvasRef = useRef<HTMLCanvasElement>();
+  const [tooltip, setTooltip] = useState<TooltipProps>({
     content: "",
     display: "none",
-    top: "0px",
-    left: "0px",
+    top: 0,
+    left: 0,
   });
-  let ctx;
+  const [data, setData] = useState<Data[]>([]);
+  const [dots, setDots] = useState<Dot[]>([]);
+
+  const getCanvasContext = useCallback(() => {
+    if (canvasRef?.current) return canvasRef.current.getContext("2d");
+  }, [canvasRef]);
 
   const vData = 4;
   const speed = 2;
-  const t = 1 / 7; // 0 = no curve
+  const curvature = 1 / 7; // 0 = no curve
   const offset = 50.5;
-
   const chartHeight = height - 2 * offset;
   const chartWidth = width;
 
-  let valuesRy = [];
-  let propsRy = [];
-  let posDots = [];
-  let posFlat = [];
-
-  const dataSetup = () => {
-    for (const prop in data) {
-      valuesRy.push(data[prop]);
-      propsRy.push(prop);
-    }
-  };
+  let gradient, Min, Max, verticalUnit;
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    ctx = canvas.getContext("2d");
-    ctx.font = "14px Montserrat";
-    const grd = ctx.createLinearGradient(0, 0, 0, height / 2);
+    const _data = [];
+    for (const label in propsData) {
+      _data.push({
+        label,
+        value: propsData[label],
+      });
+    }
+    setData(_data);
+  }, []);
 
-    let frames = 0;
-    let animationFrameId;
+  useEffect(() => {
+    setupChart();
+  }, [data]);
 
-    dataSetup();
-
+  const setupChart = useCallback(() => {
     const A = {
       x: 0,
       y: 0,
@@ -68,25 +96,29 @@ export const LineChart = ({ data, height = 350, width = 700 }) => {
       y: offset + chartHeight,
     };
 
-    ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#E3E3E3";
-    // ctx.moveTo(A.x, A.y); // Linie Oy
-    ctx.lineTo(B.x, B.y); // Linie Ox
-    ctx.lineTo(C.x, C.y);
-    ctx.stroke();
+    getCanvasContext().font = "14px Montserrat";
+
+    gradient = getCanvasContext().createLinearGradient(0, 0, 0, height / 2);
+
+    getCanvasContext().beginPath();
+    getCanvasContext().lineWidth = 1;
+    getCanvasContext().strokeStyle = "#E3E3E3";
+    // getCanvasContext().moveTo(A.x, A.y); // Linie Oy
+    getCanvasContext().lineTo(B.x, B.y); // Linie Ox
+    getCanvasContext().lineTo(C.x, C.y);
+    getCanvasContext().stroke();
 
     // vertical ( A - B )
     const aStep = (chartHeight - 50) / vData;
 
-    const Max = Math.ceil(arrayMax(valuesRy) / 10) * 10;
-    const Min = Math.floor(arrayMin(valuesRy) / 10) * 10;
+    Max = Math.ceil(getArrayMax(data.map((d) => d.value)) / 10) * 10;
+    Min = Math.floor(getArrayMin(data.map((d) => d.value)) / 10) * 10;
     const aStepValue = (Max - Min) / vData;
-    const verticalUnit = aStep / aStepValue;
+    verticalUnit = aStep / aStepValue;
 
     let a = [];
-    ctx.textAlign = "right";
-    ctx.textBaseline = "middle";
+    getCanvasContext().textAlign = "right";
+    getCanvasContext().textBaseline = "middle";
     for (let i = 0; i <= vData; i++) {
       if (i == 0) {
         a[i] = {
@@ -105,24 +137,24 @@ export const LineChart = ({ data, height = 350, width = 700 }) => {
 
     //horizontal ( B - C )
     let b = [];
-    ctx.textAlign = "center";
-    ctx.textBaseline = "hanging";
-    const bStep = chartWidth / (valuesRy.length - 1); // valuesRy.length + 1 pentru padding in lateral
+    getCanvasContext().textAlign = "center";
+    getCanvasContext().textBaseline = "hanging";
+    const bStep = chartWidth / (data.length - 1); // valuesRy.length + 1 pentru padding in lateral
 
-    for (let i = 0; i < valuesRy.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       if (i == 0) {
         b[i] = {
           x: B.x,
           y: B.y,
-          val: propsRy[0],
+          val: data[0].label,
         };
         b[i].textOffset = -10;
       } else {
         b[i] = {};
         b[i].x = b[i - 1].x + bStep;
         b[i].y = b[i - 1].y;
-        b[i].val = propsRy[i];
-        if (i == valuesRy.length - 1) {
+        b[i].val = data[i].label;
+        if (i == data.length - 1) {
           b[i].textOffset = 10;
         } else {
           b[i].textOffset = 0;
@@ -130,62 +162,81 @@ export const LineChart = ({ data, height = 350, width = 700 }) => {
       }
       drawCoords(b[i], b[i].textOffset, 3); // Deseneaza indicatoare si text pentru Oy (vertical)
     }
-    [posDots, posFlat] = generateDotsPosition(b, verticalUnit);
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = "#43B8CA";
-    ctx.fillStyle = "#5F5F5F";
-    const animateChart = () => {
-      animationFrameId = window.requestAnimationFrame(animateChart);
-      frames += speed;
-      ctx.clearRect(0, 0, width, height - 60);
+    if (b.length) setDots(generateDotsPosition(b, verticalUnit));
+    // if (b.length) dots = generateDotsPosition(b, verticalUnit);
 
-      for (var i = 0; i < posFlat.length; i++) {
-        if (posFlat[i].y > posDots[i].y) {
-          posFlat[i].y -= speed;
+    getCanvasContext().lineWidth = 3;
+    getCanvasContext().strokeStyle = "#43B8CA";
+    getCanvasContext().fillStyle = "#5F5F5F";
+  }, [data]);
+
+  useEffect(() => {
+    if (data.length > 0 && dots.length > 0) {
+      animateChart(0, dots);
+    }
+  }, [dots]);
+
+  const animateChart = useCallback(
+    (frames, volatileDots) => {
+      if (!getCanvasContext()) return;
+      const animationFrameId = window.requestAnimationFrame(() =>
+        animateChart(frames, volatileDots)
+      );
+      frames += speed;
+      getCanvasContext().clearRect(0, 0, width, height - 60);
+
+      for (var i = 0; i < volatileDots.length; i++) {
+        if (volatileDots[i].flat.y > volatileDots[i].position.y) {
+          volatileDots[i].flat.y -= speed;
         }
       }
-      drawCurve(posFlat, grd);
-      for (var i = 0; i < posFlat.length; i++) {
+      drawCurve(volatileDots.map((dot) => dot.flat));
+      for (var i = 0; i < volatileDots.length; i++) {
         // datele de la top
-        // ctx.fillText(posDots[i].val, posFlat[i].x, posFlat[i].y - 25);
-        ctx.beginPath();
+        // getCanvasContext().fillText(posDots[i].val, posFlat[i].x, posFlat[i].y - 25);
+        getCanvasContext().beginPath();
         // We need the dot offset for the first and the last one, as they overflow out of the Chart
         let dotOffset = 0;
         if (i === 0) dotOffset = 3.5;
-        else if (i === posFlat.length - 1) dotOffset = -3.5;
-        ctx.arc(posFlat[i].x + dotOffset, posFlat[i].y, 3, 0, 2 * Math.PI);
-        ctx.fill();
+        else if (i === volatileDots.length - 1) dotOffset = -3.5;
+        getCanvasContext().arc(
+          volatileDots[i].flat.x + dotOffset,
+          volatileDots[i].flat.y,
+          3,
+          0,
+          2 * Math.PI
+        );
+        getCanvasContext().fill();
       }
       if (frames >= Max * verticalUnit) {
         window.cancelAnimationFrame(animationFrameId);
       }
-    };
-    animationFrameId = window.requestAnimationFrame(animateChart);
-  }, []);
+    },
+    [dots, data]
+  );
 
-  // Draw legenda Ox si Oy
   const drawCoords = (o, offX, offY) => {
-    ctx.beginPath();
-    ctx.moveTo(o.x - offX, o.y - offY);
-    //ctx.lineTo(o.x + offX, o.y + offY);
-    ctx.stroke();
-    ctx.fillStyle = "#5F5F5F";
+    getCanvasContext().beginPath();
+    getCanvasContext().moveTo(o.x - offX, o.y - offY);
+    //getCanvasContext().lineTo(o.x + offX, o.y + offY);
+    getCanvasContext().stroke();
+    getCanvasContext().fillStyle = "#5F5F5F";
 
-    ctx.fillText(o.val, o.x - 2 * offX, o.y + 2 * offY);
+    getCanvasContext().fillText(o.val, o.x - 2 * offX, o.y + 2 * offY);
   };
 
-  const drawCurve = (p, grd) => {
-    var pc = controlPoints(p);
+  const drawCurve = (p) => {
+    var pc = generateControlPoints(curvature, p);
 
-    ctx.beginPath();
-    //ctx.moveTo(p[0].x, B.y- 25);
-    ctx.lineTo(p[0].x, p[0].y);
-    ctx.quadraticCurveTo(pc[1][1].x, pc[1][1].y, p[1].x, p[1].y);
+    getCanvasContext().beginPath();
+    //getCanvasContext().moveTo(p[0].x, B.y- 25);
+    getCanvasContext().lineTo(p[0].x, p[0].y);
+    getCanvasContext().quadraticCurveTo(pc[1][1].x, pc[1][1].y, p[1].x, p[1].y);
 
     if (p.length > 2) {
       // Central curves are cubic Bezier
       for (var i = 1; i < p.length - 2; i++) {
-        ctx.bezierCurveTo(
+        getCanvasContext().bezierCurveTo(
           pc[i][0].x,
           pc[i][0].y,
           pc[i + 1][1].x,
@@ -196,128 +247,105 @@ export const LineChart = ({ data, height = 350, width = 700 }) => {
       }
       // The first & the last curve are quadratic Bezier
       var n = p.length - 1;
-      ctx.quadraticCurveTo(pc[n - 1][0].x, pc[n - 1][0].y, p[n].x, p[n].y);
+      getCanvasContext().quadraticCurveTo(
+        pc[n - 1][0].x,
+        pc[n - 1][0].y,
+        p[n].x,
+        p[n].y
+      );
     }
 
-    //ctx.lineTo(p[p.length-1].x, B.y- 25);
-    ctx.stroke();
-    ctx.save();
-    ctx.fillStyle = grd; // pentru gradient
-    ctx.fill();
-    ctx.restore();
-  };
-  const controlPoints = (p) => {
-    // given the points array p calculate the control points
-    var pc = [];
-    for (var i = 1; i < p.length - 1; i++) {
-      var dx = p[i - 1].x - p[i + 1].x; // difference x
-      var dy = p[i - 1].y - p[i + 1].y; // difference y
-      // the first control point
-      var x1 = p[i].x - dx * t;
-      var y1 = p[i].y - dy * t;
-      var o1 = {
-        x: x1,
-        y: y1,
-      };
-
-      // the second control point
-      var x2 = p[i].x + dx * t;
-      var y2 = p[i].y + dy * t;
-      var o2 = {
-        x: x2,
-        y: y2,
-      };
-
-      // building the control points array
-      pc[i] = [];
-      pc[i].push(o1);
-      pc[i].push(o2);
-    }
-    return pc;
-  };
-  const generateDotsPosition = (b, verticalUnit) => {
-    let posDots = [];
-    let posFlat = [];
-
-    for (const key of Object.keys(data)) {
-      const i = posDots.length;
-      posDots.push({
-        x: b[i].x,
-        y: b[i].y - data[key] * verticalUnit - 25,
-      });
-
-      posFlat.push({
-        x: b[i].x,
-        y: b[i].y - 25,
-      });
-    }
-
-    return [posDots, posFlat];
-  };
-  function arrayMax(array) {
-    return Math.max.apply(Math, array);
-  }
-
-  function arrayMin(array) {
-    return Math.min.apply(Math, array);
-  }
-
-  const getMousePosition = (canvasRef, e) => {
-    const canvas = canvasRef.current;
-    const ClientRect = canvas.getBoundingClientRect();
-    return {
-      x: Math.round(e.clientX - ClientRect.left),
-      y: Math.round(e.clientY - ClientRect.top),
-    };
+    //getCanvasContext().lineTo(p[p.length-1].x, B.y- 25);
+    getCanvasContext().stroke();
+    getCanvasContext().save();
+    getCanvasContext().fillStyle = gradient; // pentru gradient
+    //getCanvasContext().fill(); // Aici anulez gradientu
+    getCanvasContext().restore();
   };
 
-  const onChartMouseMove = (e: any) => {
-    setLabel({
-      display: "none",
-      content: "",
-      top: "0px",
-      left: "0px",
-    });
-
-    const m = getMousePosition(canvasRef, e);
-    for (let i = 0; i < posDots.length; i++) {
-      console.log(posDots[i]);
-      ctx.beginPath();
-      ctx.arc(posDots[i].x, posDots[i].y, 20, 0, 2 * Math.PI);
-      if (ctx.isPointInPath(m.x, m.y)) {
-        console.log(" hit a point");
-        setLabel({
-          display: "block",
-          top: m.y + 10 + "px",
-          left: m.x + 10 + "px",
-          content: "<strong>" + propsRy[i] + "</strong>: " + valuesRy[i] + "$",
+  const generateDotsPosition = useCallback(
+    (b, verticalUnit) => {
+      let _dots = [];
+      for (const datum of data) {
+        const i = _dots.length;
+        _dots.push({
+          position: {
+            x: b[i].x,
+            y: b[i].y - datum.value * verticalUnit - 25,
+          },
+          flat: {
+            x: b[i].x,
+            y: b[i].y - 25,
+          },
         });
-        break;
       }
-    }
-  };
+      return _dots;
+    },
+    [data]
+  );
+
+  const getMousePosition = useCallback(
+    (e: MouseEvent) => {
+      const ClientRect = canvasRef.current.getBoundingClientRect();
+      return {
+        x: Math.round(e.clientX - ClientRect.left),
+        y: Math.round(e.clientY - ClientRect.top),
+      };
+    },
+    [canvasRef]
+  );
+
+  const onChartMouseMove = useCallback(
+    (e: any) => {
+      const m = getMousePosition(e);
+      setTooltip({
+        display: "none",
+        content: "",
+        top: 0,
+        left: 0,
+      });
+      for (let i = 0; i < dots.length; i++) {
+        getCanvasContext().beginPath();
+        getCanvasContext().arc(
+          dots[i].position.x,
+          dots[i].position.y,
+          20,
+          0,
+          2 * Math.PI
+        );
+        if (getCanvasContext().isPointInPath(m.x, m.y)) {
+          setTooltip({
+            selectedIndex: i,
+            display: "block",
+            top: m.y,
+            left: m.x,
+            content:
+              "<strong>" + data[i].label + "</strong>: " + data[i].value + "$",
+          });
+        }
+      }
+    },
+    [getCanvasContext(), dots, data, tooltip]
+  );
 
   return (
-    <>
-      <canvas
-        ref={canvasRef}
-        height={height}
-        width={width}
-        onMouseMove={(e) => onChartMouseMove(e)}
-        style={{
-          border: "1px solid #E3E3E3",
-          borderBottom: 0,
-          borderTop: 0,
-        }}
-      />
-      <SLabel
-        style={{
-          display: label.display,
-          top: label.top,
-          left: label.left,
-        }}
-        dangerouslySetInnerHTML={{ __html: label.content }}
-      />
-    </>
+    <div
+      onMouseMove={(e) => onChartMouseMove(e)}
+      style={{ cursor: tooltip.display === "block" ? "pointer" : "auto" }}
+    >
+      <canvas ref={canvasRef} height={height} width={width} />
+      {tooltip.content && (
+        <STooltip
+          top={tooltip.top}
+          left={tooltip.left}
+          display={tooltip.display}
+        >
+          <span>{data[tooltip.selectedIndex]?.label}</span>
+          <div style={{ color: "white" }}>
+            Avg. Price: {data[tooltip.selectedIndex]?.value} OGY
+          </div>
+        </STooltip>
+      )}
+    </div>
   );
 };

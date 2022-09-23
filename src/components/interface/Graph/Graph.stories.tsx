@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import { LineChart } from "./LineChart";
+import { Graph } from "./Graph";
 
 export default {
-  title: "Components/Interface/LineGraph",
-  component: LineChart,
+  title: "Components/Interface/Graph",
+  component: Graph,
 } as Meta;
 
 const Template: Story<any> = (args) => {
@@ -21,7 +21,7 @@ const Template: Story<any> = (args) => {
   };
   return (
     <div style={{ padding: 20, backgroundColor: "white" }}>
-      <LineChart {...args} data={data} />
+      <Graph {...args} data={data} token="OGY" width="700px" />
     </div>
   );
 };
