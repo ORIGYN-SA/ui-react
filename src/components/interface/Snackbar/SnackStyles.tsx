@@ -1,12 +1,10 @@
 import styled from "styled-components";
 export const Styles = styled.div`
-  width: auto;
-  margin:8px;
   .snackbar {
+    margin-top:24px;
     width:fit-content;
-    max-width: width: 404px;
-    height: auto;
-    padding: 12px 16px 12px 16px;
+    max-width: 404px;
+    padding: 12px 16px 16px 12px;
     background-color: #151515;
     box-shadow: 0px 1px 12px rgba(18, 18, 18, 0.04), 0px 0px 4px rgba(18, 18, 18, 0.08);
     border-radius: 8px;
@@ -25,7 +23,7 @@ export const Styles = styled.div`
     viewBox: 0 0 15 15;
   }
   .svgBox{
-    margin-right: 10px;
+    margin-right: 1px;
     padding-top: 2px;
   }
   .container{

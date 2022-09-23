@@ -1,7 +1,6 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import {SnackBarProps} from './SnackProvider';
 import Button from '../Button';
-import { SnackContext } from './SnackProvider';
 
 
 export const Layouts = {
