@@ -15,7 +15,6 @@
 /* if added container 1 + container 2 + gap (from flex-container) = 936px and flex-container is 900px
 that means that container 2 will be pushed outside flex-container, so i replaced 900px with 950px
 
-- replace p with svg's
  */
 
 /* .flex-container is whole component,
@@ -61,9 +60,9 @@ that means that container 2 will be pushed outside flex-container, so i replaced
   justify-content: center;
   align-items: center;
   padding: 19px;
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
+  width: 18px;
+  height: 18px;
+
 }
 
 .item-home :hover {
@@ -83,9 +82,10 @@ that means that container 2 will be pushed outside flex-container, so i replaced
   align-items: center;
   list-style: none;
   padding: 19px;
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
+  color: #5F5F5F;
+  width: 18px;
+  height: 18px;
+  ;
 }
 
 .item :hover {
@@ -96,6 +96,7 @@ that means that container 2 will be pushed outside flex-container, so i replaced
 .item :active {
   background: #f4e5f1;
   border-radius: 999px;
+;
 }
 
 .container2 {
@@ -129,7 +130,7 @@ that means that container 2 will be pushed outside flex-container, so i replaced
   gap: 10px;
   width: 32px;
   height: 32px;
-  border-radius: 999px;
+  
 }
 
 .bottomItem2 :hover {

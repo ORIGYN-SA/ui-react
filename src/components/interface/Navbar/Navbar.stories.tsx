@@ -37,7 +37,7 @@ const Template: Story = (args: any) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "1200px",
+        height: "1050px",
         backgroundColor: "#d3d3d3",
       }}
     >
@@ -45,15 +45,15 @@ const Template: Story = (args: any) => {
         {/* will add icons svg's instead of text */}
 
         <CustomLink className="item-home" href="/home">
-          <p>Home</p>
+          <HomeIcon/>
         </CustomLink>
 
         <CustomLink className="item" href="/governance">
-          <p>Gov</p>
+          <GovernanceIcon/>
         </CustomLink>
 
         <CustomLink className="item" href="/wallet">
-          <p>Wallet</p>
+          <WalletIcon/>
         </CustomLink>
       </Navbar>
 
