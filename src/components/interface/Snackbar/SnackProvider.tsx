@@ -52,7 +52,7 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
     if (snackBarArray.length >= maxSnack) {
       setQueue((prev) => [...prev, snackbar]);
     } else {
-      setSnackBarArray((prev) => [...prev, snackbar]);
+      setSnackBarArray((prev) => [snackbar, ...prev]);
     }
   };
 
@@ -63,11 +63,11 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
   useEffect(() => {
     if (snackBarArray.length > 0) {
       const timer = setTimeout(() => {
-        if ((queue.length > 0) && (snackBarArray.length < maxSnack)) {
-          setSnackBarArray((prev) => [...prev, queue[0]]);
+        if ((queue.length > 0) && (snackBarArray.length <= maxSnack)) {
+          setSnackBarArray((prev) => [queue[0], ...prev]);
           queue.shift();
         } else {
-          setSnackBarArray((prev) => prev.slice(1));
+          setSnackBarArray((prev) => prev.slice(0, -1));
         }
       }, durationms);
       return () => clearTimeout(timer);
