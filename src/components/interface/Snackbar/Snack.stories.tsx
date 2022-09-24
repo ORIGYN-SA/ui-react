@@ -13,7 +13,7 @@ export default {
 
 const Template1: Story = (args) => (
 
-  <SnackProvider durationms={4000} maxSnack={3} position={"top-left"}>
+  <SnackProvider durationms={3000} maxSnack={3} position={"top-left"}>
   <Grid gap={20} columns={2}>
     <Component1/>
     <Component2/>

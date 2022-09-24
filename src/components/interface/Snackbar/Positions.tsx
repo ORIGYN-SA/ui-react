@@ -27,6 +27,13 @@ export const Positions = {
     left: "24px",
     align: "-webkit-left",
   },
+  "inherit": {
+    top: "unset",
+    right: "unset",
+    bottom: "unset",
+    left: "unset",
+    align: "unset",
+  },
 };
 
 export type positionType = keyof typeof Positions;

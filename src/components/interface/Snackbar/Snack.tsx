@@ -6,16 +6,18 @@ import { Styles } from "./SnackStyles";
 import { Layouts } from "./Layouts";
 
 export const Snack = () => {
-  const { snackBarArray, isOpen,snackPosition } = useSnackBarContext();
+  const { snackBarArray, isOpen,snacksPosition } = useSnackBarContext();
   const SnackContainer=styled.div`
   position: fixed;
-  top: ${snackPosition?.top};
-  bottom: ${snackPosition?.bottom};
-  left: ${snackPosition?.left};
-  right: ${snackPosition?.right};
+  top: ${snacksPosition?.top};
+  bottom: ${snacksPosition?.bottom};
+  left: ${snacksPosition?.left};
+  right: ${snacksPosition?.right};
   z-index: 1000;
-  text-align: ${snackPosition?.align};
+  text-align: ${snacksPosition?.align};
 `;
+  
+
   const containerRef = useRef(null);
   if(!isOpen && snackBarArray.length===0) return null;
   return  ReactDOM.createPortal(
