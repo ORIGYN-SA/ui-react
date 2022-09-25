@@ -7,13 +7,12 @@
   padding: 0px 0px 24px;
   gap: 564px;
   width: 104px;
-  height: 950px;
+  height: 100%;
   position: absolute;
   background-color: #fefefe;
 }
 
-/* if added container 1 + container 2 + gap (from flex-container) = 936px and flex-container is 900px
-that means that container 2 will be pushed outside flex-container, so i replaced 900px with 950px
+/* asked kenneth, height should be set to 100% instead of 900px
 
  */
 
