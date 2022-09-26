@@ -12,7 +12,7 @@ export const Component1 = () => {
     });
   };
 
-  return <Button onClick={handleClick}>Stack one line snack</Button>;
+  return <Button onClick={handleClick}>Stack one line snack!</Button>;
 };
 
 
@@ -27,7 +27,7 @@ export const Component2 = () => {
     });
   };
 
-  return <Button onClick={handleClick}>Stack icon snack</Button>;
+  return <Button onClick={handleClick}>Stack icon snack!</Button>;
 };
 
 export const Component3 = () => {
@@ -42,7 +42,7 @@ export const Component3 = () => {
     });
   };
 
-  return <Button onClick={handleClick}>Stack button snack</Button>;
+  return <Button onClick={handleClick}>Stack button snack!</Button>;
 }
 
 export const Component4 = () => {
@@ -57,6 +57,21 @@ export const Component4 = () => {
     });
   };
 
-  return <Button onClick={handleClick}>Stack two lines button snack</Button>;
+  return <Button onClick={handleClick}>Stack two lines button snack!</Button>;
 }
 
+export const Component5 = () => {
+  const {addSnackBar}=useSnackBarContext();   
+
+  const handleClick = () => {
+   addSnackBar({
+      message: "This is a snackbar with action and two lines - This is a snackbar with action and two lines - This is a snackbar with action and two lines - This is a snackbar with action and two lines",
+      layout: "twoLinesButton",
+      action: () => alert("You clicked me"),
+      actionText: "Click me",
+      snackPosition: "bottom-right",
+    });
+  };
+
+  return <Button onClick={handleClick}>This is a Snack stacked in a different position!</Button>;
+}

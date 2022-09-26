@@ -10,6 +10,7 @@ export type SnackBarProps = {
   icon?: JSX.Element;
   actionText?: string;
   action?: Function;
+  snackPosition?: positionType;
 };
 
 export type containerPosition = {
@@ -25,7 +26,7 @@ export type ContextType = {
   isOpen: boolean;
   snackBarArray?: SnackBarProps[];
   addSnackBar: (snackbar: SnackBarProps) => void;
-  snacksPosition : containerPosition;
+  providerPosition : positionType;
 };
 export const SnackContext = createContext<ContextType>(
   undefined
@@ -45,7 +46,7 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [snackBarArray, setSnackBarArray] = useState<SnackBarProps[]>([]);
   const [queue, setQueue] = useState<SnackBarProps[]>([]);
-  const [snacksPosition, setSnackPosition] = useState<containerPosition>();
+  const [providerPosition, setProviderPosition] = useState<positionType>();
 
   const addSnackBar = (snackbar: SnackBarProps) => {
     setIsOpen(true);
@@ -57,7 +58,7 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
   };
 
   useEffect(() => {
-    setSnackPosition(Positions[position]);
+    setProviderPosition(position);
   }, [position]);
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
       isOpen,
       snackBarArray,
       addSnackBar,
-      snacksPosition
+      providerPosition
     }}
     >
       {children}
