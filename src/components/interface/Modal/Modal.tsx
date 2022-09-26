@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
 import Container from "../../layout/Container";
+
 import TextInput from "../../../components/interface/Inputs/TextInput";
 import Button from '../../../components/interface/Button/Button';
 import CloseIcon from "../../icons/Close";
@@ -136,7 +137,7 @@ const Modal: React.FC<ModalProps> = ({
       <Container relative size="md" padding={`${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`}>
         {title && <h2>{title}</h2>}
         {children}
-      
+       
       </Container>
     </StyledModal> 
     
