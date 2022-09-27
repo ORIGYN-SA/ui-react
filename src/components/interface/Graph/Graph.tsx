@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { LineChart } from "./LineChart";
 
@@ -73,23 +73,38 @@ const SPriceChange = styled.div<{ trend: "up" | "down" }>`
   line-height: 24px;
 `;
 
-export const GraphHeader = ({ token, priceChange }: GraphHeaderProps) => {
-  const frames = ["1W", "2W", "1M", "2M", "3M", "1Y", "ALL"];
-  const [selectedFrame, setSelectedFrame] = useState(frames.length - 1);
+const frames = [
+  { label: "1W", days: 7 },
+  { label: "2W", days: 14 },
+  { label: "1M", days: 30 },
+  { label: "2M", days: 60 },
+  { label: "1Y", days: 360 },
+  { label: "ALL", days: 900 },
+];
+
+export const GraphHeader = ({
+  onFrameChange,
+  priceChange,
+  selectedFrame,
+  token,
+}: GraphHeaderProps) => {
   return (
     <SGraphHeader>
       <div>
         <SOverline>Overline</SOverline>
         <SToken>{token}</SToken>
-        <SPriceChange trend="up">{priceChange}%</SPriceChange>
+        <SPriceChange trend="up">
+          {parseFloat(priceChange.toString()).toFixed(3)}%
+        </SPriceChange>
       </div>
       <SFrames>
         {frames.map((frame, index) => (
           <SFrame
             isSelected={selectedFrame === index}
-            onClick={() => setSelectedFrame(index)}
+            onClick={() => onFrameChange(index)}
+            key={frame.days}
           >
-            {frame}
+            {frame.label}
           </SFrame>
         ))}
       </SFrames>
@@ -97,15 +112,42 @@ export const GraphHeader = ({ token, priceChange }: GraphHeaderProps) => {
   );
 };
 export const Graph = ({ data, token, width }: GraphProps) => {
-  const keys = Object.keys(data);
-  const lastKey = keys[keys.length - 1];
-  const preLastKey = keys[keys.length - 2];
-  const priceChange = 1 - data[lastKey] / data[preLastKey];
+  const [selectedFrame, setSelectedFrame] = useState(0);
+  const [filteredData, setFilteredData] = useState({});
+  const [priceChange, setPriceChange] = useState(0);
+
+  useEffect(() => {
+    let dataKeys = Object.keys(data);
+    const { days } = frames[selectedFrame];
+    const ratio =
+      data[dataKeys[dataKeys.length - days]] /
+      data[dataKeys[dataKeys.length - 1]];
+    const change = ratio > 1 ? -1 * (1 - ratio) : 1 - ratio;
+    setPriceChange(change * 100);
+
+    const slicedKeys = dataKeys.slice(-days);
+    const newFilteredData = {};
+    slicedKeys.forEach((key) => {
+      const date = new Date(parseInt(key) * 1000);
+      const keyAsDate = `${date.toLocaleString("default", {
+        month: "short",
+      })} ${date.getDate()} ${date.toLocaleString("default", {
+        year: "2-digit",
+      })}`;
+      newFilteredData[keyAsDate] = data[key];
+    });
+    setFilteredData({ ...newFilteredData });
+  }, [selectedFrame]);
 
   return (
     <SGraph width={width}>
-      <GraphHeader token={token} priceChange={priceChange} />
-      <LineChart data={data} />
+      <GraphHeader
+        token={token}
+        priceChange={priceChange}
+        selectedFrame={selectedFrame}
+        onFrameChange={setSelectedFrame}
+      />
+      <LineChart data={filteredData} />
     </SGraph>
   );
 };
@@ -116,6 +158,8 @@ type GraphProps = {
   width: string;
 };
 type GraphHeaderProps = {
+  onFrameChange: (i: number) => void;
   priceChange: number;
+  selectedFrame: number;
   token: string;
 };

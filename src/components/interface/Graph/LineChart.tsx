@@ -58,14 +58,19 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
     if (canvasRef?.current) return canvasRef.current.getContext("2d");
   }, [canvasRef]);
 
+  const MIN_DISTANCE_BETWEEN_LABELS = width * 0.15;
   const vData = 4;
-  const speed = 2;
+  const speed = 3;
   const curvature = 1 / 7; // 0 = no curve
   const offset = 50.5;
   const chartHeight = height - 2 * offset;
   const chartWidth = width;
 
-  let gradient, Min, Max, verticalUnit;
+  let gradient,
+    Min,
+    Max,
+    verticalUnit,
+    lastLabelPosition = { x: 0, y: 0 };
 
   useEffect(() => {
     const _data = [];
@@ -76,7 +81,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
       });
     }
     setData(_data);
-  }, []);
+  }, [propsData]);
 
   useEffect(() => {
     setupChart();
@@ -98,8 +103,6 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
 
     getCanvasContext().font = "14px Montserrat";
 
-    gradient = getCanvasContext().createLinearGradient(0, 0, 0, height / 2);
-
     getCanvasContext().beginPath();
     getCanvasContext().lineWidth = 1;
     getCanvasContext().strokeStyle = "#E3E3E3";
@@ -111,10 +114,18 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
     // vertical ( A - B )
     const aStep = (chartHeight - 50) / vData;
 
-    Max = Math.ceil(getArrayMax(data.map((d) => d.value)) / 10) * 10;
-    Min = Math.floor(getArrayMin(data.map((d) => d.value)) / 10) * 10;
+    Max = getArrayMax(data.map((d) => d.value)) * 5;
+    Min = getArrayMin(data.map((d) => d.value)) * 5;
+
+    console.log("min", Min);
+    console.log("max", Max);
+
     const aStepValue = (Max - Min) / vData;
     verticalUnit = aStep / aStepValue;
+    console.log(
+      "🚀 ~ file: LineChart.tsx ~ line 129 ~ setupChart ~ verticalUnit",
+      verticalUnit
+    );
 
     let a = [];
     getCanvasContext().textAlign = "right";
@@ -148,7 +159,8 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
           y: B.y,
           val: data[0].label,
         };
-        b[i].textOffset = -10;
+        b[i].textOffset = -15;
+        lastLabelPosition = B;
       } else {
         b[i] = {};
         b[i].x = b[i - 1].x + bStep;
@@ -160,7 +172,14 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
           b[i].textOffset = 0;
         }
       }
-      drawCoords(b[i], b[i].textOffset, 3); // Deseneaza indicatoare si text pentru Oy (vertical)
+      if (i !== 0) {
+        if (b[i].x - lastLabelPosition.x > MIN_DISTANCE_BETWEEN_LABELS) {
+          lastLabelPosition.x = b[i].x;
+          drawCoords(b[i], b[i].textOffset, 3); // Deseneaza indicatoare si text pentru Oy (vertical)
+        }
+      } else {
+        drawCoords(b[i], b[i].textOffset, 3); // Deseneaza indicatoare si text pentru Oy (vertical)
+      }
     }
     if (b.length) setDots(generateDotsPosition(b, verticalUnit));
     // if (b.length) dots = generateDotsPosition(b, verticalUnit);
@@ -216,12 +235,13 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
   );
 
   const drawCoords = (o, offX, offY) => {
+    // Clear the previous label, using this when changing the frame
+    getCanvasContext().clearRect(o.x, o.y + 2 * offY, width, 20);
     getCanvasContext().beginPath();
     getCanvasContext().moveTo(o.x - offX, o.y - offY);
     //getCanvasContext().lineTo(o.x + offX, o.y + offY);
     getCanvasContext().stroke();
     getCanvasContext().fillStyle = "#5F5F5F";
-
     getCanvasContext().fillText(o.val, o.x - 2 * offX, o.y + 2 * offY);
   };
 
@@ -229,7 +249,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
     var pc = generateControlPoints(curvature, p);
 
     getCanvasContext().beginPath();
-    //getCanvasContext().moveTo(p[0].x, B.y- 25);
+    // getCanvasContext().moveTo(p[0].x, chartWidth + offset - 25);
     getCanvasContext().lineTo(p[0].x, p[0].y);
     getCanvasContext().quadraticCurveTo(pc[1][1].x, pc[1][1].y, p[1].x, p[1].y);
 
@@ -255,11 +275,27 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
       );
     }
 
-    //getCanvasContext().lineTo(p[p.length-1].x, B.y- 25);
     getCanvasContext().stroke();
+
+    // Here we go back to the bottom to draw the area we fill with gradient
+    const GRADIENT_OFFSET_Y = 10;
+    getCanvasContext().lineTo(
+      p[p.length - 1].x,
+      offset + chartHeight - GRADIENT_OFFSET_Y
+    );
+    getCanvasContext().lineTo(p[0].x, offset + chartHeight - GRADIENT_OFFSET_Y);
     getCanvasContext().save();
-    getCanvasContext().fillStyle = gradient; // pentru gradient
-    //getCanvasContext().fill(); // Aici anulez gradientu
+
+    gradient = getCanvasContext().createLinearGradient(
+      chartWidth / 2,
+      100,
+      chartWidth / 2,
+      chartHeight
+    );
+    gradient.addColorStop(0, "rgba(67, 184, 202, 0.1)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0.1)");
+    getCanvasContext().fillStyle = gradient;
+    getCanvasContext().fill();
     getCanvasContext().restore();
   };
 
