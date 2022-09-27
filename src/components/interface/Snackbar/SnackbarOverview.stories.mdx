@@ -11,7 +11,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 Basic Snackbar component with 5 different layouts for multiple use cases.
 
-Instantiate a ` <SnackProvider></SnackProvider> ` component and  stack snackbars using  ` addSnackbar: (snackbar: SnackBarProps) `
+Instantiate a ` <SnackProvider>{children}</SnackProvider> ` component and start stacking Snackbars using  ` addSnackbar: (snackbar: SnackBarProps) `
 
 ** The default value for the SnackProvider are : ** 
 
@@ -21,29 +21,39 @@ position = "top-right"
 maxSnack = 3 
 ```
 
+## Features
+
+  ** Position: ** it can be set globally from ** SnackProvider ** or for a single snack as a ** SnackBarProps **
+
+  ** Queue: ** if the number of stacked Snacks is > than ** maxSnack **, snacks will be added to the queue and will be automatically stacked when the last stacked snack is removed.
+
+  ** Layout: ** it can be set different for every Snack.
+
 ## Types
 
 ```typescript
-type SnackBarProps = {
+// Type for Snack
+export type SnackBarProps = {
   layout: layoutType;
   message: string;
   icon?: JSX.Element;
   actionText?: string;
   action?: Function;
+  snackPosition?: positionType;
 };
 
-type ContextType = {
-  isOpen: boolean;
-  snackBarArray?: SnackBarProps[];
-  addSnackBar: (snackbar: SnackBarProps) => void;
-}
-
-type SnackProviderProps = {
-  children: ReactNode;
+// Type for SnackProvider
+export type SnackProviderProps = {
   durationms?: number;
   maxSnack?: number;
-  position?: string;
+  position?: positionType;
 };
+
+// Type for layouts
+type layoutType = "oneLine" | "twoLines" | "oneLineIcon" | "oneLineButton" | "twoLinesButton"
+
+// Type for position 
+type positionType = "top-right" | "top-left" | "bottom-right" | "bottom-left"
 ```
 
 ## Snackbar Provider Example 

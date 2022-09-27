@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { Snackbar } from "../..";
 import type { layoutType } from "./Layouts";
 import type { positionType } from "./Positions";
 import { Snack } from "./Snack";
@@ -47,7 +48,7 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
     if (snackBarArray.length >= maxSnack) {
       setQueue((prev) => [...prev, snackbar]);
     } else {
-      setSnackBarArray((prev) => [snackbar, ...prev]);
+      setSnackBarArray((prev) => [...prev, snackbar]);
     }
   };
   // Set provider position - from props to state
@@ -60,10 +61,11 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
     if (snackBarArray.length > 0) {
       const timer = setTimeout(() => {
         if ((queue.length > 0) && (snackBarArray.length <= maxSnack)) {
-          setSnackBarArray((prev) => [queue[0], ...prev]);
+          setSnackBarArray((prev) => [ ...prev,queue[0]]);
           queue.shift();
         } else {
-          setSnackBarArray((prev) => prev.slice(0, -1));
+          // remove first element from snackBarArray
+          setSnackBarArray((prev) => prev.slice(1));
         }
       }, durationms);
       return () => clearTimeout(timer);
