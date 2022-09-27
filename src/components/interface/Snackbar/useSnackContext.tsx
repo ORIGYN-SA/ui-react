@@ -6,7 +6,7 @@ export const useSnackBarContext = (): ContextType => {
 
   if (context === undefined) {
     throw new Error(
-      "useSnackBarContext must be used within a SnackBarProvider"
+      "ERROR : Looks that SnackBarProvider is not defined"
     );
   }
 

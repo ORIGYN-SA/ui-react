@@ -1,9 +1,9 @@
-import React, { createContext, useState, useRef, useEffect, FC } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import type { layoutType } from "./Layouts";
 import type { positionType } from "./Positions";
-import { Positions } from "./Positions";
 import { Snack } from "./Snack";
 
+// Type for Snack
 export type SnackBarProps = {
   layout: layoutType;
   message: string;
@@ -12,42 +12,36 @@ export type SnackBarProps = {
   action?: Function;
   snackPosition?: positionType;
 };
-
-export type containerPosition = {
-  top: string;
-  right: string;
-  bottom: string;
-  left: string;
-  align: string;
-};
-
-
+// Type for Context
 export type ContextType = {
   isOpen: boolean;
   snackBarArray?: SnackBarProps[];
   addSnackBar: (snackbar: SnackBarProps) => void;
   providerPosition : positionType;
 };
-export const SnackContext = createContext<ContextType>(
-  undefined
-);
+// Type for SnackProvider
 export type SnackProviderProps = {
   durationms?: number;
   maxSnack?: number;
   position?: positionType;
 };
 
-const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, maxSnack, position }) => {
+// Create context
+export const SnackContext = createContext<ContextType>(
+  undefined
+);
 
+const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, maxSnack, position }) => {
+  // Set default values
   durationms = durationms || 4000;
   maxSnack = maxSnack || 3;
   position = position || "top-right";
-
+  // Set state
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [snackBarArray, setSnackBarArray] = useState<SnackBarProps[]>([]);
   const [queue, setQueue] = useState<SnackBarProps[]>([]);
   const [providerPosition, setProviderPosition] = useState<positionType>();
-
+  // Add snackbar to Snackbar array or queue
   const addSnackBar = (snackbar: SnackBarProps) => {
     setIsOpen(true);
     if (snackBarArray.length >= maxSnack) {
@@ -56,11 +50,12 @@ const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, max
       setSnackBarArray((prev) => [snackbar, ...prev]);
     }
   };
-
+  // Set provider position - from props to state
   useEffect(() => {
     setProviderPosition(position);
   }, [position]);
 
+  // Remove snackbar from snackBarArray after the durationms time and add new snackbar from queue if queue is not empty
   useEffect(() => {
     if (snackBarArray.length > 0) {
       const timer = setTimeout(() => {
