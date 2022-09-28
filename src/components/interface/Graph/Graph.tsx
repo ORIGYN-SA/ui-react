@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { LineChart } from "./LineChart";
 
 const SGraph = styled.div<{ width: string }>`
@@ -64,7 +64,7 @@ const SToken = styled.div`
 `;
 
 const SPriceChange = styled.div<{ trend: "up" | "down" }>`
-  ${({ trend }) => `color: ${trend === "up" ? "#43B8CA" : "red"}`};
+  ${({ trend }) => `color: ${trend === "up" ? "#43B8CA" : "#a90000"}`};
   font-family: "Montserrat";
   font-size: 16px;
   font-style: normal;
@@ -93,7 +93,7 @@ export const GraphHeader = ({
       <div>
         <SOverline>Overline</SOverline>
         <SToken>{token}</SToken>
-        <SPriceChange trend="up">
+        <SPriceChange trend={priceChange > 0 ? "up" : "down"}>
           {parseFloat(priceChange.toString()).toFixed(3)}%
         </SPriceChange>
       </div>
@@ -122,7 +122,7 @@ export const Graph = ({ data, token, width }: GraphProps) => {
     const ratio =
       data[dataKeys[dataKeys.length - days]] /
       data[dataKeys[dataKeys.length - 1]];
-    const change = ratio > 1 ? -1 * (1 - ratio) : 1 - ratio;
+    let change = ratio > 1 ? -Math.abs(1 - ratio) : 1 - ratio;
     setPriceChange(change * 100);
 
     const slicedKeys = dataKeys.slice(-days);
@@ -131,9 +131,7 @@ export const Graph = ({ data, token, width }: GraphProps) => {
       const date = new Date(parseInt(key) * 1000);
       const keyAsDate = `${date.toLocaleString("default", {
         month: "short",
-      })} ${date.getDate()} ${date.toLocaleString("default", {
-        year: "2-digit",
-      })}`;
+      })} ${date.getDate()}`;
       newFilteredData[keyAsDate] = data[key];
     });
     setFilteredData({ ...newFilteredData });
@@ -153,7 +151,7 @@ export const Graph = ({ data, token, width }: GraphProps) => {
 };
 
 type GraphProps = {
-  data: any;
+  data: Record<string | number, number>;
   token: string;
   width: string;
 };

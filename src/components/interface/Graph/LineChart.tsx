@@ -25,7 +25,7 @@ const STooltip = styled.div<TooltipProps>`
   ${({ left, top, display }) => `
     display: ${display};
     left: ${left + 35}px;
-    top: ${top + 10}px;
+    top: ${top + 60}px;
   `}
 `;
 type Point = {
@@ -114,18 +114,12 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
     // vertical ( A - B )
     const aStep = (chartHeight - 50) / vData;
 
+    // This needs adjustments in order to display the lines on the correct levels
     Max = getArrayMax(data.map((d) => d.value)) * 5;
     Min = getArrayMin(data.map((d) => d.value)) * 5;
 
-    console.log("min", Min);
-    console.log("max", Max);
-
     const aStepValue = (Max - Min) / vData;
     verticalUnit = aStep / aStepValue;
-    console.log(
-      "🚀 ~ file: LineChart.tsx ~ line 129 ~ setupChart ~ verticalUnit",
-      verticalUnit
-    );
 
     let a = [];
     getCanvasContext().textAlign = "right";
@@ -167,7 +161,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
         b[i].y = b[i - 1].y;
         b[i].val = data[i].label;
         if (i == data.length - 1) {
-          b[i].textOffset = 10;
+          b[i].textOffset = 15;
         } else {
           b[i].textOffset = 0;
         }
@@ -225,6 +219,9 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
           0,
           2 * Math.PI
         );
+        // Setting dots color
+        getCanvasContext().fillStyle = "#43B8CA";
+
         getCanvasContext().fill();
       }
       if (frames >= Max * verticalUnit) {
