@@ -61,7 +61,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
   const MIN_DISTANCE_BETWEEN_LABELS = width * 0.15;
   const vData = 4;
   const speed = 3;
-  const curvature = 1 / 7; // 0 = no curve
+  const curvature = 1 / 5; // 0 = no curve
   const offset = 50.5;
   const chartHeight = height - 2 * offset;
   const chartWidth = width;
@@ -112,13 +112,15 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
     getCanvasContext().stroke();
 
     // vertical ( A - B )
-    const aStep = (chartHeight - 50) / vData;
 
     // This needs adjustments in order to display the lines on the correct levels
-    Max = getArrayMax(data.map((d) => d.value)) * 5;
-    Min = getArrayMin(data.map((d) => d.value)) * 5;
-
-    const aStepValue = (Max - Min) / vData;
+    const dataAsArray = data.map((d) => d.value);
+    Max = getArrayMax(dataAsArray);
+    Min = getArrayMin(dataAsArray);
+    console.log("Max", Max);
+    console.log("Min", Min);
+    const aStep = (chartHeight - offset / 2) / vData;
+    const aStepValue = (Max * 2.5 - Min) / vData;
     verticalUnit = aStep / aStepValue;
 
     let a = [];
@@ -128,7 +130,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
       if (i == 0) {
         a[i] = {
           x: A.x,
-          y: A.y + 25,
+          y: A.y + offset / 2,
           val: Max,
         };
       } else {
@@ -137,7 +139,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
         a[i].y = a[i - 1].y + aStep;
         a[i].val = a[i - 1].val - aStepValue;
       }
-      // drawCoords(a[i], 3, 0); // Deseneaza indicatoare si text pentru Oy (vertical)
+      //drawCoords(a[i], 3, 0); // Deseneaza indicatoare si text pentru Oy (vertical)
     }
 
     //horizontal ( B - C )
@@ -169,14 +171,13 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
       if (i !== 0) {
         if (b[i].x - lastLabelPosition.x > MIN_DISTANCE_BETWEEN_LABELS) {
           lastLabelPosition.x = b[i].x;
-          drawCoords(b[i], b[i].textOffset, 3); // Deseneaza indicatoare si text pentru Oy (vertical)
+          drawCoords(b[i], b[i].textOffset, 3);
         }
       } else {
-        drawCoords(b[i], b[i].textOffset, 3); // Deseneaza indicatoare si text pentru Oy (vertical)
+        drawCoords(b[i], b[i].textOffset, 3);
       }
     }
     if (b.length) setDots(generateDotsPosition(b, verticalUnit));
-    // if (b.length) dots = generateDotsPosition(b, verticalUnit);
 
     getCanvasContext().lineWidth = 3;
     getCanvasContext().strokeStyle = "#43B8CA";
@@ -211,7 +212,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
         // We need the dot offset for the first and the last one, as they overflow out of the Chart
         let dotOffset = 0;
         if (i === 0) dotOffset = 3.5;
-        else if (i === volatileDots.length - 1) dotOffset = -3.5;
+        else if (i === volatileDots.length - 1) dotOffset = -3;
         getCanvasContext().arc(
           volatileDots[i].flat.x + dotOffset,
           volatileDots[i].flat.y,
@@ -285,7 +286,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
 
     gradient = getCanvasContext().createLinearGradient(
       chartWidth / 2,
-      100,
+      200,
       chartWidth / 2,
       chartHeight
     );
@@ -304,7 +305,7 @@ export const LineChart = ({ data: propsData, height = 350, width = 700 }) => {
         _dots.push({
           position: {
             x: b[i].x,
-            y: b[i].y - datum.value * verticalUnit - 25,
+            y: b[i].y - datum.value * verticalUnit - offset / 2,
           },
           flat: {
             x: b[i].x,

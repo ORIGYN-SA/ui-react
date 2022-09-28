@@ -24,8 +24,16 @@ OGYGraph.args = {
   height: 300,
   token: "OGY",
   data: mockData,
+  frame: 2,
 };
-/*
+export const ICPGraph = Template.bind({});
+ICPGraph.args = {
+  width: 700,
+  height: 300,
+  token: "ICP",
+  data: icpData,
+  frame: 3,
+};
 export const Default = Template.bind({});
 Default.args = {
   width: 700,
@@ -42,4 +50,3 @@ Default.args = {
     "1664247600": 60,
   },
 };
-*/

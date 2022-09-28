@@ -111,8 +111,8 @@ export const GraphHeader = ({
     </SGraphHeader>
   );
 };
-export const Graph = ({ data, token, width }: GraphProps) => {
-  const [selectedFrame, setSelectedFrame] = useState(0);
+export const Graph = ({ data, token, width, frame = 0 }: GraphProps) => {
+  const [selectedFrame, setSelectedFrame] = useState(frame);
   const [filteredData, setFilteredData] = useState({});
   const [priceChange, setPriceChange] = useState(0);
 
@@ -154,6 +154,7 @@ type GraphProps = {
   data: Record<string | number, number>;
   token: string;
   width: string;
+  frame?: number;
 };
 type GraphHeaderProps = {
   onFrameChange: (i: number) => void;
