@@ -154,6 +154,7 @@ const Pagination = ({ pageCount }: any) => {
         Page {currentPage} of {pageCount}
       </p>
       <PaginationContainer>
+        {currentPage !== 1 && (
         <button
           className="pageCard"
           onClick={() => {
@@ -161,7 +162,7 @@ const Pagination = ({ pageCount }: any) => {
           }}
           disabled={currentPage <= 1}
           style={chevronStyle}
-        >{`<`}</button>
+        >{`<`}</button>)}
         {pageCount < 4 && renderPageButtons()}
         {currentPage >= pageCount - 2 && pageCount > 3 && (
           <>
@@ -200,6 +201,7 @@ const Pagination = ({ pageCount }: any) => {
             </button>
           </>
         )}
+        
         <button
           className="pageCard"
           onClick={() => {
@@ -207,7 +209,7 @@ const Pagination = ({ pageCount }: any) => {
           }}
           style={chevronStyle}
           disabled={currentPage === pageCount}
-        >{`>`}</button>
+        >{`>`}</button> 
       </PaginationContainer>
     </div>
   );
