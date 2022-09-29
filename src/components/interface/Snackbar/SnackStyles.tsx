@@ -25,6 +25,7 @@ export const Styles = styled.div`
   .svgBox{
     margin-right: 1px;
     padding-top: 2px;
+    margin-right:9px;
   }
   .container{
     display:flex;
