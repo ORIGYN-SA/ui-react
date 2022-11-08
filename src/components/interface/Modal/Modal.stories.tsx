@@ -21,10 +21,14 @@ const Template: Story<ModalProps> = (args) => {
   return (
     <div>
       <Button onClick={openModal}>Open modal</Button>
-      <Modal title={args.title} isOpened={isOpened} closeModal={closeModal} />
+      <Modal title={args.title} isOpened={isOpened} closeModal={closeModal} mode={args.mode} width={args.width} height={args.height} 
+      paddingTop={args.paddingTop} paddingRight={args.paddingRight} paddingBottom={args.paddingBottom} paddingLeft={args.paddingLeft}>
+        <div>hello, am just a div</div>
+      </Modal>
     </div>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = { title: "Buy Shares" };
+Default.args = { title: "Buy Shares", mode: 'dark',
+width: '400px', height: '400px', paddingTop: '20px', paddingRight: '20px', paddingBottom: '20px', paddingLeft: '20px' };
