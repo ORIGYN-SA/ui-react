@@ -22,6 +22,7 @@ import TabContent from "./interface/TabContent";
 import TabContentVertical, {useTabContentVertical} from "./interface/TabContent/TabContentVertical";
 import CustomTable from "./interface/Table/CustomTable";
 import HistoryTable from "./interface/Table/HistoryTable";
+import Snackbar from "./interface/Snackbar";
 import RangeSlider from "./interface/RangeSlider";
 
 import Lots from "./interface/Lots";
@@ -60,11 +61,12 @@ export {
   TextInput,
   useStepper,
   Icons,
+  RangeSlider,
   Select,
   Lots,
   TextArea,
   Toggle,
   Status,
   SStatus,
-  RangeSlider,
+  Snackbar
 };
