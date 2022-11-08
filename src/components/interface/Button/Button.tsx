@@ -42,7 +42,8 @@ const buttonType = {
   medium: mediumSize,
 }
 
-const StyledFlex = styled.button<ButtonProps>`
+const StyledFlex = styled.button<ButtonProps>
+`
   display: flex;
   flex-direction: row;
   justify-content: center;
