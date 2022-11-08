@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
-import { Snackbar } from "../..";
 import type { layoutType } from "./Layouts";
 import type { positionType } from "./Positions";
-import { Snack } from "./Snack";
+import Snack from "./Snack";
 
 // Type for Snack
 export type SnackBarProps = {

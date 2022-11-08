@@ -1,10 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
 import Container from "../../layout/Container";
 
-import TextInput from "../../../components/interface/Inputs/TextInput";
-import Button from '../../../components/interface/Button/Button';
 import CloseIcon from "../../icons/Close";
 
 export type ModalProps = {
@@ -40,10 +38,10 @@ const StyledModal = styled(ReactModal)`
       0px 4px 6px -2px rgba(26, 32, 44, 0.05);
     overflow-y: auto;
     border-radius: 24px;
-    background-color: ${props => props.mode == 'light'?'#FEFEFE':'#151515'};
-    color: ${props => props.mode == 'light'?'#151515':'#FEFEFE'};
-    width: ${props => props.width?props.width:'100%'};
-    height: ${props => props.height?props.height:'100%'};
+    background-color: #151515;
+    color: #FEFEFE;
+    width: 100%;
+    height: 100%;
     
     
     ${({theme}) => theme?.media?.lg} {
@@ -125,14 +123,6 @@ const Modal: React.FC<ModalProps> = ({
           background: mode == 'light'?'#9A9A9A':'#3A3A3A',
         }
       }}
-      width={width}
-      height={height}
-      mode={mode}
-      paddingTop={paddingTop}
-      paddingRight={paddingRight}
-      paddingBottom={paddingBottom}
-      paddingLeft={paddingLeft}
-
     >
       <Container relative size="md" padding={`${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`}>
         {title && <h2>{title}</h2>}

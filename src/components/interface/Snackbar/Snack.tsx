@@ -6,7 +6,7 @@ import { Layouts } from "./Layouts";
 import { SnackContainerTopRight, SnackContainerTopLeft, SnackContainerBottomLeft, SnackContainerBottomRight } from "./Positions";
 
 
-export const Snack = () => {
+const Snack = () => {
   const { snackBarArray, isOpen, providerPosition } = useSnackBarContext();
 
   if (!isOpen && snackBarArray.length === 0) return null;
@@ -52,3 +52,5 @@ export const Snack = () => {
     document.body
   );
 };
+
+export default Snack;

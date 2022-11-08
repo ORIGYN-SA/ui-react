@@ -1,7 +1,6 @@
 import Grid from "./layout/Grid";
 import Flex from "./layout/Flex";
 import Container from "./layout/Container";
-import BalanceCard from "./interface/BalanceCard";
 import Banner from "./interface/Banner";
 import BreadCrumbs from "./interface/BreadCrumbs";
 import Button from "./interface/Button";
@@ -38,7 +37,6 @@ export {
   Grid,
   Flex,
   Container,
-  BalanceCard,
   Banner,
   BreadCrumbs,
   Button,
