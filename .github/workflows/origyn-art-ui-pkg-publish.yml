@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.13.0]
     steps:
       - name: Checkout commits for ${{ steps.extract_branch.outputs.branch }} branch
         uses: actions/checkout@v2
@@ -80,6 +80,8 @@ jobs:
         run: |
           npm version patch
           npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
         if: github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'patch')
