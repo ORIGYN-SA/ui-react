@@ -78,6 +78,8 @@ jobs:
       - name: Prod publishing patch
         if: github.ref == 'refs/heads/main'  && contains(github.event.head_commit.message, 'patch')
         run: |
+          apt update && apt install -y git
+          git status
           npm version patch
           npm publish
 
