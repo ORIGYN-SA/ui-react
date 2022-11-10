@@ -78,10 +78,10 @@ jobs:
       - name: Prod publishing patch
         if: github.ref == 'refs/heads/main'  && contains(github.event.head_commit.message, 'patch')
         run: |
-          apt update && apt install -y git
-          git status
           npm version patch
           npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
         if: github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'patch')
