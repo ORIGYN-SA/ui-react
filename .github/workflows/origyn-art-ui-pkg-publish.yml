@@ -81,7 +81,7 @@ jobs:
       - name: Prod publishing patch
         if: github.ref == 'refs/heads/main'  && contains(github.event.head_commit.message, 'patch')
         run: |
-          git add . && git commit -m "prepare package lock files"
+          git add . && git commit -m "prepare package lock files" || true
           npm version patch
           npm publish
         env:
