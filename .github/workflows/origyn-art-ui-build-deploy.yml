@@ -124,4 +124,3 @@ jobs:
           SLACK_COLOR: '${{ job.status }}'
           SLACK_MESSAGE: '${{github.repository}}: Build has ${{ job.status }}. Domain: ${{ secrets.APP_DOMAIN }}'
         uses: rtCamp/action-slack-notify@v2
-
