@@ -8,7 +8,6 @@ const PlugIcon = (props: any) => {
       viewBox="0 0 25 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      xlink="http://www.w3.org/1999/xlink"
     >
       <rect width="25" height="30" fill="url(#pattern0)" />
       <defs>

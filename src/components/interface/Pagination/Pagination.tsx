@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import React, { useState } from "react";
 
 const flexContainer: any = {
@@ -18,7 +18,7 @@ const PaginationContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: row;
-  gap 4px;
+  gap: 4px;
   padding: 0px;
   justify-content: center;
   width: 260px;
@@ -41,7 +41,7 @@ const PaginationContainer = styled.div`
     background: transparent;
     border: 1px ;
     box-sizing: border-box;
-    border-radius: 4px #fff;
+    border-radius: 4px;
     margin: 0 6px;
     color: #151515;
     cursor: pointer;

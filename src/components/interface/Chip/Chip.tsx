@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import styles from "styled-components";
 import {theme} from "../../../utils";
 
@@ -71,7 +71,7 @@ export const SChip = styles.b<ChipProps>`
     `}
 `;
 
-const Chip: React.FC<ChipProps> = (props) => {
+const Chip: React.FC<PropsWithChildren<ChipProps>> = (props) => {
   const {children} = props;
   return (
     <SChip {...props}>

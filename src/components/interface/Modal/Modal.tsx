@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
 import Container from "../../layout/Container";
@@ -10,8 +10,6 @@ export type ModalProps = {
   closeModal: () => void;
   title?: string | React.ReactNode;
   mode?: string;
-  width?: string;
-  height?: string;
   paddingTop?: string;
   paddingRight?: string;
   paddingBottom?: string;
@@ -99,14 +97,12 @@ const StyledCloseBtn = styled(CloseIcon)`
   }
 `;
 
-const Modal: React.FC<ModalProps> = ({
+const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   isOpened,
   title,
   children,
   closeModal,
   mode,
-  width,
-  height,
   paddingTop,
   paddingRight,
   paddingBottom,
@@ -127,7 +123,6 @@ const Modal: React.FC<ModalProps> = ({
       <Container relative size="md" padding={`${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`}>
         {title && <h2>{title}</h2>}
         {children}
-       
       </Container>
     </StyledModal> 
     

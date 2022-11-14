@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, PropsWithChildren } from "react";
 import type { layoutType } from "./Layouts";
 import type { positionType } from "./Positions";
 import Snack from "./Snack";
@@ -31,7 +31,7 @@ export const SnackContext = createContext<ContextType>(
   undefined
 );
 
-const SnackProvider: React.FC<SnackProviderProps> = ({ children, durationms, maxSnack, position }) => {
+const SnackProvider: React.FC<PropsWithChildren<SnackProviderProps>> = ({ children, durationms, maxSnack, position }) => {
   // Set default values
   durationms = durationms || 4000;
   maxSnack = maxSnack || 3;
