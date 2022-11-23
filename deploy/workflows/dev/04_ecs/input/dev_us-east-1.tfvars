@@ -5,6 +5,6 @@ container_port            = 6006
 container_cpu             = 1024
 container_memory          = 2048
 service_desired_count     = 1
-enable_autoScaling        = true
+enable_autoScaling        = false
 scale_target_min_capacity = 1
 scale_target_max_capacity = 10
