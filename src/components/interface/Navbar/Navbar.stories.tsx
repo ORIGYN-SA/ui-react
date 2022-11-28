@@ -5,12 +5,10 @@ import Navbar from "./Navbar";
 import Home from "./MockSlides/Home";
 import Governance from "./MockSlides/Governance";
 import Wallet from "./MockSlides/Wallet";
-import { CustomLink } from "./Navbar";
 import HomeIcon from "../../../components/icons/home";
 import GovernanceIcon from "../../../components/icons/governance";
 import ThemeIcon from "../../../components/icons/theme";
 import WalletIcon from "../../../components/icons/wallet";
-import "./styles.css";
 
 export default {
   title: "Components/Interface/Navbar/All stories",
@@ -18,18 +16,6 @@ export default {
 } as Meta;
 
 const Template: Story = (args: any) => {
-  let component;
-  switch (window.location.pathname) {
-    case "/home":
-      component = <Home />;
-      break;
-    case "/governance":
-      component = <Governance />;
-      break;
-    case "/team":
-      component = <Wallet />;
-      break;
-  }
 
   return (
     <div
@@ -41,23 +27,20 @@ const Template: Story = (args: any) => {
         backgroundColor: "#d3d3d3",
       }}
     >
-      <Navbar>
-        {/* will add icons svg's instead of text */}
-
-        <CustomLink className="item-home" href="/home">
-          <HomeIcon/>
-        </CustomLink>
-
-        <CustomLink className="item" href="/governance">
-          <GovernanceIcon/>
-        </CustomLink>
-
-        <CustomLink className="item" href="/wallet">
-          <WalletIcon/>
-        </CustomLink>
-      </Navbar>
-
-      <div className="container">{component}</div>
+      <Navbar navItems={[
+        {
+          href: 'url',
+          icon: HomeIcon
+        },
+        {
+          href: 'url',
+          icon: GovernanceIcon
+        },
+        {
+          href: 'url',
+          icon: WalletIcon
+        },
+      ]} />
     </div>
   );
 };

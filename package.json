@@ -38,6 +38,7 @@
     "@types/react-modal": "^3.13.1",
     "@types/styled-components": "^5.1.26",
     "babel-loader": "^9.1.0",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.19",

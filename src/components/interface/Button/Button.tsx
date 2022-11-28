@@ -85,6 +85,7 @@ const StyledFlex = styled.button<ButtonProps>
     position: relative;
     width: 56px;
     height: 56px;
+    border-radius: 50%;
     padding: 0;
     ${btnType === "medium" ? `
       width: 40px;

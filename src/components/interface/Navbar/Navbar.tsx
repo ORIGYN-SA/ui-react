@@ -1,42 +1,61 @@
 import React from "react";
-import "./styles.css";
+import styled from "styled-components";
 import Button from "../Button";
+import Flex from "../../layout/Flex";
+import Banner from "../Banner";
 import ThemeIcon from "../../icons/theme";
 import OrigynIcon from "../../icons/origyn";
+import { DownChevron } from "react-select/dist/declarations/src/components/indicators.js";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ children }) => {
+const StyledNav = styled.div`
+${({ theme}) => `
+  background-color: ${theme.colors.BLACK};
+  color: ${theme.colors.WHITE};
+  padding: 24px;
+  box-sizing: border-box;
+  width: 104px;
+  height: 100vh;
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: ${theme.colors.WHITE};
+
+  }
+
+  svg {
+    fill: ${theme.colors.WHITE}
+  }
+`}`
+
+const Navbar = ({ navItems, onConnect }) => {
   return (
-    <div className="flex-container">
-      {/* container 1 */}
-      <div className="container1">
-        <div className="topItem1">
-          <OrigynIcon />
-        </div>
-        <div className="topItem2">{children}</div>
-      </div>
+    <StyledNav>
+      <Flex flexFlow="column" align="center" justify="space-between" fullHeight>
+        <Flex flexFlow="column" align="center" gap={8}>
+          <div style={{marginBottom: '24px'}} >
+            <OrigynIcon/>
+          </div>
+          {
+            navItems.map((item) => <Link to={item.href}><Button iconButton size="large">{item.icon()}</Button></Link>)
+          }
+        </Flex>
 
-      {/* container 2 */}
-      <div className="container2">
-        <div className="bottomItem1">
-          <Button btnType="small">Connect</Button>
-        </div>
-        <div className="bottomItem2">
-          <ThemeIcon/>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const CustomLink = ({ href, children, ...props }) => {
-  const path = window.location.pathname;
-
-  return (
-    <li className={path === href ? " active " : " "}>
-      <a href={href} {...props}>
-        {children}
-      </a>
-    </li>
+        <Flex flexFlow="column" align="center">
+          {
+            onConnect && (
+              <Button btnType="small" onClick={onConnect}>Connect</Button>
+            )
+          }
+          <div className="bottomItem2">
+            <ThemeIcon/>
+          </div>
+        </Flex>
+      </Flex>
+    </StyledNav>
   );
 };
 
