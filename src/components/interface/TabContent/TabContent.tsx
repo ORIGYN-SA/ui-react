@@ -8,10 +8,11 @@ export type TabContentProps = {
   content: Array<any>;
   fullWidth?: boolean;
   justify?: "center" | "flex-start" | "flex-end";
+  borderBottom?: boolean;
 };
 
-const StyledTabContent = styled(Flex)`
-  ${({theme}) => `
+const StyledTabContent = styled(Flex)<typeof Flex & {borderBottom: boolean}>`
+  ${({theme, borderBottom}) => `
   background-color: ${theme.colors.BLACK};
   color: ${theme.colors.WHITE};
   font-weight: 600;
@@ -20,7 +21,8 @@ const StyledTabContent = styled(Flex)`
   letter-spacing: -0.15px;
   height: 50px;
   gap: 32px;
-  border-bottom: 1px solid #E3E3E3;
+  ${theme.colors.WHITE}
+  ${borderBottom ? "border-bottom: 1px solid #E3E3E3;" : "" }
   
   ${theme.media.sm} {
     padding: 0 5px;
@@ -72,12 +74,12 @@ const StyledTab = styled(MenuLink)`
 `}
 `;
 
-const TabContent = ({tabs, content, fullWidth=false, justify="center"}: TabContentProps) => {
+const TabContent = ({tabs, content, fullWidth=false, justify="center", borderBottom}: TabContentProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
     <Flex flexFlow="column" align="flex-start">
-      <StyledTabContent fullWidth={fullWidth} justify={justify}>
+      <StyledTabContent fullWidth={fullWidth} justify={justify} borderBottom={borderBottom}>
         {tabs.map(({id, title}, index) => (
           <StyledTab
             as="h4"
