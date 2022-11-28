@@ -11,7 +11,7 @@ export type TabContentProps = {
   borderBottom?: boolean;
 };
 
-const StyledTabContent = styled(Flex)<typeof Flex & {borderBottom: boolean}>`
+const StyledTabContent = styled(Flex)<{borderBottom: boolean}>`
   ${({theme, borderBottom}) => `
   background-color: ${theme.colors.BLACK};
   color: ${theme.colors.WHITE};
