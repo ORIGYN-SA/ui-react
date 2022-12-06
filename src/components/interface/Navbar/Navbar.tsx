@@ -2,10 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Flex from "../../layout/Flex";
-import Banner from "../Banner";
 import ThemeIcon from "../../icons/theme";
 import OrigynIcon from "../../icons/origyn";
-import { DownChevron } from "react-select/dist/declarations/src/components/indicators.js";
 import { Link } from "react-router-dom";
 
 const StyledNav = styled.div`

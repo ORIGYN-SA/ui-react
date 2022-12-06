@@ -61,7 +61,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   body {
-    background-color: #E5E5E5;
+    background-color: #000000;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 15px;
     line-height: 22px;
