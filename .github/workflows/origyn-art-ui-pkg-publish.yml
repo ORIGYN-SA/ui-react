@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.12.1]
     steps:
       - name: Checkout commits for ${{ steps.extract_branch.outputs.branch }} branch
         uses: actions/checkout@v2
@@ -46,6 +46,7 @@ jobs:
       - name: Dev publish patch
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'patch')
         run: |
+          git add . && git commit -m "prepare package lock files"
           npm version patch
           npm publish
         env:
@@ -63,9 +64,11 @@ jobs:
       - name: Stage publish patch
         if: github.ref == 'refs/heads/stage' && contains(github.event.head_commit.message, 'patch')
         run: |
-          git add . && git commit -m "publish package version"
+          git add . && git commit -m "prepare package lock files"
           npm version patch
           npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
         if: github.ref == 'refs/heads/stage' && contains(github.event.head_commit.message, 'patch')
@@ -78,8 +81,11 @@ jobs:
       - name: Prod publishing patch
         if: github.ref == 'refs/heads/main'  && contains(github.event.head_commit.message, 'patch')
         run: |
+          git add . && git commit -m "prepare package lock files" || true
           npm version patch
           npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
         if: github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'patch')
@@ -93,9 +99,12 @@ jobs:
       - name: Dev publishing minor
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'minor')
         run: |
+          git add . && git commit -m "prepare package lock files"
           npm version minor
           npm publish
           echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'minor')
@@ -118,9 +127,12 @@ jobs:
       - name: DEV publishing major
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'major')
         run: |
+          git add . && git commit -m "prepare package lock files"
           npm version major
           npm publish
           echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
         if: github.ref == 'refs/heads/develop' && contains(github.event.head_commit.message, 'major')

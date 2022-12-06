@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import styles from "styled-components";
 import {theme} from "../../../utils";
 
@@ -21,7 +21,7 @@ export const SStatus = styles.b<{ status?: TStatus, width?: string }>`
     `}
 `;
 
-const Status: React.FC<StatusProps> = ({label, children, ...props}) => {
+const Status: React.FC<PropsWithChildren<StatusProps>> = ({label, children, ...props}) => {
   return (
     <SStatus {...props}>
       {label || children}

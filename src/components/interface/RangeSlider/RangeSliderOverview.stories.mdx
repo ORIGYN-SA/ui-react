@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Components/Interface/RangeSlider/Overview" />
+
+<style>{`
+
+`}</style>
+
+# RangeSlider component
+
+Basic range component with 4 status:
+
+ - Normal
+ - Hover
+ - Active
+ - Disabled
+
+The component has 4 properties for multiple use cases.
+** If not provided, the default value for each property is automatically setted to 0 or False. **
+
+## Properties
+
+```typescript
+type RangeSliderProps = {
+    initialValue?: number;
+    disabled?: boolean;
+    min?: number;
+    max?: number;
+    step: number;
+    onchange?: Function;
+ };
+}
+```
+
+## Normal - No properties setted
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--normal" />
+</Canvas>
+
+## Normal - Properties setted
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--setted" />
+</Canvas>
+
+## Normal - Properties setted - OnChange Function 
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--settedwithfn" />
+</Canvas>
+
+## Disabled
+
+<Canvas>
+    <Story id="components-interface-rangeslider-all-stories--disabled" />
+</Canvas>

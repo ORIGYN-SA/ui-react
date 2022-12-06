@@ -1,7 +1,6 @@
 import Grid from "./layout/Grid";
 import Flex from "./layout/Flex";
 import Container from "./layout/Container";
-import BalanceCard from "./interface/BalanceCard";
 import Banner from "./interface/Banner";
 import BreadCrumbs from "./interface/BreadCrumbs";
 import Button from "./interface/Button";
@@ -12,6 +11,7 @@ import HR from "./interface/HR";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
 import MoreLink from "./interface/MoreLink";
+import Navbar from "./interface/Navbar";
 import ProductCard from "./interface/ProductCard";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
@@ -22,6 +22,8 @@ import TabContent from "./interface/TabContent";
 import TabContentVertical, {useTabContentVertical} from "./interface/TabContent/TabContentVertical";
 import CustomTable from "./interface/Table/CustomTable";
 import HistoryTable from "./interface/Table/HistoryTable";
+import Snackbar from "./interface/Snackbar";
+import RangeSlider from "./interface/RangeSlider";
 
 import Lots from "./interface/Lots";
 
@@ -36,7 +38,6 @@ export {
   Grid,
   Flex,
   Container,
-  BalanceCard,
   Banner,
   BreadCrumbs,
   Button,
@@ -47,6 +48,7 @@ export {
   MenuLink,
   Modal,
   MoreLink,
+  Navbar,
   ProductCard,
   SearchInput,
   Slider,
@@ -59,10 +61,12 @@ export {
   TextInput,
   useStepper,
   Icons,
+  RangeSlider,
   Select,
   Lots,
   TextArea,
   Toggle,
   Status,
-  SStatus
+  SStatus,
+  Snackbar
 };

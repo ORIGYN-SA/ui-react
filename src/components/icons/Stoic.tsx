@@ -8,7 +8,6 @@ const StoicIcon = (props: any) => {
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      xlink="http://www.w3.org/1999/xlink"
     >
       <rect width="30" height="30" fill="url(#pattern0)" />
       <defs>
