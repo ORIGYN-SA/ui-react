@@ -12,6 +12,7 @@ import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
 import MoreLink from "./interface/MoreLink";
 import Navbar from "./interface/Navbar";
+import SecondaryNav from "./interface/SecondaryNav";
 import ProductCard from "./interface/ProductCard";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
@@ -49,6 +50,7 @@ export {
   Modal,
   MoreLink,
   Navbar,
+  SecondaryNav,
   ProductCard,
   SearchInput,
   Slider,
