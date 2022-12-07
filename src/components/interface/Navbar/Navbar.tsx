@@ -29,7 +29,11 @@ ${({ theme}) => `
   }
 `}`
 
-const Navbar: React.FC<{navItems: any, onConnect?: any}> = ({ navItems, onConnect }) => {
+const StyledCustomButton = styled(Button)`
+  background-color: transparent;
+`
+
+const Navbar: React.FC<{navItems: any}> = ({ navItems }) => {
   return (
     <StyledNav>
       <Flex flexFlow="column" align="center" justify="space-between" fullHeight>
@@ -38,16 +42,11 @@ const Navbar: React.FC<{navItems: any, onConnect?: any}> = ({ navItems, onConnec
             <OrigynIcon/>
           </div>
           {
-            navItems.map((item) => <Link to={item.href}><Button iconButton size="large">{item.icon()}</Button></Link>)
+            navItems.map((item) => <Link to={item.href}><StyledCustomButton iconButton size="large">{item.icon()}</StyledCustomButton></Link>)
           }
         </Flex>
 
         <Flex flexFlow="column" align="center">
-          {
-            onConnect && (
-              <Button btnType="small" onClick={onConnect}>Connect</Button>
-            )
-          }
           <div className="bottomItem2">
             <ThemeIcon/>
           </div>

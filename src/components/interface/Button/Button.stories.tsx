@@ -41,33 +41,43 @@ primaryDisabled.args = { disabled: true };
 
 export const small = Template.bind({});
 small.args = {
-  btnType: "small",
+  size: "small",
 };
 
 export const medium = Template.bind({});
 medium.args = {
-  btnType: "medium",
+  size: "medium",
 };
 
 export const large = Template.bind({});
 large.args = {
-  btnType: "large",
+  size: "large",
 };
 
 export const smallTextButton = Template.bind({});
 smallTextButton.args = {
-  btnType: "small",
+  size: "small",
   textButton: true
 };
 
 export const mediumTextButton = Template.bind({});
 mediumTextButton.args = {
-  btnType: "medium",
+  size: "medium",
   textButton: true
 };
 
 export const largeTextButton = Template.bind({});
 largeTextButton.args = {
-  btnType: "large",
+  size: "large",
   textButton: true
+};
+
+export const largeSecondaryButton = Template.bind({});
+largeSecondaryButton.args = {
+  btnType: "secondary",
+};
+
+export const largeOutlinedButton = Template.bind({});
+largeOutlinedButton.args = {
+  btnType: "outlined",
 };

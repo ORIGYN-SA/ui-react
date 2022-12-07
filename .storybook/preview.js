@@ -15,6 +15,7 @@ export const parameters = {
 
 const theme = {
   colors: {
+    DARK_BLACK: '#000000',
     BLACK: '#151515',
     VERY_DARK_GREY: '#4a4a4a',
     DARK_GREY: '#6F6F6F',
@@ -27,8 +28,8 @@ const theme = {
     PROGRESS: '#F2BD00',
     SUCCESS: '#50AA3E',
 
-    ACCENT_COLOR: '#EE9907',
-    ACCENT_COLOR_2: '#FFE7BD',
+    ACCENT_COLOR: '#331038',
+    ACCENT_COLOR_2: '#331038',
 
   },
   shadows: {
@@ -61,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   body {
-    background-color: #000000;
+    background-color: #ffffff;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 15px;
     line-height: 22px;
