@@ -1,8 +1,8 @@
 import styled, {css} from "styled-components";
 
 export type ButtonProps = {
-  size?: string;
-  btnType?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large";
+  btnType?: "outlined" | "secondary";
   iconButton?: boolean;
   textButton?: boolean;
   disabled?: boolean;
@@ -36,13 +36,36 @@ const smallSize = css`${({theme}) => `
   gap: 10px;
 `}`;
 
-const buttonType = {
+const buttonSize = {
   small: smallSize,
   large: largeSize,
   medium: mediumSize,
 }
 
-const StyledFlex = styled.button<ButtonProps>
+const outlined = css`
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid #E3E3E3;
+  
+  svg {
+    fill: currentColor;
+  }
+`;
+
+const secondary = css`
+  background-color: ${({theme}) => theme.colors.WHITE};
+  color: ${({theme}) => theme.colors.BLACK};
+  svg {
+    fill: ${({theme}) => theme.colors.BLACK};
+  }
+`;
+
+const buttonTypes = {
+  outlined: outlined,
+  secondary: secondary,
+}
+
+const StyledButton = styled.button<ButtonProps>
 `
   display: flex;
   flex-direction: row;
@@ -59,14 +82,15 @@ const StyledFlex = styled.button<ButtonProps>
     fill: ${({theme}) => theme.colors.WHITE};
   }
   
-  ${({btnType = "small"}) => buttonType[btnType]}
+  ${({size = "large"}) => buttonSize[size]};
+  ${({btnType }) => buttonTypes[btnType]};
   
-  ${({ theme, btnType, disabled, size = "auto", iconButton, textButton }) => `
+  ${({ theme, btnType, size = "large", disabled, iconButton, textButton }) => `
   :hover, &.hover {
-    background-color: ${({theme}) => theme.colors.ACCENT_COLOR};
+    background-color: ${theme.colors.ACCENT_COLOR};
   }
   :active, &.active {
-    background-color: ${({theme}) => theme.colors.ACCENT_COLOR_2};
+    background-color: ${theme.colors.ACCENT_COLOR};
   }
   cursor: pointer;
   
@@ -87,16 +111,15 @@ const StyledFlex = styled.button<ButtonProps>
     height: 56px;
     border-radius: 50%;
     padding: 0;
-    ${btnType === "medium" ? `
+    ${size === "medium" ? `
       width: 40px;
       height: 40px;
     ` : ""}
-    ${btnType === "small" ? `
+    ${size === "small" ? `
       width: 32px;
       height: 32px;
     ` : ""}
   ` : ""}
-  
   ${textButton ? `
     background: transparent;
     color: #151515;
@@ -119,10 +142,8 @@ const StyledFlex = styled.button<ButtonProps>
     }
   ` : ""}
   ` : ""}
-  ${theme.media.sm} {
   
-  }
 `}
 `;
 
-export default StyledFlex;
+export default StyledButton;

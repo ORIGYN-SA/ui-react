@@ -123,7 +123,7 @@ const SecondaryNav = ({tabs, content, title, onConnect, principal}: SecondaryNav
         </Flex>
         {
           onConnect && !principal && (
-            <div><Button btnType="small" onClick={onConnect}>Connect</Button></div>
+            <div><Button size="small" onClick={onConnect}>Connect</Button></div>
           )
         }
         {
