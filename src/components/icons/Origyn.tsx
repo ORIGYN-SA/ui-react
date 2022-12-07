@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrigynIcon = () => {
+const OrigynIcon = (props) => {
   return (
     <svg
       width="32"
@@ -8,6 +8,7 @@ const OrigynIcon = () => {
       viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M3.10867 7.10721C2.65601 7.10721 2.28735 7.47586 2.28735 7.92852V17.8403C2.28735 20.4629 4.4013 22.5908 7.0239 22.6188H8.17654C7.55589 22.5908 7.0659 22.0822 7.0659 21.4615V7.92385C7.0659 7.4712 6.69724 7.10254 6.24459 7.10254L3.10867 7.10721Z"
