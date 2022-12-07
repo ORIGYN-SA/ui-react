@@ -21,7 +21,7 @@ const StyledTabContent = styled(Flex)<{borderBottom: boolean}>`
   letter-spacing: -0.15px;
   height: 50px;
   gap: 32px;
-  ${theme.colors.WHITE}
+  
   ${borderBottom ? "border-bottom: 1px solid #E3E3E3;" : "" }
   
   ${theme.media.sm} {

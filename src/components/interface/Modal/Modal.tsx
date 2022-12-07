@@ -39,8 +39,7 @@ const StyledModal = styled(ReactModal)`
     background-color: #151515;
     color: #FEFEFE;
     width: 100%;
-    height: 100%;
-    
+    max-height: calc(100% - 100px);
     
     ${({theme}) => theme?.media?.lg} {
       max-width: calc(100% - 48px);

@@ -16,6 +16,11 @@ import TransactionIcon from "./Transaction";
 import TwitterIcon from "./Twitter";
 import LogoMainIcon from "./LogoMain"
 import LogoMainHorizontal from "./LogoMainHorizontal"
+import Governance from "./Governance"
+import Home from "./Home"
+import OrigynIcon from "./Origyn"
+import ThemeIcon from "./Theme"
+import Wallet from "./Wallet"
 
 export {
   ArrowDownIcon,
@@ -27,13 +32,18 @@ export {
   DifinityLogoIcon,
   FBIcon,
   FilterIcon,
+  Governance,
+  Home,
   InstagramIcon,
   PDFIcon,
   ProfileIcon,
   SafeIcon,
   SearchIcon,
   TransactionIcon,
+  ThemeIcon,
   TwitterIcon,
   LogoMainIcon,
-  LogoMainHorizontal
+  LogoMainHorizontal,
+  OrigynIcon,
+  Wallet,
 };

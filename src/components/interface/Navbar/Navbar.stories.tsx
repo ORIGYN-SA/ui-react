@@ -2,9 +2,9 @@ import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import Navbar from "./Navbar";
-import HomeIcon from "../../../components/icons/home";
-import GovernanceIcon from "../../../components/icons/governance";
-import WalletIcon from "../../../components/icons/wallet";
+import HomeIcon from "../../../components/icons/Home";
+import GovernanceIcon from "../../../components/icons/Governance";
+import WalletIcon from "../../../components/icons/Wallet";
 
 export default {
   title: "Components/Interface/Navbar/All stories",

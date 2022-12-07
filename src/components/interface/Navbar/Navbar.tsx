@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Flex from "../../layout/Flex";
-import ThemeIcon from "../../icons/theme";
-import OrigynIcon from "../../icons/origyn";
+import ThemeIcon from "../../icons/Theme";
+import OrigynIcon from "../../icons/Origyn";
 import { Link } from "react-router-dom";
 
 const StyledNav = styled.div`

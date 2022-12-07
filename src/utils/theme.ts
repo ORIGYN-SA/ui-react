@@ -18,7 +18,7 @@ export const theme = {
     PROGRESS: '#F2BD00',
     SUCCESS: '#50AA3E',
 
-    ACCENT_COLOR: '#EE9907',
+    ACCENT_COLOR: '#331038',
     ACCENT_COLOR_2: '#FFE7BD',
 
   },
