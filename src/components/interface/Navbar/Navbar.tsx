@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const StyledNav = styled.div`
 ${({ theme}) => `
-  background-color: ${theme.colors.BLACK};
+  background-color: ${theme.colors.DARK_BLACK};
   color: ${theme.colors.WHITE};
   padding: 24px;
   box-sizing: border-box;
@@ -29,7 +29,7 @@ ${({ theme}) => `
   }
 `}`
 
-const Navbar = ({ navItems, onConnect }) => {
+const Navbar: React.FC<{navItems: any, onConnect?: any}> = ({ navItems, onConnect }) => {
   return (
     <StyledNav>
       <Flex flexFlow="column" align="center" justify="space-between" fullHeight>
