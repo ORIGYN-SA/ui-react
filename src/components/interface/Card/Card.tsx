@@ -9,7 +9,7 @@ export type CardProps = {
 
 const outlined = css`
   background: ${({theme}) => theme.colors.BLACK};
-  border: 1px solid #E3E3E3;
+  border: 1px solid #242424;
   border-radius: 12px;
 `;
 
