@@ -9,14 +9,18 @@ export type ModalProps = {
   isOpened: boolean;
   closeModal: () => void;
   title?: string | React.ReactNode;
+  size?: 'lg' | 'md' | 'sm' | 'full';
   mode?: string;
-  paddingTop?: string;
-  paddingRight?: string;
-  paddingBottom?: string;
-  paddingLeft?: string;
 };
 
-const StyledModal = styled(ReactModal)`
+const modalSizes = {
+  lg: '860px',
+  md: '640px',
+  sm: '420px',
+  full: '100%',
+}
+
+const StyledModal = styled(ReactModal)<{size: string}>`
   &.ReactModalPortal {
    
   }
@@ -38,7 +42,7 @@ const StyledModal = styled(ReactModal)`
     border-radius: 24px;
     background-color: #151515;
     color: #FEFEFE;
-    width: 100%;
+    width: ${({size}) => modalSizes[size]};
     max-height: calc(100% - 100px);
     
     ${({theme}) => theme?.media?.lg} {
@@ -101,11 +105,7 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   title,
   children,
   closeModal,
-  mode,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft
+  size,
 }) => {
   
   return (
@@ -115,11 +115,11 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
       style={{
         overlay: {
           zIndex: 10000,
-          background: mode == 'light'?'#9A9A9A':'#3A3A3A',
         }
       }}
+      size={size}
     >
-      <Container relative size="md" padding={`${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`}>
+      <Container relative size="md">
         {title && <h2>{title}</h2>}
         {children}
       </Container>
