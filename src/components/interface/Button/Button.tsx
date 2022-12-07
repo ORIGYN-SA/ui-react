@@ -51,22 +51,22 @@ const StyledFlex = styled.button<ButtonProps>
   gap: 15px;
   align-items: center;
   box-sizing: border-box;
-  background: #151515;
-  color: #FEFEFE;
+  background: ${({theme}) => theme.colors.BLACK};
+  color: ${({theme}) => theme.colors.WHITE};
   border: none;
   
   svg {
-    fill: #FEFEFE;
+    fill: ${({theme}) => theme.colors.WHITE};
   }
   
   ${({btnType = "small"}) => buttonType[btnType]}
   
   ${({ theme, btnType, disabled, size = "auto", iconButton, textButton }) => `
   :hover, &.hover {
-    background-color: #5F5F5F;
+    background-color: ${({theme}) => theme.colors.ACCENT_COLOR};
   }
   :active, &.active {
-    background-color: #3A3A3A;
+    background-color: ${({theme}) => theme.colors.ACCENT_COLOR_2};
   }
   cursor: pointer;
   
