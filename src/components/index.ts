@@ -10,7 +10,7 @@ import DatePicker from "./interface/Inputs/DatePicker";
 import HR from "./interface/HR";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
-import MoreLink from "./interface/MoreLink";
+import ShowMoreBlock from "./interface/ShowMoreBlock";
 import Navbar from "./interface/Navbar";
 import SecondaryNav from "./interface/SecondaryNav";
 import ProductCard from "./interface/ProductCard";
@@ -48,7 +48,7 @@ export {
   HR,
   MenuLink,
   Modal,
-  MoreLink,
+  ShowMoreBlock,
   Navbar,
   SecondaryNav,
   ProductCard,

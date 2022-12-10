@@ -1,1 +1,1 @@
-export { default } from "./MoreLink";
+export { default } from "./ShowMoreBlock";
