@@ -4,6 +4,7 @@ import Flex from "../../layout/Flex";
 export type CardProps = {
   padding?: string;
   type?: 'outlined' | "filled" | "elevated";
+  bgColor?: string;
 };
 
 
@@ -32,8 +33,9 @@ const cardTypes = {
 
 const StyledCard = styled(Flex)<CardProps>`
   ${({type = "outlined"}) => cardTypes[type]};
+  ${({bgColor, theme}) => bgColor ? `background-color: ${theme.colors[bgColor]}` : "" };
   
-  ${({ theme, padding = "0" }) => `
+  ${({ theme, padding = "0"}) => `
   color: ${theme.colors.TEXT};
   padding: ${padding};
   overflow: hidden;

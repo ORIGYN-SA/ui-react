@@ -35,3 +35,10 @@ outlined.args = {
   padding: "24px",
   type: "outlined",
 };
+
+export const black = Template.bind({});
+black.args = {
+  padding: "24px",
+  type: "outlined",
+  bgColor: "NAVIGATION_BACKGROUND",
+};
