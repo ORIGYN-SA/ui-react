@@ -98,7 +98,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   body {
-    background-color: ${theme.colors.NAVIGATION_BACKGROUND};
+    background-color: ${({theme: any}) => theme?.colors?.NAVIGATION_BACKGROUND};
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;

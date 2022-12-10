@@ -6,6 +6,7 @@ import Banner from "../Banner";
 import Button from "../Button/Button";
 import Status from "../Status";
 import Chip from "../Chip";
+import {theme} from "../../../utils";
 
 export type SecondaryNavProps = {
   tabs: Array<{ title: string, id: string }>;
@@ -104,14 +105,14 @@ const SecondaryNav = ({tabs, content, title, onConnect, principal}: SecondaryNav
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
-    <Banner flexFlow="column" align="flex-start" padding="0">
-      <Banner fullWidth justify="space-between" align="center" padding="0 24px">
-        <Flex>
-          <NavTitle align="center">{title}</NavTitle>
+    <Banner bgColor="transparent" flexFlow="column" align="flex-start" padding="0">
+      <Banner bgColor="transparent" fullWidth justify="space-between" align="center" padding="0 24px">
+        <Flex align="center" gap={32}>
+          <p><b>{title}</b></p>
           <StyledSecondaryNav>
             {tabs.map(({id, title}, index) => (
               <StyledTab
-                as="h4"
+                as="div"
                 key={id}
                 className={index === currentTab ? "active" : ""}
                 onClick={() => setCurrentTab(index)}
