@@ -37,6 +37,7 @@ const StyledCard = styled(Flex)<CardProps>`
   color: ${theme.colors.WHITE};
   ${cardTypes[type]};
   padding: ${padding};
+  overflow: hidden;
 `}
 `;
 
