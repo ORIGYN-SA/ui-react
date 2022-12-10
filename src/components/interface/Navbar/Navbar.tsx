@@ -14,6 +14,8 @@ ${({ theme}) => `
   box-sizing: border-box;
   width: 104px;
   height: 100vh;
+  position: sticky;
+  top: 0;
 
   li {
     list-style: none;
