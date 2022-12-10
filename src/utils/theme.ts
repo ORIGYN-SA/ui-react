@@ -92,6 +92,9 @@ export const themeLight = {
 };
 
 export const GlobalStyle = createGlobalStyle`
+  :root {
+    --text-line-height: 1.57;
+  }
   * {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -99,9 +102,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: ${({theme: any}) => theme?.colors?.NAVIGATION_BACKGROUND};
+    color: ${({theme: any}) => theme?.colors?.TEXT};
     font-weight: 400;
     font-size: 14px;
-    line-height: 22px;
+    line-height: var(--text-line-height);
     letter-spacing: -0.15px;
   }
   a {

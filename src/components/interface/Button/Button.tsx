@@ -142,17 +142,17 @@ const StyledButton = styled.button<ButtonProps>
   ` : ""}
   ${textButton ? `
     background: transparent;
-    color: #151515;
+    color: ${theme.colors.TEXT};
     
     > svg {
       fill: #151515;
     }
     
     :hover, &.hover {
-      background: #FAFAFA;
+      background: ${theme.colors.BORDER};
     }
     :active, &.active {
-      background: #F2F2F2;
+      background: ${theme.colors.BORDER};
     }
   ${disabled ? `
     background: transparent;
