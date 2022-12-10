@@ -12,7 +12,9 @@ export const theme = {
     INACTIVE: '#9A9A9A',
 
     NAVIGATION_BACKGROUND: '#000000',
+    // NAVIGATION_BACKGROUND: '#FEFEFE', LIGHT
     NAVIGATION_BACKGROUND_LIGHT: '#121212',
+    // NAVIGATION_BACKGROUND_LIGHT: '#FCFCFC', LIGHT
 
     ERROR: '#B5010A',
     PROGRESS: '#F2BD00',
@@ -45,6 +47,50 @@ export const theme = {
     lg: 1440,
   }
 };
+
+export const themeLight = {
+  colors: {
+    BACKGROUND: '#FEFEFE',
+    BORDER: '#E3E3E3',
+    TEXT: '#151515',
+    SECONDARY_TEXT: '#5F5F5F',
+    INACTIVE: '#9A9A9A',
+
+    NAVIGATION_BACKGROUND: '#FEFEFE',
+    NAVIGATION_BACKGROUND_LIGHT: '#FCFCFC',
+
+    ERROR: '#B5010A',
+    PROGRESS: '#F2BD00',
+    SUCCESS: '#50AA3E',
+
+    ACCENT_COLOR: '#331038',
+    ACCENT_COLOR_2: '#FFE7BD',
+
+  },
+  shadows: {
+    sm: "0px 5px 5px -5px rgba(0, 0, 0, 0.1)",
+    md: "0px 5px 10px -5px rgba(26, 32, 44, 0.1)",
+    lg: "0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05)",
+  },
+  typography: {
+
+  },
+  spacing: {
+
+  },
+  media: {
+    sm: '@media (max-width: 600px)',
+    md: '@media (max-width: 960px)',
+    lg: '@media (max-width: 1280px)',
+    xl: '@media (max-width: 1920px)',
+  },
+  containers: {
+    sm: 905,
+    md: 1150,
+    lg: 1440,
+  }
+};
+
 export const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Montserrat', sans-serif;
@@ -52,9 +98,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   body {
-    background-color: #F5F5F5;
-    font-size: 15px;
+    background-color: ${theme.colors.NAVIGATION_BACKGROUND};
+    font-weight: 400;
+    font-size: 14px;
     line-height: 22px;
+    letter-spacing: -0.15px;
   }
   a {
     color: inherit;
@@ -67,110 +115,54 @@ export const GlobalStyle = createGlobalStyle`
     flex-shrink: 0;
   }
   h1 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 96px;
-    line-height: 112px;
-  }
-  h1 > strong {
     font-weight: 600;
-    font-size: 32px;
-    line-height: 42px;
-    letter-spacing: -3px;
-  }
-  h2 {
-    font-weight: 400;
-    font-size: 72px;
-    line-height: 80px;
-    letter-spacing: -2.5px;
-  }
-  h3 {
-    font-weight: 400;
-    font-size: 60px;
-    line-height: 72px;
-    letter-spacing: -2px;
-  }
-  h4 {
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 36px;
+    line-height: 44px;
     letter-spacing: -1px;
   }
-  h5 {
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 56px;
-    letter-spacing: -1.5px;
+  h2 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.75px;
   }
-  h6 {
+  h3 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.5px;
+  }
+  h4 {
     font-weight: 600;
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.25px;
   }
-  button, .buttonLabel {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  h5 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.15px;
   }
-  
+  h6 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.1px;
+  }
+  h1 > b, h2 > b, h3 > b, h4 > b, h5 > b, h6 > b {
+    font-weight: 500;
+  }
   
   @media (min-width: 600px) {
-    h1 {
-      font-size: 28px;
-      line-height: 38px;
-    }
-    h1 > strong {
-      font-size: 40px;
-      line-height: 52px;
-    }
-    h2 {
-      font-size: 24px;
-      line-height: 36px;
-    }
-    h3 {
-      font-size: 20px;
-      line-height: 30px;
-    }
-    h4 {
-      font-size: 17px;
-      line-height: 24px;
-    }
+    // TODO: consider fonts responsiveness
   }
   
   @media (min-width: 960px) {
-    h1 {
-      font-size: 32px;
-      line-height: 44px;
-    }
-    h1 > strong {
-      font-size: 44px;
-      line-height: 58px;
-    }
-    h2 {
-      font-size: 26px;
-      line-height: 38px;
-    }
+    // TODO: consider fonts responsiveness
   }
   
   @media (min-width: 1280px) {
-    h1 {
-      font-size: 36px;
-      line-height: 48px;
-    }
-    h1 > strong {
-      font-size: 52px;
-      line-height: 66px;
-    }
-    h2 {
-      font-size: 30px;
-      line-height: 40px;
-    }
-    h3 {
-      font-size: 24px;
-      line-height: 36px;
-    }
+    // TODO: consider fonts responsiveness
   }
 `;
