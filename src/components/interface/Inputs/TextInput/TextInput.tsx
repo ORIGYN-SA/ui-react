@@ -41,7 +41,7 @@ const smallSize = css`
   border-radius: 10px;
 `;
 
-const inputSizes = {
+export const inputSizes = {
   large: largeSize,
   medium: mediumSize,
   small: smallSize,

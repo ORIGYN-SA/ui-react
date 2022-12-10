@@ -2,6 +2,7 @@ import React, { ChangeEventHandler } from "react";
 import Select from "react-select";
 import styled from "styled-components";
 import Flex from "../../../layout/Flex";
+import {inputSizes} from "../TextInput/TextInput";
 
 export type CustomSelectProps = {
   label?: string;
@@ -11,34 +12,53 @@ export type CustomSelectProps = {
   handleChange?: (value: any) => void;
   error?: boolean;
   height?: string;
+  inputSize?: 'small' | 'medium' | 'large';
   options?: {
     value?: any;
     label?: any;
   }[];
 };
 
-const StyledSelect = styled(Select)`
-  .css-319lph-ValueContainer {
-    justify-content: end;
+const StyledSelect = styled(Select)<{inputSize?: string}>`
+  .react-select__control {
+    min-height: auto;
+    ${({inputSize = "large"}) => inputSizes[inputSize]};
+    background: ${({theme}) => theme?.colors?.BLACK};
   }
-  .css-1s2u09g-control {
-    border: 1px solid #aeaeae;
-    border-color: ${(props: any) => (props.error ? "#E42932" : "#C4C4C4")};
-    border-radius: 2px;
-    min-height: ${(props: any) => (props.height ? props.height : "50px")};
+  .react-select__control--is-focused {
+    border-radius: 12px 12px 0 0;
   }
-  .css-1pahdxg-control {
-    min-height: ${(props: any) => (props.height ? props.height : "50px")};
-    border-color: transparent;
+  .react-select__input-container {
+    margin: 0;
+    padding: 0;
   }
-  .css-1n7v3ny-option {
-    background-color: #ffe7bd;
+  .react-select__value-container {
+    padding: 0;
   }
-  .css-4ljt47-MenuList {
-    padding-top: 0;
-    padding-bottom: 0;
-    border: 1px solid #000;
+  .react-select__single-value {
+    color: ${({theme}) => theme?.colors?.WHITE};
   }
+  .react-select__indicator {
+    padding: 0;
+  }
+  .react-select__menu {
+    margin: 0;
+    padding: 8px;
+    border-radius: 0 0 12px 12px;
+    background: ${({theme}) => theme?.colors?.BLACK};
+    color: ${({theme}) => theme?.colors?.WHITE};
+  }
+  
+  .react-select__option {
+    border-radius: 8px;
+    :hover {
+      background: ${({theme}) => theme?.colors?.DARK_GREY};
+    }
+  }
+  .react-select__option--is-selected, .react-select__option--is-focused {
+    background: ${({theme}) => theme?.colors?.DARK_GREY};
+  }
+  
 `;
 
 const StyledLabel = styled.label`
@@ -67,6 +87,11 @@ const CustomSelect = ({
         }}
         options={options}
         name={name}
+        className="react-select-container"
+        classNamePrefix="react-select"
+        components={{
+          IndicatorSeparator: () => null
+        }}
         {...rest}
       />
     </Flex>
