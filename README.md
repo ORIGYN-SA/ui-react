@@ -1,4 +1,4 @@
-Release v1.0.63
+Release v1.0.65
 #TS Storybook setup
 This is default setup for TypeScript component base with Storybook setup.
 
