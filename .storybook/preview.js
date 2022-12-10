@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from "styled-components";
-import { theme, GlobalStyle } from "../src/utils/theme";
+import { theme, GlobalStyle } from "../src";
 import { BrowserRouter as Router } from "react-router-dom";
 
 export const parameters = {

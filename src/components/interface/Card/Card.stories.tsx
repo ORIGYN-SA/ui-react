@@ -29,3 +29,9 @@ elevated.args = {
   padding: "24px",
   type: "elevated",
 };
+
+export const outlined = Template.bind({});
+outlined.args = {
+  padding: "24px",
+  type: "outlined",
+};
