@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 const StyledNav = styled.div`
 ${({ theme}) => `
-  background-color: ${theme.colors.DARK_BLACK};
-  color: ${theme.colors.WHITE};
+  background-color: ${theme.colors.NAVIGATION_BACKGROUND};
+  color: ${theme.colors.TEXT};
   padding: 24px;
   box-sizing: border-box;
   width: 104px;
@@ -21,11 +21,10 @@ ${({ theme}) => `
 
   a {
     color: ${theme.colors.WHITE};
-
   }
 
   svg {
-    fill: ${theme.colors.WHITE}
+    fill: currentColor;
   }
 `}`
 

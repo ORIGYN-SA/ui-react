@@ -53,19 +53,19 @@ const StyledTextInput = styled.input<{error: boolean, inputSize?: string}>`
   ${({theme, error}) => `
     padding: 0 16px;
     gap: 10px;
-    background: ${theme.colors.BLACK};
+    background: ${theme.colors.BACKGROUND};
     
-    border: 1px solid ${error ? theme.colors.ERROR : theme.colors.DARK_GREY};
-    color: ${error ? theme.colors.ERROR : theme.colors.WHITE}};
+    border: 1px solid ${error ? theme.colors.ERROR : theme.colors.BORDER};
+    color: ${error ? theme.colors.ERROR : theme.colors.TEXT}};
   
-  ::placeholder {
-    color: ${theme.colors.WHITE};
-  }
-
-  &:focus{
-    outline: none;
-    background-color: ${theme.colors.LIGHT_GREY};
-  }
+    ::placeholder {
+      color: ${theme.colors.SECONDARY_TEXT};
+    }
+  
+    &:focus{
+      outline: none;
+      background-color: ${theme.colors.TEXT}06;
+    }
 `}`;
 
 const ErrorMessage = styled.div`

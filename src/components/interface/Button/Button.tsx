@@ -53,10 +53,10 @@ const outlined = css`
 `;
 
 const secondary = css`
-  background-color: ${({theme}) => theme.colors.WHITE};
-  color: ${({theme}) => theme.colors.BLACK};
+  background-color: ${({theme}) => theme.colors.BACKGROUND};
+  color: ${({theme}) => theme.colors.TEXT};
   svg {
-    fill: ${({theme}) => theme.colors.BLACK};
+    fill: currentColor;
   }
 `;
 
@@ -74,12 +74,12 @@ const StyledButton = styled.button<ButtonProps>
   gap: 15px;
   align-items: center;
   box-sizing: border-box;
-  background: ${({theme}) => theme.colors.BLACK};
-  color: ${({theme}) => theme.colors.WHITE};
+  background: ${({theme}) => theme.colors.BACKGROUND};
+  color: ${({theme}) => theme.colors.TEXT};
   border: none;
   
   svg {
-    fill: ${({theme}) => theme.colors.WHITE};
+    fill: currentColor;
   }
   
   ${({size = "large"}) => buttonSize[size]};

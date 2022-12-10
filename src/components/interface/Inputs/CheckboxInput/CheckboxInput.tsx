@@ -46,8 +46,8 @@ const StyledCheckboxIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({theme}) => theme.colors.BLACK};
-  border: 1px solid ${({theme}) => theme.colors.DARK_GREY};
+  background-color: ${({theme}) => theme.colors.BACKGROUND};
+  border: 1px solid ${({theme}) => theme.colors.BORDER};
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -59,7 +59,7 @@ const StyledCheckboxIcon = styled.div`
     width: 8px;
     height: 8px;
     opacity: 0;
-    background-color: ${({theme}) => theme.colors.BLACK}
+    background-color: ${({theme}) => theme.colors.BACKGROUND}
 `;
 
 const StyledLabel = styled.label`

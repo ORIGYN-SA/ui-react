@@ -8,19 +8,19 @@ export type CardProps = {
 
 
 const outlined = css`
-  background: ${({theme}) => theme.colors.BLACK};
-  border: 1px solid #242424;
+  background: transparent;
+  border: 1px solid ${({theme}) => theme.colors.BORDER};
   border-radius: 12px;
 `;
 
 const filled = css`
-  background: ${({theme}) => theme.colors.WHITE};
+  background: ${({theme}) => theme.colors.BACKGROUND};
   border-radius: 12px;
-  color: ${({theme}) => theme.colors.BLACK};
+  color: ${({theme}) => theme.colors.TEXT};
 `;
 
 const elevated = css`
-  background: ${({theme}) => theme.colors.BLACK};
+  background: ${({theme}) => theme.colors.BACKGROUND};
   box-shadow: 0px 1px 12px rgba(18, 18, 18, 0.04), 0px 0px 4px rgba(18, 18, 18, 0.08);
   border-radius: 12px;
 `;
@@ -33,8 +33,8 @@ const cardTypes = {
 
 const StyledCard = styled(Flex)<CardProps>`
   ${({ theme, padding = "0", type = "outlined" }) => `
-  background: ${theme.colors.BLACK};
-  color: ${theme.colors.WHITE};
+  background: ${theme.colors.BACKGROUND};
+  color: ${theme.colors.TEXT};
   ${cardTypes[type]};
   padding: ${padding};
   overflow: hidden;

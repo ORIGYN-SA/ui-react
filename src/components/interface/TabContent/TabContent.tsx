@@ -13,8 +13,8 @@ export type TabContentProps = {
 
 const StyledTabContent = styled(Flex)<{borderBottom: boolean}>`
   ${({theme, borderBottom}) => `
-  background-color: ${theme.colors.BLACK};
-  color: ${theme.colors.WHITE};
+  background-color: ${theme.colors.BACKGROUND};
+  color: ${theme.colors.TEXT};
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
@@ -36,20 +36,19 @@ const StyledTabContent = styled(Flex)<{borderBottom: boolean}>`
 
 const StyledTabs = styled(Flex)`
 ${({ theme}) => `
-  background-color: ${theme.colors.BLACK};
-  color: ${theme.colors.WHITE};
+  background-color: ${theme.colors.BACKGROUND};
+  color: ${theme.colors.TEXT};
 
   li {
     list-style: none;
   }
 
   a {
-    color: ${theme.colors.WHITE};
-
+    color: ${theme.colors.TEXT};
   }
 
   svg {
-    fill: ${theme.colors.WHITE}
+    fill: currentColor;
   }
 `}`
 

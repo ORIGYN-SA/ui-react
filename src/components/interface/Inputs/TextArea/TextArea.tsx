@@ -19,11 +19,11 @@ const StyledTextArea = styled.textarea<{ resize?: boolean, inputSize?:string }>`
   border: 1px solid ${theme.colors.DARK_GREY};
   box-sizing: border-box;
   resize: ${resize && 'none'};
-  background: ${theme.colors.BLACK};
-  color: ${theme.colors.WHITE};
+  background: ${theme.colors.BACKGROUND};
+  color: ${theme.colors.TEXT};
   
   ::placeholder {
-    color: ${theme.colors.WHITE};
+    color: ${theme.colors.SECONDARY_TEXT};
   }
 
   &:focus{

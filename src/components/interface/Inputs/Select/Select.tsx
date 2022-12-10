@@ -23,7 +23,7 @@ const StyledSelect = styled(Select)<{inputSize?: string}>`
   .react-select__control {
     min-height: auto;
     ${({inputSize = "large"}) => inputSizes[inputSize]};
-    background: ${({theme}) => theme?.colors?.BLACK};
+    background: ${({theme}) => theme?.colors?.BACKGROUND};
   }
   .react-select__control--is-focused {
     border-radius: 12px 12px 0 0;
@@ -45,8 +45,8 @@ const StyledSelect = styled(Select)<{inputSize?: string}>`
     margin: 0;
     padding: 8px;
     border-radius: 0 0 12px 12px;
-    background: ${({theme}) => theme?.colors?.BLACK};
-    color: ${({theme}) => theme?.colors?.WHITE};
+    background: ${({theme}) => theme?.colors?.BACKGROUND};
+    color: ${({theme}) => theme?.colors?.TEXT};
   }
   
   .react-select__option {

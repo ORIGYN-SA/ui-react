@@ -17,7 +17,7 @@ export type SecondaryNavProps = {
 
 const StyledSecondaryNav = styled(Flex)`
   ${({theme}) => `
-  background: linear-gradient(90deg, #121212 0%, #000000 100%);
+  background: linear-gradient(90deg, ${theme.colors.NAVIGATION_BACKGROUND_LIGHT} 0%, ${theme.colors.NAVIGATION_BACKGROUND} 100%);
   color: ${theme.colors.WHITE};
   font-weight: 600;
   font-size: 14px;
@@ -39,7 +39,7 @@ const StyledSecondaryNav = styled(Flex)`
 
 const StyledTab = styled(MenuLink)`
   ${({theme}) => `
-    color: ${theme.colors.WHITE};
+    color: ${theme.colors.TEXT};
     display: flex;
     height: 100%;
     align-items: center;
@@ -51,8 +51,8 @@ const StyledTab = styled(MenuLink)`
   }
   &.active {
     opacity: 1;
-    color: ${theme.colors.WHITE};
-    border-bottom: 2px solid ${theme.colors.WHITE};
+    color: ${theme.colors.TEXT};
+    border-bottom: 2px solid ${theme.colors.TEXT};
   }
 `}
 `;
@@ -62,7 +62,7 @@ const NavTitle = styled(Flex)`
   font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.15px;
-  color: #FEFEFE;
+  color: ${({theme}) => theme.colors.TEXT};;
   
   margin-right: 32px;
 `
@@ -70,8 +70,8 @@ const NavTitle = styled(Flex)`
 const StyledWallet = styled(Chip)`
   position: relative;
   width: 65px;
-  background: #151515;
-  border: 1px solid #242424;
+  background: ${({theme}) => theme.colors.BACKGROUND};;
+  border: 1px solid ${({theme}) => theme.colors.BORDER};;
   opacity: 1;
   
    &:after {
@@ -84,17 +84,17 @@ const StyledWallet = styled(Chip)`
      top: 0;
      right: 0;
   
-     background: #5EAC31;
+     background: ${({theme}) => theme.colors.SUCCESS};
   
      border: 1px solid #000000;
    }
 `;
 
 const StyledContent = styled.div`
-  background: #151515;
+  background: ${({theme}) => theme.colors.BACKGROUND};;
   /* Primary/800: border (dark) */
 
-  border-top: 1px solid #242424;
+  border-top: 1px solid ${({theme}) => theme.colors.BORDER};;
   border-radius: 16px 0px 0px 0px;
   width: 100%;
   height: 100%;
@@ -104,8 +104,8 @@ const SecondaryNav = ({tabs, content, title, onConnect, principal}: SecondaryNav
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
-    <Banner flexFlow="column" align="flex-start" bgColor="#000000" padding="0">
-      <Banner fullWidth bgColor="#000000" justify="space-between" align="center" padding="0 24px">
+    <Banner flexFlow="column" align="flex-start" padding="0">
+      <Banner fullWidth justify="space-between" align="center" padding="0 24px">
         <Flex>
           <NavTitle align="center">{title}</NavTitle>
           <StyledSecondaryNav>

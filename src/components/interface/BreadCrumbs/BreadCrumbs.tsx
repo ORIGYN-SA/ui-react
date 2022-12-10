@@ -17,16 +17,16 @@ const SBreadCrumbs = styled.div`
   line-height: 20px;
   letter-spacing: -0.1px;
   margin: 12px 0;
-  color: ${theme.colors.BLACK};
+  color: ${theme.colors.TEXT};
   
   svg {
-    fill: ${theme.colors.SECONDARY_TEXT};
+    fill: ${theme.colors.TEXT};
   }
   
   a {
     text-decoration: underline;
     font-weight: 600;
-    color: ${theme.colors.DARK_GREY};
+    color: ${theme.colors.TEXT};
     
     &:hover {
       text-decoration: none;

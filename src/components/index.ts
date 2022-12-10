@@ -6,7 +6,7 @@ import BreadCrumbs from "./interface/BreadCrumbs";
 import Button from "./interface/Button";
 import Card from "./interface/Card";
 import CheckboxInput from "./interface/Inputs/CheckboxInput";
-import DatePicker from "./interface/DatePicker";
+import DatePicker from "./interface/Inputs/DatePicker";
 import HR from "./interface/HR";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";

@@ -7,7 +7,7 @@ const StyledCustomMoreLink = styled.a`
   font-size: 16px;
   line-height: 20px;
   align-items: center;
-  color: ${theme.colors.BLACK};
+  color: ${theme.colors.TEXT};
   display: flex;
   gap: 10px;
 `}

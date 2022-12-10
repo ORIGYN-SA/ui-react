@@ -25,18 +25,18 @@ const StyledTabContent = styled(Flex)`
 
 const StyledTab = styled(MenuLink)`
   ${({ theme, width }) => `
-  color: ${theme.colors.MID_GREY};
+  color: ${theme.colors.TEXT};
   background: #ffffff;
   flex-grow: ${width ? 'auto' : 1};
   width: ${width ? width : 'width'};
-  border-bottom: 3px solid ${theme.colors.MID_GREY};
+  border-bottom: 3px solid ${theme.colors.BORDER};
   padding: 17px 0;
   text-align: center;
   
     
   &.active {
-    color: ${theme.colors.BLACK};
-    border-bottom: 3px solid ${theme.colors.BLACK};
+    color: ${theme.colors.TEXT};
+    border-bottom: 3px solid ${theme.colors.BORDER};
   }
 `}
 `;

@@ -2,17 +2,17 @@ import {createGlobalStyle} from "styled-components";
 
 export const theme = {
   colors: {
-    BLACK: '#151515',
-    DARK_BLACK: '#000000',
-    BLACK_DARK: '#242424',
+    BACKGROUND: '#151515',
+    //BACKGROUND: '#FEFEFE', LIGHT
+    BORDER: '#242424',
+    //BORDER: '#E3E3E3', LIGHT
+    TEXT: '#FEFEFE',
+    // TEXT: '#151515', LIGHT
     SECONDARY_TEXT: '#5F5F5F',
-    INACTIVE_BG: '#E3E3E3',
-    VERY_DARK_GREY: '#4a4a4a',
-    DARK_GREY: '#5F5F5F',
-    MID_GREY: '#AEAEAE',
-    LIGHT_GREY: '#D8D8D8',
-    VERY_LIGHT_GREY: '#F2F2F2',
-    WHITE: '#FFFFFF',
+    INACTIVE: '#9A9A9A',
+
+    NAVIGATION_BACKGROUND: '#000000',
+    NAVIGATION_BACKGROUND_LIGHT: '#121212',
 
     ERROR: '#B5010A',
     PROGRESS: '#F2BD00',
