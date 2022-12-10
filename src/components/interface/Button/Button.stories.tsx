@@ -81,3 +81,13 @@ export const largeOutlinedButton = Template.bind({});
 largeOutlinedButton.args = {
   btnType: "outlined",
 };
+
+export const largeFilledButton = Template.bind({});
+largeFilledButton.args = {
+  btnType: "filled",
+};
+
+export const largeAccentButton = Template.bind({});
+largeAccentButton.args = {
+  btnType: "accent",
+};

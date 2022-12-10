@@ -2,7 +2,7 @@ import styled, {css} from "styled-components";
 
 export type ButtonProps = {
   size?: "small" | "medium" | "large";
-  btnType?: "outlined" | "secondary";
+  btnType?: "outlined" | "secondary" | "filled";
   iconButton?: boolean;
   textButton?: boolean;
   disabled?: boolean;
@@ -60,9 +60,27 @@ const secondary = css`
   }
 `;
 
+const filled = css`
+  background-color: ${({theme}) => theme.colors.TEXT};
+  color: ${({theme}) => theme.colors.BACKGROUND};
+  svg {
+    fill: currentColor;
+  }
+`;
+
+const accent = css`
+  background-color: ${({theme}) => theme.colors.ACCENT_COLOR };
+  color: ${({theme}) => theme.colors.TEXT};
+  svg {
+    fill: currentColor;
+  }
+`;
+
 const buttonTypes = {
   outlined: outlined,
   secondary: secondary,
+  filled: filled,
+  accent: accent,
 }
 
 const StyledButton = styled.button<ButtonProps>
@@ -85,24 +103,26 @@ const StyledButton = styled.button<ButtonProps>
   ${({size = "large"}) => buttonSize[size]};
   ${({btnType }) => buttonTypes[btnType]};
   
-  ${({ theme, btnType, size = "large", disabled, iconButton, textButton }) => `
+  ${({ theme, size = "large", disabled, iconButton, textButton }) => `
   :hover, &.hover {
-    background-color: ${theme.colors.ACCENT_COLOR};
+    background-color: ${theme.colors.BORDER};
+    color: ${theme.colors.TEXT};
   }
   :active, &.active {
-    background-color: ${theme.colors.ACCENT_COLOR};
+    background-color: ${theme.colors.BORDER};
+    color: ${theme.colors.TEXT};
   }
   cursor: pointer;
   
   ${disabled ? `
-    background-color: ${theme.colors.MID_GREY};
-    border-color: ${theme.colors.MID_GREY};
-    color: ${theme.colors.WHITE};
+    background: ${theme.colors.INACTIVE};
+    border-color: ${theme.colors.BORDER};
+    color: ${theme.colors.SECONDARY_TEXT};
     cursor: not-allowed;
     :hover {
-      background-color: ${theme.colors.MID_GREY};
-      border-color: ${theme.colors.MID_GREY};
-      color: ${theme.colors.WHITE};
+      background-color: ${theme.colors.INACTIVE};
+      border-color: ${theme.colors.BORDER};
+      color: ${theme.colors.SECONDARY_TEXT};
     }
   ` : ""}
   ${iconButton ? `
@@ -142,7 +162,6 @@ const StyledButton = styled.button<ButtonProps>
     }
   ` : ""}
   ` : ""}
-  
 `}
 `;
 
