@@ -16,9 +16,6 @@ const Template: Story = (args: any) => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         height: "1050px",
         backgroundColor: "#d3d3d3",
       }}
@@ -26,14 +23,17 @@ const Template: Story = (args: any) => {
       <Navbar navItems={[
         {
           href: 'url',
+          label: 'Home',
           icon: HomeIcon
         },
         {
           href: 'url',
+          label: 'Governance',
           icon: GovernanceIcon
         },
         {
           href: 'url',
+          label: 'Wallet',
           icon: WalletIcon
         },
       ]} />

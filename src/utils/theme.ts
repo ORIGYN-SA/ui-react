@@ -101,7 +101,7 @@ export const themeLight = {
   }
 };
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{theme: typeof theme}>`
   :root {
     --text-line-height: 1.57;
   }
@@ -111,15 +111,15 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   body {
-    background-color: ${(props: any) => props.theme?.colors?.NAVIGATION_BACKGROUND};
-    color: ${(props: any) => props.theme?.colors?.TEXT};
+    background-color: ${(props) => props.theme?.colors?.NAVIGATION_BACKGROUND};
+    color: ${(props) => props.theme?.colors?.TEXT};
     font-weight: 400;
     font-size: 14px;
     line-height: var(--text-line-height);
     letter-spacing: -0.15px;
   }
   .secondary_color {
-    color: ${(props: any) => props.theme?.colors?.SECONDARY_TEXT};
+    color: ${(props) => props.theme?.colors?.SECONDARY_TEXT};
   }
   .small_text {
     font-size: 10px;

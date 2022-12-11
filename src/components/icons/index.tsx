@@ -16,6 +16,7 @@ import TransactionIcon from "./Transaction";
 import TwitterIcon from "./Twitter";
 import LogoMainIcon from "./LogoMain"
 import LogoMainHorizontal from "./LogoMainHorizontal"
+import MenuIcon from "./Menu"
 import Governance from "./Governance"
 import Home from "./Home"
 import OrigynIcon from "./Origyn"
@@ -44,6 +45,7 @@ export {
   TwitterIcon,
   LogoMainIcon,
   LogoMainHorizontal,
+  MenuIcon,
   OrigynIcon,
   Wallet,
 };
