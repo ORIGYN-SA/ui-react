@@ -24,13 +24,12 @@ const StyledDatePicker = styled(ReactDatePicker)<DatePickerProps>`
     background: ${({theme}) => theme.colors.BACKGROUND};
     color: ${({theme}) => theme.colors.TEXT};
     border: 1px solid ${({error, theme}) => error ? theme.colors.ERROR : theme.colors.BORDER};
+    width: 100%;
 `;
 const StyledLabel = styled.label`
-  ${() => `
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-`}
 `;
 
 const DatePicker = ({ name, label, ...args }: DatePickerProps) => {

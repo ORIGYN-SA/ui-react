@@ -16,6 +16,7 @@ const StyledTabContent = styled(Flex)<{borderBottom: boolean, bgColor}>`
   ${({theme, borderBottom, bgColor}) => `
   background-color: ${bgColor ? theme.colors[bgColor] : theme.colors.BACKGROUND};
   color: ${theme.colors.TEXT};
+  box-sizing: border-box;
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
@@ -27,7 +28,6 @@ const StyledTabContent = styled(Flex)<{borderBottom: boolean, bgColor}>`
   
   ${theme.media.sm} {
     padding: 0 5px;
-    overflow: auto;
     width: 100%;
     gap: 10px;
     justify-content: space-evenly;
@@ -35,30 +35,12 @@ const StyledTabContent = styled(Flex)<{borderBottom: boolean, bgColor}>`
 `}
 `;
 
-const StyledTabs = styled(Flex)`
-${({ theme}) => `
-  background-color: ${theme.colors.BACKGROUND};
-  color: ${theme.colors.TEXT};
-
-  li {
-    list-style: none;
-  }
-
-  a {
-    color: ${theme.colors.TEXT};
-  }
-
-  svg {
-    fill: currentColor;
-  }
-`}`
-
 const StyledTab = styled(MenuLink)`
   ${({theme}) => `
     color: ${theme.colors.TEXT};
     font-weight: 600;
     display: flex;
-    height: 100%;
+    height: 50px;
     align-items: center;
     padding: 0;
     border-bottom: 2px solid ${theme.colors.TEXT};

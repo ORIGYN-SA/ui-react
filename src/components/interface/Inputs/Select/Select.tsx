@@ -22,11 +22,21 @@ export type CustomSelectProps = {
 const StyledSelect = styled(Select)<{inputSize?: string}>`
   .react-select__control {
     min-height: auto;
+    border-color: ${({theme}) => theme?.colors?.BORDER};
     ${({inputSize = "large"}) => inputSizes[inputSize]};
     background: ${({theme}) => theme?.colors?.BACKGROUND};
+    outline: none!important;
   }
   .react-select__control--is-focused {
     border-radius: 12px 12px 0 0;
+    border-color: ${({theme}) => theme?.colors?.BORDER};
+    outline: none;
+    box-shadow: none;
+    &:hover {
+      border-color: ${({theme}) => theme?.colors?.BORDER};
+      outline: none;
+      box-shadow: none;
+    }
   }
   .react-select__input-container {
     margin: 0;
@@ -36,7 +46,8 @@ const StyledSelect = styled(Select)<{inputSize?: string}>`
     padding: 0;
   }
   .react-select__single-value {
-    color: ${({theme}) => theme?.colors?.WHITE};
+    color: ${({theme}) => theme?.colors?.TEXT};
+    outline: none!important;
   }
   .react-select__indicator {
     padding: 0;
@@ -47,16 +58,17 @@ const StyledSelect = styled(Select)<{inputSize?: string}>`
     border-radius: 0 0 12px 12px;
     background: ${({theme}) => theme?.colors?.BACKGROUND};
     color: ${({theme}) => theme?.colors?.TEXT};
+    outline: none!important;
   }
   
   .react-select__option {
     border-radius: 8px;
     :hover {
-      background: ${({theme}) => theme?.colors?.DARK_GREY};
+      background: ${({theme}) => theme?.colors?.BORDER};
     }
   }
   .react-select__option--is-selected, .react-select__option--is-focused {
-    background: ${({theme}) => theme?.colors?.DARK_GREY};
+    background: ${({theme}) => theme?.colors?.BORDER};
   }
   
 `;

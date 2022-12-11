@@ -30,6 +30,7 @@ Default.args = {
     <div>Content 4</div>,
   ],
   fullWidth: true,
+  borderBottom: true,
   justify: 'flex-start'
 };
 
