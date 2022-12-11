@@ -7,7 +7,7 @@ import {inputSizes} from "../TextInput/TextInput";
 export type CustomSelectProps = {
   label?: string;
   name?: string;
-  selectedOption?: string;
+  selectedOption?: {value: string, label: string};
   placeholder?: string;
   handleChange?: (value: any) => void;
   error?: boolean;
@@ -62,11 +62,9 @@ const StyledSelect = styled(Select)<{inputSize?: string}>`
 `;
 
 const StyledLabel = styled.label`
-  ${() => `
   font-weight: 600;
   font-size: 15px;
   line-height: 24px;
-`}
 `;
 
 const CustomSelect = ({

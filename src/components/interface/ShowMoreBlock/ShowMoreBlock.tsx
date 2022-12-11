@@ -6,7 +6,7 @@ import Flex from "../../layout/Flex";
 const StyledShowMoreBlock = styled.div`
 `;
 
-const OverflowText = styled.p<{ showFull?: boolean }>`
+const OverflowText = styled.div<{ showFull?: boolean }>`
   height: ${({showFull}) => showFull ? 'auto' : 'calc(var(--text-line-height) * 2em)'};
   overflow: hidden;
   text-overflow: ellipsis;
@@ -48,7 +48,7 @@ const ShowMoreBlock: React.FC<PropsWithChildren<{ btnText?: string }>> = ({btnTe
                 </Button>
               ) : (
                 <Button size="small" textButton onClick={() => setShowFull(true)}>
-                  {btnText ? btnText : "Hide"}
+                  Hide
                 </Button>
               )
             }

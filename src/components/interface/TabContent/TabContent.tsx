@@ -9,11 +9,12 @@ export type TabContentProps = {
   fullWidth?: boolean;
   justify?: "center" | "flex-start" | "flex-end";
   borderBottom?: boolean;
+  bgColor?: string;
 };
 
-const StyledTabContent = styled(Flex)<{borderBottom: boolean}>`
-  ${({theme, borderBottom}) => `
-  background-color: ${theme.colors.BACKGROUND};
+const StyledTabContent = styled(Flex)<{borderBottom: boolean, bgColor}>`
+  ${({theme, borderBottom, bgColor}) => `
+  background-color: ${bgColor ? theme.colors[bgColor] : theme.colors.BACKGROUND};
   color: ${theme.colors.TEXT};
   font-weight: 600;
   font-size: 14px;
@@ -54,34 +55,36 @@ ${({ theme}) => `
 
 const StyledTab = styled(MenuLink)`
   ${({theme}) => `
-    color: ${theme.colors.WHITE};
+    color: ${theme.colors.TEXT};
+    font-weight: 600;
     display: flex;
     height: 100%;
     align-items: center;
     padding: 0;
-    border-bottom: 2px solid ${theme.colors.WHITE};
+    border-bottom: 2px solid ${theme.colors.TEXT};
     opacity: 0.5;
   
   &:hover {
     opacity: 1;
+    border-bottom: 2px solid ${theme.colors.TEXT};
   }
   &.active {
     opacity: 1;
-    color: ${theme.colors.WHITE};
-    border-bottom: 2px solid ${theme.colors.WHITE};
+    color: ${theme.colors.TEXT};
+    border-bottom: 2px solid ${theme.colors.ACCENT_COLOR};
   }
 `}
 `;
 
-const TabContent = ({tabs, content, fullWidth=false, justify="center", borderBottom}: TabContentProps) => {
+const TabContent = ({tabs, content, fullWidth=false, justify="center", borderBottom, bgColor}: TabContentProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
     <Flex flexFlow="column" align="flex-start">
-      <StyledTabContent fullWidth={fullWidth} justify={justify} borderBottom={borderBottom}>
+      <StyledTabContent fullWidth={fullWidth} justify={justify} borderBottom={borderBottom} bgColor={bgColor}>
         {tabs.map(({id, title}, index) => (
           <StyledTab
-            as="h4"
+            as="p"
             key={id}
             className={index === currentTab ? "active" : ""}
             onClick={() => setCurrentTab(index)}

@@ -1,4 +1,5 @@
 import { theme, GlobalStyle } from "./theme";
+import { handleSubmit, getValidationErrors } from "./formValidation";
 
 const numberWithCommas = (number: number, separator = ",") => {
   // Split float on "."
@@ -12,4 +13,6 @@ export {
   theme,
   GlobalStyle,
   numberWithCommas,
+  handleSubmit,
+  getValidationErrors,
 }

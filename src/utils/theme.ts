@@ -20,8 +20,19 @@ export const theme = {
     PROGRESS: '#F2BD00',
     SUCCESS: '#50AA3E',
 
-    ACCENT_COLOR: '#331038',
+    ACCENT_COLOR: '#70237D',
     ACCENT_COLOR_2: '#FFE7BD',
+
+    PRIMARY_1000: '#0f0f0f',
+    PRIMARY_900: '#151515',
+    PRIMARY_800: '#242424',
+    PRIMARY_700: '#3A3A3A',
+    PRIMARY_600: '#5F5F5F',
+    PRIMARY_500: '#9A9A9A',
+    PRIMARY_400: '#E3E3E3',
+    PRIMARY_300: '#F2F2F2',
+    PRIMARY_200: '#FAFAFA',
+    PRIMARY_100: '#FEFEFE',
 
   },
   shadows: {
@@ -63,9 +74,8 @@ export const themeLight = {
     PROGRESS: '#F2BD00',
     SUCCESS: '#50AA3E',
 
-    ACCENT_COLOR: '#331038',
+    ACCENT_COLOR: '#70237D',
     ACCENT_COLOR_2: '#FFE7BD',
-
   },
   shadows: {
     sm: "0px 5px 5px -5px rgba(0, 0, 0, 0.1)",
@@ -107,6 +117,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 14px;
     line-height: var(--text-line-height);
     letter-spacing: -0.15px;
+  }
+  .secondary_color {
+    color: ${({theme: any}) => theme?.colors?.SECONDARY_TEXT};
+  }
+  .small_text {
+    font-size: 10px;
   }
   a {
     color: inherit;

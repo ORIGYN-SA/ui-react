@@ -64,27 +64,6 @@ const StyledModal = styled(ReactModal)<{size: string}>`
   }
 `;
 
-const customStyles = {
-  overlay: {
-    overflow: "auto",
-    background: "white",
-  },
-  content: {
-    background: "white",
-    padding: "0px",
-    top: "50px",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%,0)",
-    border: "none",
-    boxShadow:
-      "0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05)",
-    "@media (max-width: 600)": {},
-  },
-};
-
 const StyledCloseBtn = styled(CloseIcon)`
   position: absolute;
   right: 34.75px;
@@ -114,7 +93,7 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
       onRequestClose={closeModal}
       style={{
         overlay: {
-          zIndex: 10000,
+          zIndex: 100,
         }
       }}
       size={size}

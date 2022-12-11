@@ -37,7 +37,7 @@ const DatePicker = ({ name, label, ...args }: DatePickerProps) => {
   return (
     <Flex flexFlow="column">
       {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
-      <StyledDatePicker {...args} />
+      <StyledDatePicker {...args} name={name} />
     </Flex>
   );
 };
