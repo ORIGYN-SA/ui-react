@@ -23,17 +23,17 @@ const Template: Story = (args: any) => {
       <Navbar navItems={[
         {
           href: 'url',
-          label: 'Home',
+          title: 'Home',
           icon: HomeIcon
         },
         {
           href: 'url',
-          label: 'Governance',
+          title: 'Governance',
           icon: GovernanceIcon
         },
         {
           href: 'url',
-          label: 'Wallet',
+          title: 'Wallet',
           icon: WalletIcon
         },
       ]} />

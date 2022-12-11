@@ -145,7 +145,7 @@ const StyledButton = styled.button<ButtonProps>
     color: ${theme.colors.TEXT};
     
     > svg {
-      fill: #151515;
+      fill: currentColor;
     }
     
     :hover, &.hover {

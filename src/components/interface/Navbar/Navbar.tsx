@@ -37,6 +37,7 @@ ${({ theme}) => `
 
 const MobileNav = styled.div`
   display: none;
+  z-index: 10000;
   position: sticky;
   top: 0;
   height: auto;
@@ -92,7 +93,7 @@ const Navbar: React.FC<{navItems: any, onChangeTheme?: any}> = ({ navItems, onCh
           mobileMenu && (
             <MobileMenu>
               {
-                navItems.map((item) => <Link to={item.href}><Button textButton>{item.icon()} {item.label}</Button></Link>)
+                navItems.map((item) => <Link to={item.href}><Button textButton>{item.icon()} {item.title}</Button></Link>)
               }
               <br/>
               <HR />

@@ -16,7 +16,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={themeLight}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
           <Story />
