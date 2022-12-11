@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from "styled-components";
-import { theme, GlobalStyle } from "../src";
+import { theme, GlobalStyle, themeLight } from "../src";
 import { BrowserRouter as Router } from "react-router-dom";
 
 export const parameters = {
@@ -16,7 +16,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeLight}>
       <GlobalStyle />
       <Router>
           <Story />

@@ -73,6 +73,7 @@ const StyledWallet = styled(Chip)`
   width: 65px;
   background: ${({theme}) => theme.colors.BACKGROUND};;
   border: 1px solid ${({theme}) => theme.colors.BORDER};;
+  color: ${({theme}) => theme.colors.TEXT};
   opacity: 1;
   
    &:after {
