@@ -34,7 +34,7 @@ const StyledCustomButton = styled(Button)`
   background-color: transparent;
 `
 
-const Navbar: React.FC<{navItems: any}> = ({ navItems }) => {
+const Navbar: React.FC<{navItems: any, onChangeTheme?: any}> = ({ navItems, onChangeTheme = () => {} }) => {
   return (
     <StyledNav>
       <Flex flexFlow="column" align="center" justify="space-between" fullHeight>
@@ -48,9 +48,9 @@ const Navbar: React.FC<{navItems: any}> = ({ navItems }) => {
         </Flex>
 
         <Flex flexFlow="column" align="center">
-          <div className="bottomItem2">
+          <Button iconButton onClick={onChangeTheme}>
             <ThemeIcon/>
-          </div>
+          </Button>
         </Flex>
       </Flex>
     </StyledNav>
