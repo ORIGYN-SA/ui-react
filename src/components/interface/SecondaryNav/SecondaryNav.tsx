@@ -1,19 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import Flex from "../../layout/Flex";
 import MenuLink from "../MenuLink";
 import Banner from "../Banner";
 import Button from "../Button/Button";
-import Status from "../Status";
-import Chip from "../Chip";
-import {theme} from "../../../utils";
+import Card from "../Card";
 
 export type SecondaryNavProps = {
   tabs: Array<{ title: string, id: string }>;
   content: Array<any>;
   title?: string;
-  onConnect?: () => {};
+  onConnect?: () => void;
+  onLogOut?:  () => void;
   principal?: string;
+
 };
 
 const StyledSecondaryNav = styled(Flex)`
@@ -64,32 +64,38 @@ const NavTitle = styled(Flex)`
   line-height: 22px;
   letter-spacing: -0.15px;
   color: ${({theme}) => theme.colors.TEXT};;
-  
+
   margin-right: 32px;
 `
-
-const StyledWallet = styled(Chip)`
+const StyledWalletMenu = styled.div`
   position: relative;
-  width: 65px;
+`
+const StyledLogOut = styled(Card)`
+  position: absolute;
+  top: 100%;
+  right: 0;
+`
+const StyledWallet = styled(Button)`
+  position: relative;
   background: ${({theme}) => theme.colors.BACKGROUND};;
   border: 1px solid ${({theme}) => theme.colors.BORDER};;
   color: ${({theme}) => theme.colors.TEXT};
   opacity: 1;
-  
-   &:after {
-     content: "";
-     display: block;
-     position: absolute;
-     width: 8px;
-     height: 8px;
-     border-radius: 50%;
-     top: 0;
-     right: 0;
-  
-     background: ${({theme}) => theme.colors.SUCCESS};
-  
-     border: 1px solid #000000;
-   }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+
+    background: ${({theme}) => theme.colors.SUCCESS};
+
+    border: 1px solid #000000;
+  }
 `;
 
 const StyledContent = styled.div`
@@ -102,14 +108,35 @@ const StyledContent = styled.div`
   height: 100%;
 `
 
-const SecondaryNav = ({tabs, content, title, onConnect, principal}: SecondaryNavProps) => {
+const StyledTitle = styled.p`
+  ${({ theme}) => theme.media.sm}{
+    display: none;
+  }
+`
+
+const SecondaryNav = ({tabs, content, title, onConnect, principal, onLogOut}: SecondaryNavProps) => {
   const [currentTab, setCurrentTab] = useState(0);
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const ref = useRef(null);
+
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setIsMenuOpened(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
 
   return (
     <Banner bgColor="transparent" flexFlow="column" align="flex-start" padding="0">
       <Banner bgColor="transparent" fullWidth justify="space-between" align="center" padding="0 24px">
         <Flex align="center" gap={32}>
-          <p><b>{title}</b></p>
+          <StyledTitle><b>{title}</b></StyledTitle>
           <StyledSecondaryNav>
             {tabs.map(({id, title}, index) => (
               <StyledTab
@@ -129,7 +156,20 @@ const SecondaryNav = ({tabs, content, title, onConnect, principal}: SecondaryNav
           )
         }
         {
-          principal && <StyledWallet size="small">{principal.slice(0,2)}...{principal.slice(-4)}</StyledWallet>
+          principal && <StyledWalletMenu>
+            <StyledWallet size="small" onClick={() => setIsMenuOpened(!isMenuOpened)}>
+              {principal.slice(0, 2)}...{principal.slice(-4)}
+            </StyledWallet>
+            {
+              onLogOut && isMenuOpened && (
+                <StyledLogOut ref={ref} type="filled" padding="16px">
+                  <Flex>
+                    <Button textButton size="small" onClick={onLogOut}>Log out</Button>
+                  </Flex>
+                </StyledLogOut>
+              )
+            }
+          </StyledWalletMenu>
         }
       </Banner>
       <StyledContent>

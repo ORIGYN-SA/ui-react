@@ -94,6 +94,7 @@ const StyledButton = styled.button<ButtonProps>
   box-sizing: border-box;
   background: ${({theme}) => theme.colors.BACKGROUND};
   color: ${({theme}) => theme.colors.TEXT};
+  white-space: nowrap;
   border: none;
   
   svg {
