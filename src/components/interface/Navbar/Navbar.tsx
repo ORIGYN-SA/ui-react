@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Button from "../Button";
 import Flex from "../../layout/Flex";
 import ThemeIcon from "../../icons/Theme";
-import OrigynIcon from "../../icons/Origyn";
 import { Link } from "react-router-dom";
 import {HR, Icons} from "../../index";
 
@@ -76,7 +75,7 @@ const Navbar: React.FC<{navItems: any, onChangeTheme?: any}> = ({ navItems, onCh
 
   return (
     <>
-      <svg>
+      <svg style={{position: "absolute"}}>
         <defs>
           <linearGradient
             id="paint0_linear_1649_2905"
