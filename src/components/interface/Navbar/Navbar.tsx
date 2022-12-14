@@ -75,7 +75,7 @@ const Navbar: React.FC<{navItems: any, onChangeTheme?: any}> = ({ navItems, onCh
 
   return (
     <>
-      <svg style={{position: "absolute"}}>
+      <svg style={{position: "absolute", width: 0, height: 0}}>
         <defs>
           <linearGradient
             id="paint0_linear_1649_2905"
