@@ -187,11 +187,11 @@ const Navbar: React.FC<{navItems: any, onChangeTheme?: any}> = ({ navItems, onCh
               <Icons.OrigynIcon/>
             </div>
             {
-              navItems.map((item) => <a key={`navItem-${item.href}`} href={item.href}><Button iconButton size="large">{item.icon()}</Button></a>)
+              navItems.map((item) => <a key={`navItem-${item.href}`} href={item.href}><Button textButton iconButton size="large">{item.icon()}</Button></a>)
             }
           </Flex>
           <Flex flexFlow="column" align="center">
-            <Button iconButton onClick={onChangeTheme}>
+            <Button textButton iconButton onClick={onChangeTheme}>
               <ThemeIcon/>
             </Button>
           </Flex>

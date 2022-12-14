@@ -4,6 +4,7 @@ import CheckIcon from "./Check";
 import CheckboxCheckedIcon from "./CheckboxChecked";
 import CheckboxUncheckedIcon from "./CheckboxUnchecked";
 import CloseIcon from "./Close";
+import CopyIcon from "./Copy";
 import DifinityLogoIcon from "./DifinityLogo";
 import FBIcon from "./FB";
 import FilterIcon from "./Filter";
@@ -30,6 +31,7 @@ export {
   CheckboxCheckedIcon,
   CheckboxUncheckedIcon,
   CloseIcon,
+  CopyIcon,
   DifinityLogoIcon,
   FBIcon,
   FilterIcon,

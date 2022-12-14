@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import HomeIcon from "../../../components/icons/Home";
 import GovernanceIcon from "../../../components/icons/Governance";
 import WalletIcon from "../../../components/icons/Wallet";
+import {SafeIcon, TransactionIcon} from "../../icons";
 
 export default {
   title: "Components/Interface/Navbar/All stories",
@@ -35,6 +36,16 @@ const Template: Story = (args: any) => {
           href: 'url',
           title: 'Wallet',
           icon: WalletIcon
+        },
+        {
+          href: 'url',
+          title: 'Wallet',
+          icon: SafeIcon
+        },
+        {
+          href: 'url',
+          title: 'Wallet',
+          icon: TransactionIcon
         },
       ]} />
     </div>
