@@ -4,6 +4,7 @@ import ReactModal from "react-modal";
 import Container from "../../layout/Container";
 
 import CloseIcon from "../../icons/Close";
+import {Icons} from "../../index";
 
 export type ModalProps = {
   isOpened: boolean;
@@ -60,6 +61,7 @@ const StyledModal = styled(ReactModal)<{size: string}>`
       height: 100%;
       max-width: 100%;
       max-height: 100vh;
+      border-radius: 0;
     }
   }
 `;
@@ -93,12 +95,13 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
       onRequestClose={closeModal}
       style={{
         overlay: {
-          zIndex: 100,
+          zIndex: 10000,
         }
       }}
       size={size}
     >
       <Container relative size="md">
+        <StyledCloseBtn onClick={closeModal}>{Icons.CloseIcon}</StyledCloseBtn>
         {title && <h2>{title}</h2>}
         {children}
       </Container>

@@ -53,9 +53,9 @@ const StyledSelect = styled(Select)<{inputSize?: string}>`
     padding: 0;
   }
   .react-select__menu {
+    z-index: 10000;
     margin: 0;
     padding: 8px;
-    border-radius: 0 0 12px 12px;
     background: ${({theme}) => theme?.colors?.BACKGROUND};
     color: ${({theme}) => theme?.colors?.TEXT};
     outline: none!important;
