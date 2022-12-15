@@ -8,6 +8,7 @@ import Card from "./interface/Card";
 import CheckboxInput from "./interface/Inputs/CheckboxInput";
 import DatePicker from "./interface/Inputs/DatePicker";
 import HR from "./interface/HR";
+import Image from "./interface/Image";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
 import ShowMoreBlock from "./interface/ShowMoreBlock";
@@ -46,6 +47,7 @@ export {
   CheckboxInput,
   DatePicker,
   HR,
+  Image,
   MenuLink,
   Modal,
   ShowMoreBlock,

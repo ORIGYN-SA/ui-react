@@ -23,6 +23,9 @@ import Home from "./Home"
 import OrigynIcon from "./Origyn"
 import ThemeIcon from "./Theme"
 import Wallet from "./Wallet"
+import Libraries from "./Libraries"
+import Marketplace from "./Marketplace"
+import DataBrowse from "./DataBrowse"
 
 export {
   ArrowDownIcon,
@@ -32,6 +35,7 @@ export {
   CheckboxUncheckedIcon,
   CloseIcon,
   CopyIcon,
+  DataBrowse,
   DifinityLogoIcon,
   FBIcon,
   FilterIcon,
@@ -45,9 +49,11 @@ export {
   TransactionIcon,
   ThemeIcon,
   TwitterIcon,
+  Libraries,
   LogoMainIcon,
   LogoMainHorizontal,
   MenuIcon,
+  Marketplace,
   OrigynIcon,
   Wallet,
 };

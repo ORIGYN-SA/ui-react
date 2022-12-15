@@ -168,7 +168,7 @@ const Navbar: React.FC<{navItems: any, onChangeTheme?: any}> = ({ navItems, onCh
           mobileMenu && (
             <MobileMenu>
               {
-                navItems.map((item) => <Link to={item.href}><Button textButton>{item.icon()} {item.title}</Button></Link>)
+                navItems.map((item) => <a href={item.href}><Button textButton>{item.icon()} {item.title}</Button></a>)
               }
               <br/>
               <HR />
