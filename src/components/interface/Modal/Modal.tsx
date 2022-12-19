@@ -21,14 +21,17 @@ const modalSizes = {
   full: '100%',
 }
 
-const StyledModal = styled(ReactModal)<{size: string}>`
+const StyledModal = styled(ReactModal)<{ size: string }>`
   &.ReactModalPortal {
-   
   }
   &.ReactModal__Content {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    
     position: absolute;
     inset: 50% auto auto 50%;
-  
+
     padding: 0;
     top: 50px;
     left: 50%;
@@ -41,16 +44,16 @@ const StyledModal = styled(ReactModal)<{size: string}>`
       0px 4px 6px -2px rgba(26, 32, 44, 0.05);
     overflow-y: auto;
     border-radius: 24px;
-    background-color: ${({theme}) => theme.colors.BACKGROUND};
-    color: ${({theme}) => theme.colors.TEXT};
-    width: ${({size}) => modalSizes[size]};
+    background-color: ${({ theme }) => theme.colors.BACKGROUND};
+    color: ${({ theme }) => theme.colors.TEXT};
+    width: ${({ size }) => modalSizes[size]};
     max-height: calc(100% - 100px);
-    
-    ${({theme}) => theme?.media?.lg} {
+
+    ${({ theme }) => theme?.media?.lg} {
       max-width: calc(100% - 48px);
     }
   }
-  ${({theme}) => theme?.media?.sm} {
+  ${({ theme }) => theme?.media?.sm} {
     &.ReactModal__Content {
       inset: auto;
       left: 0;

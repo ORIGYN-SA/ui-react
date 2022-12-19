@@ -36,19 +36,19 @@ const StyledTabContent = styled(Flex)<{borderBottom: boolean, bgColor}>`
 `;
 
 const StyledTab = styled(MenuLink)`
-  ${({theme}) => `
+  ${({ theme }) => `
     color: ${theme.colors.TEXT};
     font-weight: 600;
     display: flex;
     height: 50px;
     align-items: center;
     padding: 0;
-    border-bottom: 2px solid ${theme.colors.TEXT};
+    border-bottom: 1px solid #E3E3E3;
     opacity: 0.5;
   
   &:hover {
     opacity: 1;
-    border-bottom: 2px solid ${theme.colors.TEXT};
+    border-bottom: 1px solid ${theme.colors.TEXT};
   }
   &.active {
     opacity: 1;
