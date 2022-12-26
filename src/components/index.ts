@@ -15,6 +15,7 @@ import ShowMoreBlock from "./interface/ShowMoreBlock";
 import Navbar from "./interface/Navbar";
 import SecondaryNav from "./interface/SecondaryNav";
 import ProductCard from "./interface/ProductCard";
+import Pagination from "./interface/Pagination";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
 import Status, {SStatus} from "./interface/Status";
@@ -54,6 +55,7 @@ export {
   Navbar,
   SecondaryNav,
   ProductCard,
+  Pagination,
   SearchInput,
   Slider,
   Stepper,
