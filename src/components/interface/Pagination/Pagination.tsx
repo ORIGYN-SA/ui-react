@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Button from "../Button";
 import Flex from "../../layout/Flex";
 import Container from "../../layout/Container";
@@ -98,7 +98,7 @@ interface PaginationProps {
   setCurrentPage: (prevPage: number) => void;
 }
 
-const Pagination = ({ pageCount }: any) => {
+const Pagination = ({ pageCount, onPageChange }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const getPageRange = (currentPage: number, pageCount: number) => {
@@ -138,6 +138,10 @@ const Pagination = ({ pageCount }: any) => {
     }
     return result;
   };
+
+  useEffect(() => {
+    onPageChange(currentPage);
+  }, [currentPage])
 
   return (
     <Container padding="8px">
