@@ -5,7 +5,7 @@ export const TooltipWrapper = styled.div`
   display: inline-flex;
 `;
 
-export const TooltipTarget = styled.button`
+export const TooltipTarget = styled.button<{styleMe?: any, showOnFocus?: any}>`
   border: none;
   background: inherit;
   padding: 5px;
@@ -30,7 +30,7 @@ export const TooltipTarget = styled.button`
     `};
 `;
 
-export const CenterContainer = styled.div`
+export const CenterContainer = styled.div<{position?: any}>`
   position: absolute;
   width: 200px;
   margin-left: -100px;
@@ -87,10 +87,10 @@ const fadeIn = keyframes`
   }
 `;
 
-export const TooltipBox = styled.span`
+export const TooltipBox = styled.span<{textColor?: any, background?: any, position?: any }>`
   position: relative;
-  background-color: #${(props) => props.background}; 
-  color: #${(props) => props.textColor};
+  background-color: #${({background}) =>background}; 
+  color: #${({textColor}) => textColor};
   text-align: center;
   border-radius: 5px;
   padding: 10px 8px;
@@ -106,19 +106,17 @@ export const TooltipBox = styled.span`
     height: 1px;
     border-width: 5px;
     border-style: solid;
-    border-color: #${(props) =>
-      props.background} transparent transparent transparent;
+    border-color: #${({background}) => background} transparent transparent transparent;
     left: calc(50% - 4.5px);
     top: 100%;
   }
 
-  ${({ position }) => {
+  ${({ position, background }) => {
     switch (position) {
       case "bottom":
         return css`
           &:after {
-            border-color: transparent transparent #${(props) =>
-                props.background} transparent;
+            border-color: transparent transparent #${background} transparent;
             top: unset;
             width: 1px;
             bottom: 100%;
@@ -128,7 +126,7 @@ export const TooltipBox = styled.span`
       case "left":
         return css`
           &:after {
-            border-color: transparent transparent transparent #${(props) => props.background};
+            border-color: transparent transparent transparent #${background};
             left: 100%;
             top: calc(50% - 5px);
           }
@@ -136,7 +134,7 @@ export const TooltipBox = styled.span`
       case "right":
         return css`
           &:after {
-            border-color: transparent #${(props) => props.background} transparent
+            border-color: transparent #${background} transparent
               transparent;
             right: 100%;
             left: unset;
