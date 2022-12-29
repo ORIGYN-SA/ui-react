@@ -34,6 +34,7 @@ import TextInput from "./interface/Inputs/TextInput";
 import TextArea from "./interface/Inputs/TextArea";
 import Select from "./interface/Inputs/Select";
 import Toggle from "./interface/Inputs/Toggle";
+import Tooltip from "./interface/Tooltip";
 
 import * as Icons from "./icons";
 
@@ -72,6 +73,7 @@ export {
   Lots,
   TextArea,
   Toggle,
+  Tooltip,
   Status,
   SStatus,
   Snackbar

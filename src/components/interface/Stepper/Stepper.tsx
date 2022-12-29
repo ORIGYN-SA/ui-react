@@ -19,14 +19,14 @@ const StyledTabContent = styled(Flex)`
   background: ${theme.colors.WHITE};
   height: 50px;
   padding: 0;
-  color: #ffffff;
+  color: ${theme.colors.TEXT};
 `}
 `;
 
 const StyledTab = styled(MenuLink)`
   ${({ theme, width }) => `
   color: ${theme.colors.TEXT};
-  background: #ffffff;
+  background: ${theme.colors.BACKGROUND};
   flex-grow: ${width ? 'auto' : 1};
   width: ${width ? width : 'width'};
   border-bottom: 3px solid ${theme.colors.BORDER};
