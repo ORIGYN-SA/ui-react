@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { theme } from "../../../utils";
+import {theme} from "../../../utils"
 
 export const TooltipWrapper = styled.div`
   position: relative;
@@ -12,6 +12,7 @@ export const TooltipTarget = styled.button<{styleMe?: any, showOnFocus?: any}>`
   padding: 5px;
   margin: -1px;
   font-size: inherit;
+  color: ${theme.colors.TEXT};
   ${({ styleMe }) =>
     styleMe &&
     css`
@@ -19,6 +20,7 @@ export const TooltipTarget = styled.button<{styleMe?: any, showOnFocus?: any}>`
       margin: 1px;
       border-radius: 5px;
       font-size: 2rem;
+      color: ${theme.colors.TEXT};
     `};
 
   color: inherit;
@@ -88,7 +90,7 @@ const fadeIn = keyframes`
   }
 `;
 
-export const TooltipBox = styled.span<{textColor?: any, background?: any, position?: any }>`
+export const TooltipBox = styled.span<{textColor?: any, position?: any }>`
   position: relative;
   background-color: ${theme.colors.TEXT}; 
   color: ${theme.colors.BACKGROUND};
@@ -107,13 +109,12 @@ export const TooltipBox = styled.span<{textColor?: any, background?: any, positi
     height: 1px;
     border-width: 5px;
     border-style: solid;
-    border-color: ${(props) =>
-      props.background} transparent transparent transparent;
+    border-color: ${theme.colors.TEXT} transparent transparent transparent;
     left: calc(50% - 4.5px);
     top: 100%;
   }
 
-  ${({ position, background }) => {
+  ${({ position, }) => {
     switch (position) {
       case "bottom":
         return css`
