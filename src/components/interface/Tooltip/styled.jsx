@@ -89,8 +89,8 @@ const fadeIn = keyframes`
 
 export const TooltipBox = styled.span`
   position: relative;
-  background-color: #${(props) => props.background}; 
-  color: #${(props) => props.textColor};
+  background-color: ${(props) => props.background}; 
+  color: ${(props) => props.textColor};
   text-align: center;
   border-radius: 5px;
   padding: 10px 8px;
@@ -106,7 +106,7 @@ export const TooltipBox = styled.span`
     height: 1px;
     border-width: 5px;
     border-style: solid;
-    border-color: #${(props) =>
+    border-color: ${(props) =>
       props.background} transparent transparent transparent;
     left: calc(50% - 4.5px);
     top: 100%;
