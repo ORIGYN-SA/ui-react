@@ -117,7 +117,7 @@ export const TooltipBox = styled.span`
       case "bottom":
         return css`
           &:after {
-            border-color: transparent transparent #${(props) =>
+            border-color: transparent transparent ${(props) =>
                 props.background} transparent;
             top: unset;
             width: 1px;
@@ -128,7 +128,7 @@ export const TooltipBox = styled.span`
       case "left":
         return css`
           &:after {
-            border-color: transparent transparent transparent #${(props) => props.background};
+            border-color: transparent transparent transparent ${(props) => props.background};
             left: 100%;
             top: calc(50% - 5px);
           }
@@ -136,7 +136,7 @@ export const TooltipBox = styled.span`
       case "right":
         return css`
           &:after {
-            border-color: transparent #${(props) => props.background} transparent
+            border-color: transparent ${(props) => props.background} transparent
               transparent;
             right: 100%;
             left: unset;
