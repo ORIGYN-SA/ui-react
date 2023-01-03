@@ -13,7 +13,6 @@ import FBIcon from "../../components/icons/FB";
 import ArrowRightIcon from "../../components/icons/ArrowRight";
 import DifinityLogoIcon from "../../components/icons/DifinityLogo";
 import IllustrationImage from "../../assets/Illustration.png";
-import MoreLink from "../../components/interface/MoreLink/MoreLink";
 
 export default {
   title: "Pages/Login page",
@@ -101,9 +100,6 @@ const Template: Story = (args) => (
           </p>
         </StyledCustomText>
         <img src={IllustrationImage} alt="Internet Identity illustration" />
-        <MoreLink href="#">
-          Read more <ArrowRightIcon fill="#EE9907" />
-        </MoreLink>
       </StyledCustomCard>
     </Container>
   </div>

@@ -1,4 +1,5 @@
-import { theme, GlobalStyle } from "./theme";
+import { theme, GlobalStyle, themeLight } from "./theme";
+import { handleSubmit, getValidationErrors } from "./formValidation";
 
 const numberWithCommas = (number: number, separator = ",") => {
   // Split float on "."
@@ -10,6 +11,9 @@ const numberWithCommas = (number: number, separator = ",") => {
 
 export {
   theme,
+  themeLight,
   GlobalStyle,
   numberWithCommas,
+  handleSubmit,
+  getValidationErrors,
 }

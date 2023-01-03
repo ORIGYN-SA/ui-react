@@ -1,11 +1,12 @@
 import styled, { css, keyframes } from "styled-components";
+import { theme } from "../../../utils";
 
 export const TooltipWrapper = styled.div`
   position: relative;
   display: inline-flex;
 `;
 
-export const TooltipTarget = styled.button`
+export const TooltipTarget = styled.button<{styleMe?: any, showOnFocus?: any}>`
   border: none;
   background: inherit;
   padding: 5px;
@@ -30,7 +31,7 @@ export const TooltipTarget = styled.button`
     `};
 `;
 
-export const CenterContainer = styled.div`
+export const CenterContainer = styled.div<{position?: any}>`
   position: absolute;
   width: 200px;
   margin-left: -100px;
@@ -87,10 +88,10 @@ const fadeIn = keyframes`
   }
 `;
 
-export const TooltipBox = styled.span`
+export const TooltipBox = styled.span<{textColor?: any, background?: any, position?: any }>`
   position: relative;
-  background-color: ${(props) => props.background}; 
-  color: ${(props) => props.textColor};
+  background-color: ${theme.colors.TEXT}; 
+  color: ${theme.colors.BACKGROUND};
   text-align: center;
   border-radius: 5px;
   padding: 10px 8px;
@@ -112,13 +113,12 @@ export const TooltipBox = styled.span`
     top: 100%;
   }
 
-  ${({ position }) => {
+  ${({ position, background }) => {
     switch (position) {
       case "bottom":
         return css`
           &:after {
-            border-color: transparent transparent ${(props) =>
-                props.background} transparent;
+            border-color: transparent transparent ${theme.colors.TEXT} transparent;
             top: unset;
             width: 1px;
             bottom: 100%;
@@ -128,7 +128,7 @@ export const TooltipBox = styled.span`
       case "left":
         return css`
           &:after {
-            border-color: transparent transparent transparent ${(props) => props.background};
+            border-color: transparent transparent transparent ${theme.colors.TEXT};
             left: 100%;
             top: calc(50% - 5px);
           }
@@ -136,7 +136,7 @@ export const TooltipBox = styled.span`
       case "right":
         return css`
           &:after {
-            border-color: transparent ${(props) => props.background} transparent
+            border-color: transparent ${theme.colors.TEXT} transparent
               transparent;
             right: 100%;
             left: unset;

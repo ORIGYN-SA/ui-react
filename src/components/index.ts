@@ -6,13 +6,16 @@ import BreadCrumbs from "./interface/BreadCrumbs";
 import Button from "./interface/Button";
 import Card from "./interface/Card";
 import CheckboxInput from "./interface/Inputs/CheckboxInput";
-import DatePicker from "./interface/DatePicker";
+import DatePicker from "./interface/Inputs/DatePicker";
 import HR from "./interface/HR";
+import Image from "./interface/Image";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
-import MoreLink from "./interface/MoreLink";
+import ShowMoreBlock from "./interface/ShowMoreBlock";
 import Navbar from "./interface/Navbar";
+import SecondaryNav from "./interface/SecondaryNav";
 import ProductCard from "./interface/ProductCard";
+import Pagination from "./interface/Pagination";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
 import Status, {SStatus} from "./interface/Status";
@@ -31,6 +34,7 @@ import TextInput from "./interface/Inputs/TextInput";
 import TextArea from "./interface/Inputs/TextArea";
 import Select from "./interface/Inputs/Select";
 import Toggle from "./interface/Inputs/Toggle";
+import Tooltip from "./interface/Tooltip";
 
 import * as Icons from "./icons";
 
@@ -45,11 +49,14 @@ export {
   CheckboxInput,
   DatePicker,
   HR,
+  Image,
   MenuLink,
   Modal,
-  MoreLink,
+  ShowMoreBlock,
   Navbar,
+  SecondaryNav,
   ProductCard,
+  Pagination,
   SearchInput,
   Slider,
   Stepper,
@@ -66,6 +73,7 @@ export {
   Lots,
   TextArea,
   Toggle,
+  Tooltip,
   Status,
   SStatus,
   Snackbar
