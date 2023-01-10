@@ -25,25 +25,63 @@ const ArrowTop = styled.div`
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid ${({theme}) => theme.colors.TEXT};
 `;
 const ArrowBottom = styled.div`
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid black;
+  border-top: 5px solid ${({theme}) => theme.colors.TEXT};
 `;
 
 const StyledTable = styled.table`
   width: 100%;
-  color: #000;
+  color: ${({theme}) => theme.colors.TEXT};
   white-space: nowrap;
   border-collapse: separate;
   border-spacing: 0 9px;
+  td {
+    border-style: none;
+    padding: 15px;
+    > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+  tr {
+    border: none;
+  }
+  tr:nth-child(n + 1) {
+    background: ${({theme}) => theme.colors.BORDER};
+  }
+  tr:nth-child(2n + 1) {
+    background: ${({theme}) => theme.colors.BACKGROUND};
+  }
+  thead {
+    tr {
+      background: transparent!important;
+      border-bottom: 1px solid ${({theme}) => theme.colors.BORDER}
+    }
+    th {
+      border-bottom: 1px solid ${({theme}) => theme.colors.BORDER}
+    }
+  }
+  tr td:first-child {
+    border-top-left-radius: 10px;
+  }
+  tr td:last-child {
+    border-top-right-radius: 10px;
+  }
+
+  tr td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  tr td:last-child {
+    border-bottom-right-radius: 10px;
+  }
 `;
 const StyledTbody = styled.tbody`
-  background-color: #fff;
 `;
 const StyledTh = styled.th<{ canSort: boolean | undefined }>`
   ${({ theme }) => `
@@ -52,6 +90,9 @@ const StyledTh = styled.th<{ canSort: boolean | undefined }>`
     text-align: left;
     text-transform: capitalize;
     padding: 12px 24px;
+    svg {
+      fill: ${theme.colors.TEXT}
+    }
     cursor: ${({ canSort }: { canSort: boolean | undefined }) =>
       canSort ? "pointer" : "default"};
     ${theme.media.md} {
@@ -152,7 +193,9 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
                 key={key.id}
                 className={key.id === "details" ? "details" : ""}
               >
+                <div>
                 {row[key.id]}
+                </div>
               </StyledTd>
             ))}
           </tr>
