@@ -132,6 +132,14 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
   });
   const [sortedRows, setSortedRows] = useState(rows);
 
+  const handleSortRows = (cell: CellType) => {
+    if (sortValue.value !== cell.id) {
+      setSortValue({ value: cell.id, default: true });
+    } else {
+      setSortValue((prev) => ({ value: prev.value, default: !prev.default }));
+    }
+  };
+
   useEffect(() => {
     if (!sortValue.value) {
       return;
@@ -152,13 +160,26 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
     setSortedRows(newRows);
   }, [sortValue]);
 
-  const handleSortRows = (cell: CellType) => {
-    if (sortValue.value !== cell.id) {
-      setSortValue({ value: cell.id, default: true });
+  useEffect(() => {
+    if (sortValue.value) {
+      const rowsCopy = [...rows];
+      const newRows = rowsCopy.sort((a, b) => {
+        if (sortValue.default) {
+          if (a[sortValue.value] > b[sortValue.value]) return -1;
+          if (a[sortValue.value] < b[sortValue.value]) return 1;
+          return 0;
+        } else {
+          if (a[sortValue.value] < b[sortValue.value]) return -1;
+          if (a[sortValue.value] > b[sortValue.value]) return 1;
+          return 0;
+        }
+      });
+
+      setSortedRows(newRows);
     } else {
-      setSortValue((prev) => ({ value: prev.value, default: !prev.default }));
+      setSortedRows(rows)
     }
-  };
+  }, [rows])
 
   return (
     <StyledTable>
