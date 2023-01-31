@@ -20,24 +20,24 @@ type SortValue = {
   default: boolean;
 };
 
-const ArrowTop = styled.div`
+const ArrowTop = styled("div")`
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid ${({theme}) => theme.colors.TEXT};
+  border-bottom: 5px solid ${({ theme }) => theme.colors.TEXT};
 `;
-const ArrowBottom = styled.div`
+const ArrowBottom = styled("div")`
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid ${({theme}) => theme.colors.TEXT};
+  border-top: 5px solid ${({ theme }) => theme.colors.TEXT};
 `;
 
 const StyledTable = styled.table`
   width: 100%;
-  color: ${({theme}) => theme.colors.TEXT};
+  color: ${({ theme }) => theme.colors.TEXT};
   white-space: nowrap;
   border-collapse: separate;
   border-spacing: 0 9px;
@@ -53,18 +53,18 @@ const StyledTable = styled.table`
     border: none;
   }
   tr:nth-child(n + 1) {
-    background: ${({theme}) => theme.colors.BORDER};
+    background: ${({ theme }) => theme.colors.BORDER};
   }
   tr:nth-child(2n + 1) {
-    background: ${({theme}) => theme.colors.BACKGROUND};
+    background: ${({ theme }) => theme.colors.BACKGROUND};
   }
   thead {
     tr {
-      background: transparent!important;
-      border-bottom: 1px solid ${({theme}) => theme.colors.BORDER}
+      background: transparent !important;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.BORDER};
     }
     th {
-      border-bottom: 1px solid ${({theme}) => theme.colors.BORDER}
+      border-bottom: 1px solid ${({ theme }) => theme.colors.BORDER};
     }
   }
   tr td:first-child {
@@ -81,8 +81,7 @@ const StyledTable = styled.table`
     border-bottom-right-radius: 10px;
   }
 `;
-const StyledTbody = styled.tbody`
-`;
+const StyledTbody = styled.tbody``;
 const StyledTh = styled.th<{ canSort: boolean | undefined }>`
   ${({ theme }) => `
     font-size: 14px;
@@ -177,9 +176,9 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
 
       setSortedRows(newRows);
     } else {
-      setSortedRows(rows)
+      setSortedRows(rows);
     }
-  }, [rows])
+  }, [rows]);
 
   return (
     <StyledTable>
@@ -214,9 +213,7 @@ const CustomTable = ({ cells, rows, cols = [] }: TableProps) => {
                 key={key.id}
                 className={key.id === "details" ? "details" : ""}
               >
-                <div>
-                {row[key.id]}
-                </div>
+                <div>{row[key.id]}</div>
               </StyledTd>
             ))}
           </tr>

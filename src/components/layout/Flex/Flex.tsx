@@ -25,7 +25,7 @@ export type FlexProps = {
   relative?: boolean;
 };
 
-const StyledFlex = styled.div<FlexProps>`
+const StyledFlex = styled("div")<FlexProps>`
   ${({
     justify,
     align,

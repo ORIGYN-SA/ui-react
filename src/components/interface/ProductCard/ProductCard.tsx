@@ -8,7 +8,7 @@ import ArrowRight from "../../icons/ArrowRight";
 
 export type ProductCardProps = {};
 
-const StyledProductCardContent = styled.div`
+const StyledProductCardContent = styled("div")`
   ${() => `
   padding: 16px;
   
@@ -42,17 +42,44 @@ const ProductCard = () => {
       <StyledProductCardContent>
         <p>Creator/Account</p>
         <h4>Lorem ipsum dolor sit amet, consectetur adipiscing</h4>
-        <br/>
+        <br />
         <p>Status</p>
         <Flex align="center" justify="space-between">
-          <h4><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M5.99678 1L5.92969 1.22788V7.83991L5.99678 7.90684L9.06594 6.09263L5.99678 1Z" fill="#343434"/>
-            <path d="M6.00089 1L2.93164 6.09263L6.00089 7.90684V4.69755V1Z" fill="#8C8C8C"/>
-            <path d="M5.9968 8.48824L5.95898 8.53435V10.8897L5.9968 11L9.06784 6.67497L5.9968 8.48824Z" fill="#3C3C3B"/>
-            <path d="M6.00089 11V8.48824L2.93164 6.67497L6.00089 11Z" fill="#8C8C8C"/>
-            <path d="M5.99805 7.90673L9.06721 6.09252L5.99805 4.69743V7.90673Z" fill="#141414"/>
-            <path d="M2.93164 6.09252L6.00089 7.90673V4.69743L2.93164 6.09252Z" fill="#393939"/>
-          </svg>0.075</h4>
+          <h4>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+            >
+              <path
+                d="M5.99678 1L5.92969 1.22788V7.83991L5.99678 7.90684L9.06594 6.09263L5.99678 1Z"
+                fill="#343434"
+              />
+              <path
+                d="M6.00089 1L2.93164 6.09263L6.00089 7.90684V4.69755V1Z"
+                fill="#8C8C8C"
+              />
+              <path
+                d="M5.9968 8.48824L5.95898 8.53435V10.8897L5.9968 11L9.06784 6.67497L5.9968 8.48824Z"
+                fill="#3C3C3B"
+              />
+              <path
+                d="M6.00089 11V8.48824L2.93164 6.67497L6.00089 11Z"
+                fill="#8C8C8C"
+              />
+              <path
+                d="M5.99805 7.90673L9.06721 6.09252L5.99805 4.69743V7.90673Z"
+                fill="#141414"
+              />
+              <path
+                d="M2.93164 6.09252L6.00089 7.90673V4.69743L2.93164 6.09252Z"
+                fill="#393939"
+              />
+            </svg>
+            0.075
+          </h4>
           <ArrowRight />
         </Flex>
       </StyledProductCardContent>
