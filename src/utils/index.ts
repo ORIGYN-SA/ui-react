@@ -1,4 +1,5 @@
-import { theme, GlobalStyle } from "./theme";
+import { theme, GlobalStyle, themeLight } from "./theme";
+import { handleSubmit, getValidationErrors } from "./formValidation";
 
 const numberWithCommas = (number: number, separator = ",") => {
   // Split float on "."
@@ -19,4 +20,13 @@ const getArrayMin = (array) => {
   return Math.min.apply(Math, array);
 };
 
-export { theme, GlobalStyle, numberWithCommas, getArrayMin, getArrayMax };
+export {
+  theme,
+  themeLight,
+  GlobalStyle,
+  numberWithCommas,
+  handleSubmit,
+  getValidationErrors,
+  getArrayMin,
+  getArrayMax
+}
