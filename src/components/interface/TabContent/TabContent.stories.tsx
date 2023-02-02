@@ -29,6 +29,8 @@ Default.args = {
     <div>Content 3</div>,
     <div>Content 4</div>,
   ],
+  fullWidth: true,
+  justify: 'flex-start'
 };
 
 const LeftTopMargin = styled.div`
@@ -58,7 +60,7 @@ VerticalTabs.args = {
     <div>Content 4</div>,
     <div>Content 5</div>,
     <div>Content 6</div>,
-  ],
+  ]
 };
 
 const UseVerticalTemplate: Story<{steps: Array<{ title: string; content: any }>}> = ({steps}) => {

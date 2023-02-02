@@ -12,6 +12,7 @@ import HR from "./interface/HR";
 import MenuLink from "./interface/MenuLink";
 import Modal from "./interface/Modal";
 import MoreLink from "./interface/MoreLink";
+import Navbar from "./interface/Navbar";
 import ProductCard from "./interface/ProductCard";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
@@ -24,6 +25,8 @@ import TabContentVertical, {
 } from "./interface/TabContent/TabContentVertical";
 import CustomTable from "./interface/Table/CustomTable";
 import HistoryTable from "./interface/Table/HistoryTable";
+import Snackbar from "./interface/Snackbar";
+import RangeSlider from "./interface/RangeSlider";
 
 import Lots from "./interface/Lots";
 
@@ -49,6 +52,7 @@ export {
   MenuLink,
   Modal,
   MoreLink,
+  Navbar,
   ProductCard,
   SearchInput,
   Slider,
@@ -61,10 +65,12 @@ export {
   TextInput,
   useStepper,
   Icons,
+  RangeSlider,
   Select,
   Lots,
   TextArea,
   Toggle,
   Status,
   SStatus,
+  Snackbar
 };

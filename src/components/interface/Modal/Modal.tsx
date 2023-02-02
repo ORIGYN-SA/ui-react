@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
 import Container from "../../layout/Container";
@@ -9,16 +9,21 @@ export type ModalProps = {
   isOpened: boolean;
   closeModal: () => void;
   title?: string | React.ReactNode;
+  mode?: string;
+  paddingTop?: string;
+  paddingRight?: string;
+  paddingBottom?: string;
+  paddingLeft?: string;
 };
 
 const StyledModal = styled(ReactModal)`
   &.ReactModalPortal {
-    background: white;
+   
   }
   &.ReactModal__Content {
     position: absolute;
     inset: 50% auto auto 50%;
-    background: white;
+  
     padding: 0;
     top: 50px;
     left: 50%;
@@ -30,9 +35,12 @@ const StyledModal = styled(ReactModal)`
     box-shadow: 0px 10px 15px -3px rgba(26, 32, 44, 0.1),
       0px 4px 6px -2px rgba(26, 32, 44, 0.05);
     overflow-y: auto;
-    max-height: 95vh;
-    max-width: 1150px;
+    border-radius: 24px;
+    background-color: #151515;
+    color: #FEFEFE;
     width: 100%;
+    height: 100%;
+    
     
     ${({theme}) => theme?.media?.lg} {
       max-width: calc(100% - 48px);
@@ -76,9 +84,12 @@ const customStyles = {
 
 const StyledCloseBtn = styled(CloseIcon)`
   position: absolute;
-  right: 50px;
-  top: 50px;
+  right: 34.75px;
+  top: 42.75px;
   cursor: pointer;
+  color: #FEFEFE;
+  width: 18px;
+  height: 18px;
   
   ${({theme}) => theme?.media?.sm} {
     top: 15px;
@@ -86,30 +97,35 @@ const StyledCloseBtn = styled(CloseIcon)`
   }
 `;
 
-const Modal: React.FC<ModalProps> = ({
+const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   isOpened,
   title,
   children,
   closeModal,
+  mode,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
+  paddingLeft
 }) => {
+  
   return (
-    <StyledModal
+     <StyledModal
       isOpen={isOpened}
-      // style={customStyles}
       onRequestClose={closeModal}
       style={{
         overlay: {
           zIndex: 10000,
-          background: "#d8d8d8e6",
+          background: mode == 'light'?'#9A9A9A':'#3A3A3A',
         }
       }}
     >
-      <Container relative size="md" padding="45px 40px" smPadding="50px 12px">
+      <Container relative size="md" padding={`${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`}>
         {title && <h2>{title}</h2>}
         {children}
-        <StyledCloseBtn onClick={closeModal} />
       </Container>
-    </StyledModal>
+    </StyledModal> 
+    
   );
 };
 

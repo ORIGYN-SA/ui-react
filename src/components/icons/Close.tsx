@@ -7,7 +7,7 @@ const CloseIcon = (props: any) => {
       width="40"
       height="40"
       viewBox="0 0 40 40"
-      fill="black"
+      fill={props.white?'white':'black'}
       stroke="white"
       {...props}
     >

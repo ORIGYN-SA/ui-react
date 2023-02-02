@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Components/Interface/Navbar/Overview" />
+
+<style>{`
+
+`}</style>
+
+# Navbar component
+
+Basic Navbar component
+
+## Properties
+
+
+Add in the App component, the following switch as per example:
+
+```typescript
+const App = () => {
+  let component;
+  switch (window.location.pathname) {
+    case "/about":
+      component = <About />;
+      break;
+    case "/origyn":
+      component = <Origyn />;
+      break;
+    case "/team":
+      component = <Team />;
+      break;
+  
+return (
+    <div>
+      <Navbar>
+        <CustomLink href="/about"> About </CustomLink>
+        <CustomLink href="/origyn"> Origyn </CustomLink>
+        <CustomLink href="/team"> Team </CustomLink>
+      </Navbar>
+      <div className="container">{component}</div>
+    </div>
+  );
+
+```
+
+** IMPORTANT: Size prop is still in development **
+
+## Basic
+
+<Canvas>
+    <Story id="components-interface-navbar-all-stories--basic" />
+</Canvas>
+

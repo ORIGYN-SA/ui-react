@@ -15,6 +15,7 @@ const StyledBanner = styled(Flex)<BannerProps>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  box-sizing: border-box;
   color: ${textColor ? textColor : theme.colors.WHITE};
   padding: ${padding};
 `}

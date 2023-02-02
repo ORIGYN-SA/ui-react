@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [18.12.1]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -82,7 +82,7 @@ jobs:
 
       - name: Setup kubectl
         run: |
-          curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+          curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.20.15/bin/linux/amd64/kubectl
           chmod +x ./kubectl
           sudo mv ./kubectl /usr/local/bin/kubectl
           export KUBECONFIG=${HOME}/.kube/config
@@ -124,4 +124,3 @@ jobs:
           SLACK_COLOR: '${{ job.status }}'
           SLACK_MESSAGE: '${{github.repository}}: Build has ${{ job.status }}. Domain: ${{ secrets.APP_DOMAIN }}'
         uses: rtCamp/action-slack-notify@v2
-
