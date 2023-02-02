@@ -1,6 +1,7 @@
 import Grid from "./layout/Grid";
 import Flex from "./layout/Flex";
 import Container from "./layout/Container";
+// import BalanceCard from "./interface/BalanceCard";
 import Banner from "./interface/Banner";
 import BreadCrumbs from "./interface/BreadCrumbs";
 import Button from "./interface/Button";
@@ -18,11 +19,13 @@ import ProductCard from "./interface/ProductCard";
 import Pagination from "./interface/Pagination";
 import SearchInput from "./interface/Inputs/SearchInput";
 import Slider from "./interface/Slider";
-import Status, {SStatus} from "./interface/Status";
+import Status, { SStatus } from "./interface/Status";
 import Stepper from "./interface/Stepper";
 import { useStepper } from "./interface/Stepper/Stepper";
 import TabContent from "./interface/TabContent";
-import TabContentVertical, {useTabContentVertical} from "./interface/TabContent/TabContentVertical";
+import TabContentVertical, {
+  useTabContentVertical,
+} from "./interface/TabContent/TabContentVertical";
 import CustomTable from "./interface/Table/CustomTable";
 import HistoryTable from "./interface/Table/HistoryTable";
 import Snackbar from "./interface/Snackbar";
@@ -42,6 +45,7 @@ export {
   Grid,
   Flex,
   Container,
+  // BalanceCard,
   Banner,
   BreadCrumbs,
   Button,
