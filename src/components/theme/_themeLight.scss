@@ -1,0 +1,40 @@
+$colors: (
+  BACKGROUND: "#FEFEFE",
+  BORDER: "#E3E3E3",
+  TEXT: "#151515",
+  SECONDARY_TEXT: "#5F5F5F",
+  INACTIVE: "#9A9A9A",
+  NAVIGATION_BACKGROUND: "#FEFEFE",
+  NAVIGATION_BACKGROUND_LIGHT: "#FCFCFC",
+  ERROR: "#B5010A",
+  PROGRESS: "#F2BD00",
+  SUCCESS: "#50AA3E",
+  ACCENT_COLOR: "#70237D",
+  ACCENT_COLOR_2: "#FFE7BD",
+);
+
+$shadows: (
+  sm: "0px 5px 5px -5px rgba(0, 0, 0, 0.1)",
+  md: "0px 5px 10px -5px rgba(26, 32, 44, 0.1)",
+  lg:
+    "0px 10px 15px -3px rgba(26, 32, 44, 0.1), 0px 4px 6px -2px rgba(26, 32, 44, 0.05)",
+);
+
+$media: (
+  sm: "@media (max-width: 600px)",
+  md: "@media (max-width: 960px)",
+  lg: "@media (max-width: 1280px)",
+  xl: "@media (max-width: 1920px)",
+);
+$containers: (
+  sm: 905,
+  md: 1150,
+  lg: 1440,
+);
+
+$themeLight: (
+  colors: $colors,
+  shadows: $shadows,
+  media: $media,
+  containers: $containers,
+);

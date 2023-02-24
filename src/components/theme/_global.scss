@@ -1,0 +1,94 @@
+@import "./_theme";
+
+$root: (
+  --text-line-height: 1.57,
+);
+
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #{map-get($theme, colors, BACKGROUND)};
+  background-color: #{map-get($theme, colors, NAVIGATION_BACKGROUND)};
+  color: #{map-get($theme, colors, TEXT)};
+  font-weight: 400;
+  font-size: 14px;
+  line-height: var(--text-line-height);
+  letter-spacing: -0.15px;
+
+  &.secondary_color {
+    color: #{map-get($theme, colors, SECONDARY_TEXT)};
+  }
+
+  &.small_text {
+    font-size: 10px;
+  }
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+img {
+  max-width: 100%;
+}
+.noShrink {
+  flex-shrink: 0;
+}
+h1 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -1px;
+}
+h2 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.75px;
+}
+h3 {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.5px;
+}
+h4 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.25px;
+}
+h5 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.15px;
+}
+h6 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.1px;
+}
+h1 > b,
+h2 > b,
+h3 > b,
+h4 > b,
+h5 > b,
+h6 > b {
+  font-weight: 500;
+}
+
+@media (min-width: 600px) {
+  // TODO: consider fonts responsiveness
+}
+
+@media (min-width: 960px) {
+  // TODO: consider fonts responsiveness
+}
+
+@media (min-width: 1280px) {
+  // TODO: consider fonts responsiveness
+}
