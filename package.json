@@ -11,8 +11,8 @@
     "build-storybook": "build-storybook"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "ORIGYN Foundation",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@rollup/plugin-babel": "^6.0.3",
